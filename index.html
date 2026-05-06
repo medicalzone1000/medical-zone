@@ -9,33 +9,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>body { font-family: 'Cairo', sans-serif; }</style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 text-right">
 
-    <!-- 1. Top Bar الكامل (مثل الصورة) -->
-    <div class="bg-blue-900 text-white py-2 border-b border-blue-800">
+    <!-- 1. Top Bar -->
+    <div class="bg-blue-900 text-white py-2">
         <div class="container mx-auto px-4 flex justify-between items-center text-sm">
             <div class="flex space-x-6 space-x-reverse">
                 <span><i class="fas fa-map-marker-alt ml-2 text-orange-400"></i>القاهرة، مصر</span>
                 <span><i class="fas fa-envelope ml-2 text-orange-400"></i>info@medicalzone.com</span>
             </div>
-            <div class="flex space-x-6 space-x-reverse">
+            <div class="flex items-center space-x-6 space-x-reverse">
                 <span><i class="fas fa-phone ml-2 text-orange-400"></i>+20123456789</span>
-                <div class="flex space-x-3 space-x-reverse mr-4">
-                    <i class="fab fa-facebook hover:text-orange-400 cursor-pointer"></i>
-                    <i class="fab fa-whatsapp hover:text-orange-400 cursor-pointer"></i>
+                <div class="flex space-x-3 space-x-reverse border-r pr-4 border-blue-700">
+                    <a href="#"><i class="fab fa-facebook hover:text-orange-400"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp hover:text-orange-400"></i></a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- 2. Navbar -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
+    <nav class="bg-white shadow sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-3xl font-extrabold text-blue-800 flex items-center">
-                <i class="fas fa-heartbeat ml-2"></i>MedicalZone
-            </div>
+            <div class="text-3xl font-extrabold text-blue-900 tracking-tighter">MedicalZone</div>
             <ul class="hidden md:flex space-x-8 space-x-reverse font-bold text-gray-700">
-                <li><a href="#" class="text-blue-600 border-b-2 border-blue-600">الرئيسية</a></li>
+                <li><a href="#" class="text-blue-600 border-b-2 border-blue-600 pb-1">الرئيسية</a></li>
                 <li><a href="#" class="hover:text-blue-600 transition">المتجر</a></li>
                 <li><a href="#" class="hover:text-blue-600 transition">المدونة</a></li>
                 <li><a href="#" class="hover:text-blue-600 transition">صيانة</a></li>
@@ -44,165 +42,200 @@
         </div>
     </nav>
 
-    <!-- 3. Hero Slider (60% صوره / 40% كلام) -->
-    <header class="flex flex-col md:flex-row min-h-[500px]">
-        <div class="w-full md:w-[40%] bg-gray-50 p-12 flex flex-col justify-center">
-            <h2 class="text-orange-500 font-bold mb-2">أحدث التقارير الطبية</h2>
-            <h1 class="text-4xl font-extrabold text-blue-900 mb-6 leading-tight">تكنولوجيا المناظير الحديثة <br> لعام 2026</h1>
-            <p class="text-gray-600 mb-8 leading-relaxed text-lg">نستعرض اليوم أحدث أجهزة المناظير التي وصلت مخازننا، مع شرح تفصيلي للمواصفات والضمان.</p>
-            <button class="bg-blue-800 text-white w-fit px-10 py-4 rounded-full font-bold hover:bg-orange-500 transition duration-300 shadow-xl">اقرأ التقرير</button>
+    <!-- 3. Hero Section (60% Image / 40% Text) -->
+    <header class="flex flex-col md:flex-row bg-white border-b h-auto md:h-[500px]">
+        <div class="w-full md:w-[40%] p-12 flex flex-col justify-center bg-gray-50">
+            <span class="text-orange-500 font-bold mb-2 uppercase tracking-widest">أحدث التقارير</span>
+            <h1 class="text-4xl font-extrabold text-blue-900 mb-6 leading-tight">تكنولوجيا المناظير <br> لعام 2026</h1>
+            <p class="text-gray-600 mb-8 text-lg">نقدم لكم أحدث ما توصلت إليه تكنولوجيا المعدات الطبية العالمية بضمان حصري.</p>
+            <button class="bg-blue-900 text-white w-fit px-10 py-4 rounded-full font-bold shadow-xl hover:bg-orange-500 transition">اكتشف الآن</button>
         </div>
-        <div class="w-full md:w-[60%] relative">
-            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover">
-            <div class="absolute bottom-6 right-6 flex space-x-2 space-x-reverse">
-                <div class="w-3 h-3 bg-orange-500 rounded-full cursor-pointer"></div>
-                <div class="w-3 h-3 bg-white/50 rounded-full cursor-pointer"></div>
-                <div class="w-3 h-3 bg-white/50 rounded-full cursor-pointer"></div>
-            </div>
+        <div class="w-full md:w-[60%] relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200" class="w-full h-full object-cover">
         </div>
     </header>
 
-    <!-- 4. قسم المميزات (الـ 4 كروت بنفس تصميم صورة image_b185d2.png) -->
-    <section class="py-20 container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+    <!-- 4. المميزات (4 كروت) -->
+    <section class="py-16 container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
         <!-- كارت 1 -->
-        <div class="bg-white p-10 rounded-2xl text-center shadow-sm hover:shadow-xl transition-all border-b-4 border-orange-400">
-            <div class="w-24 h-24 bg-orange-400 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-4xl shadow-inner relative">
-                <i class="fas fa-headset"></i>
-                <div class="absolute -bottom-2 w-4 h-4 bg-orange-400 rotate-45"></div>
+        <div class="bg-white p-8 rounded-2xl text-center shadow-sm border-b-4 border-orange-400 hover:shadow-xl transition">
+            <div class="w-20 h-20 bg-orange-400 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl shadow-lg">
+                <i class="fas fa-shipping-fast"></i>
             </div>
-            <h3 class="font-bold text-xl mb-3 text-blue-900">دعم 24/7</h3>
-            <p class="text-gray-500 leading-relaxed">دعم فني متخصص للأجهزة الطبية على مدار الساعة.</p>
+            <h3 class="font-bold text-xl mb-2 text-blue-900">شحن سريع</h3>
+            <p class="text-gray-500 text-sm italic">لكافة المحافظات</p>
         </div>
         <!-- كارت 2 -->
-        <div class="bg-white p-10 rounded-2xl text-center shadow-sm hover:shadow-xl transition-all border-b-4 border-orange-400">
-            <div class="w-24 h-24 bg-orange-400 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-4xl shadow-inner relative">
-                <i class="fas fa-shield-alt"></i>
-                <div class="absolute -bottom-2 w-4 h-4 bg-orange-400 rotate-45"></div>
+        <div class="bg-white p-8 rounded-2xl text-center shadow-sm border-b-4 border-orange-400 hover:shadow-xl transition">
+            <div class="w-20 h-20 bg-orange-400 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl shadow-lg">
+                <i class="fas fa-user-shield"></i>
             </div>
-            <h3 class="font-bold text-xl mb-3 text-blue-900">ضمان حقيقي</h3>
-            <p class="text-gray-500 leading-relaxed">ضمان شامل لمدة عامين على كافة الأجهزة الجديدة.</p>
+            <h3 class="font-bold text-xl mb-2 text-blue-900">أمان كامل</h3>
+            <p class="text-gray-500 text-sm italic">ضمان ضد العيوب</p>
         </div>
         <!-- كارت 3 -->
-        <div class="bg-white p-10 rounded-2xl text-center shadow-sm hover:shadow-xl transition-all border-b-4 border-orange-400">
-            <div class="w-24 h-24 bg-orange-400 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-4xl shadow-inner relative">
-                <i class="fas fa-truck"></i>
-                <div class="absolute -bottom-2 w-4 h-4 bg-orange-400 rotate-45"></div>
+        <div class="bg-white p-8 rounded-2xl text-center shadow-sm border-b-4 border-orange-400 hover:shadow-xl transition">
+            <div class="w-20 h-20 bg-orange-400 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl shadow-lg">
+                <i class="fas fa-undo"></i>
             </div>
-            <h3 class="font-bold text-xl mb-3 text-blue-900">توصيل آمن</h3>
-            <p class="text-gray-500 leading-relaxed">شحن متخصص للأجهزة الحساسة لجميع المحافظات.</p>
+            <h3 class="font-bold text-xl mb-2 text-blue-900">إرجاع مجاني</h3>
+            <p class="text-gray-500 text-sm italic">خلال 30 يوم</p>
         </div>
         <!-- كارت 4 -->
-        <div class="bg-white p-10 rounded-2xl text-center shadow-sm hover:shadow-xl transition-all border-b-4 border-orange-400">
-            <div class="w-24 h-24 bg-orange-400 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-4xl shadow-inner relative">
-                <i class="fas fa-tools"></i>
-                <div class="absolute -bottom-2 w-4 h-4 bg-orange-400 rotate-45"></div>
+        <div class="bg-white p-8 rounded-2xl text-center shadow-sm border-b-4 border-orange-400 hover:shadow-xl transition">
+            <div class="w-20 h-20 bg-orange-400 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl shadow-lg">
+                <i class="fas fa-headset"></i>
             </div>
-            <h3 class="font-bold text-xl mb-3 text-blue-900">صيانة فورية</h3>
-            <p class="text-gray-500 leading-relaxed">فنيون مدربون على أعلى مستوى لصيانة أجهزتكم.</p>
+            <h3 class="font-bold text-xl mb-2 text-blue-900">دعم فني</h3>
+            <p class="text-gray-500 text-sm italic">متوفر 24/7</p>
         </div>
     </section>
 
-    <!-- 5. قسم "اكتشف معنا" (أقسام المتجر الـ 4 مثل image_b181cf.jpg) -->
+    <!-- 5. اكتشف معنا (4 أقسام) -->
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">اكتشف معنا</h2>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <!-- قسم 1 -->
-                <a href="#" class="group relative h-96 overflow-hidden rounded-2xl border-4 border-orange-400 block">
-                    <img src="https://images.unsplash.com/photo-1579154235602-3c2c2aa5d72e?auto=format&fit=crop&w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute bottom-0 w-full bg-white py-4 text-center text-2xl font-bold text-blue-900 group-hover:bg-orange-400 group-hover:text-white transition">مناظير</div>
+                <!-- الأقسام 1-4 -->
+                <a href="#" class="group relative h-80 rounded-2xl overflow-hidden border-4 border-orange-400 block">
+                    <img src="https://images.unsplash.com/photo-1579154235602-3c2c2aa5d72e?w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute bottom-0 w-full bg-white py-3 text-center font-bold text-xl group-hover:bg-orange-400 group-hover:text-white transition">مناظير</div>
                 </a>
-                <!-- قسم 2 -->
-                <a href="#" class="group relative h-96 overflow-hidden rounded-2xl border-4 border-orange-400 block">
-                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute bottom-0 w-full bg-white py-4 text-center text-2xl font-bold text-blue-900 group-hover:bg-orange-400 group-hover:text-white transition">رعاية</div>
+                <a href="#" class="group relative h-80 rounded-2xl overflow-hidden border-4 border-orange-400 block">
+                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute bottom-0 w-full bg-white py-3 text-center font-bold text-xl group-hover:bg-orange-400 group-hover:text-white transition">رعاية</div>
                 </a>
-                <!-- قسم 3 -->
-                <a href="#" class="group relative h-96 overflow-hidden rounded-2xl border-4 border-orange-400 block">
-                    <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute bottom-0 w-full bg-white py-4 text-center text-2xl font-bold text-blue-900 group-hover:bg-orange-400 group-hover:text-white transition">هوم كير</div>
+                <a href="#" class="group relative h-80 rounded-2xl overflow-hidden border-4 border-orange-400 block">
+                    <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute bottom-0 w-full bg-white py-3 text-center font-bold text-xl group-hover:bg-orange-400 group-hover:text-white transition">هوم كير</div>
                 </a>
-                <!-- قسم 4 -->
-                <a href="#" class="group relative h-96 overflow-hidden rounded-2xl border-4 border-orange-400 block">
-                    <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    <div class="absolute bottom-0 w-full bg-white py-4 text-center text-2xl font-bold text-blue-900 group-hover:bg-orange-400 group-hover:text-white transition">أجهزة أخرى</div>
+                <a href="#" class="group relative h-80 rounded-2xl overflow-hidden border-4 border-orange-400 block">
+                    <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute bottom-0 w-full bg-white py-3 text-center font-bold text-xl group-hover:bg-orange-400 group-hover:text-white transition">أجهزة أخرى</div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- 6. بانر الصيانة (Full Width مثل image_b123f3.jpg) -->
-    <a href="#" class="relative block w-full h-[450px] overflow-hidden group">
-        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1920" class="w-full h-full object-cover group-hover:scale-105 transition duration-1000">
-        <div class="absolute inset-0 bg-orange-400/80 flex items-center justify-center">
-            <div class="text-center px-4">
-                <h2 class="text-5xl font-extrabold text-white mb-6">خدمات الصيانة الاحترافية</h2>
-                <p class="text-2xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed">لدينا أكبر مركز صيانة معتمد للأجهزة الطبية، نستخدم أحدث أجهزة المعايرة وقطع الغيار الأصلية.</p>
-                <div class="bg-white text-orange-500 px-12 py-4 rounded-full font-bold text-xl shadow-2xl hover:bg-blue-900 hover:text-white transition inline-block">اطلب خدمة الصيانة الآن</div>
-            </div>
+    <!-- 6. بانر الصيانة (Full Width) -->
+    <a href="#" class="block bg-orange-400 py-20 text-center text-white relative overflow-hidden group">
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-5xl font-extrabold mb-6">خدمة الصيانة المعتمدة</h2>
+            <p class="text-2xl mb-10 opacity-90">نحن نهتم بأجهزتك كما تهتم أنت بمرضاك</p>
+            <div class="inline-block bg-white text-orange-500 px-12 py-4 rounded-full font-bold text-xl shadow-2xl hover:scale-105 transition">طلب صيانة</div>
         </div>
+        <div class="absolute inset-0 bg-black/10"></div>
     </a>
 
-    <!-- 7. أفضل العروض (6 كروت منتجات مثل image_b11c90.jpg) -->
+    <!-- 7. أفضل العروض (6 كروت منتجات) -->
     <section class="py-20 container mx-auto px-4">
-        <h2 class="text-4xl font-bold text-center text-blue-900 mb-12">أفضل العروض</h2>
+        <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">أفضل العروض</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <!-- كارت منتج 1 (يتكرر 6 مرات) -->
-            <a href="#" class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition group p-6 border border-gray-100">
-                <div class="flex justify-between items-center mb-4">
-                    <div>
-                        <h3 class="text-xl font-bold text-blue-900 group-hover:text-orange-500 transition">جهاز مراقبة مريض</h3>
-                        <p class="text-gray-400 text-sm italic">متوفر حالياً</p>
-                    </div>
-                    <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner">
-                        <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?auto=format&fit=crop&w=300" class="w-full h-full object-cover group-hover:scale-110 transition">
-                    </div>
+            <!-- تكرار 6 كروت بنفس التنسيق المطلوب -->
+            <a href="#" class="bg-white p-6 rounded-3xl shadow-md border border-gray-100 flex items-center justify-between group hover:shadow-2xl transition">
+                <div class="w-1/2">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">جهاز مراقبة</h3>
+                    <div class="text-orange-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p class="text-blue-900 font-bold text-lg mb-4">12,500 ج.م</p>
+                    <div class="bg-orange-400 text-white text-center py-2 px-4 rounded-full text-xs font-bold w-fit">أضف للسلة <i class="fas fa-shopping-basket mr-1"></i></div>
                 </div>
-                <div class="flex justify-between items-center mt-6 border-t pt-4">
-                    <span class="text-2xl font-bold text-blue-800">15,000 ج.م</span>
-                    <button class="bg-orange-100 text-orange-500 px-6 py-2 rounded-full font-bold group-hover:bg-orange-500 group-hover:text-white transition"><i class="fas fa-shopping-cart ml-2"></i>عرض التفاصيل</button>
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=300" class="w-full h-full object-cover">
                 </div>
             </a>
-            <!-- كرر هذا الكارت 5 مرات أخرى لتكتمل الـ 6 منتجات -->
-            <!-- لضمان عدم إطالة الكود هنا، سنضع باقي الكروت بنفس التنسيق -->
+            <!-- كارت 2 -->
+            <a href="#" class="bg-white p-6 rounded-3xl shadow-md border border-gray-100 flex items-center justify-between group hover:shadow-2xl transition">
+                <div class="w-1/2">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">مضخة محاليل</h3>
+                    <div class="text-orange-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-blue-900 font-bold text-lg mb-4">8,900 ج.م</p>
+                    <div class="bg-orange-400 text-white text-center py-2 px-4 rounded-full text-xs font-bold w-fit">أضف للسلة <i class="fas fa-shopping-basket mr-1"></i></div>
+                </div>
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=300" class="w-full h-full object-cover">
+                </div>
+            </a>
+            <!-- كارت 3 -->
+            <a href="#" class="bg-white p-6 rounded-3xl shadow-md border border-gray-100 flex items-center justify-between group hover:shadow-2xl transition">
+                <div class="w-1/2">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">جهاز رسم قلب</h3>
+                    <div class="text-orange-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                    <p class="text-blue-900 font-bold text-lg mb-4">22,000 ج.م</p>
+                    <div class="bg-orange-400 text-white text-center py-2 px-4 rounded-full text-xs font-bold w-fit">أضف للسلة <i class="fas fa-shopping-basket mr-1"></i></div>
+                </div>
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=300" class="w-full h-full object-cover">
+                </div>
+            </a>
+            <!-- تم إضافة كروت تكميلية للـ 6 -->
+             <a href="#" class="bg-white p-6 rounded-3xl shadow-md border border-gray-100 flex items-center justify-between group hover:shadow-2xl transition">
+                <div class="w-1/2">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">منظار هضمي</h3>
+                    <div class="text-orange-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-blue-900 font-bold text-lg mb-4">150,000 ج.م</p>
+                    <div class="bg-orange-400 text-white text-center py-2 px-4 rounded-full text-xs font-bold w-fit">أضف للسلة <i class="fas fa-shopping-basket mr-1"></i></div>
+                </div>
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1579154235602-3c2c2aa5d72e?w=300" class="w-full h-full object-cover">
+                </div>
+            </a>
+            <a href="#" class="bg-white p-6 rounded-3xl shadow-md border border-gray-100 flex items-center justify-between group hover:shadow-2xl transition">
+                <div class="w-1/2">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">جهاز تنفس</h3>
+                    <div class="text-orange-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p class="text-blue-900 font-bold text-lg mb-4">45,000 ج.م</p>
+                    <div class="bg-orange-400 text-white text-center py-2 px-4 rounded-full text-xs font-bold w-fit">أضف للسلة <i class="fas fa-shopping-basket mr-1"></i></div>
+                </div>
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=300" class="w-full h-full object-cover">
+                </div>
+            </a>
+            <a href="#" class="bg-white p-6 rounded-3xl shadow-md border border-gray-100 flex items-center justify-between group hover:shadow-2xl transition">
+                <div class="w-1/2">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">سرير طبي</h3>
+                    <div class="text-orange-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p class="text-blue-900 font-bold text-lg mb-4">18,500 ج.م</p>
+                    <div class="bg-orange-400 text-white text-center py-2 px-4 rounded-full text-xs font-bold w-fit">أضف للسلة <i class="fas fa-shopping-basket mr-1"></i></div>
+                </div>
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=300" class="w-full h-full object-cover">
+                </div>
+            </a>
         </div>
     </section>
 
-    <!-- 8. الفوتر (مثل image_b11c90.jpg) -->
-    <footer class="bg-gray-900 text-white pt-20 pb-10 border-t-8 border-orange-400">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 text-right">
+    <!-- 8. الفوتر -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8 border-t-8 border-orange-400">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
-                <h3 class="text-2xl font-bold text-orange-400 mb-8">Medical Zone</h3>
-                <p class="text-gray-400 leading-relaxed">نحن ملتزمون بتوفير أفضل الحلول الطبية المتكاملة للعيادات والمستشفيات بأعلى معايير الجودة العالمية.</p>
+                <h3 class="text-2xl font-bold mb-6 text-orange-400">Medical Zone</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">شريكك المثالي في تقديم كافة حلول المنشآت الطبية الحديثة وصيانتها.</p>
             </div>
             <div>
-                <h3 class="text-xl font-bold text-white mb-8">روابط سريعة</h3>
-                <ul class="space-y-4 text-gray-400">
-                    <li><a href="#" class="hover:text-orange-400">من نحن</a></li>
-                    <li><a href="#" class="hover:text-orange-400">سياسة الضمان</a></li>
-                    <li><a href="#" class="hover:text-orange-400">الشحن والتوصيل</a></li>
+                <h4 class="font-bold mb-6">روابط سريعة</h4>
+                <ul class="text-gray-400 space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-orange-400">عن الشركة</a></li>
+                    <li><a href="#" class="hover:text-orange-400">المتجر</a></li>
+                    <li><a href="#" class="hover:text-orange-400">خدمات الصيانة</a></li>
                 </ul>
             </div>
             <div>
-                <h3 class="text-xl font-bold text-white mb-8">أقسام الموقع</h3>
-                <ul class="space-y-4 text-gray-400">
-                    <li><a href="#" class="hover:text-orange-400">المتجر الطبي</a></li>
-                    <li><a href="#" class="hover:text-orange-400">مركز الصيانة</a></li>
-                    <li><a href="#" class="hover:text-orange-400">المدونة الطبية</a></li>
+                <h4 class="font-bold mb-6">تواصل معنا</h4>
+                <ul class="text-gray-400 space-y-3 text-sm">
+                    <li><i class="fas fa-phone-alt ml-2"></i>+20123456789</li>
+                    <li><i class="fas fa-envelope ml-2"></i>support@medzone.com</li>
                 </ul>
             </div>
             <div>
-                <h3 class="text-xl font-bold text-white mb-8">تواصل معنا</h3>
-                <ul class="space-y-4 text-gray-400">
-                    <li><i class="fas fa-map-marker-alt ml-3"></i>القاهرة، مدينة نصر</li>
-                    <li><i class="fas fa-phone ml-3"></i>+20123456789</li>
-                    <li><i class="fas fa-envelope ml-3"></i>support@medzone.com</li>
-                </ul>
+                <h4 class="font-bold mb-6">اترك بريدك</h4>
+                <div class="flex">
+                    <input type="text" class="bg-gray-800 border-none px-4 py-2 rounded-r-lg w-full text-sm outline-none" placeholder="الإيميل">
+                    <button class="bg-orange-400 px-4 py-2 rounded-l-lg font-bold">اشترك</button>
+                </div>
             </div>
         </div>
-        <div class="container mx-auto px-4 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-gray-500">
-            <p>© 2026 Medical Zone. جميع الحقوق محفوظة.</p>
-            <p class="mt-4 md:mt-0">تصميم وتطوير Medical Zone Team</p>
+        <div class="text-center border-t border-gray-800 pt-8 text-gray-500 text-xs">
+            جميع الحقوق محفوظة © 2026 MedicalZone
         </div>
     </footer>
 
