@@ -1,243 +1,448 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medical Zone | الرئيسية</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>body { font-family: 'Cairo', sans-serif; }</style>
+    <title>ميديكال زون — الأجهزة الطبية</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 text-right">
+<body>
 
-    <!-- 1. Top Bar -->
-    <div class="bg-blue-900 text-white py-2">
-        <div class="container mx-auto px-4 flex justify-between items-center text-sm">
-            <div class="flex space-x-6 space-x-reverse">
-                <span><i class="fas fa-map-marker-alt ml-2 text-orange-400"></i>القاهرة، مصر</span>
-                <span><i class="fas fa-envelope ml-2 text-orange-400"></i>info@medicalzone.com</span>
-            </div>
-            <div class="flex items-center space-x-6 space-x-reverse">
-                <span><i class="fas fa-phone ml-2 text-orange-400"></i>+20123456789</span>
-                <div class="flex space-x-3 space-x-reverse border-r pr-4 border-blue-700">
-                    <a href="#"><i class="fab fa-facebook hover:text-orange-400"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp hover:text-orange-400"></i></a>
-                </div>
-            </div>
-        </div>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <p>🚚 شحن مجاني للطلبات فوق 2000 جنيه &nbsp;|&nbsp; ✅ ضمان سنة على جميع الأجهزة &nbsp;|&nbsp; 📞 دعم فني 24/7</p>
     </div>
 
-    <!-- 2. Navbar -->
-    <nav class="bg-white shadow sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-3xl font-extrabold text-blue-900 tracking-tighter">MedicalZone</div>
-            <ul class="hidden md:flex space-x-8 space-x-reverse font-bold text-gray-700">
-                <li><a href="#" class="text-blue-600 border-b-2 border-blue-600 pb-1">الرئيسية</a></li>
-                <li><a href="#" class="hover:text-blue-600 transition">المتجر</a></li>
-                <li><a href="#" class="hover:text-blue-600 transition">المدونة</a></li>
-                <li><a href="#" class="hover:text-blue-600 transition">صيانة</a></li>
-                <li><a href="#" class="hover:text-blue-600 transition">اتصل بنا</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Header -->
+    <header class="site-header" id="site-header">
+        <div class="header-inner container">
+            <div class="header-logo">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+                    <div class="logo-text">
+                        <span class="logo-main">MEDICAL</span>
+                        <span class="logo-sub">ZONE</span>
+                    </div>
+                </a>
+            </div>
 
-    <!-- 3. Hero Section (60% Image / 40% Text) -->
-    <header class="flex flex-col md:flex-row bg-white border-b h-auto md:h-[500px]">
-        <div class="w-full md:w-[40%] p-12 flex flex-col justify-center bg-gray-50">
-            <span class="text-orange-500 font-bold mb-2 uppercase tracking-widest">أحدث التقارير</span>
-            <h1 class="text-4xl font-extrabold text-blue-900 mb-6 leading-tight">تكنولوجيا المناظير <br> لعام 2026</h1>
-            <p class="text-gray-600 mb-8 text-lg">نقدم لكم أحدث ما توصلت إليه تكنولوجيا المعدات الطبية العالمية بضمان حصري.</p>
-            <button class="bg-blue-900 text-white w-fit px-10 py-4 rounded-full font-bold shadow-xl hover:bg-orange-500 transition">اكتشف الآن</button>
-        </div>
-        <div class="w-full md:w-[60%] relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200" class="w-full h-full object-cover">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">الرئيسية</a></li>
+                    <li><a href="store.html">المتجر</a></li>
+                    <li><a href="maintenance.html">صيانة</a></li>
+                    <li><a href="reports.html">تقارير</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="icon-btn" aria-label="بحث"><i class="fas fa-search"></i></button>
+                <button class="icon-btn" aria-label="المفضلة"><i class="far fa-heart"></i></button>
+                <button class="icon-btn cart-btn" aria-label="السلة">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge">2</span>
+                </button>
+                <a href="#" class="btn-outline-sm">دخول</a>
+            </div>
         </div>
     </header>
 
-    <!-- 4. المميزات (4 كروت) -->
-    <section class="py-16 container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-        <!-- كارت 1 -->
-        <div class="bg-white p-8 rounded-2xl text-center shadow-sm border-b-4 border-orange-400 hover:shadow-xl transition">
-            <div class="w-20 h-20 bg-orange-400 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl shadow-lg">
-                <i class="fas fa-shipping-fast"></i>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg-grid"></div>
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="hero-eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        <span>الوجهة الأولى للأجهزة الطبية في مصر</span>
+                    </div>
+                    <h1 class="hero-title">
+                        ميديكال زون<br>
+                     <em>أعلى جودة .. بأفضل سعر</em>
+                    </h1>
+                    <p class="hero-desc">نوفر أحدث الأجهزة والمستلزمات الطبية للمستشفيات والعيادات والاستخدام المنزلي، مع ضمان حقيقي ودعم فني متخصص.</p>
+                    <div class="hero-cta">
+                        <a href="store.html" class="btn-primary">تسوق الآن <i class="fas fa-arrow-left"></i></a>
+                        
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <strong>+600</strong>
+                            <span>منتج طبي</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <strong>+15</strong>
+                            <span>سنة خبرة</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat-item">
+                            <strong>3 فروع</strong>
+                            <span>القاهرة وأسيوط وسوهاج</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-img-wrap">
+                       <img src="images/medical-hero.jpg" alt="أجهزة طبية حديثة">
+                        <div class="hero-badge-float">
+                            <i class="fas fa-certificate"></i>
+                            <span>معتمد دولياً</span>
+                        </div>
+                    </div>
+                    <div class="hero-report-card">
+                        <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&q=85&w=400" alt="تقرير الرعاية الصحية">
+                        <div class="report-card-text">
+                            <span class="report-tag">تقرير حديث</span>
+                            <p>مستقبل الرعاية الصحية الرقمية في مصر</p>
+                            <a href="#">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h3 class="font-bold text-xl mb-2 text-blue-900">شحن سريع</h3>
-            <p class="text-gray-500 text-sm italic">لكافة المحافظات</p>
-        </div>
-        <!-- كارت 2 -->
-        <div class="bg-white p-8 rounded-2xl text-center shadow-sm border-b-4 border-orange-400 hover:shadow-xl transition">
-            <div class="w-20 h-20 bg-orange-400 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl shadow-lg">
-                <i class="fas fa-user-shield"></i>
-            </div>
-            <h3 class="font-bold text-xl mb-2 text-blue-900">أمان كامل</h3>
-            <p class="text-gray-500 text-sm italic">ضمان ضد العيوب</p>
-        </div>
-        <!-- كارت 3 -->
-        <div class="bg-white p-8 rounded-2xl text-center shadow-sm border-b-4 border-orange-400 hover:shadow-xl transition">
-            <div class="w-20 h-20 bg-orange-400 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl shadow-lg">
-                <i class="fas fa-undo"></i>
-            </div>
-            <h3 class="font-bold text-xl mb-2 text-blue-900">إرجاع مجاني</h3>
-            <p class="text-gray-500 text-sm italic">خلال 30 يوم</p>
-        </div>
-        <!-- كارت 4 -->
-        <div class="bg-white p-8 rounded-2xl text-center shadow-sm border-b-4 border-orange-400 hover:shadow-xl transition">
-            <div class="w-20 h-20 bg-orange-400 rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl shadow-lg">
-                <i class="fas fa-headset"></i>
-            </div>
-            <h3 class="font-bold text-xl mb-2 text-blue-900">دعم فني</h3>
-            <p class="text-gray-500 text-sm italic">متوفر 24/7</p>
-        </div>
-    </section>
+        </section>
 
-    <!-- 5. اكتشف معنا (4 أقسام) -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">اكتشف معنا</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <!-- الأقسام 1-4 -->
-                <a href="#" class="group relative h-80 rounded-2xl overflow-hidden border-4 border-orange-400 block">
-                    <img src="https://images.unsplash.com/photo-1579154235602-3c2c2aa5d72e?w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute bottom-0 w-full bg-white py-3 text-center font-bold text-xl group-hover:bg-orange-400 group-hover:text-white transition">مناظير</div>
-                </a>
-                <a href="#" class="group relative h-80 rounded-2xl overflow-hidden border-4 border-orange-400 block">
-                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute bottom-0 w-full bg-white py-3 text-center font-bold text-xl group-hover:bg-orange-400 group-hover:text-white transition">رعاية</div>
-                </a>
-                <a href="#" class="group relative h-80 rounded-2xl overflow-hidden border-4 border-orange-400 block">
-                    <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute bottom-0 w-full bg-white py-3 text-center font-bold text-xl group-hover:bg-orange-400 group-hover:text-white transition">هوم كير</div>
-                </a>
-                <a href="#" class="group relative h-80 rounded-2xl overflow-hidden border-4 border-orange-400 block">
-                    <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=500" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    <div class="absolute bottom-0 w-full bg-white py-3 text-center font-bold text-xl group-hover:bg-orange-400 group-hover:text-white transition">أجهزة أخرى</div>
-                </a>
+        <!-- Trust Bar -->
+        <section class="trust-bar">
+            <div class="container trust-bar-inner">
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fas fa-shipping-fast"></i></div>
+                    <div>
+                        <h4>شحن سريع</h4>
+                        <p>لجميع المحافظات</p>
+                    </div>
+                </div>
+                <div class="trust-sep"></div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fas fa-award"></i></div>
+                    <div>
+                        <h4>ضمان حقيقي</h4>
+                        <p>سنة ضد عيوب الصناعة</p>
+                    </div>
+                </div>
+                <div class="trust-sep"></div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fas fa-user-md"></i></div>
+                    <div>
+                        <h4>دعم 24/7</h4>
+                        <p>فريق طبي متخصص</p>
+                    </div>
+                </div>
+                <div class="trust-sep"></div>
+                <div class="trust-item">
+                    <div class="trust-icon"><i class="fas fa-lock"></i></div>
+                    <div>
+                        <h4>دفع آمن</h4>
+                        <p>تعدد وسائل الدفع</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 6. بانر الصيانة (Full Width) -->
-    <a href="#" class="block bg-orange-400 py-20 text-center text-white relative overflow-hidden group">
-        <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-5xl font-extrabold mb-6">خدمة الصيانة المعتمدة</h2>
-            <p class="text-2xl mb-10 opacity-90">نحن نهتم بأجهزتك كما تهتم أنت بمرضاك</p>
-            <div class="inline-block bg-white text-orange-500 px-12 py-4 rounded-full font-bold text-xl shadow-2xl hover:scale-105 transition">طلب صيانة</div>
-        </div>
-        <div class="absolute inset-0 bg-black/10"></div>
-    </a>
+        <!-- Promo Banners -->
+        <section class="promo-section">
+            <div class="container promo-grid">
+                <div class="promo-card promo-main">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=85&w=1000" alt="تجهيزات عيادات">
+                    <div class="promo-overlay"></div>
+                    <div class="promo-content">
+                        <span class="promo-tag">عرض خاص</span>
+                        <h3>تجهيزات عيادات متكاملة</h3>
+                        <p>تقسيط مريح حتى 12 شهراً</p>
+                        <a href="store.html" class="btn-white">اعرف أكثر</a>
+                    </div>
+                </div>
+                <div class="promo-stack">
+                    <div class="promo-card promo-small">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=85&w=500" alt="أجهزة ضغط دم">
+                        <div class="promo-overlay"></div>
+                        <div class="promo-content">
+                            <span class="promo-tag">خصم 20%</span>
+                            <h3>أجهزة ضغط الدم</h3>
+                            <a href="store.html" class="btn-white-sm">تسوق</a>
+                        </div>
+                    </div>
+                    <div class="promo-card promo-small">
+                        <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=85&w=500" alt="أجهزة تنفس منزلية">
+                        <div class="promo-overlay"></div>
+                        <div class="promo-content">
+                            <span class="promo-tag">الأكثر طلباً</span>
+                            <h3>أجهزة التنفس المنزلي</h3>
+                            <a href="store.html" class="btn-white-sm">تسوق</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <!-- 7. أفضل العروض (6 كروت منتجات) -->
-    <section class="py-20 container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-12 text-blue-900">أفضل العروض</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <!-- تكرار 6 كروت بنفس التنسيق المطلوب -->
-            <a href="#" class="bg-white p-6 rounded-3xl shadow-md border border-gray-100 flex items-center justify-between group hover:shadow-2xl transition">
-                <div class="w-1/2">
-                    <h3 class="text-xl font-bold text-blue-900 mb-2">جهاز مراقبة</h3>
-                    <div class="text-orange-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                    <p class="text-blue-900 font-bold text-lg mb-4">12,500 ج.م</p>
-                    <div class="bg-orange-400 text-white text-center py-2 px-4 rounded-full text-xs font-bold w-fit">أضف للسلة <i class="fas fa-shopping-basket mr-1"></i></div>
+        <!-- New Arrivals -->
+        <section class="products-section">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="section-label">جديد لدينا</span>
+                        <h2 class="section-title">وصل حديثاً</h2>
+                    </div>
+                    <a href="store.html" class="view-all-link">عرض الكل <i class="fas fa-arrow-left"></i></a>
                 </div>
-                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner">
-                    <img src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=300" class="w-full h-full object-cover">
-                </div>
-            </a>
-            <!-- كارت 2 -->
-            <a href="#" class="bg-white p-6 rounded-3xl shadow-md border border-gray-100 flex items-center justify-between group hover:shadow-2xl transition">
-                <div class="w-1/2">
-                    <h3 class="text-xl font-bold text-blue-900 mb-2">مضخة محاليل</h3>
-                    <div class="text-orange-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-blue-900 font-bold text-lg mb-4">8,900 ج.م</p>
-                    <div class="bg-orange-400 text-white text-center py-2 px-4 rounded-full text-xs font-bold w-fit">أضف للسلة <i class="fas fa-shopping-basket mr-1"></i></div>
-                </div>
-                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner">
-                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=300" class="w-full h-full object-cover">
-                </div>
-            </a>
-            <!-- كارت 3 -->
-            <a href="#" class="bg-white p-6 rounded-3xl shadow-md border border-gray-100 flex items-center justify-between group hover:shadow-2xl transition">
-                <div class="w-1/2">
-                    <h3 class="text-xl font-bold text-blue-900 mb-2">جهاز رسم قلب</h3>
-                    <div class="text-orange-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-                    <p class="text-blue-900 font-bold text-lg mb-4">22,000 ج.م</p>
-                    <div class="bg-orange-400 text-white text-center py-2 px-4 rounded-full text-xs font-bold w-fit">أضف للسلة <i class="fas fa-shopping-basket mr-1"></i></div>
-                </div>
-                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner">
-                    <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=300" class="w-full h-full object-cover">
-                </div>
-            </a>
-            <!-- تم إضافة كروت تكميلية للـ 6 -->
-             <a href="#" class="bg-white p-6 rounded-3xl shadow-md border border-gray-100 flex items-center justify-between group hover:shadow-2xl transition">
-                <div class="w-1/2">
-                    <h3 class="text-xl font-bold text-blue-900 mb-2">منظار هضمي</h3>
-                    <div class="text-orange-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-blue-900 font-bold text-lg mb-4">150,000 ج.م</p>
-                    <div class="bg-orange-400 text-white text-center py-2 px-4 rounded-full text-xs font-bold w-fit">أضف للسلة <i class="fas fa-shopping-basket mr-1"></i></div>
-                </div>
-                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner">
-                    <img src="https://images.unsplash.com/photo-1579154235602-3c2c2aa5d72e?w=300" class="w-full h-full object-cover">
-                </div>
-            </a>
-            <a href="#" class="bg-white p-6 rounded-3xl shadow-md border border-gray-100 flex items-center justify-between group hover:shadow-2xl transition">
-                <div class="w-1/2">
-                    <h3 class="text-xl font-bold text-blue-900 mb-2">جهاز تنفس</h3>
-                    <div class="text-orange-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                    <p class="text-blue-900 font-bold text-lg mb-4">45,000 ج.م</p>
-                    <div class="bg-orange-400 text-white text-center py-2 px-4 rounded-full text-xs font-bold w-fit">أضف للسلة <i class="fas fa-shopping-basket mr-1"></i></div>
-                </div>
-                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner">
-                    <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=300" class="w-full h-full object-cover">
-                </div>
-            </a>
-            <a href="#" class="bg-white p-6 rounded-3xl shadow-md border border-gray-100 flex items-center justify-between group hover:shadow-2xl transition">
-                <div class="w-1/2">
-                    <h3 class="text-xl font-bold text-blue-900 mb-2">سرير طبي</h3>
-                    <div class="text-orange-400 mb-4 text-sm"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p class="text-blue-900 font-bold text-lg mb-4">18,500 ج.م</p>
-                    <div class="bg-orange-400 text-white text-center py-2 px-4 rounded-full text-xs font-bold w-fit">أضف للسلة <i class="fas fa-shopping-basket mr-1"></i></div>
-                </div>
-                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-50 shadow-inner">
-                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=300" class="w-full h-full object-cover">
-                </div>
-            </a>
-        </div>
-    </section>
 
-    <!-- 8. الفوتر -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8 border-t-8 border-orange-400">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-            <div>
-                <h3 class="text-2xl font-bold mb-6 text-orange-400">Medical Zone</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">شريكك المثالي في تقديم كافة حلول المنشآت الطبية الحديثة وصيانتها.</p>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-img-wrap">
+                            <span class="badge-discount">-15%</span>
+                            <img src="https://images.unsplash.com/photo-1586015555751-63bb77f4322a?auto=format&fit=crop&q=85&w=400" alt="جهاز قياس سكر">
+                            <div class="product-actions">
+                                <button class="action-btn" title="إضافة للمفضلة"><i class="far fa-heart"></i></button>
+                                <button class="action-btn" title="عرض سريع"><i class="far fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-body">
+                            <span class="product-cat">أجهزة قياس</span>
+                            <h3 class="product-name">جهاز قياس سكر ديجيتال</h3>
+                            <div class="product-pricing">
+                                <span class="price-new">450 ج.م</span>
+                                <span class="price-old">550 ج.م</span>
+                            </div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i> أضف للسلة</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&q=85&w=400" alt="سماعة طبية">
+                            <div class="product-actions">
+                                <button class="action-btn" title="إضافة للمفضلة"><i class="far fa-heart"></i></button>
+                                <button class="action-btn" title="عرض سريع"><i class="far fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-body">
+                            <span class="product-cat">سماعات</span>
+                            <h3 class="product-name">سماعة طبية ليتمان احترافية</h3>
+                            <div class="product-pricing">
+                                <span class="price-new">1,200 ج.م</span>
+                            </div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i> أضف للسلة</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&q=85&w=400" alt="جهاز ضغط">
+                            <div class="product-actions">
+                                <button class="action-btn" title="إضافة للمفضلة"><i class="far fa-heart"></i></button>
+                                <button class="action-btn" title="عرض سريع"><i class="far fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-body">
+                            <span class="product-cat">أجهزة ضغط</span>
+                            <h3 class="product-name">جهاز قياس ضغط أوتوماتيك</h3>
+                            <div class="product-pricing">
+                                <span class="price-new">850 ج.م</span>
+                            </div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i> أضف للسلة</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-img-wrap">
+                            <span class="badge-new">جديد</span>
+                            <img src="images/masks.jpg" alt="كمامات طبية">
+                            <div class="product-actions">
+                                <button class="action-btn" title="إضافة للمفضلة"><i class="far fa-heart"></i></button>
+                                <button class="action-btn" title="عرض سريع"><i class="far fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-body">
+                            <span class="product-cat">مستهلكات</span>
+                            <h3 class="product-name">علبة كمامات طبية (50 قطعة)</h3>
+                            <div class="product-pricing">
+                                <span class="price-new">75 ج.م</span>
+                            </div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i> أضف للسلة</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h4 class="font-bold mb-6">روابط سريعة</h4>
-                <ul class="text-gray-400 space-y-3 text-sm">
-                    <li><a href="#" class="hover:text-orange-400">عن الشركة</a></li>
-                    <li><a href="#" class="hover:text-orange-400">المتجر</a></li>
-                    <li><a href="#" class="hover:text-orange-400">خدمات الصيانة</a></li>
-                </ul>
+        </section>
+
+        <!-- Categories -->
+        <section class="categories-section">
+            <div class="container">
+                <div class="section-head centered">
+                    <span class="section-label">تصفح</span>
+                    <h2 class="section-title">تسوق حسب الفئة</h2>
+                </div>
+                <div class="categories-grid">
+                    <a href="store.html" class="cat-card">
+                        <div class="cat-icon-wrap"><i class="fas fa-lungs"></i></div>
+                        <span>أجهزة تنفس</span>
+                    </a>
+                    <a href="store.html" class="cat-card">
+                        <div class="cat-icon-wrap"><i class="fas fa-heartbeat"></i></div>
+                        <span>أجهزة ضغط</span>
+                    </a>
+                    <a href="store.html" class="cat-card">
+                        <div class="cat-icon-wrap"><i class="fas fa-wheelchair"></i></div>
+                        <span>كراسي متحركة</span>
+                    </a>
+                    <a href="store.html" class="cat-card">
+                        <div class="cat-icon-wrap"><i class="fas fa-stethoscope"></i></div>
+                        <span>تجهيز عيادات</span>
+                    </a>
+                    <a href="store.html" class="cat-card">
+                        <div class="cat-icon-wrap"><i class="fas fa-first-aid"></i></div>
+                        <span>إسعافات أولية</span>
+                    </a>
+                    <a href="store.html" class="cat-card">
+                        <div class="cat-icon-wrap"><i class="fas fa-microscope"></i></div>
+                        <span>تجهيز معامل</span>
+                    </a>
+                    <a href="store.html" class="cat-card">
+                        <div class="cat-icon-wrap"><i class="fas fa-procedures"></i></div>
+                        <span>أثاث طبي</span>
+                    </a>
+                    <a href="store.html" class="cat-card">
+                        <div class="cat-icon-wrap"><i class="fas fa-syringe"></i></div>
+                        <span>مستهلكات</span>
+                    </a>
+                </div>
             </div>
-            <div>
-                <h4 class="font-bold mb-6">تواصل معنا</h4>
-                <ul class="text-gray-400 space-y-3 text-sm">
-                    <li><i class="fas fa-phone-alt ml-2"></i>+20123456789</li>
-                    <li><i class="fas fa-envelope ml-2"></i>support@medzone.com</li>
-                </ul>
+        </section>
+
+        <!-- Blog -->
+        <section class="blog-section">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="section-label">المدونة</span>
+                        <h2 class="section-title">تقارير طبية</h2>
+                    </div>
+                    <a href="#" class="view-all-link">كل المقالات <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <div class="blog-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&q=85&w=500" alt="جهاز ضغط الدم">
+                            <span class="blog-cat-tag">صحة منزلية</span>
+                        </div>
+                        <div class="blog-body">
+                            <span class="blog-date"><i class="far fa-calendar"></i> 7 مايو 2026</span>
+                            <h3>كيفية اختيار جهاز ضغط الدم المناسب لمنزلك</h3>
+                            <p>دليل شامل لمساعدتك في اختيار أدق الأجهزة لمتابعة حالتك الصحية...</p>
+                            <a href="#" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&q=85&w=500" alt="إسعافات أولية">
+                            <span class="blog-cat-tag">سلامة مهنية</span>
+                        </div>
+                        <div class="blog-body">
+                            <span class="blog-date"><i class="far fa-calendar"></i> 5 مايو 2026</span>
+                            <h3>أساسيات حقيبة الإسعافات الأولية في الشركة</h3>
+                            <p>تعرف على المستلزمات الضرورية التي لا غنى عنها في أي مكان عمل...</p>
+                            <a href="#" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+                    <article class="blog-card">
+                        <div class="blog-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=85&w=500" alt="أجهزة تنفس">
+                            <span class="blog-cat-tag">صيانة أجهزة</span>
+                        </div>
+                        <div class="blog-body">
+                            <span class="blog-date"><i class="far fa-calendar"></i> 1 مايو 2026</span>
+                            <h3>أهمية الصيانة الدورية لأجهزة التنفس المنزلي</h3>
+                            <p>نصائح الخبراء للحفاظ على كفاءة جهازك وضمان سلامة المريض...</p>
+                            <a href="#" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+                </div>
             </div>
-            <div>
-                <h4 class="font-bold mb-6">اترك بريدك</h4>
-                <div class="flex">
-                    <input type="text" class="bg-gray-800 border-none px-4 py-2 rounded-r-lg w-full text-sm outline-none" placeholder="الإيميل">
-                    <button class="bg-orange-400 px-4 py-2 rounded-l-lg font-bold">اشترك</button>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-col footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+                        <div class="logo-text">
+                            <span class="logo-main">MEDICAL</span>
+                            <span class="logo-sub">ZONE</span>
+                        </div>
+                    </div>
+                    <p>مؤسسة ميديكال زون للأجهزة الطبية — وجهتك الأولى لأحدث الأجهزة والمستلزمات الطبية عالية الجودة في مصر.</p>
+                    <div class="social-links">
+                        <a href="https://web.facebook.com/medical.zone.sohage" target="_blank" rel="noopener" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="إنستجرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">الشروط والأحكام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="https://web.facebook.com/medical.zone.sohage/photos" target="_blank" rel="noopener">صور المنتجات</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col-title">تواصل معنا</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>سوهاج:</strong> 43 ش الجامعة أمام مسجد الشرطة</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>القاهرة: 01223962139 - 01223962138</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>سوهاج: 01126562854 - 01126562812</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@medicalzone.com</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="text-center border-t border-gray-800 pt-8 text-gray-500 text-xs">
-            جميع الحقوق محفوظة © 2026 MedicalZone
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 مؤسسة ميديكال زون للأجهزة الطبية. جميع الحقوق محفوظة.</p>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-paypal"></i>
+                </div>
+            </div>
         </div>
     </footer>
 
+    <script>
+        // Sticky header
+        const header = document.getElementById('site-header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 60);
+        });
+    </script>
 </body>
 </html>
