@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: github
   repo: medicalzone1000/medical-zone
   branch: main
 
@@ -14,6 +14,8 @@ collections:
     slug: "{{slug}}"
     fields:
       - { label: "اسم الجهاز", name: "title", widget: "string" }
+      - { label: "تاريخ الإضافة", name: "date", widget: "datetime" }
+      - { label: "صورة الجهاز", name: "image", widget: "image" }
       - { label: "السعر", name: "price", widget: "string" }
       - { label: "وصف الجهاز", name: "body", widget: "markdown" }
-      - { label: "صورة الجهاز", name: "image", widget: "image" }
+      - { label: "حالة الجهاز", name: "status", widget: "select", options: ["جديد", "مستعمل", "إيجار"] }
