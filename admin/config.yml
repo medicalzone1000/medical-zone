@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: medicalzone1000/medical-zone
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "products"
+    label: "الأجهزة والمنتجات"
+    folder: "content/products"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "اسم الجهاز", name: "title", widget: "string" }
+      - { label: "السعر", name: "price", widget: "string" }
+      - { label: "وصف الجهاز", name: "body", widget: "markdown" }
+      - { label: "صورة الجهاز", name: "image", widget: "image" }
