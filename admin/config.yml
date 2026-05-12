@@ -37,11 +37,13 @@ collections:
           - "جديد"
           - "مستعمل"
           - "إيجار"
-      - label: "شارة"
+     - label: "شارة"
         name: "badge"
         widget: "select"
+        default: ""
+        required: false
         options:
-          - { label: "بدون شارة", value: "" }
+          - { label: "بدون شارة", value: "none" }
           - { label: "جديد", value: "new" }
           - { label: "خصم", value: "discount" }
       - { label: "نسبة الخصم % (0 إن لم يكن هناك خصم)", name: "discount", widget: "number", default: 0 }
