@@ -34,7 +34,7 @@ collections:
                   - "تجهيز معامل"
               - { label: "صورة المنتج", name: "image", widget: "image" }
               - { label: "السعر (جنيه)", name: "price", widget: "number" }
-              - { label: "السعر القديم (اتركه فارغاً إن لم يكن هناك خصم)", name: "oldPrice", widget: "number", required: false }
+            - { label: "السعر القديم (0 إن لم يكن هناك خصم)", name: "oldPrice", widget: "number", default: 0 }
               - label: "الحالة"
                 name: "status"
                 widget: "select"
