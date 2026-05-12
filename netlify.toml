@@ -1,5 +1,0 @@
-[[headers]]
-  for = "/content/products.json"
-  [headers.values]
-    Cache-Control = "no-cache"
-    Access-Control-Allow-Origin = "*"
