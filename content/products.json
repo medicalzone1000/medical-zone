@@ -156,5 +156,18 @@
       "description": "كمامات طبية عالية الجودة.",
       "date": "2026-05-09"
     }
+    ,{
+  "id": "p013",
+  "title": "جهاز زفت الطين",
+  "category": "أجهزة تنفس",
+  "image": "/images/uploads/اسم_الصورة.jpg",
+  "price": 555,
+  "oldPrice": 0,
+  "status": "جديد",
+  "badge": "",
+  "discount": 0,
+  "description": "دي المرف الخمسمية اللى اعدل فيها",
+  "date": "2026-05-12"
+}
   ]
 }
