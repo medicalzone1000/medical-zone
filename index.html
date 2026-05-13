@@ -400,7 +400,7 @@
                             <img src="${p.image}" alt="${p.title}"
                                  onerror="this.src='https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=400'">
                             <div class="product-actions">
-                                <button class="action-btn" title="عرض التفاصيل" onclick="location.href='store.html'"><i class="far fa-eye"></i></button>
+                                <button class="action-btn" title="عرض التفاصيل" onclick="location.href='product.html?id=${p.id}'"><i class="far fa-eye"></i></button>
                             </div>
                         </div>
                         <div class="product-body">
@@ -442,7 +442,7 @@
                             <span class="blog-date"><i class="far fa-calendar"></i> ${a.date}</span>
                             <h3>${a.title}</h3>
                             <p>${a.excerpt}</p>
-                            <a href="reports.html" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                            <a href="article.html?id=${a.id}" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                         </div>
                     </article>
                 `).join('');
