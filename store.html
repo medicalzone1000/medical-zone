@@ -9,6 +9,193 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* WhatsApp Button */
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 10px 16px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-family: var(--font-ar);
+        }
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Product Detail Modal */
+        .product-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .product-modal.open {
+            display: flex;
+        }
+        .modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(10,22,40,0.7);
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            position: relative;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-xl);
+            z-index: 1;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gray-50);
+            border: none;
+            border-radius: 50%;
+            color: var(--gray-600);
+            cursor: pointer;
+            font-size: 16px;
+            transition: all var(--transition);
+            z-index: 10;
+        }
+        .modal-close:hover {
+            background: var(--red);
+            color: white;
+        }
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        .modal-img-wrap {
+            position: relative;
+            height: 100%;
+            min-height: 400px;
+        }
+        .modal-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .modal-info {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .modal-cat {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--teal-pale);
+            color: var(--teal);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            width: fit-content;
+        }
+        .modal-title {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--navy);
+            line-height: 1.4;
+        }
+        .modal-pricing {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .modal-price {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--teal);
+        }
+        .modal-old-price {
+            font-size: 18px;
+            color: var(--gray-300);
+            text-decoration: line-through;
+        }
+        .modal-desc {
+            color: var(--gray-600);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        .modal-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+        .modal-status strong {
+            color: var(--teal);
+        }
+        .modal-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        .modal-contact-info {
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-top: 8px;
+        }
+        .modal-contact-info h4 {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+        .modal-contact-info p {
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 4px;
+        }
+        .modal-contact-info i {
+            color: var(--teal);
+            width: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .modal-grid {
+                grid-template-columns: 1fr;
+            }
+            .modal-img-wrap {
+                min-height: 250px;
+            }
+            .modal-info {
+                padding: 24px;
+            }
+        }
+    </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -36,13 +223,7 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <button class="icon-btn"><i class="fas fa-search"></i></button>
-                <button class="icon-btn"><i class="far fa-heart"></i></button>
-                <button class="icon-btn cart-btn">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-badge" id="cartBadge">0</span>
-                </button>
-                <a href="#" class="btn-outline-sm">دخول</a>
+                <a href="admin.html" class="btn-outline-sm"><i class="fas fa-cog"></i> لوحة التحكم</a>
             </div>
         </div>
     </header>
@@ -181,27 +362,41 @@
         </div>
     </footer>
 
-    <!-- Quick View Modal -->
-    <div class="quickview-modal" id="quickViewModal">
-        <div class="quickview-backdrop" onclick="closeQuickView()"></div>
-        <div class="quickview-content">
-            <button class="quickview-close" onclick="closeQuickView()"><i class="fas fa-times"></i></button>
-            <div class="quickview-grid">
-                <div class="quickview-img-wrap">
-                    <img id="qvImg" src="" alt="">
+    <!-- Product Detail Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-grid">
+                <div class="modal-img-wrap">
+                    <img id="modalImg" src="" alt="">
                 </div>
-                <div class="quickview-info">
-                    <span class="product-cat" id="qvCat"></span>
-                    <h2 id="qvTitle"></h2>
-                    <div class="product-pricing">
-                        <span class="price-new" id="qvPrice"></span>
-                        <span class="price-old" id="qvOldPrice"></span>
+                <div class="modal-info">
+                    <span class="modal-cat" id="modalCat"></span>
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <div class="modal-pricing">
+                        <span class="modal-price" id="modalPrice"></span>
+                        <span class="modal-old-price" id="modalOldPrice"></span>
                     </div>
-                    <p class="qv-desc" id="qvDesc"></p>
-                    <p class="qv-status">الحالة: <strong id="qvStatus"></strong></p>
-                    <button class="btn-add-cart" onclick="addToCart(); closeQuickView()">
-                        <i class="fas fa-shopping-bag"></i> أضف للسلة
-                    </button>
+                    <p class="modal-desc" id="modalDesc"></p>
+                    <div class="modal-status">
+                        <i class="fas fa-info-circle"></i>
+                        <span>الحالة: <strong id="modalStatus"></strong></span>
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn-whatsapp" id="modalWhatsApp" onclick="orderViaWhatsApp()">
+                            <i class="fab fa-whatsapp"></i> اطلب عبر واتساب
+                        </button>
+                    </div>
+                    <div class="modal-contact-info">
+                        <h4><i class="fas fa-headset"></i> تواصل معنا</h4>
+                        <p><i class="fas fa-phone"></i> القاهرة: 01223962139 - 01223962138</p>
+                        <p><i class="fas fa-phone"></i> سوهاج: 01126562854 - 01126562812</p>
+                        <p><i class="fas fa-envelope"></i> info@medicalzone.com</p>
+                        <p style="margin-top: 8px; font-size: 12px; color: var(--gray-300);">
+                            <i class="fas fa-truck"></i> الدفع عند التسليم | شحن مجاني للطلبات فوق 2000 ج.م
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -224,24 +419,16 @@
         closeBtn.addEventListener('click', closeDrawer);
         overlay.addEventListener('click', closeDrawer);
 
-        // ===== Cart =====
-        let cartCount = parseInt(localStorage.getItem('cartCount') || '0');
-        document.getElementById('cartBadge').textContent = cartCount;
-        function addToCart() {
-            cartCount++;
-            localStorage.setItem('cartCount', cartCount);
-            document.getElementById('cartBadge').textContent = cartCount;
-        }
-
-        // ===== Load Products from products.json =====
+        // ===== Load Products =====
         let allProducts = [];
         let currentCat = 'all';
         let currentSearch = '';
         let currentSort = 'newest';
+        let currentProduct = null;
 
         async function loadProducts() {
             try {
-                const res = await fetch('/medical-zone/content/products.json?v=' + Date.now());
+                const res = await fetch('content/products.json?v=' + Date.now());
                 if (!res.ok) throw new Error('not found');
                 const data = await res.json();
                 allProducts = data.products || [];
@@ -276,8 +463,7 @@
                     <img src="${p.image}" alt="${p.title}" loading="lazy"
                          onerror="this.src='https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=400'">
                     <div class="product-actions">
-                        <button class="action-btn" title="إضافة للمفضلة"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="عرض سريع" onclick="showQuickView(${idx})"><i class="far fa-eye"></i></button>
+                        <button class="action-btn" title="عرض التفاصيل" onclick="showProductModal(${idx})"><i class="far fa-eye"></i></button>
                     </div>
                 </div>
                 <div class="product-body">
@@ -287,8 +473,8 @@
                         <span class="price-new">${formatPrice(p.price)}</span>
                         ${oldPrice}
                     </div>
-                    <button class="btn-add-cart" onclick="addToCart()">
-                        <i class="fas fa-shopping-bag"></i> أضف للسلة
+                    <button class="btn-whatsapp" onclick="showProductModal(${idx})">
+                        <i class="fab fa-whatsapp"></i> اطلب عبر واتساب
                     </button>
                 </div>
             </div>`;
@@ -323,24 +509,41 @@
             }
         }
 
-        // ===== Quick View =====
-        function showQuickView(idx) {
+        // ===== Product Modal =====
+        function showProductModal(idx) {
             const p = renderedProducts[idx];
             if (!p) return;
-            document.getElementById('qvTitle').textContent = p.title;
-            document.getElementById('qvCat').textContent = p.category;
-            document.getElementById('qvPrice').textContent = formatPrice(p.price);
-            document.getElementById('qvOldPrice').textContent = (p.oldPrice && p.oldPrice > 0) ? formatPrice(p.oldPrice) : '';
-            document.getElementById('qvDesc').textContent = p.description || '';
-            document.getElementById('qvStatus').textContent = p.status;
-            document.getElementById('qvImg').src = p.image;
-            document.getElementById('qvImg').alt = p.title;
-            document.getElementById('quickViewModal').classList.add('open');
+            currentProduct = p;
+
+            document.getElementById('modalTitle').textContent = p.title;
+            document.getElementById('modalCat').textContent = p.category;
+            document.getElementById('modalPrice').textContent = formatPrice(p.price);
+            document.getElementById('modalOldPrice').textContent = (p.oldPrice && p.oldPrice > 0) ? formatPrice(p.oldPrice) : '';
+            document.getElementById('modalDesc').textContent = p.description || '';
+            document.getElementById('modalStatus').textContent = p.status;
+            document.getElementById('modalImg').src = p.image;
+            document.getElementById('modalImg').alt = p.title;
+
+            document.getElementById('productModal').classList.add('open');
             document.body.style.overflow = 'hidden';
         }
-        function closeQuickView() {
-            document.getElementById('quickViewModal').classList.remove('open');
+
+        function closeModal() {
+            document.getElementById('productModal').classList.remove('open');
             document.body.style.overflow = '';
+        }
+
+        // ===== WhatsApp Order =====
+        function orderViaWhatsApp() {
+            if (!currentProduct) return;
+            const phone = '01223962139';
+            const message = `مرحباً، أريد طلب المنتج التالي من ميديكال زون:%0A%0A` +
+                           `📦 المنتج: ${currentProduct.title}%0A` +
+                           `💰 السعر: ${formatPrice(currentProduct.price)}%0A` +
+                           `📂 الفئة: ${currentProduct.category}%0A` +
+                           `🆔 كود: ${currentProduct.id}%0A%0A` +
+                           `يرجى تأكيد التوفر وموعد التسليم.`;
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
 
         // ===== Filters =====
