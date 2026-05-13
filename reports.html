@@ -787,7 +787,26 @@
             .reports-hero-stats { flex-wrap: wrap; }
             .rh-stat-divider { display: none; }
         }
+
+        /* Loading state */
+        .loading-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 60px 20px;
+            color: var(--gray-300);
+            font-size: 15px;
+            grid-column: 1 / -1;
+        }
+        .loading-state i {
+            font-size: 40px;
+            color: var(--teal-light);
+            opacity: 0.5;
+        }
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -820,13 +839,7 @@
             </nav>
 
             <div class="header-actions">
-                <button class="icon-btn" aria-label="بحث"><i class="fas fa-search"></i></button>
-                <button class="icon-btn" aria-label="المفضلة"><i class="far fa-heart"></i></button>
-                <button class="icon-btn cart-btn" aria-label="السلة">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-badge">2</span>
-                </button>
-                <a href="#" class="btn-outline-sm">دخول</a>
+                <a href="admin.html" class="btn-outline-sm"><i class="fas fa-cog"></i> لوحة التحكم</a>
             </div>
         </div>
     </header>
@@ -851,12 +864,12 @@
                 </div>
                 <div class="reports-hero-stats">
                     <div class="rh-stat">
-                        <strong>+120</strong>
+                        <strong id="statTotal">0</strong>
                         <span>تقرير منشور</span>
                     </div>
                     <div class="rh-stat-divider"></div>
                     <div class="rh-stat">
-                        <strong>18</strong>
+                        <strong id="statCats">0</strong>
                         <span>تخصص طبي</span>
                     </div>
                     <div class="rh-stat-divider"></div>
@@ -872,18 +885,18 @@
     <!-- Filter Bar -->
     <div class="reports-filter-bar">
         <div class="container filter-bar-inner">
-            <div class="filter-cats">
-                <button class="filter-cat-btn active">الكل</button>
-                <button class="filter-cat-btn">أجهزة طبية</button>
-                <button class="filter-cat-btn">أبحاث علمية</button>
-                <button class="filter-cat-btn">صحة منزلية</button>
-                <button class="filter-cat-btn">تقنية طبية</button>
-                <button class="filter-cat-btn">تجهيز عيادات</button>
-                <button class="filter-cat-btn">أدلة الاستخدام</button>
+            <div class="filter-cats" id="filterCats">
+                <button class="filter-cat-btn active" data-cat="all">الكل</button>
+                <button class="filter-cat-btn" data-cat="أجهزة طبية">أجهزة طبية</button>
+                <button class="filter-cat-btn" data-cat="أبحاث علمية">أبحاث علمية</button>
+                <button class="filter-cat-btn" data-cat="صحة منزلية">صحة منزلية</button>
+                <button class="filter-cat-btn" data-cat="تقنية طبية">تقنية طبية</button>
+                <button class="filter-cat-btn" data-cat="تجهيز عيادات">تجهيز عيادات</button>
+                <button class="filter-cat-btn" data-cat="أدلة الاستخدام">أدلة الاستخدام</button>
             </div>
             <div class="filter-search">
                 <i class="fas fa-search"></i>
-                <input type="text" placeholder="ابحث في التقارير...">
+                <input type="text" id="searchInput" placeholder="ابحث في التقارير...">
             </div>
         </div>
     </div>
@@ -896,327 +909,43 @@
                 <!-- Content Column -->
                 <div class="reports-content">
 
-                    <!-- Category Strip -->
-                    <div class="category-strip">
-                        <div class="cat-strip-item active">
-                            <div class="cat-strip-icon"><i class="fas fa-stethoscope"></i></div>
-                            <div class="cat-strip-text">
-                                <strong>أجهزة طبية</strong>
-                                <span>48 تقرير</span>
-                            </div>
-                        </div>
-                        <div class="cat-strip-item">
-                            <div class="cat-strip-icon"><i class="fas fa-flask"></i></div>
-                            <div class="cat-strip-text">
-                                <strong>أبحاث علمية</strong>
-                                <span>32 تقرير</span>
-                            </div>
-                        </div>
-                        <div class="cat-strip-item">
-                            <div class="cat-strip-icon"><i class="fas fa-heartbeat"></i></div>
-                            <div class="cat-strip-text">
-                                <strong>صحة منزلية</strong>
-                                <span>27 تقرير</span>
-                            </div>
-                        </div>
-                        <div class="cat-strip-item">
-                            <div class="cat-strip-icon"><i class="fas fa-microchip"></i></div>
-                            <div class="cat-strip-text">
-                                <strong>تقنية طبية</strong>
-                                <span>19 تقرير</span>
-                            </div>
-                        </div>
+                    <!-- Loading State -->
+                    <div class="loading-state" id="loadingState">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>جاري تحميل التقارير...</p>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div class="loading-state" id="emptyState" style="display:none">
+                        <i class="fas fa-folder-open"></i>
+                        <p>لا توجد تقارير في هذا القسم</p>
                     </div>
 
                     <!-- Featured Report -->
-                    <div class="featured-report">
-                        <div class="featured-report-img">
-                            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=90&w=900" alt="الذكاء الاصطناعي في التشخيص الطبي">
-                            <span class="featured-tag">⭐ تقرير الشهر</span>
-                        </div>
-                        <div class="featured-report-body">
-                            <div class="featured-cat-badge">
-                                <i class="fas fa-microchip"></i>
-                                تقنية طبية
-                            </div>
-                            <h2>الذكاء الاصطناعي في التشخيص الطبي: كيف تغيّر الأجهزة الذكية مستقبل الرعاية الصحية؟</h2>
-                            <p>يشهد عالم الطب ثورة حقيقية مع دخول الذكاء الاصطناعي إلى أتمتة التشخيص وتحليل الصور الطبية. نستعرض في هذا التقرير أحدث الأجهزة المعتمدة على الذكاء الاصطناعي المتاحة في السوق المصري، ودورها في تقليل هامش الخطأ وتحسين جودة التشخيص.</p>
-                            <div class="featured-meta">
-                                <span><i class="far fa-calendar-alt"></i> 7 مايو 2026</span>
-                                <span><i class="far fa-clock"></i> 8 دقائق قراءة</span>
-                                <span><i class="far fa-eye"></i> 4,210 مشاهدة</span>
-                            </div>
-                            <a href="#" class="read-more-btn">اقرأ التقرير كاملاً <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                    </div>
+                    <div id="featuredReport"></div>
 
                     <!-- Section Label -->
-                    <div class="reports-section-label">
+                    <div class="reports-section-label" id="sectionLabel1" style="display:none">
                         <h3>أحدث التقارير</h3>
                         <div class="label-line"></div>
                     </div>
 
                     <!-- Reports Grid -->
-                    <div class="reports-grid">
-
-                        <!-- Card 1 -->
-                        <article class="report-card">
-                            <div class="report-card-img">
-                                <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f3?auto=format&fit=crop&q=85&w=700" alt="جهاز قياس السكر">
-                                <span class="rc-cat-tag cat-devices">أجهزة طبية</span>
-                            </div>
-                            <div class="report-card-body">
-                                <div class="rc-meta">
-                                    <span><i class="far fa-calendar"></i> 5 مايو 2026</span>
-                                    <span><i class="far fa-clock"></i> 6 دقائق</span>
-                                </div>
-                                <h4>أجهزة قياس السكر المستمر (CGM): المقارنة الشاملة لأفضل الموديلات في 2026</h4>
-                                <p>نقارن بين أحدث أجهزة قياس الجلوكوز بصورة مستمرة المتوفرة في السوق، من حيث الدقة والعمر الافتراضي وسهولة الاستخدام.</p>
-                                <div class="rc-footer">
-                                    <div class="rc-author">
-                                        <div class="rc-author-avatar">د.ع</div>
-                                        <span>د. عمر السيد</span>
-                                    </div>
-                                    <a href="#" class="rc-read-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Card 2 -->
-                        <article class="report-card">
-                            <div class="report-card-img">
-                                <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=85&w=700" alt="أجهزة المستشفيات">
-                                <span class="rc-cat-tag cat-research">أبحاث علمية</span>
-                            </div>
-                            <div class="report-card-body">
-                                <div class="rc-meta">
-                                    <span><i class="far fa-calendar"></i> 3 مايو 2026</span>
-                                    <span><i class="far fa-clock"></i> 10 دقائق</span>
-                                </div>
-                                <h4>تقرير: معدل انتشار القصور الكلوي في مصر وأثر أجهزة الغسيل الحديثة على جودة الحياة</h4>
-                                <p>دراسة ميدانية تستعرض أحدث إحصاءات أمراض الكلى في مصر، ودور الأجهزة الطبية الحديثة في رفع كفاءة علاج المرضى.</p>
-                                <div class="rc-footer">
-                                    <div class="rc-author">
-                                        <div class="rc-author-avatar">د.م</div>
-                                        <span>د. مريم أحمد</span>
-                                    </div>
-                                    <a href="#" class="rc-read-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Card 3 -->
-                        <article class="report-card">
-                            <div class="report-card-img">
-                                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=85&w=700" alt="جهاز قياس ضغط الدم">
-                                <span class="rc-cat-tag cat-health">صحة منزلية</span>
-                            </div>
-                            <div class="report-card-body">
-                                <div class="rc-meta">
-                                    <span><i class="far fa-calendar"></i> 1 مايو 2026</span>
-                                    <span><i class="far fa-clock"></i> 5 دقائق</span>
-                                </div>
-                                <h4>دليل الاختيار: أفضل أجهزة قياس ضغط الدم الرقمية للاستخدام المنزلي في 2026</h4>
-                                <p>مراجعة علمية معتمدة تساعدك في اختيار الجهاز الأمثل وفق دقة القياس، سهولة القراءة، والتوافق مع توصيات الجمعية الطبية المصرية.</p>
-                                <div class="rc-footer">
-                                    <div class="rc-author">
-                                        <div class="rc-author-avatar">د.ه</div>
-                                        <span>د. هنا خالد</span>
-                                    </div>
-                                    <a href="#" class="rc-read-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Card 4 -->
-                        <article class="report-card">
-                            <div class="report-card-img">
-                                <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&q=85&w=700" alt="الرعاية الصحية الرقمية">
-                                <span class="rc-cat-tag cat-tech">تقنية طبية</span>
-                            </div>
-                            <div class="report-card-body">
-                                <div class="rc-meta">
-                                    <span><i class="far fa-calendar"></i> 29 أبريل 2026</span>
-                                    <span><i class="far fa-clock"></i> 7 دقائق</span>
-                                </div>
-                                <h4>الصحة الرقمية في مصر 2026: نمو قطاع التطبيب عن بُعد وأجهزة المراقبة الذكية</h4>
-                                <p>تحليل شامل لسوق الصحة الرقمية في مصر، مع استعراض أبرز الأجهزة الطبية الذكية المتصلة بالإنترنت والتطبيقات المعتمدة.</p>
-                                <div class="rc-footer">
-                                    <div class="rc-author">
-                                        <div class="rc-author-avatar">أ.ن</div>
-                                        <span>أ. نور عبد الرحمن</span>
-                                    </div>
-                                    <a href="#" class="rc-read-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                                </div>
-                            </div>
-                        </article>
-
-                    </div>
+                    <div class="reports-grid" id="reportsGrid"></div>
 
                     <!-- Section Label 2 -->
-                    <div class="reports-section-label">
-                        <h3>تقارير الأجهزة والمعدات</h3>
+                    <div class="reports-section-label" id="sectionLabel2" style="display:none">
+                        <h3>تقارير أخرى</h3>
                         <div class="label-line"></div>
                     </div>
 
-                    <!-- List Style Reports -->
-                    <div class="reports-list">
-
-                        <article class="report-list-item">
-                            <div class="rli-img">
-                                <img src="https://images.unsplash.com/photo-1581595219315-a187dd40c322?auto=format&fit=crop&q=85&w=300" alt="جهاز تنفس صناعي">
-                            </div>
-                            <div class="rli-body">
-                                <span class="rli-cat">أجهزة طبية</span>
-                                <h5>أجهزة التنفس الاصطناعي المنزلية: معايير الاختيار والصيانة الوقائية الصحيحة</h5>
-                                <div class="rli-meta">
-                                    <span><i class="far fa-calendar"></i> 26 أبريل 2026</span>
-                                    <span><i class="far fa-clock"></i> 6 دقائق قراءة</span>
-                                    <span><i class="far fa-eye"></i> 2,850</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="report-list-item">
-                            <div class="rli-img">
-                                <img src="https://images.unsplash.com/photo-1666214276372-24e165b8d1e2?auto=format&fit=crop&q=85&w=300" alt="أشعة سينية">
-                            </div>
-                            <div class="rli-body">
-                                <span class="rli-cat">أبحاث علمية</span>
-                                <h5>مقارنة تقنيات التصوير الطبي: أشعة X الرقمية مقابل الرنين المغناطيسي — أيهما أدق؟</h5>
-                                <div class="rli-meta">
-                                    <span><i class="far fa-calendar"></i> 23 أبريل 2026</span>
-                                    <span><i class="far fa-clock"></i> 9 دقائق قراءة</span>
-                                    <span><i class="far fa-eye"></i> 3,120</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="report-list-item">
-                            <div class="rli-img">
-                                <img src="https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&q=85&w=300" alt="أجهزة كهربية القلب">
-                            </div>
-                            <div class="rli-body">
-                                <span class="rli-cat">أجهزة طبية</span>
-                                <h5>الإلكتروكارديوجرام (ECG) المحمول: هل يمكن لجهاز منزلي أن يكتشف أمراض القلب مبكراً؟</h5>
-                                <div class="rli-meta">
-                                    <span><i class="far fa-calendar"></i> 20 أبريل 2026</span>
-                                    <span><i class="far fa-clock"></i> 7 دقائق قراءة</span>
-                                    <span><i class="far fa-eye"></i> 4,480</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="report-list-item">
-                            <div class="rli-img">
-                                <img src="https://images.unsplash.com/photo-1485841890310-6a055c88698a?auto=format&fit=crop&q=85&w=300" alt="أجهزة الأطفال">
-                            </div>
-                            <div class="rli-body">
-                                <span class="rli-cat">صحة منزلية</span>
-                                <h5>الأجهزة الطبية الآمنة للأطفال: دليل شامل للوالدين لاختيار أدق الأجهزة وأكثرها أماناً</h5>
-                                <div class="rli-meta">
-                                    <span><i class="far fa-calendar"></i> 17 أبريل 2026</span>
-                                    <span><i class="far fa-clock"></i> 5 دقائق قراءة</span>
-                                    <span><i class="far fa-eye"></i> 1,990</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="report-list-item">
-                            <div class="rli-img">
-                                <img src="https://images.unsplash.com/photo-1588776814546-1ffedbe47add?auto=format&fit=crop&q=85&w=300" alt="تجهيز عيادة">
-                            </div>
-                            <div class="rli-body">
-                                <span class="rli-cat">تجهيز عيادات</span>
-                                <h5>دليل تجهيز عيادة عام متكاملة في 2026: الأجهزة الأساسية والتكلفة التقديرية في السوق المصري</h5>
-                                <div class="rli-meta">
-                                    <span><i class="far fa-calendar"></i> 14 أبريل 2026</span>
-                                    <span><i class="far fa-clock"></i> 11 دقائق قراءة</span>
-                                    <span><i class="far fa-eye"></i> 6,730</span>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="report-list-item">
-                            <div class="rli-img">
-                                <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&q=85&w=300" alt="ميزان طبي">
-                            </div>
-                            <div class="rli-body">
-                                <span class="rli-cat">أدلة الاستخدام</span>
-                                <h5>كيف تعتني بأجهزتك الطبية؟ — 10 خطوات للصيانة الوقائية وإطالة عمر الأجهزة</h5>
-                                <div class="rli-meta">
-                                    <span><i class="far fa-calendar"></i> 10 أبريل 2026</span>
-                                    <span><i class="far fa-clock"></i> 4 دقائق قراءة</span>
-                                    <span><i class="far fa-eye"></i> 1,540</span>
-                                </div>
-                            </div>
-                        </article>
-
-                    </div>
-
-                    <!-- Section Label 3 -->
-                    <div class="reports-section-label">
-                        <h3>تقارير الصحة العامة</h3>
-                        <div class="label-line"></div>
-                    </div>
-
-                    <!-- More Grid -->
-                    <div class="reports-grid">
-
-                        <article class="report-card">
-                            <div class="report-card-img">
-                                <img src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&q=85&w=700" alt="قياس الأكسجين">
-                                <span class="rc-cat-tag cat-health">صحة منزلية</span>
-                            </div>
-                            <div class="report-card-body">
-                                <div class="rc-meta">
-                                    <span><i class="far fa-calendar"></i> 8 أبريل 2026</span>
-                                    <span><i class="far fa-clock"></i> 5 دقائق</span>
-                                </div>
-                                <h4>جهاز قياس الأكسجين (Pulse Oximeter): كل ما تحتاج معرفته قبل الشراء</h4>
-                                <p>شرح علمي مبسّط لآلية عمل جهاز قياس نسبة الأكسجين في الدم، ودليل لاختيار الجهاز الأمثل للاستخدام المنزلي.</p>
-                                <div class="rc-footer">
-                                    <div class="rc-author">
-                                        <div class="rc-author-avatar">د.ف</div>
-                                        <span>د. فارس إبراهيم</span>
-                                    </div>
-                                    <a href="#" class="rc-read-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                                </div>
-                            </div>
-                        </article>
-
-                        <article class="report-card">
-                            <div class="report-card-img">
-                                <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?auto=format&fit=crop&q=85&w=700" alt="سماعة طبية">
-                                <span class="rc-cat-tag cat-guide">أدلة الاستخدام</span>
-                            </div>
-                            <div class="report-card-body">
-                                <div class="rc-meta">
-                                    <span><i class="far fa-calendar"></i> 5 أبريل 2026</span>
-                                    <span><i class="far fa-clock"></i> 6 دقائق</span>
-                                </div>
-                                <h4>مراجعة شاملة: أفضل السماعات الطبية (Stethoscope) للأطباء وطلاب الطب في السوق المصري</h4>
-                                <p>تقييم مفصّل لأشهر الموديلات من 3M Littmann وWelch Allyn، مع مقارنة الأسعار والمواصفات لمساعدتك في الاختيار الأمثل.</p>
-                                <div class="rc-footer">
-                                    <div class="rc-author">
-                                        <div class="rc-author-avatar">أ.س</div>
-                                        <span>أ. سارة محمود</span>
-                                    </div>
-                                    <a href="#" class="rc-read-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                                </div>
-                            </div>
-                        </article>
-
-                    </div>
+                    <!-- Reports List -->
+                    <div class="reports-list" id="reportsList"></div>
 
                     <!-- Pagination -->
-                    <div class="reports-pagination">
+                    <div class="reports-pagination" id="pagination">
                         <a href="#" class="page-btn"><i class="fas fa-chevron-right"></i></a>
                         <a href="#" class="page-number active">1</a>
-                        <a href="#" class="page-number">2</a>
-                        <a href="#" class="page-number">3</a>
-                        <span class="page-dots">···</span>
-                        <a href="#" class="page-number">8</a>
                         <a href="#" class="page-btn"><i class="fas fa-chevron-left"></i></a>
                     </div>
 
@@ -1247,43 +976,7 @@
                             <h4>الأكثر قراءة</h4>
                         </div>
                         <div class="rs-widget-body">
-                            <div class="popular-list">
-                                <div class="popular-item">
-                                    <div class="popular-num">1</div>
-                                    <div class="popular-text">
-                                        <h6>دليل تجهيز عيادة متكاملة في مصر 2026</h6>
-                                        <span><i class="far fa-eye"></i> 6,730 مشاهدة</span>
-                                    </div>
-                                </div>
-                                <div class="popular-item">
-                                    <div class="popular-num">2</div>
-                                    <div class="popular-text">
-                                        <h6>الذكاء الاصطناعي في التشخيص الطبي</h6>
-                                        <span><i class="far fa-eye"></i> 4,210 مشاهدة</span>
-                                    </div>
-                                </div>
-                                <div class="popular-item">
-                                    <div class="popular-num">3</div>
-                                    <div class="popular-text">
-                                        <h6>ECG المنزلي واكتشاف أمراض القلب</h6>
-                                        <span><i class="far fa-eye"></i> 4,480 مشاهدة</span>
-                                    </div>
-                                </div>
-                                <div class="popular-item">
-                                    <div class="popular-num">4</div>
-                                    <div class="popular-text">
-                                        <h6>مقارنة أجهزة التصوير الطبي 2026</h6>
-                                        <span><i class="far fa-eye"></i> 3,120 مشاهدة</span>
-                                    </div>
-                                </div>
-                                <div class="popular-item">
-                                    <div class="popular-num">5</div>
-                                    <div class="popular-text">
-                                        <h6>أفضل أجهزة قياس السكر المستمر</h6>
-                                        <span><i class="far fa-eye"></i> 2,850 مشاهدة</span>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="popular-list" id="popularList"></div>
                         </div>
                     </div>
 
@@ -1334,15 +1027,15 @@
                                 يُصدر فريق ميديكال زون تقارير طبية موثّقة أسبوعياً بالتعاون مع متخصصين ومراكز أبحاث معتمدة، بهدف توفير مرجع موثوق للأطباء والمرضى والعيادات.
                             </p>
                             <div class="footer-contact" style="margin: 0;">
-                                <li style="margin-bottom:10px">
+                                <li style="margin-bottom:10px; display:flex; gap:12px; align-items:flex-start;">
                                     <i class="fas fa-phone" style="color:var(--teal-light); margin-top:3px; flex-shrink:0; width:14px"></i>
                                     <span style="font-size:13px; color:var(--gray-600);">القاهرة: 01223962139</span>
                                 </li>
-                                <li style="margin-bottom:10px">
+                                <li style="margin-bottom:10px; display:flex; gap:12px; align-items:flex-start;">
                                     <i class="fas fa-phone" style="color:var(--teal-light); margin-top:3px; flex-shrink:0; width:14px"></i>
                                     <span style="font-size:13px; color:var(--gray-600);">سوهاج: 01126562854</span>
                                 </li>
-                                <li>
+                                <li style="display:flex; gap:12px; align-items:flex-start;">
                                     <i class="fas fa-envelope" style="color:var(--teal-light); margin-top:3px; flex-shrink:0; width:14px"></i>
                                     <span style="font-size:13px; color:var(--gray-600);">info@medicalzone.com</span>
                                 </li>
@@ -1432,33 +1125,185 @@
             header.classList.toggle('scrolled', window.scrollY > 60);
         });
 
-        // Filter category buttons
-        const filterBtns = document.querySelectorAll('.filter-cat-btn');
-        filterBtns.forEach(btn => {
+        // Load articles
+        let allArticles = [];
+        let currentCat = 'all';
+        let currentSearch = '';
+
+        async function loadArticles() {
+            try {
+                const res = await fetch('content/articles.json?v=' + Date.now());
+                const data = await res.json();
+                allArticles = data.articles || [];
+
+                document.getElementById('loadingState').style.display = 'none';
+                document.getElementById('statTotal').textContent = '+' + allArticles.length;
+
+                const uniqueCats = [...new Set(allArticles.map(a => a.category))];
+                document.getElementById('statCats').textContent = uniqueCats.length;
+
+                renderArticles();
+                renderPopular();
+            } catch(e) {
+                document.getElementById('loadingState').innerHTML = 
+                    '<i class="fas fa-exclamation-triangle"></i><p>حدث خطأ في تحميل التقارير</p>';
+            }
+        }
+
+        function getCatClass(cat) {
+            const map = {
+                'أجهزة طبية': 'cat-devices',
+                'أبحاث علمية': 'cat-research',
+                'صحة منزلية': 'cat-health',
+                'تقنية طبية': 'cat-tech',
+                'تجهيز عيادات': 'cat-guide',
+                'أدلة الاستخدام': 'cat-guide'
+            };
+            return map[cat] || 'cat-devices';
+        }
+
+        function renderArticles() {
+            let filtered = allArticles.filter(a => {
+                const matchCat = currentCat === 'all' || a.category === currentCat;
+                const q = currentSearch.toLowerCase();
+                const matchSearch = !q || a.title.includes(q) || a.excerpt.includes(q);
+                return matchCat && matchSearch;
+            });
+
+            const empty = document.getElementById('emptyState');
+            const featured = document.getElementById('featuredReport');
+            const grid = document.getElementById('reportsGrid');
+            const list = document.getElementById('reportsList');
+            const label1 = document.getElementById('sectionLabel1');
+            const label2 = document.getElementById('sectionLabel2');
+
+            if (filtered.length === 0) {
+                empty.style.display = 'flex';
+                featured.style.display = 'none';
+                grid.style.display = 'none';
+                list.style.display = 'none';
+                label1.style.display = 'none';
+                label2.style.display = 'none';
+                return;
+            }
+
+            empty.style.display = 'none';
+
+            // Featured (first article)
+            if (filtered.length > 0 && currentCat === 'all' && !currentSearch) {
+                const f = filtered[0];
+                featured.innerHTML = `
+                    <div class="featured-report">
+                        <div class="featured-report-img">
+                            <img src="${f.image}" alt="${f.title}">
+                            <span class="featured-tag">⭐ تقرير الشهر</span>
+                        </div>
+                        <div class="featured-report-body">
+                            <div class="featured-cat-badge">
+                                <i class="fas fa-microchip"></i>
+                                ${f.category}
+                            </div>
+                            <h2>${f.title}</h2>
+                            <p>${f.excerpt}</p>
+                            <div class="featured-meta">
+                                <span><i class="far fa-calendar-alt"></i> ${f.date}</span>
+                                <span><i class="far fa-clock"></i> ${f.readTime || '5 دقائق'}</span>
+                            </div>
+                            <a href="#" class="read-more-btn">اقرأ التقرير كاملاً <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                `;
+                filtered = filtered.slice(1);
+            } else {
+                featured.style.display = 'none';
+            }
+
+            // Grid (next 4)
+            const gridItems = filtered.slice(0, 4);
+            if (gridItems.length > 0) {
+                label1.style.display = 'flex';
+                grid.style.display = 'grid';
+                grid.innerHTML = gridItems.map(a => `
+                    <article class="report-card">
+                        <div class="report-card-img">
+                            <img src="${a.image}" alt="${a.title}">
+                            <span class="rc-cat-tag ${getCatClass(a.category)}">${a.category}</span>
+                        </div>
+                        <div class="report-card-body">
+                            <div class="rc-meta">
+                                <span><i class="far fa-calendar"></i> ${a.date}</span>
+                                <span><i class="far fa-clock"></i> ${a.readTime || '5 دقائق'}</span>
+                            </div>
+                            <h4>${a.title}</h4>
+                            <p>${a.excerpt}</p>
+                            <div class="rc-footer">
+                                <div class="rc-author">
+                                    <div class="rc-author-avatar">${a.author ? a.author.charAt(0) : 'م'}</div>
+                                    <span>${a.author || 'فريق ميديكال زون'}</span>
+                                </div>
+                                <a href="#" class="rc-read-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                `).join('');
+            }
+
+            // List (rest)
+            const listItems = filtered.slice(4);
+            if (listItems.length > 0) {
+                label2.style.display = 'flex';
+                list.style.display = 'flex';
+                list.innerHTML = listItems.map(a => `
+                    <article class="report-list-item">
+                        <div class="rli-img">
+                            <img src="${a.image}" alt="${a.title}">
+                        </div>
+                        <div class="rli-body">
+                            <span class="rli-cat">${a.category}</span>
+                            <h5>${a.title}</h5>
+                            <div class="rli-meta">
+                                <span><i class="far fa-calendar"></i> ${a.date}</span>
+                                <span><i class="far fa-clock"></i> ${a.readTime || '5 دقائق'}</span>
+                            </div>
+                        </div>
+                    </article>
+                `).join('');
+            }
+        }
+
+        function renderPopular() {
+            const popular = [...allArticles]
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 5);
+
+            document.getElementById('popularList').innerHTML = popular.map((a, i) => `
+                <div class="popular-item">
+                    <div class="popular-num">${i + 1}</div>
+                    <div class="popular-text">
+                        <h6>${a.title}</h6>
+                        <span><i class="far fa-eye"></i> ${Math.floor(Math.random() * 5000 + 1000)} مشاهدة</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter buttons
+        document.querySelectorAll('.filter-cat-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.filter-cat-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
+                currentCat = btn.dataset.cat;
+                renderArticles();
             });
         });
 
-        // Category strip buttons
-        const stripItems = document.querySelectorAll('.cat-strip-item');
-        stripItems.forEach(item => {
-            item.addEventListener('click', () => {
-                stripItems.forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
-            });
+        // Search
+        document.getElementById('searchInput').addEventListener('input', function() {
+            currentSearch = this.value.trim();
+            renderArticles();
         });
 
-        // Search input live filter (UI only)
-        const searchInput = document.querySelector('.filter-search input');
-        searchInput && searchInput.addEventListener('input', function() {
-            const q = this.value.trim().toLowerCase();
-            document.querySelectorAll('.report-card, .report-list-item').forEach(card => {
-                const title = card.querySelector('h4, h5')?.textContent.toLowerCase() || '';
-                card.style.opacity = (!q || title.includes(q)) ? '1' : '0.3';
-            });
-        });
+        loadArticles();
     </script>
 </body>
 </html>
