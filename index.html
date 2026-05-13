@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+<base target="_blank">
 </head>
 <body>
 
@@ -45,13 +46,7 @@
             </nav>
 
             <div class="header-actions">
-                <button class="icon-btn" aria-label="بحث"><i class="fas fa-search"></i></button>
-                <button class="icon-btn" aria-label="المفضلة"><i class="far fa-heart"></i></button>
-                <button class="icon-btn cart-btn" aria-label="السلة">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-badge" id="cartBadge">0</span>
-                </button>
-                <a href="#" class="btn-outline-sm">دخول</a>
+                <a href="admin.html" class="btn-outline-sm"><i class="fas fa-cog"></i> لوحة التحكم</a>
             </div>
         </div>
     </header>
@@ -108,7 +103,7 @@
                 </div>
                 <div class="hero-visual">
                     <div class="hero-img-wrap">
-                        <img src="images/medical-hero.jpg" alt="أجهزة طبية حديثة">
+                        <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=85&w=800" alt="أجهزة طبية حديثة">
                         <div class="hero-badge-float">
                             <i class="fas fa-certificate"></i>
                             <span>معتمد دولياً</span>
@@ -119,7 +114,7 @@
                         <div class="report-card-text">
                             <span class="report-tag">تقرير حديث</span>
                             <p>مستقبل الرعاية الصحية الرقمية في مصر</p>
-                            <a href="#">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                            <a href="reports.html">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                         </div>
                     </div>
                 </div>
@@ -157,7 +152,7 @@
                     <div class="trust-icon"><i class="fas fa-lock"></i></div>
                     <div>
                         <h4>دفع آمن</h4>
-                        <p>تعدد وسائل الدفع</p>
+                        <p>عند التسليم</p>
                     </div>
                 </div>
             </div>
@@ -210,7 +205,6 @@
                     <a href="store.html" class="view-all-link">عرض الكل <i class="fas fa-arrow-left"></i></a>
                 </div>
                 <div class="products-grid" id="latestProductsGrid">
-                    <!-- يتم ملؤها تلقائياً من products.json -->
                     <div class="loading-state" style="grid-column:1/-1">
                         <i class="fas fa-spinner fa-spin"></i>
                         <p>جاري التحميل...</p>
@@ -273,43 +267,11 @@
                     </div>
                     <a href="reports.html" class="view-all-link">كل المقالات <i class="fas fa-arrow-left"></i></a>
                 </div>
-                <div class="blog-grid">
-                    <article class="blog-card">
-                        <div class="blog-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&q=85&w=500" alt="جهاز ضغط الدم">
-                            <span class="blog-cat-tag">صحة منزلية</span>
-                        </div>
-                        <div class="blog-body">
-                            <span class="blog-date"><i class="far fa-calendar"></i> 7 مايو 2026</span>
-                            <h3>كيفية اختيار جهاز ضغط الدم المناسب لمنزلك</h3>
-                            <p>دليل شامل لمساعدتك في اختيار أدق الأجهزة لمتابعة حالتك الصحية...</p>
-                            <a href="reports.html" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                    </article>
-                    <article class="blog-card">
-                        <div class="blog-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&q=85&w=500" alt="إسعافات أولية">
-                            <span class="blog-cat-tag">سلامة مهنية</span>
-                        </div>
-                        <div class="blog-body">
-                            <span class="blog-date"><i class="far fa-calendar"></i> 5 مايو 2026</span>
-                            <h3>أساسيات حقيبة الإسعافات الأولية في الشركة</h3>
-                            <p>تعرف على المستلزمات الضرورية التي لا غنى عنها في أي مكان عمل...</p>
-                            <a href="reports.html" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                    </article>
-                    <article class="blog-card">
-                        <div class="blog-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=85&w=500" alt="أجهزة تنفس">
-                            <span class="blog-cat-tag">صيانة أجهزة</span>
-                        </div>
-                        <div class="blog-body">
-                            <span class="blog-date"><i class="far fa-calendar"></i> 1 مايو 2026</span>
-                            <h3>أهمية الصيانة الدورية لأجهزة التنفس المنزلي</h3>
-                            <p>نصائح الخبراء للحفاظ على كفاءة جهازك وضمان سلامة المريض...</p>
-                            <a href="reports.html" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                    </article>
+                <div class="blog-grid" id="latestArticlesGrid">
+                    <div class="loading-state" style="grid-column:1/-1">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>جاري التحميل...</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -411,10 +373,6 @@
         overlay.addEventListener('click', closeDrawer);
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 
-        // ==================== Cart ====================
-        let cartCount = parseInt(localStorage.getItem('cartCount') || '0');
-        document.getElementById('cartBadge').textContent = cartCount;
-
         // ==================== Latest Products ====================
         function formatPrice(n) {
             return Number(n).toLocaleString('ar-EG') + ' ج.م';
@@ -423,7 +381,7 @@
         async function loadLatestProducts() {
             const grid = document.getElementById('latestProductsGrid');
             try {
-                const res = await fetch('/medical-zone/medical-zone/content/products.json?v=' + Date.now());
+                const res = await fetch('content/products.json?v=' + Date.now());
                 const data = await res.json();
                 const products = (data.products || [])
                     .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -442,8 +400,7 @@
                             <img src="${p.image}" alt="${p.title}"
                                  onerror="this.src='https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=400'">
                             <div class="product-actions">
-                                <button class="action-btn" title="إضافة للمفضلة"><i class="far fa-heart"></i></button>
-                                <button class="action-btn" title="عرض سريع"><i class="far fa-eye"></i></button>
+                                <button class="action-btn" title="عرض التفاصيل" onclick="location.href='store.html'"><i class="far fa-eye"></i></button>
                             </div>
                         </div>
                         <div class="product-body">
@@ -453,13 +410,9 @@
                                 <span class="price-new">${formatPrice(p.price)}</span>
                                 ${oldPrice}
                             </div>
-                            <button class="btn-add-cart" onclick="(function(){
-                                let c=parseInt(localStorage.getItem('cartCount')||'0')+1;
-                                localStorage.setItem('cartCount',c);
-                                document.getElementById('cartBadge').textContent=c;
-                            })()">
-                                <i class='fas fa-shopping-bag'></i> أضف للسلة
-                            </button>
+                            <a href="store.html" class="btn-add-cart">
+                                <i class="fab fa-whatsapp"></i> اطلب عبر واتساب
+                            </a>
                         </div>
                     </div>`;
                 }).join('');
@@ -469,7 +422,38 @@
             }
         }
 
+        // ==================== Latest Articles ====================
+        async function loadLatestArticles() {
+            const grid = document.getElementById('latestArticlesGrid');
+            try {
+                const res = await fetch('content/articles.json?v=' + Date.now());
+                const data = await res.json();
+                const articles = (data.articles || [])
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))
+                    .slice(0, 3);
+
+                grid.innerHTML = articles.map(a => `
+                    <article class="blog-card">
+                        <div class="blog-img-wrap">
+                            <img src="${a.image}" alt="${a.title}">
+                            <span class="blog-cat-tag">${a.category}</span>
+                        </div>
+                        <div class="blog-body">
+                            <span class="blog-date"><i class="far fa-calendar"></i> ${a.date}</span>
+                            <h3>${a.title}</h3>
+                            <p>${a.excerpt}</p>
+                            <a href="reports.html" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+                `).join('');
+
+            } catch(e) {
+                grid.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1">تعذر تحميل المقالات</p>';
+            }
+        }
+
         loadLatestProducts();
+        loadLatestArticles();
     </script>
 
 </body>
