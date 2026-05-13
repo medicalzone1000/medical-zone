@@ -1209,7 +1209,7 @@
                                 <span><i class="far fa-calendar-alt"></i> ${f.date}</span>
                                 <span><i class="far fa-clock"></i> ${f.readTime || '5 دقائق'}</span>
                             </div>
-                            <a href="#" class="read-more-btn">اقرأ التقرير كاملاً <i class="fas fa-arrow-left"></i></a>
+                            <a href="article.html?id=${f.id}" class="read-more-btn">اقرأ التقرير كاملاً <i class="fas fa-arrow-left"></i></a>
                         </div>
                     </div>
                 `;
@@ -1241,7 +1241,7 @@
                                     <div class="rc-author-avatar">${a.author ? a.author.charAt(0) : 'م'}</div>
                                     <span>${a.author || 'فريق ميديكال زون'}</span>
                                 </div>
-                                <a href="#" class="rc-read-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                                <a href="article.html?id=${a.id}" class="rc-read-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                             </div>
                         </div>
                     </article>
@@ -1254,13 +1254,13 @@
                 label2.style.display = 'flex';
                 list.style.display = 'flex';
                 list.innerHTML = listItems.map(a => `
-                    <article class="report-list-item">
+                    <a href="article.html?id=${a.id}" class="report-list-item" style="text-decoration:none;color:inherit;">
                         <div class="rli-img">
                             <img src="${a.image}" alt="${a.title}">
                         </div>
                         <div class="rli-body">
                             <span class="rli-cat">${a.category}</span>
-                            <h5>${a.title}</h5>
+                            <h5><a href="article.html?id=${a.id}" style="color:inherit;text-decoration:none">${a.title}</a></h5>
                             <div class="rli-meta">
                                 <span><i class="far fa-calendar"></i> ${a.date}</span>
                                 <span><i class="far fa-clock"></i> ${a.readTime || '5 دقائق'}</span>
