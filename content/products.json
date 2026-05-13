@@ -155,6 +155,19 @@
       "discount": 0,
       "description": "كمامات طبية عالية الجودة.",
       "date": "2026-05-09"
+    },
+    {
+      "id": "p1778669457803",
+      "title": "جهاز التلاعب بالعقول",
+      "category": "أجهزة تنفس",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/178_Male_African_bush_elephant_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg/1280px-178_Male_African_bush_elephant_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg",
+      "price": 555,
+      "oldPrice": 0,
+      "status": "جديد",
+      "badge": "",
+      "discount": 0,
+      "description": "يارب تعدل المرة دى",
+      "date": "2026-05-13"
     }
   ]
 }
