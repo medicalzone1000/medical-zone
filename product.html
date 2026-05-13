@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المنتج — ميديكال زون</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --product-gap: 40px;
+        }
+
+        /* Product Page Layout */
+        .product-page {
+            padding: 40px 0 80px;
+            background: var(--off-white);
+        }
+        .product-page-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--product-gap);
+            align-items: start;
+        }
+
+        /* Gallery */
+        .product-gallery {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
+        }
+        .gallery-main {
+            position: relative;
+            height: 450px;
+            background: var(--gray-50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        .gallery-main img:hover {
+            transform: scale(1.05);
+        }
+        .gallery-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            z-index: 2;
+        }
+        .gallery-thumbs {
+            display: flex;
+            gap: 8px;
+            padding: 16px;
+            overflow-x: auto;
+            background: var(--white);
+        }
+        .gallery-thumb {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-sm);
+            border: 2px solid var(--gray-100);
+            cursor: pointer;
+            overflow: hidden;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+        .gallery-thumb:hover, .gallery-thumb.active {
+            border-color: var(--teal);
+        }
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Product Info */
+        .product-info-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .product-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--gray-300);
+        }
+        .product-breadcrumb a { color: var(--teal); }
+        .product-breadcrumb a:hover { text-decoration: underline; }
+        .product-breadcrumb i { font-size: 10px; color: var(--gray-300); }
+
+        .product-cat-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--teal-pale);
+            color: var(--teal);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: var(--radius-full);
+            width: fit-content;
+        }
+        .product-title {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--navy);
+            line-height: 1.3;
+        }
+        .product-status-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .product-status-badge {
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 12px;
+            font-weight: 700;
+        }
+        .status-new { background: #c6f6d5; color: #22543d; }
+        .status-used { background: #feebc8; color: #744210; }
+        .status-rent { background: #e9d8fd; color: #553c9a; }
+        .product-sku {
+            font-size: 12px;
+            color: var(--gray-300);
+            font-family: monospace;
+        }
+
+        .product-pricing-box {
+            background: var(--gray-50);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .product-price-main {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--teal);
+        }
+        .product-price-old {
+            font-size: 18px;
+            color: var(--gray-300);
+            text-decoration: line-through;
+        }
+        .product-discount {
+            background: var(--red);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+        }
+
+        .product-desc {
+            color: var(--gray-600);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+        .product-desc h4 {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .product-features {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .product-features h4 {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--navy);
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+        .feature-item i {
+            color: var(--teal);
+            width: 20px;
+            text-align: center;
+        }
+
+        .product-actions-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-top: 16px;
+            border-top: 1px solid var(--gray-100);
+        }
+        .btn-whatsapp-lg {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: var(--font-ar);
+        }
+        .btn-whatsapp-lg:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+        }
+        .btn-whatsapp-lg i { font-size: 22px; }
+
+        .product-contact-mini {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            font-size: 12px;
+            color: var(--gray-300);
+        }
+        .product-contact-mini span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .product-contact-mini i { color: var(--teal); width: 14px; }
+
+        /* Related Products */
+        .related-section {
+            padding: 60px 0;
+            background: var(--white);
+        }
+        .related-section .section-head {
+            margin-bottom: 32px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .product-page-layout {
+                grid-template-columns: 1fr;
+            }
+            .gallery-main { height: 300px; }
+            .product-title { font-size: 22px; }
+            .product-price-main { font-size: 24px; }
+        }
+
+        /* Loading */
+        .product-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 80px 20px;
+            color: var(--gray-300);
+            min-height: 400px;
+        }
+        .product-loading i { font-size: 48px; color: var(--teal-light); opacity: 0.5; }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <div class="announcement-bar">
+        <p>🚚 شحن مجاني للطلبات فوق 2000 جنيه &nbsp;|&nbsp; ✅ ضمان سنة على جميع الأجهزة &nbsp;|&nbsp; 📞 دعم فني 24/7</p>
+    </div>
+
+    <header class="site-header" id="site-header">
+        <div class="header-inner container">
+            <a href="index.html" class="logo-link">
+                <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+                <div class="logo-text">
+                    <span class="logo-main">MEDICAL</span>
+                    <span class="logo-sub">ZONE</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="store.html">المتجر</a></li>
+                    <li><a href="maintenance.html">صيانة</a></li>
+                    <li><a href="reports.html">تقارير</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="admin.html" class="btn-outline-sm"><i class="fas fa-cog"></i> لوحة التحكم</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
+        <nav class="drawer-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="store.html"><i class="fas fa-store"></i> المتجر</a></li>
+                <li><a href="maintenance.html"><i class="fas fa-tools"></i> صيانة</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-medical"></i> تقارير</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> تواصل معنا</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="product-page">
+        <div class="container">
+            <div id="productLoading" class="product-loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>جاري تحميل تفاصيل المنتج...</p>
+            </div>
+            <div id="productContent" style="display:none">
+                <div class="product-page-layout">
+                    <!-- Gallery -->
+                    <div class="product-gallery">
+                        <div class="gallery-main">
+                            <span class="gallery-badge" id="mainBadge"></span>
+                            <img id="mainImage" src="" alt="">
+                        </div>
+                        <div class="gallery-thumbs" id="galleryThumbs"></div>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="product-info-card">
+                        <div class="product-breadcrumb">
+                            <a href="index.html">الرئيسية</a>
+                            <i class="fas fa-chevron-left"></i>
+                            <a href="store.html">المتجر</a>
+                            <i class="fas fa-chevron-left"></i>
+                            <span id="breadcrumbCat">الفئة</span>
+                        </div>
+
+                        <span class="product-cat-badge" id="productCat"><i class="fas fa-tag"></i> الفئة</span>
+                        <h1 class="product-title" id="productTitle">اسم المنتج</h1>
+
+                        <div class="product-status-row">
+                            <span class="product-status-badge" id="productStatus">الحالة</span>
+                            <span class="product-sku" id="productSku">كود: ---</span>
+                        </div>
+
+                        <div class="product-pricing-box">
+                            <span class="product-price-main" id="productPrice">0 ج.م</span>
+                            <span class="product-price-old" id="productOldPrice"></span>
+                            <span class="product-discount" id="productDiscount" style="display:none"></span>
+                        </div>
+
+                        <div class="product-desc">
+                            <h4><i class="fas fa-info-circle" style="color:var(--teal)"></i> وصف المنتج</h4>
+                            <p id="productDesc">وصف المنتج هنا...</p>
+                        </div>
+
+                        <div class="product-features">
+                            <h4><i class="fas fa-check-circle" style="color:var(--teal)"></i> مميزات المنتج</h4>
+                            <div class="feature-item"><i class="fas fa-shield-alt"></i> ضمان سنة ضد عيوب الصناعة</div>
+                            <div class="feature-item"><i class="fas fa-truck"></i> شحن سريع لجميع المحافظات</div>
+                            <div class="feature-item"><i class="fas fa-headset"></i> دعم فني متاح 24/7</div>
+                            <div class="feature-item"><i class="fas fa-certificate"></i> منتج معتمد ومرخص</div>
+                        </div>
+
+                        <div class="product-actions-box">
+                            <button class="btn-whatsapp-lg" id="whatsappBtn">
+                                <i class="fab fa-whatsapp"></i> اطلب عبر واتساب
+                            </button>
+                            <div class="product-contact-mini">
+                                <span><i class="fas fa-phone"></i> القاهرة: 01223962139</span>
+                                <span><i class="fas fa-phone"></i> سوهاج: 01126562854</span>
+                                <span><i class="fas fa-envelope"></i> info@medicalzone.com</span>
+                                <span><i class="fas fa-truck"></i> الدفع عند التسليم</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Related Products -->
+    <section class="related-section">
+        <div class="container">
+            <div class="section-head">
+                <div>
+                    <span class="section-label">قد يعجبك أيضاً</span>
+                    <h2 class="section-title">منتجات مشابهة</h2>
+                </div>
+            </div>
+            <div class="products-grid" id="relatedGrid"></div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-col footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+                        <div class="logo-text">
+                            <span class="logo-main">MEDICAL</span>
+                            <span class="logo-sub">ZONE</span>
+                        </div>
+                    </div>
+                    <p>مؤسسة ميديكال زون للأجهزة الطبية — وجهتك الأولى لأحدث الأجهزة والمستلزمات الطبية عالية الجودة في مصر.</p>
+                    <div class="social-links">
+                        <a href="https://web.facebook.com/medical.zone.sohage" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">الشروط والأحكام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">تواصل معنا</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i><span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span></li>
+                        <li><i class="fas fa-map-marker-alt"></i><span><strong>سوهاج:</strong> 43 ش الجامعة أمام مسجد الشرطة</span></li>
+                        <li><i class="fas fa-phone"></i><span>01223962139 - 01223962138</span></li>
+                        <li><i class="fas fa-phone"></i><span>01126562854 - 01126562812</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 مؤسسة ميديكال زون للأجهزة الطبية. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll
+        window.addEventListener('scroll', () => {
+            document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 60);
+        });
+
+        // Mobile drawer
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const drawer = document.getElementById('mobileDrawer');
+        const overlay = document.getElementById('drawerOverlay');
+        const closeBtn = document.getElementById('drawerClose');
+        menuBtn.addEventListener('click', () => { drawer.classList.add('open'); overlay.classList.add('open'); });
+        closeBtn.addEventListener('click', () => { drawer.classList.remove('open'); overlay.classList.remove('open'); });
+        overlay.addEventListener('click', () => { drawer.classList.remove('open'); overlay.classList.remove('open'); });
+
+        // Get product ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        function formatPrice(n) {
+            return Number(n).toLocaleString('ar-EG') + ' ج.م';
+        }
+
+        async function loadProduct() {
+            try {
+                const res = await fetch('content/products.json?v=' + Date.now());
+                const data = await res.json();
+                const products = data.products || [];
+                const product = products.find(p => p.id === productId);
+
+                if (!product) {
+                    document.getElementById('productLoading').innerHTML = 
+                        '<i class="fas fa-exclamation-triangle"></i><p>المنتج غير موجود</p>' +
+                        '<a href="store.html" style="color:var(--teal);margin-top:10px">العودة للمتجر</a>';
+                    return;
+                }
+
+                // Hide loading, show content
+                document.getElementById('productLoading').style.display = 'none';
+                document.getElementById('productContent').style.display = 'block';
+
+                // Fill data
+                document.getElementById('productTitle').textContent = product.title;
+                document.getElementById('productCat').innerHTML = '<i class="fas fa-tag"></i> ' + product.category;
+                document.getElementById('breadcrumbCat').textContent = product.category;
+                document.getElementById('productPrice').textContent = formatPrice(product.price);
+                document.getElementById('productSku').textContent = 'كود: ' + product.id;
+                document.getElementById('productDesc').textContent = product.description || 'لا يوجد وصف مفصل لهذا المنتج.';
+
+                // Status
+                const statusEl = document.getElementById('productStatus');
+                statusEl.textContent = product.status;
+                statusEl.className = 'product-status-badge status-' + (product.status === 'جديد' ? 'new' : product.status === 'مستعمل' ? 'used' : 'rent');
+
+                // Old price & discount
+                if (product.oldPrice && product.oldPrice > 0) {
+                    document.getElementById('productOldPrice').textContent = formatPrice(product.oldPrice);
+                }
+                if (product.discount && product.discount > 0) {
+                    document.getElementById('productDiscount').textContent = 'خصم ' + product.discount + '%';
+                    document.getElementById('productDiscount').style.display = 'inline-block';
+                }
+
+                // Main image
+                document.getElementById('mainImage').src = product.image;
+                document.getElementById('mainImage').alt = product.title;
+
+                // Badge
+                const badgeEl = document.getElementById('mainBadge');
+                if (product.badge === 'discount' && product.discount > 0) {
+                    badgeEl.innerHTML = '<span class="badge-discount">-' + product.discount + '%</span>';
+                } else if (product.badge === 'new') {
+                    badgeEl.innerHTML = '<span class="badge-new">جديد</span>';
+                }
+
+                // Gallery thumbs (use same image for now, can be extended)
+                const thumbsContainer = document.getElementById('galleryThumbs');
+                thumbsContainer.innerHTML = `
+                    <div class="gallery-thumb active" onclick="changeImage('${product.image}', this)">
+                        <img src="${product.image}" alt="${product.title}">
+                    </div>
+                `;
+
+                // WhatsApp button
+                document.getElementById('whatsappBtn').onclick = function() {
+                    const phone = '01223962139';
+                    const message = `مرحباً، أريد طلب المنتج التالي من ميديكال زون:%0A%0A` +
+                                   `📦 المنتج: ${product.title}%0A` +
+                                   `💰 السعر: ${formatPrice(product.price)}%0A` +
+                                   `📂 الفئة: ${product.category}%0A` +
+                                   `🆔 كود: ${product.id}%0A%0A` +
+                                   `يرجى تأكيد التوفر وموعد التسليم.`;
+                    window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+                };
+
+                // Related products (same category)
+                const related = products
+                    .filter(p => p.category === product.category && p.id !== product.id)
+                    .slice(0, 4);
+
+                const relatedGrid = document.getElementById('relatedGrid');
+                if (related.length > 0) {
+                    relatedGrid.innerHTML = related.map(p => {
+                        let oldPrice = p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : '';
+                        return `
+                        <div class="product-card">
+                            <div class="product-img-wrap">
+                                <img src="${p.image}" alt="${p.title}" loading="lazy">
+                            </div>
+                            <div class="product-body">
+                                <span class="product-cat">${p.category}</span>
+                                <h3 class="product-name">${p.title}</h3>
+                                <div class="product-pricing">
+                                    <span class="price-new">${formatPrice(p.price)}</span>
+                                    ${oldPrice}
+                                </div>
+                                <a href="product.html?id=${p.id}" class="btn-add-cart">
+                                    <i class="fas fa-eye"></i> عرض التفاصيل
+                                </a>
+                            </div>
+                        </div>`;
+                    }).join('');
+                } else {
+                    relatedGrid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:var(--gray-300)">لا توجد منتجات مشابهة</p>';
+                }
+
+                // Update page title
+                document.title = product.title + ' — ميديكال زون';
+
+            } catch(e) {
+                document.getElementById('productLoading').innerHTML = 
+                    '<i class="fas fa-exclamation-triangle"></i><p>حدث خطأ في تحميل المنتج</p>';
+            }
+        }
+
+        function changeImage(src, thumb) {
+            document.getElementById('mainImage').src = src;
+            document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+        }
+
+        loadProduct();
+    </script>
+</body>
+</html>
