@@ -312,6 +312,63 @@
             min-height: 80px;
         }
 
+        /* Image Upload */
+        .image-upload-area {
+            border: 2px dashed var(--admin-border);
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: var(--admin-bg);
+        }
+        .image-upload-area:hover {
+            border-color: var(--teal);
+            background: var(--teal-pale);
+        }
+        .image-upload-area i {
+            font-size: 32px;
+            color: var(--teal);
+            margin-bottom: 8px;
+        }
+        .image-upload-area p {
+            font-size: 13px;
+            color: var(--admin-muted);
+        }
+        .image-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .image-preview-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+        .image-preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .image-preview-item .remove-img {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 24px;
+            height: 24px;
+            background: var(--admin-danger);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         /* Tables */
         .admin-table-wrap {
             background: white;
@@ -476,10 +533,17 @@
             background: #fed7d7;
             color: #742a2a;
         }
+
+        /* Edit Mode */
+        .edit-mode {
+            background: var(--teal-pale) !important;
+            border: 2px solid var(--teal) !important;
+        }
     </style>
 <base target="_blank">
 </head>
 <body>
+
     <script>
         // Password Protection
         const ADMIN_PASSWORD = "Medical2026!";
@@ -490,7 +554,6 @@
             window.location.href = "index.html";
         }
     </script>
-
 
     <div class="admin-wrapper">
         <!-- Sidebar -->
@@ -561,9 +624,10 @@
                 <div class="admin-form">
                     <h3 style="margin-bottom: 16px; font-size: 16px; font-weight: 800;">
                         <i class="fas fa-plus-circle" style="color: var(--teal);"></i> 
-                        إضافة منتج جديد
+                        <span id="productFormTitle">إضافة منتج جديد</span>
                     </h3>
                     <form id="productForm" class="form-grid">
+                        <input type="hidden" id="pEditId" value="">
                         <div class="form-group">
                             <label>اسم المنتج</label>
                             <input type="text" id="pTitle" placeholder="مثال: جهاز ضغط إلكتروني" required>
@@ -612,16 +676,26 @@
                             <input type="number" id="pDiscount" placeholder="مثال: 15">
                         </div>
                         <div class="form-group">
-                            <label>رابط الصورة</label>
-                            <input type="text" id="pImage" placeholder="images/fb/photo.jpg أو رابط كامل">
-                        </div>
-                        <div class="form-group full-width">
                             <label>وصف المنتج</label>
                             <textarea id="pDesc" placeholder="اكتب وصف مختصر للمنتج..."></textarea>
                         </div>
                         <div class="form-group full-width">
-                            <button type="submit" class="btn-admin btn-admin-primary" style="width: 100%; justify-content: center;">
-                                <i class="fas fa-plus"></i> إضافة المنتج
+                            <label>الصور</label>
+                            <div class="image-upload-area" onclick="document.getElementById('pImageInput').click()">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>اضغط هنا لرفع صور من جهازك</p>
+                                <p style="font-size: 11px; margin-top: 4px;">أو أدخل روابط الصور أدناه</p>
+                            </div>
+                            <input type="file" id="pImageInput" multiple accept="image/*" style="display:none" onchange="handleImageUpload(this, 'product')">
+                            <div class="image-preview-grid" id="pImagePreview"></div>
+                            <input type="text" id="pImage" placeholder="رابط الصورة الرئيسية (أو اتركه فارغاً لو رفعت صور)" style="margin-top: 8px;">
+                        </div>
+                        <div class="form-group full-width" style="display: flex; gap: 10px;">
+                            <button type="submit" class="btn-admin btn-admin-primary" style="flex: 1; justify-content: center;">
+                                <i class="fas fa-plus"></i> <span id="productSubmitBtn">إضافة المنتج</span>
+                            </button>
+                            <button type="button" class="btn-admin btn-admin-outline" id="productCancelBtn" style="display:none" onclick="cancelProductEdit()">
+                                <i class="fas fa-times"></i> إلغاء
                             </button>
                         </div>
                     </form>
@@ -664,9 +738,10 @@
                 <div class="admin-form">
                     <h3 style="margin-bottom: 16px; font-size: 16px; font-weight: 800;">
                         <i class="fas fa-plus-circle" style="color: var(--teal);"></i> 
-                        إضافة مقالة جديدة
+                        <span id="articleFormTitle">إضافة مقالة جديدة</span>
                     </h3>
                     <form id="articleForm" class="form-grid">
+                        <input type="hidden" id="aEditId" value="">
                         <div class="form-group">
                             <label>عنوان المقالة</label>
                             <input type="text" id="aTitle" placeholder="مثال: كيفية اختيار جهاز ضغط الدم" required>
@@ -692,12 +767,18 @@
                             <input type="text" id="aReadTime" placeholder="مثال: 5 دقائق">
                         </div>
                         <div class="form-group">
-                            <label>رابط الصورة</label>
-                            <input type="text" id="aImage" placeholder="رابط الصورة الرئيسية">
-                        </div>
-                        <div class="form-group">
                             <label>المؤلف</label>
                             <input type="text" id="aAuthor" placeholder="مثال: د. عمر السيد">
+                        </div>
+                        <div class="form-group full-width">
+                            <label>الصورة الرئيسية</label>
+                            <div class="image-upload-area" onclick="document.getElementById('aImageInput').click()">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>اضغط هنا لرفع صورة من جهازك</p>
+                            </div>
+                            <input type="file" id="aImageInput" accept="image/*" style="display:none" onchange="handleImageUpload(this, 'article')">
+                            <div class="image-preview-grid" id="aImagePreview"></div>
+                            <input type="text" id="aImage" placeholder="رابط الصورة (أو اتركه فارغاً لو رفعت صورة)" style="margin-top: 8px;">
                         </div>
                         <div class="form-group full-width">
                             <label>ملخص المقالة</label>
@@ -707,9 +788,12 @@
                             <label>المحتوى الكامل</label>
                             <textarea id="aContent" rows="6" placeholder="اكتب المحتوى الكامل للمقالة..."></textarea>
                         </div>
-                        <div class="form-group full-width">
-                            <button type="submit" class="btn-admin btn-admin-primary" style="width: 100%; justify-content: center;">
-                                <i class="fas fa-plus"></i> إضافة المقالة
+                        <div class="form-group full-width" style="display: flex; gap: 10px;">
+                            <button type="submit" class="btn-admin btn-admin-primary" style="flex: 1; justify-content: center;">
+                                <i class="fas fa-plus"></i> <span id="articleSubmitBtn">إضافة المقالة</span>
+                            </button>
+                            <button type="button" class="btn-admin btn-admin-outline" id="articleCancelBtn" style="display:none" onclick="cancelArticleEdit()">
+                                <i class="fas fa-times"></i> إلغاء
                             </button>
                         </div>
                     </form>
@@ -753,6 +837,10 @@
 
         let products = JSON.parse(localStorage.getItem('admin_products') || '[]');
         let articles = JSON.parse(localStorage.getItem('admin_articles') || '[]');
+        let productImages = [];
+        let articleImages = [];
+        let editingProductId = null;
+        let editingArticleId = null;
 
         // Load initial data from JSON files
         async function loadInitialData() {
@@ -796,6 +884,51 @@
             document.getElementById('statArticles').textContent = articles.length;
         }
 
+        // ==================== IMAGE UPLOAD ====================
+
+        function handleImageUpload(input, type) {
+            const files = input.files;
+            if (!files || files.length === 0) return;
+
+            const previewContainer = type === 'product' ? document.getElementById('pImagePreview') : document.getElementById('aImagePreview');
+            const imagesArray = type === 'product' ? productImages : articleImages;
+
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imgData = e.target.result;
+                    imagesArray.push(imgData);
+
+                    const div = document.createElement('div');
+                    div.className = 'image-preview-item';
+                    div.innerHTML = `
+                        <img src="${imgData}" alt="preview">
+                        <button type="button" class="remove-img" onclick="removeImage(this, '${type}', '${imgData}')">×</button>
+                    `;
+                    previewContainer.appendChild(div);
+
+                    // Set first image as main image
+                    if (imagesArray.length === 1) {
+                        if (type === 'product') {
+                            document.getElementById('pImage').value = imgData;
+                        } else {
+                            document.getElementById('aImage').value = imgData;
+                        }
+                    }
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function removeImage(btn, type, imgData) {
+            const imagesArray = type === 'product' ? productImages : articleImages;
+            const index = imagesArray.indexOf(imgData);
+            if (index > -1) {
+                imagesArray.splice(index, 1);
+            }
+            btn.parentElement.remove();
+        }
+
         // ==================== TABS ====================
 
         function switchTab(tab) {
@@ -811,13 +944,13 @@
             }
         }
 
-        // ==================== PRODUCTS ====================
+        // ==================== PRODUCTS CRUD ====================
 
         document.getElementById('productForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
             const product = {
-                id: 'p' + Date.now(),
+                id: editingProductId || 'p' + Date.now(),
                 title: document.getElementById('pTitle').value,
                 category: document.getElementById('pCategory').value,
                 price: parseInt(document.getElementById('pPrice').value),
@@ -825,17 +958,29 @@
                 status: document.getElementById('pStatus').value,
                 badge: document.getElementById('pBadge').value,
                 discount: parseInt(document.getElementById('pDiscount').value) || 0,
-                image: document.getElementById('pImage').value || 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=400',
+                image: document.getElementById('pImage').value || (productImages.length > 0 ? productImages[0] : 'https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=400'),
                 description: document.getElementById('pDesc').value,
                 date: new Date().toISOString().split('T')[0]
             };
 
-            products.push(product);
+            if (editingProductId) {
+                // Update existing
+                const idx = products.findIndex(p => p.id === editingProductId);
+                if (idx > -1) {
+                    products[idx] = product;
+                    showAlert('تم تعديل المنتج بنجاح!', 'success');
+                }
+                editingProductId = null;
+            } else {
+                // Add new
+                products.push(product);
+                showAlert('تم إضافة المنتج بنجاح!', 'success');
+            }
+
             saveProducts();
             renderProducts();
             updateStats();
-            showAlert('تم إضافة المنتج بنجاح!', 'success');
-            this.reset();
+            resetProductForm();
         });
 
         function renderProducts() {
@@ -854,25 +999,20 @@
                     <td><span class="badge-status badge-${p.status === 'جديد' ? 'new' : p.status === 'مستعمل' ? 'used' : 'rent'}">${p.status}</span></td>
                     <td>
                         <div class="table-actions">
-                            <button class="btn-table btn-table-edit" onclick="editProduct(${idx})" title="تعديل"><i class="fas fa-edit"></i></button>
-                            <button class="btn-table btn-table-delete" onclick="deleteProduct(${idx})" title="حذف"><i class="fas fa-trash"></i></button>
+                            <button class="btn-table btn-table-edit" onclick="editProduct('${p.id}')" title="تعديل"><i class="fas fa-edit"></i></button>
+                            <button class="btn-table btn-table-delete" onclick="deleteProduct('${p.id}')" title="حذف"><i class="fas fa-trash"></i></button>
                         </div>
                     </td>
                 </tr>
             `).join('');
         }
 
-        function deleteProduct(idx) {
-            if (!confirm('هل أنت متأكد من حذف هذا المنتج؟')) return;
-            products.splice(idx, 1);
-            saveProducts();
-            renderProducts();
-            updateStats();
-            showAlert('تم حذف المنتج', 'success');
-        }
+        function editProduct(id) {
+            const p = products.find(prod => prod.id === id);
+            if (!p) return;
 
-        function editProduct(idx) {
-            const p = products[idx];
+            editingProductId = id;
+            document.getElementById('pEditId').value = id;
             document.getElementById('pTitle').value = p.title;
             document.getElementById('pCategory').value = p.category;
             document.getElementById('pPrice').value = p.price;
@@ -883,13 +1023,36 @@
             document.getElementById('pImage').value = p.image;
             document.getElementById('pDesc').value = p.description || '';
 
-            products.splice(idx, 1);
+            document.getElementById('productFormTitle').textContent = 'تعديل منتج';
+            document.getElementById('productSubmitBtn').textContent = 'حفظ التعديلات';
+            document.getElementById('productCancelBtn').style.display = 'inline-flex';
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showAlert('قم بتعديل البيانات ثم اضغط "حفظ التعديلات"', 'success');
+        }
+
+        function deleteProduct(id) {
+            if (!confirm('هل أنت متأكد من حذف هذا المنتج؟')) return;
+            products = products.filter(p => p.id !== id);
             saveProducts();
             renderProducts();
             updateStats();
+            showAlert('تم حذف المنتج', 'success');
+        }
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            showAlert('تم تحميل المنتج للتعديل. عدّل البيانات واضغط "إضافة المنتج"', 'success');
+        function cancelProductEdit() {
+            resetProductForm();
+            editingProductId = null;
+        }
+
+        function resetProductForm() {
+            document.getElementById('productForm').reset();
+            document.getElementById('pEditId').value = '';
+            document.getElementById('productFormTitle').textContent = 'إضافة منتج جديد';
+            document.getElementById('productSubmitBtn').textContent = 'إضافة المنتج';
+            document.getElementById('productCancelBtn').style.display = 'none';
+            document.getElementById('pImagePreview').innerHTML = '';
+            productImages = [];
         }
 
         function exportProducts() {
@@ -904,29 +1067,39 @@
             showAlert('تم تصدير products.json! ارفع الملف على GitHub في مجلد content/', 'success');
         }
 
-        // ==================== ARTICLES ====================
+        // ==================== ARTICLES CRUD ====================
 
         document.getElementById('articleForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
             const article = {
-                id: 'a' + Date.now(),
+                id: editingArticleId || 'a' + Date.now(),
                 title: document.getElementById('aTitle').value,
                 category: document.getElementById('aCategory').value,
                 date: document.getElementById('aDate').value,
                 readTime: document.getElementById('aReadTime').value,
-                image: document.getElementById('aImage').value || 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=85&w=700',
+                image: document.getElementById('aImage').value || (articleImages.length > 0 ? articleImages[0] : 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=85&w=700'),
                 author: document.getElementById('aAuthor').value,
                 excerpt: document.getElementById('aExcerpt').value,
                 content: document.getElementById('aContent').value
             };
 
-            articles.push(article);
+            if (editingArticleId) {
+                const idx = articles.findIndex(a => a.id === editingArticleId);
+                if (idx > -1) {
+                    articles[idx] = article;
+                    showAlert('تم تعديل المقالة بنجاح!', 'success');
+                }
+                editingArticleId = null;
+            } else {
+                articles.push(article);
+                showAlert('تم إضافة المقالة بنجاح!', 'success');
+            }
+
             saveArticles();
             renderArticles();
             updateStats();
-            showAlert('تم إضافة المقالة بنجاح!', 'success');
-            this.reset();
+            resetArticleForm();
         });
 
         function renderArticles() {
@@ -944,25 +1117,20 @@
                     <td>${a.author || '-'}</td>
                     <td>
                         <div class="table-actions">
-                            <button class="btn-table btn-table-edit" onclick="editArticle(${idx})" title="تعديل"><i class="fas fa-edit"></i></button>
-                            <button class="btn-table btn-table-delete" onclick="deleteArticle(${idx})" title="حذف"><i class="fas fa-trash"></i></button>
+                            <button class="btn-table btn-table-edit" onclick="editArticle('${a.id}')" title="تعديل"><i class="fas fa-edit"></i></button>
+                            <button class="btn-table btn-table-delete" onclick="deleteArticle('${a.id}')" title="حذف"><i class="fas fa-trash"></i></button>
                         </div>
                     </td>
                 </tr>
             `).join('');
         }
 
-        function deleteArticle(idx) {
-            if (!confirm('هل أنت متأكد من حذف هذه المقالة؟')) return;
-            articles.splice(idx, 1);
-            saveArticles();
-            renderArticles();
-            updateStats();
-            showAlert('تم حذف المقالة', 'success');
-        }
+        function editArticle(id) {
+            const a = articles.find(art => art.id === id);
+            if (!a) return;
 
-        function editArticle(idx) {
-            const a = articles[idx];
+            editingArticleId = id;
+            document.getElementById('aEditId').value = id;
             document.getElementById('aTitle').value = a.title;
             document.getElementById('aCategory').value = a.category;
             document.getElementById('aDate').value = a.date;
@@ -972,13 +1140,36 @@
             document.getElementById('aExcerpt').value = a.excerpt || '';
             document.getElementById('aContent').value = a.content || '';
 
-            articles.splice(idx, 1);
+            document.getElementById('articleFormTitle').textContent = 'تعديل مقالة';
+            document.getElementById('articleSubmitBtn').textContent = 'حفظ التعديلات';
+            document.getElementById('articleCancelBtn').style.display = 'inline-flex';
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showAlert('قم بتعديل البيانات ثم اضغط "حفظ التعديلات"', 'success');
+        }
+
+        function deleteArticle(id) {
+            if (!confirm('هل أنت متأكد من حذف هذه المقالة؟')) return;
+            articles = articles.filter(a => a.id !== id);
             saveArticles();
             renderArticles();
             updateStats();
+            showAlert('تم حذف المقالة', 'success');
+        }
 
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            showAlert('تم تحميل المقالة للتعديل. عدّل البيانات واضغط "إضافة المقالة"', 'success');
+        function cancelArticleEdit() {
+            resetArticleForm();
+            editingArticleId = null;
+        }
+
+        function resetArticleForm() {
+            document.getElementById('articleForm').reset();
+            document.getElementById('aEditId').value = '';
+            document.getElementById('articleFormTitle').textContent = 'إضافة مقالة جديدة';
+            document.getElementById('articleSubmitBtn').textContent = 'إضافة المقالة';
+            document.getElementById('articleCancelBtn').style.display = 'none';
+            document.getElementById('aImagePreview').innerHTML = '';
+            articleImages = [];
         }
 
         function exportArticles() {
