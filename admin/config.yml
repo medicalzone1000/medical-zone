@@ -1,0 +1,44 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "products"
+    label: "المنتجات"
+    files:
+      - name: "products_list"
+        label: "قائمة المنتجات"
+        file: "content/products.json"
+        fields:
+          - name: "products"
+            label: "المنتجات"
+            widget: "list"
+            fields:
+              - { label: "الكود", name: "id", widget: "string" }
+              - { label: "اسم المنتج", name: "title", widget: "string" }
+              - label: "الفئة"
+                name: "category"
+                widget: "select"
+                options:
+                  - "أجهزة تنفس"
+                  - "أجهزة ضغط"
+                  - "أجهزة قياس"
+                  - "تجهيز عيادات"
+                  - "سماعات"
+                  - "إسعافات أولية"
+                  - "أثاث طبي"
+                  - "مستهلكات"
+                  - "تجهيز معامل"
+              - { label: "صورة المنتج", name: "image", widget: "image" }
+              - { label: "السعر (جنيه)", name: "price", widget: "number" }
+              - { label: "وصف المنتج", name: "description", widget: "text" }
+              - label: "الحالة"
+                name: "status"
+                widget: "select"
+                options:
+                  - "جديد"
+                  - "مستعمل"
+                  - "إيجار"
