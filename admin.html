@@ -480,6 +480,17 @@
 <base target="_blank">
 </head>
 <body>
+    <script>
+        // Password Protection
+        const ADMIN_PASSWORD = "Medical2026!";
+        const enteredPassword = prompt("🔒 لوحة التحكم محمية\n\nأدخل كلمة المرور:");
+
+        if (enteredPassword !== ADMIN_PASSWORD) {
+            alert("❌ كلمة المرور غير صحيحة!");
+            window.location.href = "index.html";
+        }
+    </script>
+
 
     <div class="admin-wrapper">
         <!-- Sidebar -->
