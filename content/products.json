@@ -182,20 +182,6 @@
       "description": "لا تقكر في شراء الجهاز",
       "video": "https://www.facebook.com/share/v/18dSNLe6HH/",
       "date": "2026-05-14"
-    },
-    {
-      "id": "p1778791370131",
-      "title": "test prod",
-      "category": "تجهيز معامل",
-      "image": "",
-      "price": 999,
-      "oldPrice": 0,
-      "status": "جديد",
-      "badge": "",
-      "discount": 0,
-      "description": "",
-      "video": "",
-      "date": "2026-05-14"
     }
   ]
 }
