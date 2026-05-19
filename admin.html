@@ -700,8 +700,15 @@
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label>الفئة</label>
-          <input type="text" id="rCategory" placeholder="مثال: صحة منزلية">
+          <label>القسم *</label>
+          <select id="rCategory" required>
+            <option value="">اختر القسم</option>
+            <option value="أجهزة وتقنيات طبية">أجهزة وتقنيات طبية</option>
+            <option value="الصحة المنزلية">الصحة المنزلية</option>
+            <option value="الصيانة والدعم الفني">الصيانة والدعم الفني</option>
+            <option value="تجهيز العيادات">تجهيز العيادات</option>
+            <option value="أخبار طبية">أخبار طبية</option>
+          </select>
         </div>
         <div class="form-group">
           <label>التاريخ</label>
@@ -909,7 +916,7 @@
             </tr>
           `).join('')}
         </tbody>
-      改表`;
+      </table>`;
   }
 
   function openProductModal(idx = -1) {
@@ -1010,11 +1017,11 @@
       return;
     }
     container.innerHTML = `
-      </table>
+      <table>
         <thead>
           <tr>
             <th>العنوان</th>
-            <th>الفئة</th>
+            <th>القسم</th>
             <th>التاريخ</th>
             <th>إجراءات</th>
           </tr>
@@ -1077,7 +1084,7 @@
     const report = {
       id: idx === -1 ? 'r' + Date.now() : reportsData[idx].id,
       title,
-      category: document.getElementById('rCategory').value.trim(),
+      category: document.getElementById('rCategory').value,
       date: document.getElementById('rDate').value,
       image: document.getElementById('rImage').value.trim(),
       summary: document.getElementById('rSummary').value.trim(),
