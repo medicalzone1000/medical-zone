@@ -2,7 +2,6 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <base href="/medical-zone/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>المتجر — ميديكال زون للأجهزة الطبية</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,15 +80,14 @@
                     <h3 class="widget-title">الأقسام</h3>
                     <ul class="sidebar-cats" id="categoryList">
                         <li class="active"><a href="#" data-cat="all"><i class="fas fa-th-large"></i> جميع الأقسام</a></li>
-                        <li><a href="#" data-cat="أجهزة تنفس"><i class="fas fa-lungs"></i> أجهزة تنفس</a></li>
-                        <li><a href="#" data-cat="أجهزة ضغط"><i class="fas fa-gauge-high"></i> أجهزة ضغط</a></li>
-                        <li><a href="#" data-cat="أجهزة قياس"><i class="fas fa-microscope"></i> أجهزة قياس</a></li>
-                        <li><a href="#" data-cat="سماعات"><i class="fas fa-stethoscope"></i> سماعات</a></li>
-                        <li><a href="#" data-cat="إسعافات أولية"><i class="fas fa-kit-medical"></i> إسعافات أولية</a></li>
-                        <li><a href="#" data-cat="تجهيز عيادات"><i class="fas fa-clinic-medical"></i> تجهيز عيادات</a></li>
-                        <li><a href="#" data-cat="أثاث طبي"><i class="fas fa-procedures"></i> أثاث طبي</a></li>
-                        <li><a href="#" data-cat="مستهلكات"><i class="fas fa-syringe"></i> مستهلكات</a></li>
-                        <li><a href="#" data-cat="تجهيز معامل"><i class="fas fa-flask"></i> تجهيز معامل</a></li>
+                        <li><a href="#" data-cat="العمليات والعناية المركزة"><i class="fas fa-procedures"></i> العمليات والعناية المركزة</a></li>
+                        <li><a href="#" data-cat="المناظير والآلات"><i class="fas fa-microscope"></i> المناظير والآلات</a></li>
+                        <li><a href="#" data-cat="الأشعة والسونار"><i class="fas fa-x-ray"></i> الأشعة والسونار</a></li>
+                        <li><a href="#" data-cat="العلاج الطبيعي"><i class="fas fa-hand-holding-medical"></i> العلاج الطبيعي</a></li>
+                        <li><a href="#" data-cat="أجهزة التنفس والأكسجين"><i class="fas fa-lungs"></i> أجهزة التنفس والأكسجين</a></li>
+                        <li><a href="#" data-cat="الأنف والأذن والسمعيات"><i class="fas fa-ear-listen"></i> الأنف والأذن والسمعيات</a></li>
+                        <li><a href="#" data-cat="رسم المخ والعضلات"><i class="fas fa-brain"></i> رسم المخ والعضلات</a></li>
+                        <li><a href="#" data-cat="أجهزة تنفس للإيجار"><i class="fas fa-handshake"></i> أجهزة تنفس للإيجار</a></li>
                     </ul>
                 </div>
                 <div class="sidebar-widget sidebar-fb-banner">
@@ -209,12 +207,10 @@
     </div>
 
     <script>
-        // ===== Header =====
         window.addEventListener('scroll', () => {
             document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 60);
         });
 
-        // ===== Mobile Drawer =====
         const menuBtn = document.getElementById('mobileMenuBtn');
         const drawer = document.getElementById('mobileDrawer');
         const overlay = document.getElementById('drawerOverlay');
@@ -225,7 +221,6 @@
         closeBtn.addEventListener('click', closeDrawer);
         overlay.addEventListener('click', closeDrawer);
 
-        // ===== Cart =====
         let cartCount = parseInt(localStorage.getItem('cartCount') || '0');
         document.getElementById('cartBadge').textContent = cartCount;
         function addToCart() {
@@ -234,7 +229,6 @@
             document.getElementById('cartBadge').textContent = cartCount;
         }
 
-        // ===== Load Products from products.json =====
         let allProducts = [];
         let currentCat = 'all';
         let currentSearch = '';
@@ -242,60 +236,19 @@
 
         async function loadProducts() {
             try {
-                const res = await fetch('/medical-zone/content/products.json?v=' + Date.now());
-                if (!res.ok) throw new Error('not found');
+                const res = await fetch('./content/products.json?v=' + Date.now());
+                if (!res.ok) throw new Error();
                 const data = await res.json();
                 allProducts = data.products || [];
                 document.getElementById('loadingState').style.display = 'none';
                 renderProducts();
             } catch(e) {
-                document.getElementById('loadingState').innerHTML =
-                    '<i class="fas fa-exclamation-triangle"></i><p>حدث خطأ في تحميل المنتجات. حاول تحديث الصفحة.</p>';
-                console.error(e);
+                document.getElementById('loadingState').innerHTML = '<i class="fas fa-exclamation-triangle"></i><p>حدث خطأ في تحميل المنتجات.</p>';
             }
         }
 
-        // ===== Format Price =====
-        function formatPrice(n) {
-            return Number(n).toLocaleString('ar-EG') + ' ج.م';
-        }
+        function formatPrice(n) { return Number(n).toLocaleString('ar-EG') + ' ج.م'; }
 
-        // ===== Build Card =====
-        function buildCard(p, idx) {
-            let badge = '';
-            if (p.badge === 'discount' && p.discount > 0) badge = `<span class="badge-discount">-${p.discount}%</span>`;
-            else if (p.badge === 'new') badge = `<span class="badge-new">جديد</span>`;
-            let oldPrice = (p.oldPrice && p.oldPrice > 0) ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : '';
-            let statusBadge = '';
-            if (p.status === 'مستعمل') statusBadge = `<span class="status-badge used">مستعمل</span>`;
-            if (p.status === 'إيجار') statusBadge = `<span class="status-badge rent">إيجار</span>`;
-
-            return `
-            <div class="product-card">
-                <div class="product-img-wrap">
-                    ${badge}${statusBadge}
-                    <img src="${p.image}" alt="${p.title}" loading="lazy"
-                         onerror="this.src='https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=400'">
-                    <div class="product-actions">
-                        <button class="action-btn" title="إضافة للمفضلة"><i class="far fa-heart"></i></button>
-                        <button class="action-btn" title="عرض سريع" onclick="showQuickView(${idx})"><i class="far fa-eye"></i></button>
-                    </div>
-                </div>
-                <div class="product-body">
-                    <span class="product-cat">${p.category}</span>
-                    <h3 class="product-name">${p.title}</h3>
-                    <div class="product-pricing">
-                        <span class="price-new">${formatPrice(p.price)}</span>
-                        ${oldPrice}
-                    </div>
-                    <button class="btn-add-cart" onclick="addToCart()">
-                        <i class="fas fa-shopping-bag"></i> أضف للسلة
-                    </button>
-                </div>
-            </div>`;
-        }
-
-        // ===== Render =====
         let renderedProducts = [];
         function renderProducts() {
             renderedProducts = allProducts.filter(p => {
@@ -319,23 +272,43 @@
             } else {
                 empty.style.display = 'none';
                 grid.style.display = 'grid';
-                grid.innerHTML = renderedProducts.map((p, i) => buildCard(p, i)).join('');
+                grid.innerHTML = renderedProducts.map((p, i) => `
+                    <div class="product-card">
+                        <div class="product-img-wrap">
+                            ${p.badge === 'discount' && p.discount ? `<span class="badge-discount">-${p.discount}%</span>` : (p.badge === 'new' ? '<span class="badge-new">جديد</span>' : '')}
+                            <img src="${p.image || ''}" alt="${p.title}" style="background:#f0f4f8;" onerror="this.src=''">
+                            <div class="product-actions">
+                                <button class="action-btn" title="إضافة للمفضلة"><i class="far fa-heart"></i></button>
+                                <button class="action-btn" title="عرض سريع" onclick="showQuickView(${i})"><i class="far fa-eye"></i></button>
+                            </div>
+                        </div>
+                        <div class="product-body">
+                            <span class="product-cat">${p.category}</span>
+                            <h3 class="product-name">${p.title}</h3>
+                            <div class="product-pricing">
+                                <span class="price-new">${formatPrice(p.price)}</span>
+                                ${p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : ''}
+                            </div>
+                            <button class="btn-add-cart" onclick="addToCart()">
+                                <i class="fas fa-shopping-bag"></i> أضف للسلة
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
                 info.textContent = `عرض ${renderedProducts.length} منتج`;
             }
         }
 
-        // ===== Quick View =====
         function showQuickView(idx) {
             const p = renderedProducts[idx];
             if (!p) return;
             document.getElementById('qvTitle').textContent = p.title;
             document.getElementById('qvCat').textContent = p.category;
             document.getElementById('qvPrice').textContent = formatPrice(p.price);
-            document.getElementById('qvOldPrice').textContent = (p.oldPrice && p.oldPrice > 0) ? formatPrice(p.oldPrice) : '';
+            document.getElementById('qvOldPrice').textContent = p.oldPrice ? formatPrice(p.oldPrice) : '';
             document.getElementById('qvDesc').textContent = p.description || '';
             document.getElementById('qvStatus').textContent = p.status;
-            document.getElementById('qvImg').src = p.image;
-            document.getElementById('qvImg').alt = p.title;
+            document.getElementById('qvImg').src = p.image || '';
             document.getElementById('quickViewModal').classList.add('open');
             document.body.style.overflow = 'hidden';
         }
@@ -344,7 +317,6 @@
             document.body.style.overflow = '';
         }
 
-        // ===== Filters =====
         document.querySelectorAll('#categoryList a').forEach(link => {
             link.addEventListener('click', e => {
                 e.preventDefault();
