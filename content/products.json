@@ -1,18 +1,3 @@
 {
-  "products": [
-    {
-      "id": "p1779210962654",
-      "title": "سرير رعاية",
-      "category": "العمليات والعناية المركزة",
-      "image": "/medical-zone/images/uploads/1779210927403_Untitled.png",
-      "price": 500,
-      "oldPrice": 0,
-      "status": "جديد",
-      "badge": "",
-      "discount": 0,
-      "description": "تمام",
-      "video": "",
-      "date": "2026-05-19"
-    }
-  ]
+  "products": []
 }
