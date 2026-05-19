@@ -20,8 +20,6 @@
             gap: 40px;
             align-items: start;
         }
-
-        /* Main Article */
         .article-main {
             background: var(--white);
             border-radius: var(--radius-lg);
@@ -87,7 +85,6 @@
             align-items: center;
             gap: 6px;
         }
-
         .article-body {
             padding: 32px;
         }
@@ -105,31 +102,6 @@
             padding-bottom: 10px;
             border-bottom: 2px solid var(--teal-pale);
         }
-        .article-body h3 {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--navy);
-            margin: 24px 0 12px;
-        }
-        .article-body ul, .article-body ol {
-            margin: 16px 0;
-            padding-right: 24px;
-        }
-        .article-body li {
-            margin-bottom: 8px;
-            line-height: 1.8;
-            color: var(--gray-700);
-        }
-        .article-body blockquote {
-            background: var(--teal-pale);
-            border-right: 4px solid var(--teal);
-            padding: 20px 24px;
-            margin: 24px 0;
-            border-radius: var(--radius-sm);
-            font-style: italic;
-            color: var(--navy);
-        }
-
         .article-share {
             display: flex;
             align-items: center;
@@ -137,11 +109,6 @@
             padding: 20px 32px;
             border-top: 1px solid var(--gray-100);
             background: var(--gray-50);
-        }
-        .article-share span {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--gray-600);
         }
         .share-btn {
             width: 36px;
@@ -159,8 +126,6 @@
         .share-tw { background: #1da1f2; }
         .share-wa { background: #25d366; }
         .share-tg { background: #0088cc; }
-
-        /* Sidebar */
         .article-sidebar {
             display: flex;
             flex-direction: column;
@@ -186,7 +151,6 @@
         }
         .as-widget-head i { color: var(--teal); }
         .as-widget-body { padding: 16px 20px; }
-
         .author-card {
             display: flex;
             align-items: center;
@@ -211,11 +175,6 @@
             color: var(--navy);
             margin-bottom: 4px;
         }
-        .author-info p {
-            font-size: 12px;
-            color: var(--gray-300);
-        }
-
         .related-articles-list {
             display: flex;
             flex-direction: column;
@@ -229,7 +188,6 @@
             align-items: flex-start;
         }
         .related-article-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .related-article-item:first-child { padding-top: 0; }
         .rai-img {
             width: 60px;
             height: 60px;
@@ -245,12 +203,6 @@
             line-height: 1.5;
             margin-bottom: 4px;
         }
-        .rai-text span {
-            font-size: 11px;
-            color: var(--gray-300);
-        }
-
-        /* Loading */
         .article-loading {
             display: flex;
             flex-direction: column;
@@ -261,15 +213,12 @@
             color: var(--gray-300);
             min-height: 400px;
         }
-        .article-loading i { font-size: 48px; color: var(--teal-light); opacity: 0.5; }
-
         @media (max-width: 768px) {
             .article-layout { grid-template-columns: 1fr; }
             .article-header-content h1 { font-size: 20px; }
             .article-header-img { height: 280px; }
         }
     </style>
-<base target="_blank">
 </head>
 <body>
 
@@ -324,7 +273,6 @@
             </div>
             <div id="articleContent" style="display:none">
                 <div class="article-layout">
-                    <!-- Main Article -->
                     <article class="article-main">
                         <div class="article-header-img">
                             <img id="articleImage" src="" alt="">
@@ -338,9 +286,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="article-body" id="articleBody">
-                            <!-- Content loaded dynamically -->
-                        </div>
+                        <div class="article-body" id="articleBody"></div>
                         <div class="article-share">
                             <span>مشاركة:</span>
                             <button class="share-btn share-fb" onclick="shareFB()"><i class="fab fa-facebook-f"></i></button>
@@ -349,10 +295,7 @@
                             <button class="share-btn share-tg" onclick="shareTG()"><i class="fab fa-telegram-plane"></i></button>
                         </div>
                     </article>
-
-                    <!-- Sidebar -->
                     <aside class="article-sidebar">
-                        <!-- Author Widget -->
                         <div class="as-widget">
                             <div class="as-widget-head">
                                 <i class="fas fa-user-edit"></i>
@@ -368,8 +311,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Related Articles -->
                         <div class="as-widget">
                             <div class="as-widget-head">
                                 <i class="fas fa-newspaper"></i>
@@ -379,8 +320,6 @@
                                 <div class="related-articles-list" id="relatedArticles"></div>
                             </div>
                         </div>
-
-                        <!-- CTA Widget -->
                         <div class="as-widget" style="background: linear-gradient(135deg, var(--teal-pale), #d0eaf7); border-color: rgba(13,110,170,0.15);">
                             <div class="as-widget-body" style="text-align: center; padding: 24px 20px;">
                                 <i class="fas fa-store-alt" style="font-size: 32px; color: var(--teal); margin-bottom: 12px;"></i>
@@ -395,6 +334,7 @@
         </div>
     </main>
 
+    <!-- Footer كامل -->
     <footer class="site-footer">
         <div class="footer-top">
             <div class="container footer-grid">
@@ -408,9 +348,9 @@
                     </div>
                     <p>مؤسسة ميديكال زون للأجهزة الطبية — وجهتك الأولى لأحدث الأجهزة والمستلزمات الطبية عالية الجودة في مصر.</p>
                     <div class="social-links">
-                        <a href="https://web.facebook.com/medical.zone.sohage" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://web.facebook.com/medical.zone.sohage" target="_blank" rel="noopener" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="إنستجرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -420,15 +360,32 @@
                         <li><a href="#">سياسة الخصوصية</a></li>
                         <li><a href="#">الدعم الفني</a></li>
                         <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="https://web.facebook.com/medical.zone.sohage/photos" target="_blank" rel="noopener">صور المنتجات</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4 class="footer-col-title">تواصل معنا</h4>
                     <ul class="footer-contact">
-                        <li><i class="fas fa-map-marker-alt"></i><span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span></li>
-                        <li><i class="fas fa-map-marker-alt"></i><span><strong>سوهاج:</strong> 43 ش الجامعة أمام مسجد الشرطة</span></li>
-                        <li><i class="fas fa-phone"></i><span>01223962139 - 01223962138</span></li>
-                        <li><i class="fas fa-phone"></i><span>01126562854 - 01126562812</span></li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>سوهاج:</strong> 43 ش الجامعة أمام مسجد الشرطة</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>القاهرة: 01223962139 - 01223962138</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>سوهاج: 01126562854 - 01126562812</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@medicalzone.com</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -436,118 +393,82 @@
         <div class="footer-bottom">
             <div class="container footer-bottom-inner">
                 <p>&copy; 2026 مؤسسة ميديكال زون للأجهزة الطبية. جميع الحقوق محفوظة.</p>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-paypal"></i>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Header scroll
         window.addEventListener('scroll', () => {
             document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 60);
         });
-
-        // Mobile drawer
         const menuBtn = document.getElementById('mobileMenuBtn');
         const drawer = document.getElementById('mobileDrawer');
         const overlay = document.getElementById('drawerOverlay');
         const closeBtn = document.getElementById('drawerClose');
-        menuBtn.addEventListener('click', () => { drawer.classList.add('open'); overlay.classList.add('open'); });
-        closeBtn.addEventListener('click', () => { drawer.classList.remove('open'); overlay.classList.remove('open'); });
-        overlay.addEventListener('click', () => { drawer.classList.remove('open'); overlay.classList.remove('open'); });
+        menuBtn?.addEventListener('click', () => { drawer.classList.add('open'); overlay.classList.add('open'); });
+        closeBtn?.addEventListener('click', () => { drawer.classList.remove('open'); overlay.classList.remove('open'); });
+        overlay?.addEventListener('click', () => { drawer.classList.remove('open'); overlay.classList.remove('open'); });
 
-        // Get article ID from URL
         const urlParams = new URLSearchParams(window.location.search);
         const articleId = urlParams.get('id');
 
         async function loadArticle() {
             try {
-                const res = await fetch('content/articles.json?v=' + Date.now());
+                const res = await fetch('content/reports.json?v=' + Date.now());
                 const data = await res.json();
-                const articles = data.articles || [];
-                const article = articles.find(a => a.id === articleId);
-
+                const reports = data.reports || [];
+                const article = reports.find(a => a.id === articleId);
                 if (!article) {
-                    document.getElementById('articleLoading').innerHTML = 
-                        '<i class="fas fa-exclamation-triangle"></i><p>التقرير غير موجود</p>' +
-                        '<a href="reports.html" style="color:var(--teal);margin-top:10px">العودة للتقارير</a>';
+                    document.getElementById('articleLoading').innerHTML = '<i class="fas fa-exclamation-triangle"></i><p>التقرير غير موجود</p><a href="reports.html" style="color:var(--teal);margin-top:10px">العودة للتقارير</a>';
                     return;
                 }
-
-                // Hide loading, show content
                 document.getElementById('articleLoading').style.display = 'none';
                 document.getElementById('articleContent').style.display = 'block';
-
-                // Fill data
                 document.getElementById('articleTitle').textContent = article.title;
                 document.getElementById('articleCat').innerHTML = '<i class="fas fa-folder"></i> ' + article.category;
                 document.getElementById('articleDate').textContent = article.date;
-                document.getElementById('articleReadTime').textContent = article.readTime || '5 دقائق';
-                document.getElementById('articleAuthor').textContent = article.author || 'فريق ميديكال زون';
-                document.getElementById('articleImage').src = article.image;
+                document.getElementById('articleReadTime').textContent = '5 دقائق';
+                document.getElementById('articleAuthor').textContent = 'فريق ميديكال زون';
+                document.getElementById('articleImage').src = article.image || 'https://placehold.co/600x400?text=صورة+تقرير';
                 document.getElementById('articleImage').alt = article.title;
-
-                // Author
-                document.getElementById('authorName').textContent = article.author || 'فريق ميديكال زون';
-                document.getElementById('authorAvatar').textContent = (article.author || 'م').charAt(0);
-
-                // Content
-                const content = article.content || article.excerpt || 'لا يوجد محتوى مفصل لهذا التقرير.';
+                document.getElementById('authorName').textContent = 'فريق ميديكال زون';
+                document.getElementById('authorAvatar').textContent = 'م';
                 document.getElementById('articleBody').innerHTML = `
-                    <p>${article.excerpt}</p>
-                    <h2>مقدمة</h2>
-                    <p>${content}</p>
+                    <p>${article.summary || ''}</p>
                     <h2>الخلاصة</h2>
-                    <p>يُعدّ هذا التقرير مرجعاً مهماً لكل من يبحث عن معلومات موثوقة في مجال ${article.category}. للمزيد من التفاصيل أو الاستفسارات، لا تتردد في التواصل مع فريق ميديكال زون.</p>
-                    <blockquote>
-                        "الجودة هي أساس ثقتنا.. ورضا العميل هو هدفنا الأول"
-                        <br><strong>— فريق ميديكال زون</strong>
-                    </blockquote>
+                    <p>هذا التقرير يقدم معلومات هامة حول ${article.category}. للمزيد من التفاصيل، تواصل مع فريق ميديكال زون.</p>
+                    <blockquote>"الجودة هي أساس ثقتنا.. ورضا العميل هو هدفنا الأول"<br><strong>— فريق ميديكال زون</strong></blockquote>
                 `;
-
-                // Related articles (same category)
-                const related = articles
-                    .filter(a => a.category === article.category && a.id !== article.id)
-                    .slice(0, 4);
-
+                const related = reports.filter(r => r.category === article.category && r.id !== article.id).slice(0, 4);
                 const relatedContainer = document.getElementById('relatedArticles');
                 if (related.length > 0) {
-                    relatedContainer.innerHTML = related.map(a => `
+                    relatedContainer.innerHTML = related.map(r => `
                         <div class="related-article-item">
-                            <div class="rai-img">
-                                <img src="${a.image}" alt="${a.title}">
-                            </div>
+                            <div class="rai-img"><img src="${r.image || 'https://placehold.co/600x400?text=صورة'}" alt="${r.title}"></div>
                             <div class="rai-text">
-                                <h6><a href="article.html?id=${a.id}" style="color:inherit;text-decoration:none">${a.title}</a></h6>
-                                <span><i class="far fa-calendar"></i> ${a.date}</span>
+                                <h6><a href="article.html?id=${r.id}" style="color:inherit">${r.title}</a></h6>
+                                <span><i class="far fa-calendar"></i> ${r.date}</span>
                             </div>
                         </div>
                     `).join('');
                 } else {
                     relatedContainer.innerHTML = '<p style="color:var(--gray-300);font-size:13px">لا توجد تقارير ذات صلة</p>';
                 }
-
-                // Update page title
                 document.title = article.title + ' — ميديكال زون';
-
             } catch(e) {
-                document.getElementById('articleLoading').innerHTML = 
-                    '<i class="fas fa-exclamation-triangle"></i><p>حدث خطأ في تحميل التقرير</p>';
+                document.getElementById('articleLoading').innerHTML = '<i class="fas fa-exclamation-triangle"></i><p>حدث خطأ في تحميل التقرير</p>';
             }
         }
 
-        // Share functions
-        function shareFB() {
-            window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank');
-        }
-        function shareTW() {
-            window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href), '_blank');
-        }
-        function shareWA() {
-            window.open('https://wa.me/?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank');
-        }
-        function shareTG() {
-            window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href), '_blank');
-        }
+        function shareFB() { window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); }
+        function shareTW() { window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href), '_blank'); }
+        function shareWA() { window.open('https://wa.me/?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); }
+        function shareTG() { window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href), '_blank'); }
 
         loadArticle();
     </script>
