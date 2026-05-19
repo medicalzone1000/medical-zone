@@ -9,24 +9,147 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .reports-hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+        }
+        .reports-filter-bar {
+            background: white;
+            border-bottom: 1px solid var(--gray-100);
+            padding: 16px 0;
+            position: sticky;
+            top: 72px;
+            z-index: 90;
+        }
+        .filter-bar-inner {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .filter-cats {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .filter-cat-btn {
+            padding: 7px 16px;
+            border: 1.5px solid var(--gray-100);
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .filter-cat-btn.active, .filter-cat-btn:hover {
+            background: var(--teal);
+            color: white;
+            border-color: var(--teal);
+        }
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            padding: 40px 0;
+        }
+        .report-card {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--gray-100);
+            transition: transform 0.2s;
+        }
+        .report-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+        .report-card-img {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+        .report-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .report-cat-tag {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: var(--teal);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 40px;
+        }
+        .report-card-body {
+            padding: 20px;
+        }
+        .report-date {
+            font-size: 12px;
+            color: var(--gray-300);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .report-card-body h3 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        .report-card-body p {
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .read-more {
+            color: var(--teal);
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 60px;
+            color: var(--gray-400);
+            grid-column: 1/-1;
+        }
+        @media (max-width: 768px) {
+            .reports-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <div class="announcement-bar">
-        <p>🚚 شحن مجاني للطلبات فوق 2000 جنيه &nbsp;|&nbsp; ✅ ضمان سنة على جميع الأجهزة &nbsp;|&nbsp; 📞 دعم فني 24/7</p>
+        <p>📰 أحدث التقارير الطبية والأبحاث العلمية</p>
     </div>
 
     <header class="site-header" id="site-header">
         <div class="header-inner container">
-            <div class="header-logo">
-                <a href="index.html" class="logo-link">
-                    <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
-                    <div class="logo-text">
-                        <span class="logo-main">MEDICAL</span>
-                        <span class="logo-sub">ZONE</span>
-                    </div>
-                </a>
-            </div>
+            <a href="index.html" class="logo-link">
+                <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+                <div class="logo-text">
+                    <span class="logo-main">MEDICAL</span>
+                    <span class="logo-sub">ZONE</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">الرئيسية</a></li>
@@ -37,70 +160,112 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <button class="icon-btn" aria-label="بحث"><i class="fas fa-search"></i></button>
-                <button class="icon-btn" aria-label="المفضلة"><i class="far fa-heart"></i></button>
-                <button class="icon-btn cart-btn" aria-label="السلة">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-badge">2</span>
-                </button>
-                <a href="#" class="btn-outline-sm">دخول</a>
+                <a href="admin.html" class="btn-outline-sm"><i class="fas fa-cog"></i> لوحة التحكم</a>
             </div>
         </div>
     </header>
 
-    <div class="drawer-overlay" id="drawerOverlay"></div>
-    <div class="mobile-drawer" id="mobileDrawer">
-        <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
-        <nav class="drawer-nav">
-            <ul>
-                <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
-                <li><a href="store.html"><i class="fas fa-store"></i> المتجر</a></li>
-                <li><a href="maintenance.html"><i class="fas fa-tools"></i> صيانة</a></li>
-                <li><a href="reports.html" class="active"><i class="fas fa-file-medical"></i> تقارير</a></li>
-                <li><a href="contact.html"><i class="fas fa-envelope"></i> تواصل معنا</a></li>
-            </ul>
-        </nav>
+    <section class="reports-hero">
+        <div class="container">
+            <h1>المدونة الطبية</h1>
+            <p>أحدث التقارير والأبحاث في عالم الأجهزة الطبية والرعاية الصحية</p>
+        </div>
+    </section>
+
+    <div class="reports-filter-bar">
+        <div class="container filter-bar-inner">
+            <div class="filter-cats" id="filterCats">
+                <button class="filter-cat-btn active" data-cat="all">الكل</button>
+                <button class="filter-cat-btn" data-cat="أجهزة وتقنيات طبية">أجهزة وتقنيات طبية</button>
+                <button class="filter-cat-btn" data-cat="الصحة المنزلية">الصحة المنزلية</button>
+                <button class="filter-cat-btn" data-cat="الصيانة والدعم الفني">الصيانة والدعم الفني</button>
+                <button class="filter-cat-btn" data-cat="تجهيز العيادات">تجهيز العيادات</button>
+                <button class="filter-cat-btn" data-cat="أخبار طبية">أخبار طبية</button>
+            </div>
+        </div>
     </div>
 
-    <!-- Page Hero ... (مختصر) -->
-    <section class="reports-hero">...</section>
-    <div class="reports-filter-bar">...</div>
-
-    <main class="reports-main">
-        <div class="container">
-            <div class="reports-layout">
-                <div class="reports-content">
-                    <div class="reports-grid" id="dynamicReportsGrid">
-                        <div class="loading-state"><i class="fas fa-spinner fa-spin"></i> جاري التحميل...</div>
-                    </div>
-                </div>
-                <aside class="reports-sidebar">
-                    <!-- نفس الwidgets القديمة بدون محتوى ثابت للتقارير -->
-                </aside>
+    <main class="container">
+        <div class="reports-grid" id="reportsGrid">
+            <div class="loading-state" style="grid-column:1/-1">
+                <i class="fas fa-spinner fa-spin"></i> جاري التحميل...
             </div>
         </div>
     </main>
 
-    <footer>...</footer>
+    <footer class="site-footer">
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 ميديكال زون - جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Sticky header, mobile drawer (نفس الكود)
-        // Load reports from empty reports.json
+        // Sticky header & mobile drawer (مختصر)
+        window.addEventListener('scroll', () => {
+            document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 60);
+        });
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const drawer = document.getElementById('mobileDrawer');
+        const overlay = document.getElementById('drawerOverlay');
+        const closeBtn = document.getElementById('drawerClose');
+        menuBtn?.addEventListener('click', () => { drawer.classList.add('open'); overlay.classList.add('open'); });
+        closeBtn?.addEventListener('click', () => { drawer.classList.remove('open'); overlay.classList.remove('open'); });
+        overlay?.addEventListener('click', () => { drawer.classList.remove('open'); overlay.classList.remove('open'); });
+
+        let allReports = [];
+        let currentCat = 'all';
+
         async function loadReports() {
-            const grid = document.getElementById('dynamicReportsGrid');
+            const grid = document.getElementById('reportsGrid');
             try {
                 const res = await fetch('./content/reports.json?v=' + Date.now());
+                if (!res.ok) throw new Error();
                 const data = await res.json();
-                const reports = (data.reports || []).sort((a,b)=>new Date(b.date)-new Date(a.date));
-                if (reports.length === 0) {
-                    grid.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1">لا توجد تقارير حالياً</p>';
-                    return;
-                }
-                grid.innerHTML = reports.map(r => `<article class="report-card">...</article>`).join('');
+                allReports = data.reports || [];
+                renderReports();
             } catch(e) {
-                grid.innerHTML = '<p style="text-align:center;color:#999">تعذر تحميل التقارير</p>';
+                grid.innerHTML = '<div class="empty-state"><i class="fas fa-exclamation-triangle"></i><p>حدث خطأ في تحميل التقارير</p></div>';
             }
         }
+
+        function renderReports() {
+            const grid = document.getElementById('reportsGrid');
+            let filtered = allReports;
+            if (currentCat !== 'all') {
+                filtered = allReports.filter(r => r.category === currentCat);
+            }
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="empty-state"><i class="fas fa-newspaper"></i><p>لا توجد تقارير في هذا القسم حالياً</p></div>';
+                return;
+            }
+            grid.innerHTML = filtered.map(r => `
+                <div class="report-card">
+                    <div class="report-card-img">
+                        <img src="${r.image || 'https://placehold.co/600x400?text=صورة+تقرير'}" alt="${r.title}" onerror="this.src='https://placehold.co/600x400?text=صورة+تقرير'">
+                        <span class="report-cat-tag">${r.category || 'عام'}</span>
+                    </div>
+                    <div class="report-card-body">
+                        <div class="report-date"><i class="far fa-calendar"></i> ${r.date || ''}</div>
+                        <h3>${r.title}</h3>
+                        <p>${r.summary ? r.summary.substring(0, 100) + '...' : ''}</p>
+                        <a href="article.html?id=${r.id}" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter buttons
+        document.querySelectorAll('.filter-cat-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-cat-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCat = btn.getAttribute('data-cat');
+                renderReports();
+            });
+        });
+
         loadReports();
     </script>
 </body>
