@@ -2,7 +2,6 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ميديكال زون — الأجهزة الطبية</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,12 +12,10 @@
 </head>
 <body>
 
-    <!-- Announcement Bar -->
     <div class="announcement-bar">
         <p>🚚 شحن مجاني للطلبات فوق 2000 جنيه &nbsp;|&nbsp; ✅ ضمان سنة على جميع الأجهزة &nbsp;|&nbsp; 📞 دعم فني 24/7</p>
     </div>
 
-    <!-- Header -->
     <header class="site-header" id="site-header">
         <div class="header-inner container">
             <div class="header-logo">
@@ -57,7 +54,6 @@
         </div>
     </header>
 
-    <!-- Mobile Drawer -->
     <div class="drawer-overlay" id="drawerOverlay"></div>
     <div class="mobile-drawer" id="mobileDrawer">
         <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
@@ -116,11 +112,11 @@
                         </div>
                     </div>
                     <div class="hero-report-card">
-                        <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?auto=format&fit=crop&q=85&w=400" alt="تقرير الرعاية الصحية">
+                        <img src="" alt="تقرير الرعاية الصحية" style="background:#e2e8f0;">
                         <div class="report-card-text">
                             <span class="report-tag">تقرير حديث</span>
                             <p>مستقبل الرعاية الصحية الرقمية في مصر</p>
-                            <a href="#">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                            <a href="reports.html">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                         </div>
                     </div>
                 </div>
@@ -164,11 +160,11 @@
             </div>
         </section>
 
-        <!-- Promo Banners -->
+        <!-- Promo Banners (images empty) -->
         <section class="promo-section">
             <div class="container promo-grid">
                 <div class="promo-card promo-main">
-                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=85&w=1000" alt="تجهيزات عيادات">
+                    <img src="" alt="تجهيزات عيادات" style="background:#cbd5e1; min-height:420px;">
                     <div class="promo-overlay"></div>
                     <div class="promo-content">
                         <span class="promo-tag">عرض خاص</span>
@@ -179,7 +175,7 @@
                 </div>
                 <div class="promo-stack">
                     <div class="promo-card promo-small">
-                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=85&w=500" alt="أجهزة ضغط دم">
+                        <img src="" alt="أجهزة ضغط دم" style="background:#cbd5e1; min-height:196px;">
                         <div class="promo-overlay"></div>
                         <div class="promo-content">
                             <span class="promo-tag">خصم 20%</span>
@@ -188,7 +184,7 @@
                         </div>
                     </div>
                     <div class="promo-card promo-small">
-                        <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=85&w=500" alt="أجهزة تنفس منزلية">
+                        <img src="" alt="أجهزة تنفس منزلية" style="background:#cbd5e1; min-height:196px;">
                         <div class="promo-overlay"></div>
                         <div class="promo-content">
                             <span class="promo-tag">الأكثر طلباً</span>
@@ -200,7 +196,7 @@
             </div>
         </section>
 
-        <!-- New Arrivals — Dynamic from JSON -->
+        <!-- New Arrivals — from JSON (empty now) -->
         <section class="products-section">
             <div class="container">
                 <div class="section-head">
@@ -211,7 +207,6 @@
                     <a href="store.html" class="view-all-link">عرض الكل <i class="fas fa-arrow-left"></i></a>
                 </div>
                 <div class="products-grid" id="latestProductsGrid">
-                    <!-- يتم ملؤها تلقائياً من products.json -->
                     <div class="loading-state" style="grid-column:1/-1">
                         <i class="fas fa-spinner fa-spin"></i>
                         <p>جاري التحميل...</p>
@@ -220,7 +215,7 @@
             </div>
         </section>
 
-        <!-- Categories -->
+        <!-- Categories (8 new sections) -->
         <section class="categories-section">
             <div class="container">
                 <div class="section-head centered">
@@ -229,91 +224,42 @@
                 </div>
                 <div class="categories-grid">
                     <a href="store.html" class="cat-card">
-                        <div class="cat-icon-wrap"><i class="fas fa-lungs"></i></div>
-                        <span>أجهزة تنفس</span>
-                    </a>
-                    <a href="store.html" class="cat-card">
-                        <div class="cat-icon-wrap"><i class="fas fa-heartbeat"></i></div>
-                        <span>أجهزة ضغط</span>
-                    </a>
-                    <a href="store.html" class="cat-card">
-                        <div class="cat-icon-wrap"><i class="fas fa-wheelchair"></i></div>
-                        <span>كراسي متحركة</span>
-                    </a>
-                    <a href="store.html" class="cat-card">
-                        <div class="cat-icon-wrap"><i class="fas fa-stethoscope"></i></div>
-                        <span>تجهيز عيادات</span>
-                    </a>
-                    <a href="store.html" class="cat-card">
-                        <div class="cat-icon-wrap"><i class="fas fa-first-aid"></i></div>
-                        <span>إسعافات أولية</span>
+                        <div class="cat-icon-wrap"><i class="fas fa-procedures"></i></div>
+                        <span>العمليات والعناية المركزة</span>
                     </a>
                     <a href="store.html" class="cat-card">
                         <div class="cat-icon-wrap"><i class="fas fa-microscope"></i></div>
-                        <span>تجهيز معامل</span>
+                        <span>المناظير والآلات</span>
                     </a>
                     <a href="store.html" class="cat-card">
-                        <div class="cat-icon-wrap"><i class="fas fa-procedures"></i></div>
-                        <span>أثاث طبي</span>
+                        <div class="cat-icon-wrap"><i class="fas fa-x-ray"></i></div>
+                        <span>الأشعة والسونار</span>
                     </a>
                     <a href="store.html" class="cat-card">
-                        <div class="cat-icon-wrap"><i class="fas fa-syringe"></i></div>
-                        <span>مستهلكات</span>
+                        <div class="cat-icon-wrap"><i class="fas fa-hand-holding-medical"></i></div>
+                        <span>العلاج الطبيعي</span>
+                    </a>
+                    <a href="store.html" class="cat-card">
+                        <div class="cat-icon-wrap"><i class="fas fa-lungs"></i></div>
+                        <span>أجهزة التنفس والأكسجين</span>
+                    </a>
+                    <a href="store.html" class="cat-card">
+                        <div class="cat-icon-wrap"><i class="fas fa-ear-listen"></i></div>
+                        <span>الأنف والأذن والسمعيات</span>
+                    </a>
+                    <a href="store.html" class="cat-card">
+                        <div class="cat-icon-wrap"><i class="fas fa-brain"></i></div>
+                        <span>رسم المخ والعضلات</span>
+                    </a>
+                    <a href="store.html" class="cat-card">
+                        <div class="cat-icon-wrap"><i class="fas fa-handshake"></i></div>
+                        <span>أجهزة تنفس للإيجار</span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Blog -->
-        <section class="blog-section">
-            <div class="container">
-                <div class="section-head">
-                    <div>
-                        <span class="section-label">المدونة</span>
-                        <h2 class="section-title">تقارير طبية</h2>
-                    </div>
-                    <a href="reports.html" class="view-all-link">كل المقالات <i class="fas fa-arrow-left"></i></a>
-                </div>
-                <div class="blog-grid">
-                    <article class="blog-card">
-                        <div class="blog-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&q=85&w=500" alt="جهاز ضغط الدم">
-                            <span class="blog-cat-tag">صحة منزلية</span>
-                        </div>
-                        <div class="blog-body">
-                            <span class="blog-date"><i class="far fa-calendar"></i> 7 مايو 2026</span>
-                            <h3>كيفية اختيار جهاز ضغط الدم المناسب لمنزلك</h3>
-                            <p>دليل شامل لمساعدتك في اختيار أدق الأجهزة لمتابعة حالتك الصحية...</p>
-                            <a href="reports.html" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                    </article>
-                    <article class="blog-card">
-                        <div class="blog-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1603398938378-e54eab446dde?auto=format&fit=crop&q=85&w=500" alt="إسعافات أولية">
-                            <span class="blog-cat-tag">سلامة مهنية</span>
-                        </div>
-                        <div class="blog-body">
-                            <span class="blog-date"><i class="far fa-calendar"></i> 5 مايو 2026</span>
-                            <h3>أساسيات حقيبة الإسعافات الأولية في الشركة</h3>
-                            <p>تعرف على المستلزمات الضرورية التي لا غنى عنها في أي مكان عمل...</p>
-                            <a href="reports.html" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                    </article>
-                    <article class="blog-card">
-                        <div class="blog-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=85&w=500" alt="أجهزة تنفس">
-                            <span class="blog-cat-tag">صيانة أجهزة</span>
-                        </div>
-                        <div class="blog-body">
-                            <span class="blog-date"><i class="far fa-calendar"></i> 1 مايو 2026</span>
-                            <h3>أهمية الصيانة الدورية لأجهزة التنفس المنزلي</h3>
-                            <p>نصائح الخبراء للحفاظ على كفاءة جهازك وضمان سلامة المريض...</p>
-                            <a href="reports.html" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
+        <!-- Blog section removed (articles.json empty) -->
     </main>
 
     <!-- Footer -->
@@ -385,42 +331,29 @@
     </footer>
 
     <script>
-        // ==================== Sticky Header ====================
+        // Sticky Header
         const header = document.getElementById('site-header');
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 60);
         });
 
-        // ==================== Mobile Drawer ====================
+        // Mobile Drawer
         const menuBtn = document.getElementById('mobileMenuBtn');
         const drawer = document.getElementById('mobileDrawer');
         const overlay = document.getElementById('drawerOverlay');
         const closeBtn = document.getElementById('drawerClose');
-
-        function openDrawer() {
-            drawer.classList.add('open');
-            overlay.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeDrawer() {
-            drawer.classList.remove('open');
-            overlay.classList.remove('open');
-            document.body.style.overflow = '';
-        }
+        function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
         menuBtn.addEventListener('click', openDrawer);
         closeBtn.addEventListener('click', closeDrawer);
         overlay.addEventListener('click', closeDrawer);
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 
-        // ==================== Cart ====================
+        // Cart
         let cartCount = parseInt(localStorage.getItem('cartCount') || '0');
         document.getElementById('cartBadge').textContent = cartCount;
 
-        // ==================== Latest Products ====================
-        function formatPrice(n) {
-            return Number(n).toLocaleString('ar-EG') + ' ج.م';
-        }
-
+        // Latest Products (empty now)
         async function loadLatestProducts() {
             const grid = document.getElementById('latestProductsGrid');
             try {
@@ -429,19 +362,20 @@
                 const products = (data.products || [])
                     .sort((a, b) => new Date(b.date) - new Date(a.date))
                     .slice(0, 4);
-
+                if(products.length === 0) {
+                    grid.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1">لا توجد منتجات حالياً</p>';
+                    return;
+                }
                 grid.innerHTML = products.map(p => {
                     let badge = '';
                     if (p.badge === 'discount' && p.discount > 0) badge = `<span class="badge-discount">-${p.discount}%</span>`;
                     else if (p.badge === 'new') badge = `<span class="badge-new">جديد</span>`;
-                    let oldPrice = p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : '';
-
+                    let oldPrice = p.oldPrice ? `<span class="price-old">${Number(p.oldPrice).toLocaleString('ar-EG')} ج.م</span>` : '';
                     return `
                     <div class="product-card">
                         <div class="product-img-wrap">
                             ${badge}
-                            <img src="${p.image}" alt="${p.title}"
-                                 onerror="this.src='https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=400'">
+                            <img src="${p.image || ''}" alt="${p.title}" style="background:#f0f4f8;" onerror="this.src=''">
                             <div class="product-actions">
                                 <button class="action-btn" title="إضافة للمفضلة"><i class="far fa-heart"></i></button>
                                 <button class="action-btn" title="عرض سريع"><i class="far fa-eye"></i></button>
@@ -451,7 +385,7 @@
                             <span class="product-cat">${p.category}</span>
                             <h3 class="product-name">${p.title}</h3>
                             <div class="product-pricing">
-                                <span class="price-new">${formatPrice(p.price)}</span>
+                                <span class="price-new">${Number(p.price).toLocaleString('ar-EG')} ج.م</span>
                                 ${oldPrice}
                             </div>
                             <button class="btn-add-cart" onclick="(function(){
@@ -464,14 +398,11 @@
                         </div>
                     </div>`;
                 }).join('');
-
             } catch(e) {
                 grid.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1">تعذر تحميل المنتجات</p>';
             }
         }
-
         loadLatestProducts();
     </script>
-
 </body>
 </html>
