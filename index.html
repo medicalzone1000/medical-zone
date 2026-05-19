@@ -160,7 +160,7 @@
             </div>
         </section>
 
-        <!-- Promo Banners (images empty) -->
+        <!-- Promo Banners -->
         <section class="promo-section">
             <div class="container promo-grid">
                 <div class="promo-card promo-main">
@@ -196,7 +196,7 @@
             </div>
         </section>
 
-        <!-- New Arrivals — from JSON (empty now) -->
+        <!-- New Arrivals — Products -->
         <section class="products-section">
             <div class="container">
                 <div class="section-head">
@@ -215,7 +215,26 @@
             </div>
         </section>
 
-        <!-- Categories (8 new sections) -->
+        <!-- Latest Reports Section -->
+        <section class="blog-section">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <span class="section-label">المدونة الطبية</span>
+                        <h2 class="section-title">أحدث التقارير</h2>
+                    </div>
+                    <a href="reports.html" class="view-all-link">عرض الكل <i class="fas fa-arrow-left"></i></a>
+                </div>
+                <div class="blog-grid" id="latestReportsGrid">
+                    <div class="loading-state" style="grid-column:1/-1">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>جاري تحميل التقارير...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
         <section class="categories-section">
             <div class="container">
                 <div class="section-head centered">
@@ -258,8 +277,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- Blog section removed (articles.json empty) -->
     </main>
 
     <!-- Footer -->
@@ -331,13 +348,13 @@
     </footer>
 
     <script>
-        // Sticky Header
+        // ==================== Sticky Header ====================
         const header = document.getElementById('site-header');
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 60);
         });
 
-        // Mobile Drawer
+        // ==================== Mobile Drawer ====================
         const menuBtn = document.getElementById('mobileMenuBtn');
         const drawer = document.getElementById('mobileDrawer');
         const overlay = document.getElementById('drawerOverlay');
@@ -349,11 +366,15 @@
         overlay.addEventListener('click', closeDrawer);
         document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 
-        // Cart
+        // ==================== Cart ====================
         let cartCount = parseInt(localStorage.getItem('cartCount') || '0');
         document.getElementById('cartBadge').textContent = cartCount;
 
-        // Latest Products (empty now)
+        // ==================== Latest Products ====================
+        function formatPrice(n) {
+            return Number(n).toLocaleString('ar-EG') + ' ج.م';
+        }
+
         async function loadLatestProducts() {
             const grid = document.getElementById('latestProductsGrid');
             try {
@@ -362,15 +383,17 @@
                 const products = (data.products || [])
                     .sort((a, b) => new Date(b.date) - new Date(a.date))
                     .slice(0, 4);
-                if(products.length === 0) {
+
+                if (products.length === 0) {
                     grid.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1">لا توجد منتجات حالياً</p>';
                     return;
                 }
+
                 grid.innerHTML = products.map(p => {
                     let badge = '';
                     if (p.badge === 'discount' && p.discount > 0) badge = `<span class="badge-discount">-${p.discount}%</span>`;
                     else if (p.badge === 'new') badge = `<span class="badge-new">جديد</span>`;
-                    let oldPrice = p.oldPrice ? `<span class="price-old">${Number(p.oldPrice).toLocaleString('ar-EG')} ج.م</span>` : '';
+                    let oldPrice = p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : '';
                     return `
                     <div class="product-card">
                         <div class="product-img-wrap">
@@ -385,12 +408,12 @@
                             <span class="product-cat">${p.category}</span>
                             <h3 class="product-name">${p.title}</h3>
                             <div class="product-pricing">
-                                <span class="price-new">${Number(p.price).toLocaleString('ar-EG')} ج.م</span>
+                                <span class="price-new">${formatPrice(p.price)}</span>
                                 ${oldPrice}
                             </div>
-                           <button class="btn-add-cart" onclick="window.location.href='product.html?id=${p.id}'">
-    <i class='fas fa-eye'></i> عرض التفاصيل
-</button>
+                            <button class="btn-add-cart" onclick="window.location.href='product.html?id=${p.id}'">
+                                <i class='fas fa-eye'></i> عرض التفاصيل
+                            </button>
                         </div>
                     </div>`;
                 }).join('');
@@ -398,7 +421,60 @@
                 grid.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1">تعذر تحميل المنتجات</p>';
             }
         }
+
+        // ==================== Latest Reports ====================
+        async function loadLatestReports() {
+            const grid = document.getElementById('latestReportsGrid');
+            try {
+                const res = await fetch('./content/reports.json?v=' + Date.now());
+                if (!res.ok) throw new Error();
+                const data = await res.json();
+                let reports = data.reports || [];
+                // ترتيب تنازلي حسب التاريخ (الأحدث أولاً)
+                reports.sort((a, b) => new Date(b.date) - new Date(a.date));
+                const latestReports = reports.slice(0, 3);
+
+                if (latestReports.length === 0) {
+                    grid.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1">لا توجد تقارير حالياً</p>';
+                    return;
+                }
+
+                grid.innerHTML = latestReports.map(r => `
+                    <article class="blog-card">
+                        <div class="blog-img-wrap">
+                            <img src="${r.image || 'https://placehold.co/600x400?text=صورة+تقرير'}" alt="${r.title}" style="background:#f0f4f8;" onerror="this.src='https://placehold.co/600x400?text=صورة+تقرير'">
+                            <span class="blog-cat-tag">${r.category || 'عام'}</span>
+                        </div>
+                        <div class="blog-body">
+                            <span class="blog-date"><i class="far fa-calendar"></i> ${r.date || ''}</span>
+                            <h3>${r.title}</h3>
+                            <p>${r.summary ? r.summary.substring(0, 100) + '...' : ''}</p>
+                            <a href="article.html?id=${r.id}" class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </article>
+                `).join('');
+            } catch(e) {
+                grid.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1">تعذر تحميل التقارير</p>';
+            }
+        }
+
+        // تنفيذ الدوال
         loadLatestProducts();
+        loadLatestReports();
     </script>
+
+    <style>
+        /* إضافة تنسيق بسيط للتقارير في الرئيسية للتأكد من أنها تأخذ نفس شكل المدونة */
+        .blog-card .blog-cat-tag {
+            background: var(--teal);
+            color: white;
+        }
+        .blog-card .blog-link {
+            color: var(--teal);
+        }
+        .blog-card .blog-link:hover {
+            gap: 10px;
+        }
+    </style>
 </body>
 </html>
