@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <base href="/medical-zone/">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ميديكال زون — الأجهزة الطبية</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -424,7 +424,7 @@
         async function loadLatestProducts() {
             const grid = document.getElementById('latestProductsGrid');
             try {
-                const res = await fetch('/medical-zone/content/products.json?v=' + Date.now());
+               const res = await fetch('./content/products.json?v=' + Date.now());
                 const data = await res.json();
                 const products = (data.products || [])
                     .sort((a, b) => new Date(b.date) - new Date(a.date))
