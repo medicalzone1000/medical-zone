@@ -94,6 +94,10 @@
 </head>
 <body>
 
+    <div class="announcement-bar">
+        <p>🚚 شحن مجاني للطلبات فوق 2000 جنيه &nbsp;|&nbsp; ✅ ضمان سنة على جميع الأجهزة &nbsp;|&nbsp; 📞 دعم فني 24/7</p>
+    </div>
+
     <header class="site-header" id="site-header">
         <div class="header-inner container">
             <div class="header-logo">
@@ -105,6 +109,7 @@
                     </div>
                 </a>
             </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">الرئيسية</a></li>
@@ -114,8 +119,25 @@
                     <li><a href="contact.html" class="active">تواصل معنا</a></li>
                 </ul>
             </nav>
+            <div class="header-actions">
+                <a href="admin.html" class="btn-outline-sm"><i class="fas fa-cog"></i> لوحة التحكم</a>
+            </div>
         </div>
     </header>
+
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
+        <nav class="drawer-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="store.html"><i class="fas fa-store"></i> المتجر</a></li>
+                <li><a href="maintenance.html"><i class="fas fa-tools"></i> صيانة</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-medical"></i> تقارير</a></li>
+                <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> تواصل معنا</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <main>
         <section class="contact-hero">
@@ -166,7 +188,7 @@
             <div class="social-connect">
                 <h3>تابعونا على منصات التواصل</h3>
                 <div class="social-icons-large">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://web.facebook.com/medical.zone.sohage" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-whatsapp"></i></a>
@@ -175,20 +197,90 @@
         </section>
     </main>
 
-    <footer class="site-footer" style="margin-top: 80px;">
+    <!-- Footer كامل -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-col footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+                        <div class="logo-text">
+                            <span class="logo-main">MEDICAL</span>
+                            <span class="logo-sub">ZONE</span>
+                        </div>
+                    </div>
+                    <p>مؤسسة ميديكال زون للأجهزة الطبية — وجهتك الأولى لأحدث الأجهزة والمستلزمات الطبية عالية الجودة في مصر.</p>
+                    <div class="social-links">
+                        <a href="https://web.facebook.com/medical.zone.sohage" target="_blank" rel="noopener" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="إنستجرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">الشروط والأحكام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="https://web.facebook.com/medical.zone.sohage/photos" target="_blank" rel="noopener">صور المنتجات</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">تواصل معنا</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>سوهاج:</strong> 43 ش الجامعة أمام مسجد الشرطة</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>القاهرة: 01223962139 - 01223962138</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>سوهاج: 01126562854 - 01126562812</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@medicalzone.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="footer-bottom">
             <div class="container footer-bottom-inner">
                 <p>&copy; 2026 مؤسسة ميديكال زون للأجهزة الطبية. جميع الحقوق محفوظة.</p>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-paypal"></i>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Sticky header
         const header = document.getElementById('site-header');
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 60);
         });
+
+        // Mobile Drawer
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const drawer = document.getElementById('mobileDrawer');
+        const overlay = document.getElementById('drawerOverlay');
+        const closeBtn = document.getElementById('drawerClose');
+        function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+        function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
+        if (menuBtn) menuBtn.addEventListener('click', openDrawer);
+        if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+        if (overlay) overlay.addEventListener('click', closeDrawer);
     </script>
 </body>
 </html>
