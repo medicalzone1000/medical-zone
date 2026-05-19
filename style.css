@@ -1679,6 +1679,12 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     }
     .quickview-img-wrap img {
         height: 220px;
+       
     }
 }
 
+
+img[src=""], img:not([src]) {
+    background-color: #f0f4f8;
+    min-height: 100px;
+}
