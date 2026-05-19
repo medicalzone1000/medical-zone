@@ -153,13 +153,7 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <button class="icon-btn"><i class="fas fa-search"></i></button>
-                <button class="icon-btn"><i class="far fa-heart"></i></button>
-                <button class="icon-btn cart-btn">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-badge" id="cartBadge">0</span>
-                </button>
-                <a href="#" class="btn-outline-sm">دخول</a>
+                <a href="admin.html" class="btn-outline-sm"><i class="fas fa-cog"></i> لوحة التحكم</a>
             </div>
         </div>
     </header>
@@ -189,16 +183,75 @@
         </div>
     </main>
 
+    <!-- Footer كامل -->
     <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-col footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+                        <div class="logo-text">
+                            <span class="logo-main">MEDICAL</span>
+                            <span class="logo-sub">ZONE</span>
+                        </div>
+                    </div>
+                    <p>مؤسسة ميديكال زون للأجهزة الطبية — وجهتك الأولى لأحدث الأجهزة والمستلزمات الطبية عالية الجودة في مصر.</p>
+                    <div class="social-links">
+                        <a href="https://web.facebook.com/medical.zone.sohage" target="_blank" rel="noopener" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="إنستجرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">الشروط والأحكام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="https://web.facebook.com/medical.zone.sohage/photos" target="_blank" rel="noopener">صور المنتجات</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">تواصل معنا</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>سوهاج:</strong> 43 ش الجامعة أمام مسجد الشرطة</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>القاهرة: 01223962139 - 01223962138</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>سوهاج: 01126562854 - 01126562812</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@medicalzone.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="footer-bottom">
             <div class="container footer-bottom-inner">
                 <p>&copy; 2026 مؤسسة ميديكال زون للأجهزة الطبية. جميع الحقوق محفوظة.</p>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-paypal"></i>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Sticky header + Mobile drawer (نفس الكود السابق)
         window.addEventListener('scroll', () => {
             document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 60);
         });
@@ -206,23 +259,16 @@
         const drawer = document.getElementById('mobileDrawer');
         const overlay = document.getElementById('drawerOverlay');
         const closeBtn = document.getElementById('drawerClose');
-        menuBtn.addEventListener('click', () => { drawer.classList.add('open'); overlay.classList.add('open'); });
-        closeBtn.addEventListener('click', () => { drawer.classList.remove('open'); overlay.classList.remove('open'); });
-        overlay.addEventListener('click', () => { drawer.classList.remove('open'); overlay.classList.remove('open'); });
+        menuBtn?.addEventListener('click', () => { drawer.classList.add('open'); overlay.classList.add('open'); });
+        closeBtn?.addEventListener('click', () => { drawer.classList.remove('open'); overlay.classList.remove('open'); });
+        overlay?.addEventListener('click', () => { drawer.classList.remove('open'); overlay.classList.remove('open'); });
 
-        // Get product ID from URL
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get('id');
-
-        // Cart badge update (from localStorage)
         let cartCount = parseInt(localStorage.getItem('cartCount') || '0');
         document.getElementById('cartBadge').textContent = cartCount;
 
-        // ============================================================
-        // 🔻 قم بتغيير رقم الواتساب هنا إلى رقمك الشخصي (بدون + أو صفر في البداية)
-        // مثال: 201234567890 (مصر) أو 966512345678 (السعودية)
-        // ============================================================
-        const WHATSAPP_NUMBER = '201212568310';  // 👈 استبدل هذا الرقم برقم هاتفك
+        const WHATSAPP_NUMBER = '201223962139'; // 🔻 استبدل برقم واتسابك
 
         async function loadProduct() {
             if (!productId) {
@@ -237,13 +283,8 @@
                 document.getElementById('productDetailLoading').style.display = 'none';
                 const container = document.getElementById('productDetailContent');
                 container.style.display = 'block';
-                // build HTML
                 const oldPriceHtml = product.oldPrice ? `<span class="old-price">${Number(product.oldPrice).toLocaleString('ar-EG')} ج.م</span>` : '';
-                const videoHtml = product.video ? `
-                    <div class="video-wrapper">
-                        <iframe src="${product.video.replace('watch?v=', 'embed/')}" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                ` : '';
+                const videoHtml = product.video ? `<div class="video-wrapper"><iframe src="${product.video.replace('watch?v=', 'embed/')}" frameborder="0" allowfullscreen></iframe></div>` : '';
                 const statusClass = product.status === 'جديد' ? 'badge-new' : (product.status === 'مستعمل' ? 'badge-used' : 'badge-rent');
                 const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`مرحباً، أرغب في شراء منتج: ${product.title}\nالسعر: ${product.price} ج.م\nرابط المنتج: ${window.location.href}`)}`;
                 container.innerHTML = `
