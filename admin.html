@@ -613,17 +613,17 @@
         </div>
         <div class="form-group">
           <label>الفئة *</label>
-         <select id="pCategory" required>
-    <option value="">اختر القسم</option>
-    <option value="العمليات والعناية المركزة">العمليات والعناية المركزة</option>
-    <option value="المناظير والآلات">المناظير والآلات</option>
-    <option value="الأشعة والسونار">الأشعة والسونار</option>
-    <option value="العلاج الطبيعي">العلاج الطبيعي</option>
-    <option value="أجهزة التنفس والأكسجين">أجهزة التنفس والأكسجين</option>
-    <option value="الأنف والأذن والسمعيات">الأنف والأذن والسمعيات</option>
-    <option value="رسم المخ والعضلات">رسم المخ والعضلات</option>
-    <option value="أجهزة تنفس للإيجار">أجهزة تنفس للإيجار</option>
-</select>
+          <select id="pCategory" required>
+            <option value="">اختر القسم</option>
+            <option value="العمليات والعناية المركزة">العمليات والعناية المركزة</option>
+            <option value="المناظير والآلات">المناظير والآلات</option>
+            <option value="الأشعة والسونار">الأشعة والسونار</option>
+            <option value="العلاج الطبيعي">العلاج الطبيعي</option>
+            <option value="أجهزة التنفس والأكسجين">أجهزة التنفس والأكسجين</option>
+            <option value="الأنف والأذن والسمعيات">الأنف والأذن والسمعيات</option>
+            <option value="رسم المخ والعضلات">رسم المخ والعضلات</option>
+            <option value="أجهزة تنفس للإيجار">أجهزة تنفس للإيجار</option>
+          </select>
         </div>
       </div>
       <div class="section-divider" style="font-size:12px;font-weight:700;color:#9aa5b4;margin:20px 0 12px;padding-bottom:8px;border-bottom:1px solid #e8ecf0;">
@@ -641,7 +641,7 @@
       </div>
       <div class="form-group">
         <label>أو أدخل رابط الصورة مباشرة</label>
-        <input type="text" id="pImage" placeholder="/medical-zone/images/uploads/photo.jpg أو https://...">
+        <input type="text" id="pImage" placeholder="https://example.com/image.jpg أو /images/uploads/photo.jpg">
       </div>
       <div class="form-group">
         <label><i class="fab fa-youtube" style="color:#ff0000"></i> رابط فيديو يوتيوب (اختياري)</label>
@@ -723,7 +723,7 @@
       </div>
       <div class="form-group">
         <label>أو أدخل رابط الصورة مباشرة</label>
-        <input type="text" id="rImage" placeholder="https://... أو رابط صورة المقال">
+        <input type="text" id="rImage" placeholder="https://example.com/image.jpg أو /images/uploads/photo.jpg">
       </div>
       <div class="form-group">
         <label><i class="fab fa-youtube" style="color:#ff0000"></i> رابط فيديو يوتيوب (اختياري)</label>
@@ -784,7 +784,7 @@
         body: JSON.stringify({ message: 'رفع صورة', content: base64 })
       });
       if (resp.ok) {
-      const imagePath = '/images/uploads/' + filename;
+        const imagePath = '/images/uploads/' + filename;
         document.getElementById(prefix + 'Image').value = imagePath;
         preview.src = imagePath;
         preview.style.display = 'block';
@@ -909,7 +909,7 @@
             </tr>
           `).join('')}
         </tbody>
-      </table>`;
+      改表`;
   }
 
   function openProductModal(idx = -1) {
@@ -917,7 +917,7 @@
     if (idx === -1) {
       document.getElementById('productModalTitle').textContent = 'إضافة منتج جديد';
       document.getElementById('pTitle').value = '';
-      document.getElementById('pCategory').value = 'أجهزة تنفس';
+      document.getElementById('pCategory').value = 'العمليات والعناية المركزة';
       document.getElementById('pImage').value = '';
       if(document.getElementById('pVideo')) document.getElementById('pVideo').value = '';
       document.getElementById('pImagePreview') && (document.getElementById('pImagePreview').style.display='none');
@@ -1010,7 +1010,7 @@
       return;
     }
     container.innerHTML = `
-      <table>
+      </table>
         <thead>
           <tr>
             <th>العنوان</th>
@@ -1095,7 +1095,6 @@
   async function saveReports() {
     showToast('جاري الحفظ...', '');
 
-    // Create file if doesn't exist
     if (!window._reportsSha) {
       const content = JSON.stringify({ reports: reportsData }, null, 2);
       const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${REPORTS_PATH}`, {
@@ -1140,7 +1139,6 @@
     setTimeout(() => t.classList.remove('show'), 3000);
   }
 
-  // Enter key on login
   document.addEventListener('keydown', e => {
     if (e.key === 'Enter' && document.getElementById('loginScreen').style.display !== 'none') login();
   });
