@@ -784,7 +784,7 @@
         body: JSON.stringify({ message: 'رفع صورة', content: base64 })
       });
       if (resp.ok) {
-        const imagePath = '/medical-zone/images/uploads/' + filename;
+      const imagePath = '/images/uploads/' + filename;
         document.getElementById(prefix + 'Image').value = imagePath;
         preview.src = imagePath;
         preview.style.display = 'block';
