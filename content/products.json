@@ -55,6 +55,25 @@
       "description": "غير موجود",
       "video": "",
       "date": "2026-05-20"
+    },
+    {
+      "id": "p1779319814453",
+      "title": "جهاز التلاعب بالعقول",
+      "category": "العمليات والعناية المركزة",
+      "image": "/images/uploads/1779319760746_506693297_2946962745465093_6239718214710317304_n.jpg",
+      "images": [
+        "/images/uploads/1779319760746_506693297_2946962745465093_6239718214710317304_n.jpg",
+        "/images/uploads/1779319763513_Philips_Respironics_Bipap_AVAPS_System_One.png",
+        "/images/uploads/1779319765168_resmed_150.jpg"
+      ],
+      "price": 11000,
+      "oldPrice": 0,
+      "status": "جديد",
+      "badge": "",
+      "discount": 0,
+      "description": "serag",
+      "video": "",
+      "date": "2026-05-20"
     }
   ]
 }
