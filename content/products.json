@@ -1,18 +1,3 @@
 {
-  "products": [
-    {
-      "id": "p1779212890302",
-      "title": "جهاز حلبسة",
-      "category": "الأشعة والسونار",
-      "image": "/images/uploads/1779212865826_resmed_150.jpg",
-      "price": 666,
-      "oldPrice": 0,
-      "status": "مستعمل",
-      "badge": "",
-      "discount": 0,
-      "description": "مش عارف",
-      "video": "",
-      "date": "2026-05-19"
-    }
-  ]
+  "products": []
 }
