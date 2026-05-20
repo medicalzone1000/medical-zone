@@ -16,7 +16,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(rgba(10,22,40,0.6), rgba(10,22,40,0.7)), url('images/medical-hero.jpg');
+            background: linear-gradient(rgba(10,22,40,0.65), rgba(10,22,40,0.8)), url('images/medical-hero.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -28,12 +28,13 @@
             height: 100%;
             object-fit: cover;
             z-index: 0;
-            display: none; /* مخفي افتراضياً، يظهر فقط إذا نجح التحميل */
+            display: none;
         }
         .hero-container {
             position: relative;
             z-index: 2;
             width: 100%;
+            padding: 60px 0;
         }
         .hero-content {
             max-width: 650px;
@@ -42,7 +43,10 @@
         @media (max-width: 768px) {
             .hero {
                 min-height: auto;
-                padding: 80px 0;
+                padding: 60px 0;
+            }
+            .hero-container {
+                padding: 20px 0;
             }
             .hero-content {
                 text-align: center;
@@ -52,6 +56,7 @@
             .hero-title { font-size: 28px; }
             .hero-title em { font-size: 22px; }
             .hero-stats { justify-content: center; flex-wrap: wrap; gap: 16px; }
+            .hero-desc { font-size: 14px; }
         }
     </style>
 </head>
@@ -92,6 +97,7 @@
         </div>
     </section>
 
+    <!-- باقي الأقسام كما هي (ثابتة) -->
     <section class="trust-bar"><div class="container trust-bar-inner"><div class="trust-item"><div class="trust-icon"><i class="fas fa-shipping-fast"></i></div><div><h4>شحن سريع</h4><p>لجميع المحافظات</p></div></div><div class="trust-sep"></div><div class="trust-item"><div class="trust-icon"><i class="fas fa-award"></i></div><div><h4>ضمان حقيقي</h4><p>سنة ضد عيوب الصناعة</p></div></div><div class="trust-sep"></div><div class="trust-item"><div class="trust-icon"><i class="fas fa-user-md"></i></div><div><h4>دعم 24/7</h4><p>فريق طبي متخصص</p></div></div><div class="trust-sep"></div><div class="trust-item"><div class="trust-icon"><i class="fas fa-lock"></i></div><div><h4>دفع آمن</h4><p>تعدد وسائل الدفع</p></div></div></div></section>
 
     <section class="promo-section"><div class="container promo-grid"><div class="promo-card promo-main"><img src="images/promo-main.jpg" alt="تجهيزات عيادات" style="background:#cbd5e1; min-height:420px;"><div class="promo-overlay"></div><div class="promo-content"><span class="promo-tag">عرض خاص</span><h3>تجهيزات عيادات متكاملة</h3><p>تقسيط مريح حتى 12 شهراً</p><a href="store.html" class="btn-white">اعرف أكثر</a></div></div><div class="promo-stack"><div class="promo-card promo-small"><img src="images/promo-small-1.jpg" alt="أجهزة ضغط دم" style="background:#cbd5e1; min-height:196px;"><div class="promo-overlay"></div><div class="promo-content"><span class="promo-tag">خصم 20%</span><h3>أجهزة ضغط الدم</h3><a href="store.html" class="btn-white-sm">تسوق</a></div></div><div class="promo-card promo-small"><img src="images/promo-small-2.jpg" alt="أجهزة تنفس منزلية" style="background:#cbd5e1; min-height:196px;"><div class="promo-overlay"></div><div class="promo-content"><span class="promo-tag">الأكثر طلباً</span><h3>أجهزة التنفس المنزلي</h3><a href="store.html" class="btn-white-sm">تسوق</a></div></div></div></div></section>
@@ -151,11 +157,22 @@
     loadLatestProducts();
     loadLatestReports();
 
-    // محاولة تشغيل الفيديو إذا كان موجوداً
+    // محاولة تشغيل الفيديو مع التحقق من وجوده
     const video = document.getElementById('heroVideo');
     if (video) {
-        video.style.display = 'block';
-        video.play().catch(e => { video.style.display = 'none'; });
+        const source = video.querySelector('source');
+        if (source && source.src) {
+            fetch(source.src, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        video.style.display = 'block';
+                        video.play().catch(e => console.log('تشغيل الفيديو تلقائياً غير مسموح'));
+                    } else {
+                        console.log('الفيديو غير موجود');
+                    }
+                })
+                .catch(() => console.log('خطأ في التحقق من الفيديو'));
+        }
     }
 </script>
 </body>
