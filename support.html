@@ -3,39 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الدعم الفني — ميديكال زون</title>
-    <meta name="description" content="الدعم الفني لميديكال زون — صيانة، استفسارات، واتساب 24/7.">
+    <title>الدعم الفني — ميديكال زون للأجهزة الطبية</title>
+    <meta name="description" content="دعم فني متخصص 24/7 لأجهزتك الطبية — ميديكال زون. تواصل معنا عبر واتساب أو الهاتف.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://medzon.store/support.html">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .support-hero { background: var(--navy); color: #fff; padding: 60px 0 50px; text-align: center; }
+        .support-hero h1 { font-size: 32px; font-weight: 900; margin-bottom: 10px; }
+        .support-hero p { opacity: .8; font-size: 16px; max-width: 560px; margin: 0 auto; }
+        .support-body { padding: 60px 0 80px; background: var(--off-white); }
+        .support-channels { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 50px; }
+        .support-card { background: #fff; border-radius: 16px; padding: 32px 28px; text-align: center; border: 1px solid var(--gray-100); transition: box-shadow .2s; }
+        .support-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.09); }
+        .support-card-icon { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 24px; }
+        .support-card-icon.green { background: #dcfce7; color: #16a34a; }
+        .support-card-icon.blue  { background: #dbeafe; color: #2563eb; }
+        .support-card-icon.teal  { background: #ccfbf1; color: #0d9488; }
+        .support-card h3 { font-size: 17px; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+        .support-card p { font-size: 13.5px; color: var(--gray-500); line-height: 1.7; margin-bottom: 20px; }
+        .support-card a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 50px; font-weight: 700; font-size: 14px; color: #fff; }
+        .support-card a.wa { background: #25D366; }
+        .support-card a.wa:hover { background: #128C7E; }
+        .support-card a.ph { background: var(--teal); }
+        .support-card a.em { background: var(--navy); }
+        .support-steps { background: #fff; border-radius: 16px; padding: 40px; border: 1px solid var(--gray-100); }
+        .support-steps h2 { font-size: 20px; font-weight: 800; color: var(--navy); margin-bottom: 28px; }
+        .step-row { display: flex; gap: 18px; margin-bottom: 24px; align-items: flex-start; }
+        .step-num { width: 38px; height: 38px; border-radius: 50%; background: var(--teal); color: #fff; font-weight: 900; font-size: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .step-body h4 { font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+        .step-body p { font-size: 13.5px; color: var(--gray-500); line-height: 1.7; margin: 0; }
+        .support-hours { background: var(--teal); color: #fff; border-radius: 12px; padding: 20px 28px; margin-top: 30px; display: flex; align-items: center; gap: 16px; }
+        .support-hours i { font-size: 28px; opacity: .85; }
+        .support-hours strong { font-size: 16px; font-weight: 800; display: block; margin-bottom: 3px; }
+        .support-hours span { font-size: 13px; opacity: .85; }
+    </style>
 </head>
 <body>
-    <div class="announcement-bar"><p>📞 دعم فني 24/7</p></div>
+    <div class="announcement-bar"><p>🚚 شحن مجاني للطلبات فوق 2000 جنيه &nbsp;|&nbsp; ✅ ضمان سنة على جميع الأجهزة &nbsp;|&nbsp; 📞 دعم فني 24/7</p></div>
     <header class="site-header" id="site-header">
         <div class="header-inner container">
             <a href="index.html" class="logo-link"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><div class="logo-text"><span class="logo-main">MEDICAL</span><span class="logo-sub">ZONE</span></div></a>
             <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
-            <nav class="main-nav"><ul><li><a href="maintenance.html">صيانة</a></li><li><a href="contact.html">تواصل</a></li></ul></nav>
-            <div class="header-actions"></div>
+            <nav class="main-nav"><ul><li><a href="index.html">الرئيسية</a></li><li><a href="store.html">المتجر</a></li><li><a href="maintenance.html">صيانة</a></li><li><a href="reports.html">تقارير</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></nav>
         </div>
     </header>
     <div class="drawer-overlay" id="drawerOverlay"></div>
     <div class="mobile-drawer" id="mobileDrawer">
         <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
-        <nav class="drawer-nav"><ul><li><a href="index.html">الرئيسية</a></li></ul></nav>
+        <nav class="drawer-nav"><ul><li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li><li><a href="store.html"><i class="fas fa-store"></i> المتجر</a></li><li><a href="maintenance.html"><i class="fas fa-tools"></i> صيانة</a></li><li><a href="reports.html"><i class="fas fa-file-medical"></i> تقارير</a></li><li><a href="contact.html"><i class="fas fa-envelope"></i> تواصل معنا</a></li></ul></nav>
     </div>
-    <main class="legal-page">
-        <div class="container legal-content">
-            <h1>الدعم الفني</h1>
-            <p>فريقنا جاهز لمساعدتك في اختيار الجهاز المناسب، متابعة الضمان، وطلبات الصيانة.</p>
-            <div class="support-cards">
-                <div class="info-card"><i class="fab fa-whatsapp"></i><h3>واتساب</h3><p>01223962139 (القاهرة)<br>01126562854 (سوهاج)</p></div>
-                <div class="info-card"><i class="fas fa-tools"></i><h3>طلب صيانة</h3><p><a href="maintenance.html">نموذج الصيانة</a></p></div>
-                <div class="info-card"><i class="fas fa-store"></i><h3>استفسار منتج</h3><p><a href="store.html">تصفح المتجر</a></p></div>
+
+    <div class="support-hero">
+        <div class="container">
+            <h1><i class="fas fa-headset" style="color:#4ade80;margin-left:12px;"></i> الدعم الفني</h1>
+            <p>فريقنا المتخصص جاهز لمساعدتك في تشغيل أجهزتك وحل أي مشكلة تقنية — طوال اليوم</p>
+        </div>
+    </div>
+
+    <main class="support-body">
+        <div class="container" style="max-width:900px;">
+
+            <div class="support-channels">
+                <div class="support-card">
+                    <div class="support-card-icon green"><i class="fab fa-whatsapp"></i></div>
+                    <h3>واتساب — الأسرع</h3>
+                    <p>أرسل وصفاً للمشكلة مع صورة أو فيديو إذا أمكن — نرد خلال دقائق</p>
+                    <a href="https://wa.me/201223962139?text=مرحباً، أحتاج دعماً فنياً بخصوص جهاز طبي" target="_blank" rel="noopener" class="wa"><i class="fab fa-whatsapp"></i> تواصل الآن</a>
+                </div>
+                <div class="support-card">
+                    <div class="support-card-icon blue"><i class="fas fa-phone"></i></div>
+                    <h3>الهاتف المباشر</h3>
+                    <p>القاهرة: 01223962139 / 01223962138<br>سوهاج: 01126562854 / 01126562812</p>
+                    <a href="tel:+201223962139" class="ph"><i class="fas fa-phone"></i> اتصل بنا</a>
+                </div>
+                <div class="support-card">
+                    <div class="support-card-icon teal"><i class="fas fa-envelope"></i></div>
+                    <h3>البريد الإلكتروني</h3>
+                    <p>للطلبات التفصيلية أو إرفاق مستندات ضمان — نرد خلال 24 ساعة</p>
+                    <a href="mailto:info@medicalzone.com?subject=طلب دعم فني" class="em"><i class="fas fa-envelope"></i> راسلنا</a>
+                </div>
+            </div>
+
+            <div class="support-steps">
+                <h2><i class="fas fa-list-check" style="color:var(--teal);margin-left:10px;"></i> كيف نحل مشكلتك خطوة بخطوة</h2>
+                <div class="step-row">
+                    <div class="step-num">1</div>
+                    <div class="step-body"><h4>أخبرنا بالمشكلة</h4><p>تواصل معنا عبر واتساب أو الهاتف، وأخبرنا باسم الجهاز ورقم الموديل إن أمكن، ووصف المشكلة.</p></div>
+                </div>
+                <div class="step-row">
+                    <div class="step-num">2</div>
+                    <div class="step-body"><h4>تشخيص عن بُعد</h4><p>يحاول فريقنا الفني حل المشكلة عن بُعد عبر الهاتف أو واتساب — كثير من المشاكل تُحل بخطوات بسيطة.</p></div>
+                </div>
+                <div class="step-row">
+                    <div class="step-num">3</div>
+                    <div class="step-body"><h4>زيارة ميدانية أو إرسال الجهاز</h4><p>إذا لم تُحل المشكلة عن بُعد، نرتب زيارة فنية أو استقبال الجهاز في مركز الصيانة.</p></div>
+                </div>
+                <div class="step-row" style="margin-bottom:0;">
+                    <div class="step-num">4</div>
+                    <div class="step-body"><h4>الإصلاح وإعادة الجهاز</h4><p>يتم الإصلاح واختبار الجهاز، ثم إعادته إليك مع تقرير بما تم. الأجهزة تحت الضمان: مجاناً.</p></div>
+                </div>
+
+                <div class="support-hours">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <strong>دعم فني متواصل 24 ساعة / 7 أيام</strong>
+                        <span>للحالات الطارئة والمستشفيات — نحن هنا دائماً</span>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
-    <footer class="site-footer"><div class="footer-bottom"><div class="container"><p>&copy; 2026 ميديكال زون</p></div></div></footer>
+
+    <footer class="site-footer">
+        <div class="footer-top"><div class="container footer-grid">
+            <div class="footer-col footer-brand"><div class="footer-logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><div class="logo-text"><span class="logo-main">MEDICAL</span><span class="logo-sub">ZONE</span></div></div><p>مؤسسة ميديكال زون للأجهزة الطبية — وجهتك الأولى لأحدث الأجهزة والمستلزمات الطبية عالية الجودة في مصر.</p><div class="social-links"><a href="https://web.facebook.com/medical.zone.sohage" target="_blank" rel="noopener" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/medicalzone.eg/" target="_blank" rel="noopener" aria-label="إنستجرام"><i class="fab fa-instagram"></i></a><a href="https://wa.me/201223962139" target="_blank" rel="noopener" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a></div></div>
+            <div class="footer-col"><h4 class="footer-col-title">روابط سريعة</h4><ul class="footer-links"><li><a href="terms.html">الشروط والأحكام</a></li><li><a href="privacy.html">سياسة الخصوصية</a></li><li><a href="support.html">الدعم الفني</a></li><li><a href="faq.html">الأسئلة الشائعة</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-col-title">تواصل معنا</h4><ul class="footer-contact"><li><i class="fas fa-map-marker-alt"></i><span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span></li><li><i class="fas fa-phone"></i><span>01223962139 - 01223962138</span></li><li><i class="fas fa-envelope"></i><span>info@medicalzone.com</span></li></ul></div>
+        </div></div>
+        <div class="footer-bottom"><div class="container footer-bottom-inner"><p>&copy; 2026 مؤسسة ميديكال زون للأجهزة الطبية. جميع الحقوق محفوظة.</p><div class="cod-badge"><i class="fas fa-truck"></i> الدفع عند الاستلام</div></div></div>
+    </footer>
+
+    <a href="https://wa.me/201223962139?text=مرحباً ميديكال زون، أرغب في الاستفسار" target="_blank" rel="noopener" class="mz-whatsapp-float" aria-label="تواصل عبر واتساب"><i class="fab fa-whatsapp"></i><span>تواصل عبر واتساب</span></a>
     <script src="js/config.js"></script>
     <script src="js/site.js"></script>
 </body>

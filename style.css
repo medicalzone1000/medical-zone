@@ -2050,3 +2050,18 @@ img[src=""], img:not([src]) {
     border: 1px solid var(--gray-100);
 }
 .support-cards .info-card i { font-size: 28px; color: var(--teal); margin-bottom: 12px; }
+
+/* ---- COD Badge (Footerالدفع عند الاستلام) ---- */
+.cod-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.25);
+}
+.cod-badge i { color: #4ade80; font-size: 14px; }

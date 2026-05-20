@@ -3,42 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سياسة الخصوصية — ميديكال زون</title>
-    <meta name="description" content="سياسة خصوصية موقع ميديكال زون.">
+    <title>سياسة الخصوصية — ميديكال زون للأجهزة الطبية</title>
+    <meta name="description" content="سياسة الخصوصية وحماية البيانات الشخصية لموقع ميديكال زون للأجهزة الطبية.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://medzon.store/privacy.html">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .legal-hero { background: var(--navy); color: #fff; padding: 50px 0 40px; text-align: center; }
+        .legal-hero h1 { font-size: 30px; font-weight: 900; margin-bottom: 8px; }
+        .legal-hero p { opacity: .75; font-size: 14px; }
+        .legal-body { padding: 60px 0 80px; background: var(--off-white); }
+        .legal-doc { background: #fff; border-radius: 16px; padding: 48px 52px; max-width: 820px; margin: 0 auto; box-shadow: 0 2px 20px rgba(0,0,0,.06); }
+        .legal-doc h2 { font-size: 18px; font-weight: 800; color: var(--teal); margin: 36px 0 12px; display: flex; align-items: center; gap: 9px; }
+        .legal-doc h2:first-child { margin-top: 0; }
+        .legal-doc p, .legal-doc li { font-size: 14.5px; color: var(--gray-600); line-height: 1.9; }
+        .legal-doc ul { padding-right: 20px; margin: 10px 0; }
+        .legal-doc li { margin-bottom: 6px; }
+        .legal-doc a { color: var(--teal); }
+        .legal-date { font-size: 13px; color: var(--gray-400); margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--gray-100); }
+        @media(max-width:600px){ .legal-doc { padding: 28px 20px; } }
+    </style>
 </head>
 <body>
-    <div class="announcement-bar"><p>🔒 سياسة الخصوصية</p></div>
+    <div class="announcement-bar"><p>🚚 شحن مجاني للطلبات فوق 2000 جنيه &nbsp;|&nbsp; ✅ ضمان سنة على جميع الأجهزة &nbsp;|&nbsp; 📞 دعم فني 24/7</p></div>
     <header class="site-header" id="site-header">
         <div class="header-inner container">
             <a href="index.html" class="logo-link"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><div class="logo-text"><span class="logo-main">MEDICAL</span><span class="logo-sub">ZONE</span></div></a>
             <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
-            <nav class="main-nav"><ul><li><a href="index.html">الرئيسية</a></li><li><a href="store.html">المتجر</a></li></ul></nav>
-            <div class="header-actions"></div>
+            <nav class="main-nav"><ul><li><a href="index.html">الرئيسية</a></li><li><a href="store.html">المتجر</a></li><li><a href="maintenance.html">صيانة</a></li><li><a href="reports.html">تقارير</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></nav>
         </div>
     </header>
     <div class="drawer-overlay" id="drawerOverlay"></div>
     <div class="mobile-drawer" id="mobileDrawer">
         <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
-        <nav class="drawer-nav"><ul><li><a href="index.html">الرئيسية</a></li></ul></nav>
+        <nav class="drawer-nav"><ul><li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li><li><a href="store.html"><i class="fas fa-store"></i> المتجر</a></li><li><a href="maintenance.html"><i class="fas fa-tools"></i> صيانة</a></li><li><a href="reports.html"><i class="fas fa-file-medical"></i> تقارير</a></li><li><a href="contact.html"><i class="fas fa-envelope"></i> تواصل معنا</a></li></ul></nav>
     </div>
-    <main class="legal-page">
-        <div class="container legal-content">
-            <h1>سياسة الخصوصية</h1>
-            <p>نحترم خصوصيتك. البيانات التي تُرسل عبر نماذج الموقع (الاسم، الهاتف، الرسالة) تُستخدم فقط للرد على استفساراتك ولا تُباع لأطراف ثالثة.</p>
-            <h2>البيانات التي نجمعها</h2>
-            <ul>
-                <li>معلومات التواصل عند ملء النماذج أو المراسلة عبر واتساب</li>
-                <li>بيانات تقنية أساسية (نوع المتصفح) عبر أدوات التحليل إن فُعِّلت لاحقاً</li>
-            </ul>
-            <h2>حماية البيانات</h2>
-            <p>نوصي بعدم إرسال بيانات حساسة طبية عبر النماذج العامة. للاستفسارات الطبية التفصيلية تواصل هاتفياً مع فريقنا.</p>
-            <p><a href="contact.html" class="btn-primary">تواصل معنا</a></p>
+
+    <div class="legal-hero">
+        <div class="container">
+            <h1><i class="fas fa-lock" style="color:var(--teal-light,#4ade80);margin-left:10px;"></i> سياسة الخصوصية</h1>
+            <p>نلتزم بحماية بياناتك الشخصية والحفاظ على خصوصيتك</p>
+        </div>
+    </div>
+
+    <main class="legal-body">
+        <div class="container">
+            <div class="legal-doc">
+                <p class="legal-date"><i class="far fa-calendar-alt"></i> آخر تحديث: يناير 2026</p>
+
+                <h2><i class="fas fa-circle-info"></i> 1. مقدمة</h2>
+                <p>تُوضِّح سياسة الخصوصية هذه كيفية جمع واستخدام وحماية المعلومات الشخصية التي تُقدِّمها عند تصفح موقع <strong>medzon.store</strong> أو التواصل مع فريقنا. نحن نأخذ خصوصيتك بجدية تامة.</p>
+
+                <h2><i class="fas fa-database"></i> 2. البيانات التي نجمعها</h2>
+                <p>قد نجمع البيانات التالية عند تواصلك معنا:</p>
+                <ul>
+                    <li>الاسم الكامل وبيانات التواصل (رقم الهاتف، البريد الإلكتروني)</li>
+                    <li>عنوان التوصيل</li>
+                    <li>تفاصيل الطلبات ومحادثات واتساب المتعلقة بالمشتريات</li>
+                    <li>بيانات تقنية غير شخصية: نوع المتصفح، عنوان IP (من خلال Google Analytics إن وُجد)</li>
+                </ul>
+
+                <h2><i class="fas fa-bullseye"></i> 3. كيف نستخدم بياناتك</h2>
+                <ul>
+                    <li>معالجة طلباتك وترتيب الشحن أو الاستلام</li>
+                    <li>التواصل معك بشأن طلبك أو أي استفسار</li>
+                    <li>إرسال تحديثات الضمان أو الصيانة إن طلبتَ ذلك</li>
+                    <li>تحسين خدماتنا ومحتوى الموقع</li>
+                </ul>
+                <p><strong>لا نبيع بياناتك أو نشاركها مع أطراف ثالثة لأغراض تسويقية.</strong></p>
+
+                <h2><i class="fas fa-share-nodes"></i> 4. مشاركة البيانات</h2>
+                <p>قد نشارك بياناتك فقط مع:</p>
+                <ul>
+                    <li>شركات الشحن والتوصيل لإتمام طلبك (الاسم والعنوان فقط)</li>
+                    <li>الجهات القانونية إذا استلزم القانون ذلك</li>
+                </ul>
+
+                <h2><i class="fas fa-shield-halved"></i> 5. حماية البيانات</h2>
+                <p>نتخذ إجراءات أمنية مناسبة لحماية بياناتك من الوصول غير المصرح به أو الاستخدام السيء. لا يتم تخزين أي بيانات دفع إلكتروني لأن موقعنا لا يدعم الدفع الإلكتروني.</p>
+
+                <h2><i class="fas fa-cookie-bite"></i> 6. ملفات تعريف الارتباط (Cookies)</h2>
+                <p>الموقع قد يستخدم ملفات cookies بسيطة لتحسين تجربة التصفح. يمكنك ضبط متصفحك لرفضها دون أن يؤثر ذلك على قدرتك على تصفح الموقع.</p>
+
+                <h2><i class="fas fa-user-check"></i> 7. حقوقك</h2>
+                <p>يحق لك في أي وقت:</p>
+                <ul>
+                    <li>الاطلاع على البيانات التي نحتفظ بها عنك</li>
+                    <li>طلب تصحيح أي بيانات خاطئة</li>
+                    <li>طلب حذف بياناتك من سجلاتنا</li>
+                </ul>
+                <p>للتواصل بشأن بياناتك: <a href="mailto:info@medicalzone.com">info@medicalzone.com</a></p>
+
+                <h2><i class="fas fa-rotate"></i> 8. تحديثات السياسة</h2>
+                <p>قد نحدِّث هذه السياسة من وقت لآخر. سيتم الإشارة إلى تاريخ آخر تحديث في أعلى الصفحة. استمرارك في استخدام الموقع يعني قبولك للسياسة المحدَّثة.</p>
+            </div>
         </div>
     </main>
-    <footer class="site-footer"><div class="footer-bottom"><div class="container"><p>&copy; 2026 ميديكال زون</p></div></div></footer>
+
+    <footer class="site-footer">
+        <div class="footer-top"><div class="container footer-grid">
+            <div class="footer-col footer-brand"><div class="footer-logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><div class="logo-text"><span class="logo-main">MEDICAL</span><span class="logo-sub">ZONE</span></div></div><p>مؤسسة ميديكال زون للأجهزة الطبية — وجهتك الأولى لأحدث الأجهزة والمستلزمات الطبية عالية الجودة في مصر.</p><div class="social-links"><a href="https://web.facebook.com/medical.zone.sohage" target="_blank" rel="noopener" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/medicalzone.eg/" target="_blank" rel="noopener" aria-label="إنستجرام"><i class="fab fa-instagram"></i></a><a href="https://wa.me/201223962139" target="_blank" rel="noopener" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a></div></div>
+            <div class="footer-col"><h4 class="footer-col-title">روابط سريعة</h4><ul class="footer-links"><li><a href="terms.html">الشروط والأحكام</a></li><li><a href="privacy.html">سياسة الخصوصية</a></li><li><a href="support.html">الدعم الفني</a></li><li><a href="faq.html">الأسئلة الشائعة</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-col-title">تواصل معنا</h4><ul class="footer-contact"><li><i class="fas fa-map-marker-alt"></i><span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span></li><li><i class="fas fa-phone"></i><span>01223962139 - 01223962138</span></li><li><i class="fas fa-envelope"></i><span>info@medicalzone.com</span></li></ul></div>
+        </div></div>
+        <div class="footer-bottom"><div class="container footer-bottom-inner"><p>&copy; 2026 مؤسسة ميديكال زون للأجهزة الطبية. جميع الحقوق محفوظة.</p><div class="cod-badge"><i class="fas fa-truck"></i> الدفع عند الاستلام</div></div></div>
+    </footer>
+
+    <a href="https://wa.me/201223962139?text=مرحباً ميديكال زون، أرغب في الاستفسار" target="_blank" rel="noopener" class="mz-whatsapp-float" aria-label="تواصل عبر واتساب"><i class="fab fa-whatsapp"></i><span>تواصل عبر واتساب</span></a>
     <script src="js/config.js"></script>
     <script src="js/site.js"></script>
 </body>

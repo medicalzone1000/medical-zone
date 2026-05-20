@@ -3,40 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الأسئلة الشائعة — ميديكال زون</title>
-    <meta name="description" content="أسئلة شائعة عن الأجهزة الطبية، الشحن، الضمان والصيانة — ميديكال زون.">
+    <title>الأسئلة الشائعة — ميديكال زون للأجهزة الطبية</title>
+    <meta name="description" content="إجابات على أكثر الأسئلة شيوعاً حول الطلب، الشحن، الضمان، الصيانة، والدفع عند الاستلام — ميديكال زون.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://medzon.store/faq.html">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        .faq-page { padding: 60px 0 80px; background: var(--off-white); }
+        .faq-hero { background: var(--navy); color: #fff; padding: 50px 0 40px; text-align: center; }
+        .faq-hero h1 { font-size: 32px; font-weight: 900; margin-bottom: 10px; }
+        .faq-hero p { font-size: 16px; opacity: .8; }
+        .faq-section-title { font-size: 18px; font-weight: 800; color: var(--teal); margin: 40px 0 16px; display: flex; align-items: center; gap: 10px; }
+        .faq-section-title i { font-size: 20px; }
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-item { background: #fff; border-radius: 12px; border: 1px solid var(--gray-100); overflow: hidden; }
+        .faq-item summary { padding: 18px 22px; font-size: 15px; font-weight: 700; color: var(--navy); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .faq-item summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 12px; color: var(--teal); transition: transform 0.2s; flex-shrink: 0; }
+        .faq-item[open] summary::after { transform: rotate(180deg); }
+        .faq-item[open] summary { color: var(--teal); border-bottom: 1px solid var(--gray-100); }
+        .faq-item p { padding: 18px 22px; color: var(--gray-600); line-height: 1.85; font-size: 14.5px; margin: 0; }
+        .faq-item p a { color: var(--teal); font-weight: 600; text-decoration: none; }
+        .faq-cta { background: var(--teal); color: #fff; border-radius: 16px; padding: 32px 36px; text-align: center; margin-top: 48px; }
+        .faq-cta h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; }
+        .faq-cta p { opacity: .85; margin-bottom: 20px; font-size: 14px; }
+        .faq-cta a { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: #fff; padding: 12px 28px; border-radius: 50px; font-weight: 700; font-size: 15px; }
+        .faq-cta a:hover { background: #128C7E; }
+    </style>
 </head>
 <body>
-    <div class="announcement-bar"><p>❓ الأسئلة الشائعة</p></div>
+    <div class="announcement-bar"><p>🚚 شحن مجاني للطلبات فوق 2000 جنيه &nbsp;|&nbsp; ✅ ضمان سنة على جميع الأجهزة &nbsp;|&nbsp; 📞 دعم فني 24/7</p></div>
     <header class="site-header" id="site-header">
         <div class="header-inner container">
             <a href="index.html" class="logo-link"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><div class="logo-text"><span class="logo-main">MEDICAL</span><span class="logo-sub">ZONE</span></div></a>
             <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
-            <nav class="main-nav"><ul><li><a href="index.html">الرئيسية</a></li><li><a href="store.html">المتجر</a></li><li><a href="contact.html">تواصل</a></li></ul></nav>
-            <div class="header-actions"></div>
+            <nav class="main-nav"><ul><li><a href="index.html">الرئيسية</a></li><li><a href="store.html">المتجر</a></li><li><a href="maintenance.html">صيانة</a></li><li><a href="reports.html">تقارير</a></li><li><a href="contact.html">تواصل معنا</a></li></ul></nav>
         </div>
     </header>
     <div class="drawer-overlay" id="drawerOverlay"></div>
     <div class="mobile-drawer" id="mobileDrawer">
         <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
-        <nav class="drawer-nav"><ul><li><a href="index.html">الرئيسية</a></li></ul></nav>
+        <nav class="drawer-nav"><ul><li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li><li><a href="store.html"><i class="fas fa-store"></i> المتجر</a></li><li><a href="maintenance.html"><i class="fas fa-tools"></i> صيانة</a></li><li><a href="reports.html"><i class="fas fa-file-medical"></i> تقارير</a></li><li><a href="contact.html"><i class="fas fa-envelope"></i> تواصل معنا</a></li></ul></nav>
     </div>
-    <main class="legal-page">
-        <div class="container legal-content">
-            <h1>الأسئلة الشائعة</h1>
+
+    <div class="faq-hero">
+        <div class="container">
+            <h1><i class="fas fa-circle-question" style="color:var(--teal-light, #4ade80);margin-left:10px;"></i> الأسئلة الشائعة</h1>
+            <p>إجابات واضحة على أكثر الأسئلة شيوعاً — وإن لم تجد إجابتك تواصل معنا مباشرة</p>
+        </div>
+    </div>
+
+    <main class="faq-page">
+        <div class="container" style="max-width:780px;">
+
+            <div class="faq-section-title"><i class="fas fa-shopping-bag"></i> الطلب والشراء</div>
             <div class="faq-list">
-                <details class="faq-item" open><summary>كيف أطلب منتجاً؟</summary><p>اختر المنتج من المتجر واضغط «اطلب عبر واتساب» أو تواصل معنا مباشرة. لا يوجد دفع إلكتروني على الموقع — التأكيد عبر واتساب أو الهاتف.</p></details>
-                <details class="faq-item"><summary>هل يوجد شحن لجميع المحافظات؟</summary><p>نعم، شحن لمعظم محافظات مصر. شحن مجاني للطلبات فوق 2000 جنيه.</p></details>
-                <details class="faq-item"><summary>ما مدة الضمان؟</summary><p>ضمان سنة على معظم الأجهزة ضد عيوب الصناعة حسب نوع الجهاز والشركة المصنعة.</p></details>
-                <details class="faq-item"><summary>هل تقدمون صيانة؟</summary><p>نعم، عبر <a href="maintenance.html">مركز الصيانة</a> المعتمد. أرسل طلبك من الصفحة وسنتواصل عبر واتساب.</p></details>
-                <details class="faq-item"><summary>أين فروعكم؟</summary><p>القاهرة (الهرم — برج جراند هاوس)، سوهاج (شارع الجامعة)، وفرع أسيوط — للتفاصيل <a href="contact.html">تواصل معنا</a>.</p></details>
+                <details class="faq-item" open>
+                    <summary>كيف أطلب منتجاً؟</summary>
+                    <p>اختر المنتج الذي يناسبك من <a href="store.html">المتجر</a>، ثم اضغط على زر «تواصل عبر واتساب» في صفحة المنتج. سيصلنا طلبك مباشرة وسنتواصل معك لتأكيد التفاصيل والسعر وموعد الاستلام أو الشحن.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>هل يمكنني الطلب بالهاتف؟</summary>
+                    <p>بالتأكيد. يمكنك الاتصال مباشرة على أرقام <a href="contact.html">فروعنا</a>:<br>• القاهرة: 01223962139 — 01223962138<br>• سوهاج: 01126562854 — 01126562812</p>
+                </details>
+                <details class="faq-item">
+                    <summary>ما طرق الدفع المتاحة؟</summary>
+                    <p>نعتمد حالياً على <strong>الدفع عند الاستلام</strong> لجميع الطلبات، سواء في فروعنا أو عند التسليم. لا يوجد دفع إلكتروني مسبق — نحن نثق بعملائنا.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>هل يمكنني الشراء بالتقسيط؟</summary>
+                    <p>نعم، نوفر تقسيطاً مريحاً على تجهيزات العيادات والمستشفيات حتى 12 شهراً. تواصل معنا عبر <a href="https://wa.me/201223962139" target="_blank">واتساب</a> لمعرفة شروط التقسيط المتاحة.</p>
+                </details>
             </div>
+
+            <div class="faq-section-title"><i class="fas fa-truck"></i> الشحن والتوصيل</div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>هل تشحنون لجميع محافظات مصر؟</summary>
+                    <p>نعم، نشحن لجميع محافظات مصر. الشحن مجاني للطلبات التي تتجاوز 2000 جنيه. وللطلبات الأقل تُحسب تكلفة الشحن حسب المنطقة عند التواصل.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>كم تستغرق مدة التوصيل؟</summary>
+                    <p>القاهرة الكبرى: من 1 إلى 3 أيام عمل. باقي المحافظات: من 3 إلى 5 أيام عمل. بعض الأجهزة الكبيرة قد تحتاج ترتيباً مسبقاً.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>هل يمكنني استلام طلبي من الفرع؟</summary>
+                    <p>نعم، يمكنك الاستلام مباشرة من فرع القاهرة (الهرم) أو فرع سوهاج أو فرع أسيوط. اتصل بنا مسبقاً لتحديد موعد وضمان توفر المنتج.</p>
+                </details>
+            </div>
+
+            <div class="faq-section-title"><i class="fas fa-shield-halved"></i> الضمان والإرجاع</div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>ما مدة الضمان على الأجهزة؟</summary>
+                    <p>ضمان سنة كاملة على جميع الأجهزة الجديدة ضد عيوب الصناعة. بعض الأجهزة من ماركات محددة قد تتمتع بضمان أطول — اسأل عن المنتج المحدد عند الشراء.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>ماذا يشمل الضمان؟</summary>
+                    <p>يشمل الضمان: عيوب الصناعة، الأعطال الداخلية التي تنشأ دون إساءة استخدام. لا يشمل: الكسر الخارجي، الأضرار الناتجة عن الاستخدام الخاطئ، أو تدخل أطراف غير معتمدة.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>ما سياسة الإرجاع والاستبدال؟</summary>
+                    <p>يمكن إرجاع المنتج خلال 7 أيام من الاستلام إذا كان في حالته الأصلية ولم يُستخدم، أو في حالة وجود عيب مصنعي. تواصل معنا على <a href="https://wa.me/201223962139" target="_blank">واتساب</a> وسنرتب الأمر فوراً.</p>
+                </details>
+            </div>
+
+            <div class="faq-section-title"><i class="fas fa-screwdriver-wrench"></i> الصيانة والدعم الفني</div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>هل تقدمون خدمة صيانة الأجهزة؟</summary>
+                    <p>نعم، لدينا مركز صيانة معتمد. يمكنك إرسال طلب صيانة من <a href="maintenance.html">صفحة الصيانة</a> وسنتواصل معك لترتيب الأمر.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>هل يتوفر دعم فني بعد الشراء؟</summary>
+                    <p>نعم، نقدم دعماً فنياً متخصصاً 24 ساعة / 7 أيام لمساعدتك في تشغيل الأجهزة وحل أي مشكلات تقنية. تواصل عبر واتساب أو الهاتف في أي وقت.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>هل تأجّرون أجهزة التنفس؟</summary>
+                    <p>نعم، نوفر أجهزة تنفس للإيجار (مثل أجهزة CPAP والأكسجين المنزلي). تواصل معنا لمعرفة الأسعار والشروط المتاحة.</p>
+                </details>
+            </div>
+
+            <div class="faq-cta">
+                <h3>لم تجد إجابة سؤالك؟</h3>
+                <p>فريقنا متاح طوال اليوم للرد على استفساراتك فوراً</p>
+                <a href="https://wa.me/201223962139?text=مرحباً، لدي سؤال لم أجد إجابته في الأسئلة الشائعة" target="_blank" rel="noopener"><i class="fab fa-whatsapp fa-lg"></i> تواصل معنا على واتساب</a>
+            </div>
+
         </div>
     </main>
-    <footer class="site-footer"><div class="footer-bottom"><div class="container"><p>&copy; 2026 ميديكال زون</p></div></div></footer>
+
+    <footer class="site-footer">
+        <div class="footer-top"><div class="container footer-grid">
+            <div class="footer-col footer-brand"><div class="footer-logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><div class="logo-text"><span class="logo-main">MEDICAL</span><span class="logo-sub">ZONE</span></div></div><p>مؤسسة ميديكال زون للأجهزة الطبية — وجهتك الأولى لأحدث الأجهزة والمستلزمات الطبية عالية الجودة في مصر.</p><div class="social-links"><a href="https://web.facebook.com/medical.zone.sohage" target="_blank" rel="noopener" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/medicalzone.eg/" target="_blank" rel="noopener" aria-label="إنستجرام"><i class="fab fa-instagram"></i></a><a href="https://wa.me/201223962139" target="_blank" rel="noopener" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a></div></div>
+            <div class="footer-col"><h4 class="footer-col-title">روابط سريعة</h4><ul class="footer-links"><li><a href="terms.html">الشروط والأحكام</a></li><li><a href="privacy.html">سياسة الخصوصية</a></li><li><a href="support.html">الدعم الفني</a></li><li><a href="faq.html">الأسئلة الشائعة</a></li><li><a href="https://web.facebook.com/medical.zone.sohage/photos" target="_blank" rel="noopener">صور المنتجات</a></li></ul></div>
+            <div class="footer-col"><h4 class="footer-col-title">تواصل معنا</h4><ul class="footer-contact"><li><i class="fas fa-map-marker-alt"></i><span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span></li><li><i class="fas fa-map-marker-alt"></i><span><strong>سوهاج:</strong> 43 ش الجامعة أمام مسجد الشرطة</span></li><li><i class="fas fa-phone"></i><span>القاهرة: 01223962139 - 01223962138</span></li><li><i class="fas fa-phone"></i><span>سوهاج: 01126562854 - 01126562812</span></li><li><i class="fas fa-envelope"></i><span>info@medicalzone.com</span></li></ul></div>
+        </div></div>
+        <div class="footer-bottom"><div class="container footer-bottom-inner"><p>&copy; 2026 مؤسسة ميديكال زون للأجهزة الطبية. جميع الحقوق محفوظة.</p><div class="cod-badge"><i class="fas fa-truck"></i> الدفع عند الاستلام</div></div></div>
+    </footer>
+
+    <a href="https://wa.me/201223962139?text=مرحباً ميديكال زون، أرغب في الاستفسار" target="_blank" rel="noopener" class="mz-whatsapp-float" aria-label="تواصل عبر واتساب"><i class="fab fa-whatsapp"></i><span>تواصل عبر واتساب</span></a>
+
     <script src="js/config.js"></script>
     <script src="js/site.js"></script>
 </body>
