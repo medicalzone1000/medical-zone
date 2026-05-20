@@ -242,9 +242,9 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     position: absolute;
     inset: 0;
     background: linear-gradient(
-        rgba(10, 22, 40, 0.55) 0%,
-        rgba(10, 22, 40, 0.75) 50%,
-        rgba(10, 22, 40, 0.88) 100%
+        rgba(10, 22, 40, 0.2) 0%,
+        rgba(10, 22, 40, 0.35) 45%,
+        rgba(10, 22, 40, 0.5) 100%
     );
     pointer-events: none;
 }
@@ -1450,7 +1450,7 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
         min-height: 100dvh;
         padding: 0;
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         justify-content: center;
     }
     .page-home .hero-media,
@@ -1461,53 +1461,65 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     .page-home .home-hero .hero-container {
         width: 100%;
         max-width: 100%;
-        padding: 76px 16px 28px;
+        min-height: calc(100dvh - 64px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 72px 20px 32px;
     }
     .page-home .hero-content {
         max-width: 100%;
         width: 100%;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
     }
     .page-home .hero-eyebrow {
         justify-content: center;
-        font-size: 12px;
-        margin-bottom: 10px;
+        font-size: 14px;
+        margin-bottom: 14px;
     }
     .page-home .hero-title {
-        font-size: 26px;
-        line-height: 1.25;
-        margin-bottom: 12px;
+        font-size: 34px;
+        line-height: 1.2;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
     }
     .page-home .hero-title em {
-        font-size: 20px;
+        font-size: 26px;
         display: block;
-        margin-top: 4px;
+        margin-top: 8px;
     }
+    /* إخفاء الوصف على الموبايل فقط */
     .page-home .hero-desc {
-        font-size: 13px;
-        line-height: 1.65;
-        margin-bottom: 18px;
-        opacity: 0.95;
+        display: none !important;
     }
     .page-home .hero-cta {
-        margin-bottom: 22px;
+        margin: 20px 0 24px;
         display: flex;
         justify-content: center;
+        width: 100%;
     }
     .page-home .hero-cta .btn-primary {
         width: 100%;
-        max-width: 280px;
+        max-width: 300px;
         justify-content: center;
+        padding: 16px 28px;
+        font-size: 17px;
     }
     .page-home .hero-stats {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
+        gap: 10px;
         width: 100%;
-        padding: 14px 10px;
-        background: rgba(10, 22, 40, 0.45);
+        max-width: 360px;
+        padding: 16px 12px;
+        background: rgba(10, 22, 40, 0.35);
         border-radius: var(--radius-md);
-        backdrop-filter: blur(4px);
+        backdrop-filter: blur(6px);
     }
     .page-home .stat-divider {
         display: none;
@@ -1516,12 +1528,12 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
         text-align: center;
     }
     .page-home .stat-item strong {
-        font-size: 18px;
+        font-size: 22px;
         display: block;
     }
     .page-home .stat-item span {
-        font-size: 10px;
-        line-height: 1.3;
+        font-size: 11px;
+        line-height: 1.35;
     }
 
     /* Hero — باقي الصفحات */
@@ -1917,19 +1929,10 @@ img[src=""], img:not([src]) {
     .mz-whatsapp-float { padding: 14px; border-radius: 50%; }
 }
 
+/* واتساب الهيدر — معطّل (الزر العائم بالأسفل فقط) */
 .header-wa-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #25D366;
-    color: #fff !important;
-    padding: 8px 16px;
-    border-radius: var(--radius-full);
-    font-size: 13px;
-    font-weight: 700;
-    transition: background var(--transition);
+    display: none !important;
 }
-.header-wa-btn:hover { background: #128C7E; color: #fff !important; }
 
 .btn-whatsapp-outline {
     display: inline-flex;
