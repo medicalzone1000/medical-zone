@@ -1652,6 +1652,10 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     .footer-grid { grid-template-columns: 1fr; gap: 32px; }
     .footer-bottom-inner { flex-direction: column; gap: 10px; text-align: center; }
 }
+    /* Hide trust bar on mobile */
+    .trust-bar {
+        display: none !important;
+    }
 
 @media (max-width: 480px) {
     .container { padding: 0 16px; }
