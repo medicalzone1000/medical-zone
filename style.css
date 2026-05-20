@@ -222,8 +222,35 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     padding: 80px 0;
 }
 .page-home .home-hero {
-    background: linear-gradient(rgba(10, 22, 40, 0.62), rgba(10, 22, 40, 0.82)),
-        url('images/medical-hero.jpg') center / cover no-repeat;
+    background: var(--navy);
+}
+/* طبقة صورة الهيرو */
+.hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+.hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+.hero-media-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        rgba(10, 22, 40, 0.55) 0%,
+        rgba(10, 22, 40, 0.75) 50%,
+        rgba(10, 22, 40, 0.88) 100%
+    );
+    pointer-events: none;
+}
+.page-home .hero-container {
+    position: relative;
+    z-index: 1;
 }
 .page-home .hero-content {
     max-width: 650px;
@@ -1425,8 +1452,11 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
         display: flex;
         align-items: flex-end;
         justify-content: center;
-        background-position: center center;
-        background-size: cover;
+    }
+    .page-home .hero-media,
+    .page-home .hero-bg-img {
+        width: 100%;
+        height: 100%;
     }
     .page-home .home-hero .hero-container {
         width: 100%;
