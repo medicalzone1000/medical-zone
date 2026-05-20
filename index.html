@@ -9,6 +9,58 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* تحسينات إضافية للهيرو الجديد */
+        .hero {
+            background: linear-gradient(rgba(10, 22, 40, 0.75), rgba(10, 22, 40, 0.85)), url('images/medical-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 80px 0;
+        }
+        .hero-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+        .hero-content {
+            max-width: 600px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        /* إخفاء العنصر القديم الخاص بالتقرير */
+        .hero-report-card {
+            display: none;
+        }
+        /* تحسين للشاشات الصغيرة جداً */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding: 60px 0;
+                text-align: center;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-stats {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .hero-title {
+                font-size: 28px;
+            }
+            .hero-title em {
+                font-size: 22px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -27,11 +79,9 @@
                     </div>
                 </a>
             </div>
-
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="القائمة">
                 <i class="fas fa-bars"></i>
             </button>
-
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html" class="active">الرئيسية</a></li>
@@ -41,7 +91,6 @@
                     <li><a href="contact.html">تواصل معنا</a></li>
                 </ul>
             </nav>
-
             <div class="header-actions">
                 <button class="icon-btn" aria-label="بحث"><i class="fas fa-search"></i></button>
                 <button class="icon-btn" aria-label="المفضلة"><i class="far fa-heart"></i></button>
@@ -69,9 +118,8 @@
     </div>
 
     <main>
-        <!-- Hero Section -->
+        <!-- Hero Section - خلفية صورة كاملة -->
         <section class="hero">
-            <div class="hero-bg-grid"></div>
             <div class="container hero-container">
                 <div class="hero-content">
                     <div class="hero-eyebrow">
@@ -100,23 +148,6 @@
                         <div class="stat-item">
                             <strong>3 فروع</strong>
                             <span>القاهرة وأسيوط وسوهاج</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-img-wrap">
-                        <img src="images/medical-hero.jpg" alt="أجهزة طبية حديثة">
-                        <div class="hero-badge-float">
-                            <i class="fas fa-certificate"></i>
-                            <span>معتمد دولياً</span>
-                        </div>
-                    </div>
-                    <div class="hero-report-card">
-                        <img src="" alt="تقرير الرعاية الصحية" style="background:#e2e8f0;">
-                        <div class="report-card-text">
-                            <span class="report-tag">تقرير حديث</span>
-                            <p>مستقبل الرعاية الصحية الرقمية في مصر</p>
-                            <a href="reports.html">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                         </div>
                     </div>
                 </div>
@@ -164,7 +195,7 @@
         <section class="promo-section">
             <div class="container promo-grid">
                 <div class="promo-card promo-main">
-                    <img src="" alt="تجهيزات عيادات" style="background:#cbd5e1; min-height:420px;">
+                    <img src="images/promo-main.jpg" alt="تجهيزات عيادات" style="background:#cbd5e1; min-height:420px;">
                     <div class="promo-overlay"></div>
                     <div class="promo-content">
                         <span class="promo-tag">عرض خاص</span>
@@ -175,7 +206,7 @@
                 </div>
                 <div class="promo-stack">
                     <div class="promo-card promo-small">
-                        <img src="" alt="أجهزة ضغط دم" style="background:#cbd5e1; min-height:196px;">
+                        <img src="images/promo-small-1.jpg" alt="أجهزة ضغط دم" style="background:#cbd5e1; min-height:196px;">
                         <div class="promo-overlay"></div>
                         <div class="promo-content">
                             <span class="promo-tag">خصم 20%</span>
@@ -184,7 +215,7 @@
                         </div>
                     </div>
                     <div class="promo-card promo-small">
-                        <img src="" alt="أجهزة تنفس منزلية" style="background:#cbd5e1; min-height:196px;">
+                        <img src="images/promo-small-2.jpg" alt="أجهزة تنفس منزلية" style="background:#cbd5e1; min-height:196px;">
                         <div class="promo-overlay"></div>
                         <div class="promo-content">
                             <span class="promo-tag">الأكثر طلباً</span>
@@ -430,7 +461,6 @@
                 if (!res.ok) throw new Error();
                 const data = await res.json();
                 let reports = data.reports || [];
-                // ترتيب تنازلي حسب التاريخ (الأحدث أولاً)
                 reports.sort((a, b) => new Date(b.date) - new Date(a.date));
                 const latestReports = reports.slice(0, 3);
 
@@ -458,23 +488,8 @@
             }
         }
 
-        // تنفيذ الدوال
         loadLatestProducts();
         loadLatestReports();
     </script>
-
-    <style>
-        /* إضافة تنسيق بسيط للتقارير في الرئيسية للتأكد من أنها تأخذ نفس شكل المدونة */
-        .blog-card .blog-cat-tag {
-            background: var(--teal);
-            color: white;
-        }
-        .blog-card .blog-link {
-            color: var(--teal);
-        }
-        .blog-card .blog-link:hover {
-            gap: 10px;
-        }
-    </style>
 </body>
 </html>
