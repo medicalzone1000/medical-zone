@@ -1,0 +1,18 @@
+{
+  "products": [
+    {
+      "id": "example-001",
+      "title": "جهاز ضغط ديجيتال",
+      "category": "أجهزة ضغط الدم",
+      "price": 2500,
+      "oldPrice": 3000,
+      "discount": 17,
+      "badge": "discount",
+      "status": "جديد",
+      "image": "images/products/example.jpg",
+      "description": "وصف المنتج هنا — يظهر في صفحة التفاصيل.",
+      "video": "",
+      "date": "2026-05-01"
+    }
+  ]
+}

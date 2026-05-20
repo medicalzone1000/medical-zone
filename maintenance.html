@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مركز الصيانة المعتمد — ميديكال زون</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .maintenance-hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+            padding: 60px 0;
+            text-align: center;
+            color: var(--white);
+        }
+        .maintenance-container {
+            max-width: 900px;
+            margin: -50px auto 80px;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            padding: 40px;
+            position: relative;
+            z-index: 10;
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-header i {
+            font-size: 40px;
+            color: var(--teal);
+            margin-bottom: 15px;
+        }
+        .maintenance-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        .form-group label {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 12px 16px;
+            border: 1px solid var(--gray-100);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-ar);
+            font-size: 14px;
+            outline: none;
+            transition: border-color var(--transition);
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--teal);
+        }
+        .file-upload-wrapper {
+            border: 2px dashed var(--gray-100);
+            padding: 20px;
+            text-align: center;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: background var(--transition);
+        }
+        .file-upload-wrapper:hover {
+            background: var(--teal-pale);
+            border-color: var(--teal);
+        }
+        .submit-btn {
+            grid-column: span 2;
+            padding: 16px;
+            background: var(--teal);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 16px;
+            border-radius: var(--radius-md);
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        @media (max-width: 768px) {
+            .maintenance-form { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
+            .submit-btn { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-bar">
+        <p>🔧 مركز صيانة معتمد لجميع الأجهزة الطبية &nbsp;|&nbsp; 🛠️ قطع غيار أصلية &nbsp;|&nbsp; 📞 دعم فني طارئ 24/7</p>
+    </div>
+
+    <header class="site-header" id="site-header">
+        <div class="header-inner container">
+            <a href="index.html" class="logo-link">
+                <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+                <div class="logo-text">
+                    <span class="logo-main">MEDICAL</span>
+                    <span class="logo-sub">ZONE</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="store.html">المتجر</a></li>
+                    <li><a href="maintenance.html" class="active">صيانة</a></li>
+                    <li><a href="reports.html">تقارير</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions"></div>
+        </div>
+    </header>
+
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
+        <nav class="drawer-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="store.html"><i class="fas fa-store"></i> المتجر</a></li>
+                <li><a href="maintenance.html" class="active"><i class="fas fa-tools"></i> صيانة</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-medical"></i> تقارير</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> تواصل</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <section class="maintenance-hero">
+            <div class="container">
+                <h1>مركز صيانة Medical Zone</h1>
+                <p>نخبة من المهندسين المتخصصين لضمان كفاءة أجهزتكم الطبية</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="maintenance-container">
+                <div class="form-header">
+                    <i class="fas fa-tools"></i>
+                    <h2>طلب صيانة جديد</h2>
+                    <p>برجاء ملء البيانات التالية بدقة وسيتواصل معك الدعم الفني خلال ساعة</p>
+                </div>
+
+                <form class="maintenance-form" id="maintenanceForm" action="#">
+                    <div class="form-group">
+                        <label>الاسم بالكامل</label>
+                        <input type="text" name="name" placeholder="اسم مقدم الطلب" required>
+                    </div>
+                    <div class="form-group">
+                        <label>رقم الموبايل</label>
+                        <input type="tel" name="phone" placeholder="01xxxxxxxxx" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>اسم المستشفى / المركز الطبي</label>
+                        <input type="text" name="facility" placeholder="مثال: مستشفى الشفاء التخصصي" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>نوع الجهاز</label>
+                        <select name="device" required>
+                            <option value="">اختر نوع الجهاز</option>
+                            <option>جهاز تنفس صناعي</option>
+                            <option>جهاز ضغط ديجيتال</option>
+                            <option>جهاز قياس سكر</option>
+                            <option>تجهيزات معامل</option>
+                            <option>أخرى</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>درجة الأهمية</label>
+                        <select name="priority" required>
+                            <option>عطل طارئ (توقف كامل)</option>
+                            <option>صيانة دورية</option>
+                            <option>استفسار فني</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>وصف العطل بالتفصيل</label>
+                        <textarea name="description" rows="4" placeholder="يرجى كتابة المشكلة التي تظهر على الجهاز..."></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>ارفق صورة أو فيديو للعطل (اختياري)</label>
+                        <div class="file-upload-wrapper">
+                            <i class="fas fa-cloud-upload-alt" style="font-size: 24px; color: var(--teal); margin-bottom: 10px;"></i>
+                            <p>اختر ملفاً — ثم أرسله في محادثة واتساب بعد فتح الرابط</p>
+                            <input type="file" hidden id="fileInput" accept="image/*,video/*">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fab fa-whatsapp"></i> إرسال الطلب عبر واتساب
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER كامل -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-col footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+                        <div class="logo-text">
+                            <span class="logo-main">MEDICAL</span>
+                            <span class="logo-sub">ZONE</span>
+                        </div>
+                    </div>
+                    <p>مؤسسة ميديكال زون للأجهزة الطبية — وجهتك الأولى لأحدث الأجهزة والمستلزمات الطبية عالية الجودة في مصر.</p>
+                    <div class="social-links">
+                        <a href="https://web.facebook.com/medical.zone.sohage" target="_blank" rel="noopener" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="إنستجرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="terms.html">الشروط والأحكام</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                        <li><a href="support.html">الدعم الفني</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                        <li><a href="https://web.facebook.com/medical.zone.sohage/photos" target="_blank" rel="noopener">صور المنتجات</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">تواصل معنا</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>سوهاج:</strong> 43 ش الجامعة أمام مسجد الشرطة</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>القاهرة: 01223962139 - 01223962138</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>سوهاج: 01126562854 - 01126562812</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@medicalzone.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 مؤسسة ميديكال زون للأجهزة الطبية. جميع الحقوق محفوظة.</p>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/site.js"></script>
+</body>
+</html>

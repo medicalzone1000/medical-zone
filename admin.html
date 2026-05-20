@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة تحكم ميديكال زون</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --primary: #0a7c6e;
+    --primary-dark: #065a50;
+    --primary-light: #e8f5f3;
+    --danger: #e53935;
+    --warning: #f59e0b;
+    --success: #10b981;
+    --navy: #0f2035;
+    --gray-100: #f4f6f8;
+    --gray-200: #e8ecf0;
+    --gray-400: #9aa5b4;
+    --gray-600: #4a5568;
+    --white: #ffffff;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+    --radius: 12px;
+    --radius-sm: 8px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--gray-100);
+    color: var(--navy);
+    min-height: 100vh;
+  }
+
+  /* ===== LOGIN ===== */
+  #loginScreen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--primary-dark) 100%);
+  }
+
+  .login-box {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 48px;
+    width: 420px;
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+  }
+
+  .login-logo {
+    width: 64px;
+    height: 64px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 28px;
+    color: white;
+  }
+
+  .login-box h2 {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .login-box p {
+    color: var(--gray-400);
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+    text-align: right;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gray-600);
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px;
+    color: var(--navy);
+    transition: border-color 0.2s;
+    background: var(--white);
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: white;
+    width: 100%;
+    justify-content: center;
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  .btn-primary:hover { background: var(--primary-dark); }
+
+  .btn-success { background: var(--success); color: white; }
+  .btn-danger { background: var(--danger); color: white; }
+  .btn-warning { background: var(--warning); color: white; }
+  .btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 1.5px solid var(--primary);
+  }
+  .btn-outline:hover { background: var(--primary-light); }
+  .btn-sm { padding: 8px 14px; font-size: 13px; }
+
+  /* ===== MAIN LAYOUT ===== */
+  #adminScreen { display: none; }
+
+  .admin-header {
+    background: var(--navy);
+    color: white;
+    padding: 0 32px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .admin-header-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+    font-weight: 900;
+  }
+
+  .admin-header-logo i {
+    color: var(--primary);
+    font-size: 22px;
+  }
+
+  .admin-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .admin-body {
+    display: flex;
+    min-height: calc(100vh - 64px);
+  }
+
+  /* ===== SIDEBAR ===== */
+  .admin-sidebar {
+    width: 240px;
+    background: var(--white);
+    border-left: 1px solid var(--gray-200);
+    padding: 24px 0;
+    flex-shrink: 0;
+  }
+
+  .sidebar-menu {
+    list-style: none;
+  }
+
+  .sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    color: var(--gray-600);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s;
+    cursor: pointer;
+    border-right: 3px solid transparent;
+  }
+
+  .sidebar-menu li a:hover,
+  .sidebar-menu li a.active {
+    background: var(--primary-light);
+    color: var(--primary);
+    border-right-color: var(--primary);
+  }
+
+  .sidebar-menu li a i {
+    width: 20px;
+    text-align: center;
+  }
+
+  /* ===== CONTENT ===== */
+  .admin-content {
+    flex: 1;
+    padding: 32px;
+    overflow-y: auto;
+  }
+
+  .page { display: none; }
+  .page.active { display: block; }
+
+  .page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .page-header h1 {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--navy);
+  }
+
+  /* ===== STATS ===== */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .stat-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .stat-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .stat-icon.teal { background: var(--primary); }
+  .stat-icon.orange { background: var(--warning); }
+  .stat-icon.green { background: var(--success); }
+
+  .stat-info h3 { font-size: 28px; font-weight: 900; color: var(--navy); }
+  .stat-info p { font-size: 13px; color: var(--gray-400); }
+
+  /* ===== PRODUCTS TABLE ===== */
+  .table-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .table-card-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .table-card-header h3 {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead th {
+    background: var(--gray-100);
+    padding: 12px 16px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--gray-200);
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover { background: var(--gray-100); }
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody td {
+    padding: 14px 16px;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+
+  .product-img-cell {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+  }
+
+  .badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .badge-new { background: #d1fae5; color: #065f46; }
+  .badge-used { background: #fef3c7; color: #92400e; }
+  .badge-rent { background: #dbeafe; color: #1e40af; }
+
+  .actions-cell { display: flex; gap: 8px; }
+
+  /* ===== MODAL ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: var(--white);
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .modal-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 1;
+  }
+
+  .modal-header h3 { font-size: 18px; font-weight: 700; }
+
+  .modal-close {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: var(--gray-100);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--gray-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-body { padding: 24px; }
+
+  .modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid var(--gray-200);
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* ===== TOAST ===== */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--navy);
+    color: white;
+    padding: 14px 24px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 9999;
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast.success { background: var(--success); }
+  .toast.error { background: var(--danger); }
+
+  /* ===== LOADING ===== */
+  .loading {
+    text-align: center;
+    padding: 60px;
+    color: var(--gray-400);
+  }
+
+  .loading i { font-size: 32px; margin-bottom: 12px; display: block; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .fa-spin { animation: spin 1s linear infinite; }
+
+  .empty-state {
+    text-align: center;
+    padding: 60px;
+    color: var(--gray-400);
+  }
+
+  .empty-state i { font-size: 48px; margin-bottom: 16px; display: block; opacity: 0.3; }
+</style>
+</head>
+<body>
+
+<!-- ===== LOGIN ===== -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo"><i class="fas fa-heartbeat"></i></div>
+    <h2>ميديكال زون</h2>
+    <p>لوحة التحكم — للمسؤول فقط</p>
+    <div class="form-group">
+      <label>GitHub Token</label>
+      <input type="password" id="tokenInput" placeholder="ghp_...">
+    </div>
+    <div class="form-group">
+      <label>كلمة المرور</label>
+      <input type="password" id="passwordInput" placeholder="كلمة المرور">
+    </div>
+    <button class="btn btn-primary" onclick="login()">
+      <i class="fas fa-sign-in-alt"></i> دخول
+    </button>
+    <p style="margin-top:16px;font-size:12px;color:var(--gray-400)">كلمة المرور: <strong style="color:var(--navy)">admin123</strong></p>
+  </div>
+</div>
+
+<!-- ===== ADMIN ===== -->
+<div id="adminScreen">
+  <header class="admin-header">
+    <div class="admin-header-logo">
+      <i class="fas fa-heartbeat"></i>
+      ميديكال زون — لوحة التحكم
+    </div>
+    <div class="admin-header-actions">
+      <a href="https://medicalzone1000.github.io/medical-zone/store.html" target="_blank" class="btn btn-outline btn-sm" style="color:white;border-color:rgba(255,255,255,0.3)">
+        <i class="fas fa-external-link-alt"></i> عرض الموقع
+      </a>
+      <button class="btn btn-sm" style="background:rgba(255,255,255,0.1);color:white" onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i> خروج
+      </button>
+    </div>
+  </header>
+
+  <div class="admin-body">
+    <aside class="admin-sidebar">
+      <ul class="sidebar-menu">
+        <li><a onclick="showPage('dashboard')" class="active" id="menu-dashboard">
+          <i class="fas fa-chart-pie"></i> الرئيسية
+        </a></li>
+        <li><a onclick="showPage('products')" id="menu-products">
+          <i class="fas fa-boxes"></i> المنتجات
+        </a></li>
+        <li><a onclick="showPage('reports')" id="menu-reports">
+          <i class="fas fa-file-medical"></i> التقارير
+        </a></li>
+      </ul>
+    </aside>
+
+    <main class="admin-content">
+
+      <!-- Dashboard -->
+      <div class="page active" id="page-dashboard">
+        <div class="page-header">
+          <h1>مرحباً بك 👋</h1>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon teal"><i class="fas fa-boxes"></i></div>
+            <div class="stat-info">
+              <h3 id="statProducts">-</h3>
+              <p>إجمالي المنتجات</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange"><i class="fas fa-file-medical"></i></div>
+            <div class="stat-info">
+              <h3 id="statReports">-</h3>
+              <p>التقارير والمقالات</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fas fa-check-circle"></i></div>
+            <div class="stat-info">
+              <h3>✓</h3>
+              <p>الموقع يعمل</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Products -->
+      <div class="page" id="page-products">
+        <div class="page-header">
+          <h1>المنتجات</h1>
+          <button class="btn btn-success" onclick="openProductModal()">
+            <i class="fas fa-plus"></i> إضافة منتج
+          </button>
+        </div>
+        <div class="table-card">
+          <div id="productsTableBody">
+            <div class="loading"><i class="fas fa-spinner fa-spin"></i><p>جاري التحميل...</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reports -->
+      <div class="page" id="page-reports">
+        <div class="page-header">
+          <h1>التقارير والمقالات</h1>
+          <button class="btn btn-success" onclick="openReportModal()">
+            <i class="fas fa-plus"></i> إضافة تقرير
+          </button>
+        </div>
+        <div class="table-card">
+          <div id="reportsTableBody">
+            <div class="loading"><i class="fas fa-spinner fa-spin"></i><p>جاري التحميل...</p></div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ===== PRODUCT MODAL ===== -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="productModalTitle">إضافة منتج جديد</h3>
+      <button class="modal-close" onclick="closeModal('productModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="productIndex" value="-1">
+      <div class="form-row">
+        <div class="form-group">
+          <label>اسم المنتج *</label>
+          <input type="text" id="pTitle" placeholder="اسم المنتج">
+        </div>
+        <div class="form-group">
+          <label>الفئة *</label>
+          <select id="pCategory" required>
+            <option value="">اختر القسم</option>
+            <option value="العمليات والعناية المركزة">العمليات والعناية المركزة</option>
+            <option value="المناظير والآلات">المناظير والآلات</option>
+            <option value="الأشعة والسونار">الأشعة والسونار</option>
+            <option value="العلاج الطبيعي">العلاج الطبيعي</option>
+            <option value="أجهزة التنفس والأكسجين">أجهزة التنفس والأكسجين</option>
+            <option value="الأنف والأذن والسمعيات">الأنف والأذن والسمعيات</option>
+            <option value="رسم المخ والعضلات">رسم المخ والعضلات</option>
+            <option value="أجهزة تنفس للإيجار">أجهزة تنفس للإيجار</option>
+          </select>
+        </div>
+      </div>
+      <div class="section-divider" style="font-size:12px;font-weight:700;color:#9aa5b4;margin:20px 0 12px;padding-bottom:8px;border-bottom:1px solid #e8ecf0;">
+        <i class="fas fa-image"></i> صورة المنتج
+      </div>
+      <div class="form-group">
+        <label>رفع صورة من جهازك</label>
+        <div style="border:2px dashed #e8ecf0;border-radius:8px;padding:20px;text-align:center;cursor:pointer;position:relative;" id="pUploadBox">
+          <input type="file" id="pImageFile" accept="image/*" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;" onchange="uploadImage('p')">
+          <i class="fas fa-cloud-upload-alt" style="font-size:28px;color:#9aa5b4;display:block;margin-bottom:8px;"></i>
+          <p style="font-size:13px;color:#9aa5b4;margin:0;">اضغط لاختيار صورة من جهازك</p>
+        </div>
+        <div id="pUploadStatus" style="font-size:12px;color:#0a7c6e;margin-top:6px;display:none;"></div>
+        <img id="pImagePreview" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:8px;display:none;">
+      </div>
+      <div class="form-group">
+        <label>أو أدخل رابط الصورة مباشرة</label>
+        <input type="text" id="pImage" placeholder="https://example.com/image.jpg أو /images/uploads/photo.jpg">
+      </div>
+      <div class="form-group">
+        <label><i class="fab fa-youtube" style="color:#ff0000"></i> رابط فيديو يوتيوب (اختياري)</label>
+        <input type="text" id="pVideo" placeholder="https://www.youtube.com/watch?v=...">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>السعر (جنيه) *</label>
+          <input type="number" id="pPrice" placeholder="0">
+        </div>
+        <div class="form-group">
+          <label>السعر القديم (0 = لا يوجد خصم)</label>
+          <input type="number" id="pOldPrice" placeholder="0" value="0">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>الحالة</label>
+          <select id="pStatus">
+            <option value="جديد">جديد</option>
+            <option value="مستعمل">مستعمل</option>
+            <option value="إيجار">إيجار</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>نسبة الخصم %</label>
+          <input type="number" id="pDiscount" placeholder="0" value="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>وصف المنتج</label>
+        <textarea id="pDescription" placeholder="وصف مختصر للمنتج"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('productModal')">إلغاء</button>
+      <button class="btn btn-success" onclick="saveProduct()">
+        <i class="fas fa-save"></i> حفظ المنتج
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== REPORT MODAL ===== -->
+<div class="modal-overlay" id="reportModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="reportModalTitle">إضافة تقرير جديد</h3>
+      <button class="modal-close" onclick="closeModal('reportModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="reportIndex" value="-1">
+      <div class="form-group">
+        <label>عنوان التقرير *</label>
+        <input type="text" id="rTitle" placeholder="عنوان التقرير">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>القسم *</label>
+          <select id="rCategory" required>
+            <option value="">اختر القسم</option>
+            <option value="أجهزة وتقنيات طبية">أجهزة وتقنيات طبية</option>
+            <option value="الصحة المنزلية">الصحة المنزلية</option>
+            <option value="الصيانة والدعم الفني">الصيانة والدعم الفني</option>
+            <option value="تجهيز العيادات">تجهيز العيادات</option>
+            <option value="أخبار طبية">أخبار طبية</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>التاريخ</label>
+          <input type="date" id="rDate">
+        </div>
+      </div>
+      <div class="section-divider" style="font-size:12px;font-weight:700;color:#9aa5b4;margin:20px 0 12px;padding-bottom:8px;border-bottom:1px solid #e8ecf0;">
+        <i class="fas fa-image"></i> صورة التقرير
+      </div>
+      <div class="form-group">
+        <label>رفع صورة من جهازك</label>
+        <div style="border:2px dashed #e8ecf0;border-radius:8px;padding:20px;text-align:center;cursor:pointer;position:relative;" id="rUploadBox">
+          <input type="file" id="rImageFile" accept="image/*" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;" onchange="uploadImage('r')">
+          <i class="fas fa-cloud-upload-alt" style="font-size:28px;color:#9aa5b4;display:block;margin-bottom:8px;"></i>
+          <p style="font-size:13px;color:#9aa5b4;margin:0;">اضغط لاختيار صورة من جهازك</p>
+        </div>
+        <div id="rUploadStatus" style="font-size:12px;color:#0a7c6e;margin-top:6px;display:none;"></div>
+        <img id="rImagePreview" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:8px;display:none;">
+      </div>
+      <div class="form-group">
+        <label>أو أدخل رابط الصورة مباشرة</label>
+        <input type="text" id="rImage" placeholder="https://example.com/image.jpg أو /images/uploads/photo.jpg">
+      </div>
+      <div class="form-group">
+        <label><i class="fab fa-youtube" style="color:#ff0000"></i> رابط فيديو يوتيوب (اختياري)</label>
+        <input type="text" id="rVideo" placeholder="https://www.youtube.com/watch?v=...">
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-file-pdf" style="color:#e53935"></i> رابط ملف PDF (اختياري)</label>
+        <input type="text" id="rPdf" placeholder="https://... رابط ملف PDF">
+      </div>
+      <div class="form-group">
+        <label>نص التقرير *</label>
+        <textarea id="rSummary" placeholder="اكتب نص التقرير كاملاً هنا..." style="min-height:150px"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('reportModal')">إلغاء</button>
+      <button class="btn btn-success" onclick="saveReport()">
+        <i class="fas fa-save"></i> حفظ التقرير
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast"></div>
+
+<script>
+  const GITHUB_OWNER = 'medicalzone1000';
+  const GITHUB_REPO = 'medical-zone';
+  const PRODUCTS_PATH = 'content/products.json';
+  const REPORTS_PATH = 'content/reports.json';
+  const ADMIN_PASSWORD = 'admin123';
+
+  let TOKEN = '';
+  let productsData = [];
+  let reportsData = [];
+
+  // ===== IMAGE UPLOAD =====
+  async function uploadImage(prefix) {
+    const file = document.getElementById(prefix + 'ImageFile').files[0];
+    if (!file) return;
+    const status = document.getElementById(prefix + 'UploadStatus');
+    const preview = document.getElementById(prefix + 'ImagePreview');
+    status.style.display = 'block';
+    status.textContent = 'جاري رفع الصورة...';
+    try {
+      const base64 = await new Promise((res, rej) => {
+        const r = new FileReader();
+        r.onload = () => res(r.result.split(',')[1]);
+        r.onerror = rej;
+        r.readAsDataURL(file);
+      });
+      const filename = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+      const path = 'images/uploads/' + filename;
+      const resp = await fetch('https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + path, {
+        method: 'PUT',
+        headers: { 'Authorization': 'token ' + TOKEN, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: 'رفع صورة', content: base64 })
+      });
+      if (resp.ok) {
+        const imagePath = '/images/uploads/' + filename;
+        document.getElementById(prefix + 'Image').value = imagePath;
+        preview.src = imagePath;
+        preview.style.display = 'block';
+        status.textContent = '✅ تم رفع الصورة بنجاح';
+        status.style.color = '#10b981';
+      } else {
+        status.textContent = '❌ فشل رفع الصورة';
+        status.style.color = '#e53935';
+      }
+    } catch(e) {
+      status.textContent = '❌ حدث خطأ';
+      status.style.color = '#e53935';
+    }
+  }
+
+  // ===== LOGIN =====
+  function login() {
+    const token = document.getElementById('tokenInput').value.trim();
+    const pass = document.getElementById('passwordInput').value.trim();
+    if (pass !== ADMIN_PASSWORD) { showToast('كلمة المرور خاطئة', 'error'); return; }
+    if (!token.startsWith('ghp_') && !token.startsWith('github_pat_')) {
+      showToast('Token غير صحيح', 'error'); return;
+    }
+    TOKEN = token;
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminScreen').style.display = 'block';
+    loadAll();
+  }
+
+  function logout() {
+    TOKEN = '';
+    document.getElementById('loginScreen').style.display = 'flex';
+    document.getElementById('adminScreen').style.display = 'none';
+  }
+
+  // ===== PAGES =====
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.sidebar-menu a').forEach(a => a.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    document.getElementById('menu-' + name).classList.add('active');
+  }
+
+  // ===== GITHUB API =====
+  async function getFile(path) {
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
+      headers: { 'Authorization': `token ${TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  }
+
+  async function saveFile(path, content, sha) {
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${TOKEN}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: `تحديث ${path}`,
+        content: btoa(unescape(encodeURIComponent(content))),
+        sha: sha
+      })
+    });
+    return res.ok;
+  }
+
+  // ===== LOAD ALL =====
+  async function loadAll() {
+    await loadProducts();
+    await loadReports();
+  }
+
+  // ===== PRODUCTS =====
+  async function loadProducts() {
+    const file = await getFile(PRODUCTS_PATH);
+    if (!file) { productsData = []; renderProducts(); return; }
+    try {
+      const content = decodeURIComponent(escape(atob(file.content.replace(/\n/g, ''))));
+      const data = JSON.parse(content);
+      productsData = data.products || [];
+      window._productsSha = file.sha;
+    } catch(e) { productsData = []; }
+    renderProducts();
+    document.getElementById('statProducts').textContent = productsData.length;
+  }
+
+  function renderProducts() {
+    const container = document.getElementById('productsTableBody');
+    if (productsData.length === 0) {
+      container.innerHTML = '<div class="empty-state"><i class="fas fa-box-open"></i><p>لا توجد منتجات بعد</p></div>';
+      return;
+    }
+    container.innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>الصورة</th>
+            <th>اسم المنتج</th>
+            <th>الفئة</th>
+            <th>السعر</th>
+            <th>الحالة</th>
+            <th>إجراءات</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${productsData.map((p, i) => `
+            <tr>
+              <td><img src="${p.image || ''}" class="product-img-cell" onerror="this.style.display='none'"></td>
+              <td><strong>${p.title}</strong></td>
+              <td>${p.category}</td>
+              <td>${Number(p.price).toLocaleString('ar-EG')} ج.م</td>
+              <td><span class="badge ${p.status === 'جديد' ? 'badge-new' : p.status === 'مستعمل' ? 'badge-used' : 'badge-rent'}">${p.status}</span></td>
+              <td>
+                <div class="actions-cell">
+                  <button class="btn btn-warning btn-sm" onclick="editProduct(${i})"><i class="fas fa-edit"></i></button>
+                  <button class="btn btn-danger btn-sm" onclick="deleteProduct(${i})"><i class="fas fa-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>`;
+  }
+
+  function openProductModal(idx = -1) {
+    document.getElementById('productIndex').value = idx;
+    if (idx === -1) {
+      document.getElementById('productModalTitle').textContent = 'إضافة منتج جديد';
+      document.getElementById('pTitle').value = '';
+      document.getElementById('pCategory').value = 'العمليات والعناية المركزة';
+      document.getElementById('pImage').value = '';
+      if(document.getElementById('pVideo')) document.getElementById('pVideo').value = '';
+      document.getElementById('pImagePreview') && (document.getElementById('pImagePreview').style.display='none');
+      document.getElementById('pPrice').value = '';
+      document.getElementById('pOldPrice').value = '0';
+      document.getElementById('pStatus').value = 'جديد';
+      document.getElementById('pDiscount').value = '0';
+      document.getElementById('pDescription').value = '';
+    } else {
+      const p = productsData[idx];
+      document.getElementById('productModalTitle').textContent = 'تعديل المنتج';
+      document.getElementById('pTitle').value = p.title;
+      document.getElementById('pCategory').value = p.category;
+      document.getElementById('pImage').value = p.image;
+      document.getElementById('pPrice').value = p.price;
+      document.getElementById('pOldPrice').value = p.oldPrice || 0;
+      document.getElementById('pStatus').value = p.status;
+      document.getElementById('pDiscount').value = p.discount || 0;
+      document.getElementById('pDescription').value = p.description || '';
+    }
+    document.getElementById('productModal').classList.add('open');
+  }
+
+  function editProduct(idx) { openProductModal(idx); }
+
+  async function deleteProduct(idx) {
+    if (!confirm('هل تريد حذف هذا المنتج؟')) return;
+    productsData.splice(idx, 1);
+    await saveProducts();
+  }
+
+  async function saveProduct() {
+    const title = document.getElementById('pTitle').value.trim();
+    const price = document.getElementById('pPrice').value.trim();
+    if (!title || !price) { showToast('الاسم والسعر مطلوبان', 'error'); return; }
+
+    const idx = parseInt(document.getElementById('productIndex').value);
+    const product = {
+      id: idx === -1 ? 'p' + Date.now() : productsData[idx].id,
+      title,
+      category: document.getElementById('pCategory').value,
+      image: document.getElementById('pImage').value.trim(),
+      price: Number(price),
+      oldPrice: Number(document.getElementById('pOldPrice').value) || 0,
+      status: document.getElementById('pStatus').value,
+      badge: Number(document.getElementById('pDiscount').value) > 0 ? 'discount' : '',
+      discount: Number(document.getElementById('pDiscount').value) || 0,
+      description: document.getElementById('pDescription').value.trim(),
+      video: document.getElementById('pVideo') ? document.getElementById('pVideo').value.trim() : '',
+      date: new Date().toISOString().split('T')[0]
+    };
+
+    if (idx === -1) productsData.push(product);
+    else productsData[idx] = product;
+
+    closeModal('productModal');
+    await saveProducts();
+  }
+
+  async function saveProducts() {
+    showToast('جاري الحفظ...', '');
+    const content = JSON.stringify({ products: productsData }, null, 2);
+    const ok = await saveFile(PRODUCTS_PATH, content, window._productsSha);
+    if (ok) {
+      await loadProducts();
+      showToast('✅ تم الحفظ بنجاح', 'success');
+    } else {
+      showToast('حدث خطأ، تأكد من الـ Token', 'error');
+    }
+  }
+
+  // ===== REPORTS =====
+  async function loadReports() {
+    const file = await getFile(REPORTS_PATH);
+    if (!file) { reportsData = []; renderReports(); return; }
+    try {
+      const content = decodeURIComponent(escape(atob(file.content.replace(/\n/g, ''))));
+      const data = JSON.parse(content);
+      reportsData = data.reports || [];
+      window._reportsSha = file.sha;
+    } catch(e) { reportsData = []; }
+    renderReports();
+    document.getElementById('statReports').textContent = reportsData.length;
+  }
+
+  function renderReports() {
+    const container = document.getElementById('reportsTableBody');
+    if (reportsData.length === 0) {
+      container.innerHTML = '<div class="empty-state"><i class="fas fa-file-medical"></i><p>لا توجد تقارير بعد</p></div>';
+      return;
+    }
+    container.innerHTML = `
+      <table>
+        <thead>
+          <tr>
+            <th>العنوان</th>
+            <th>القسم</th>
+            <th>التاريخ</th>
+            <th>إجراءات</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${reportsData.map((r, i) => `
+            <tr>
+              <td><strong>${r.title}</strong></td>
+              <td>${r.category || '-'}</td>
+              <td>${r.date || '-'}</td>
+              <td>
+                <div class="actions-cell">
+                  <button class="btn btn-warning btn-sm" onclick="editReport(${i})"><i class="fas fa-edit"></i></button>
+                  <button class="btn btn-danger btn-sm" onclick="deleteReport(${i})"><i class="fas fa-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>`;
+  }
+
+  function openReportModal(idx = -1) {
+    document.getElementById('reportIndex').value = idx;
+    if (idx === -1) {
+      document.getElementById('reportModalTitle').textContent = 'إضافة تقرير جديد';
+      document.getElementById('rTitle').value = '';
+      document.getElementById('rCategory').value = '';
+      document.getElementById('rDate').value = new Date().toISOString().split('T')[0];
+      document.getElementById('rImage').value = '';
+      document.getElementById('rSummary').value = '';
+      if(document.getElementById('rVideo')) document.getElementById('rVideo').value = '';
+      if(document.getElementById('rPdf')) document.getElementById('rPdf').value = '';
+      document.getElementById('rImagePreview') && (document.getElementById('rImagePreview').style.display='none');
+    } else {
+      const r = reportsData[idx];
+      document.getElementById('reportModalTitle').textContent = 'تعديل التقرير';
+      document.getElementById('rTitle').value = r.title;
+      document.getElementById('rCategory').value = r.category || '';
+      document.getElementById('rDate').value = r.date || '';
+      document.getElementById('rImage').value = r.image || '';
+      document.getElementById('rSummary').value = r.summary || '';
+    }
+    document.getElementById('reportModal').classList.add('open');
+  }
+
+  function editReport(idx) { openReportModal(idx); }
+
+  async function deleteReport(idx) {
+    if (!confirm('هل تريد حذف هذا التقرير؟')) return;
+    reportsData.splice(idx, 1);
+    await saveReports();
+  }
+
+  async function saveReport() {
+    const title = document.getElementById('rTitle').value.trim();
+    if (!title) { showToast('العنوان مطلوب', 'error'); return; }
+
+    const idx = parseInt(document.getElementById('reportIndex').value);
+    const report = {
+      id: idx === -1 ? 'r' + Date.now() : reportsData[idx].id,
+      title,
+      category: document.getElementById('rCategory').value,
+      date: document.getElementById('rDate').value,
+      image: document.getElementById('rImage').value.trim(),
+      summary: document.getElementById('rSummary').value.trim(),
+      video: document.getElementById('rVideo') ? document.getElementById('rVideo').value.trim() : '',
+      pdf: document.getElementById('rPdf') ? document.getElementById('rPdf').value.trim() : ''
+    };
+
+    if (idx === -1) reportsData.push(report);
+    else reportsData[idx] = report;
+
+    closeModal('reportModal');
+    await saveReports();
+  }
+
+  async function saveReports() {
+    showToast('جاري الحفظ...', '');
+
+    if (!window._reportsSha) {
+      const content = JSON.stringify({ reports: reportsData }, null, 2);
+      const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${REPORTS_PATH}`, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `token ${TOKEN}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: 'إنشاء ملف التقارير',
+          content: btoa(unescape(encodeURIComponent(content)))
+        })
+      });
+      if (res.ok) {
+        await loadReports();
+        showToast('✅ تم الحفظ بنجاح', 'success');
+      } else {
+        showToast('حدث خطأ', 'error');
+      }
+      return;
+    }
+
+    const content = JSON.stringify({ reports: reportsData }, null, 2);
+    const ok = await saveFile(REPORTS_PATH, content, window._reportsSha);
+    if (ok) {
+      await loadReports();
+      showToast('✅ تم الحفظ بنجاح', 'success');
+    } else {
+      showToast('حدث خطأ، تأكد من الـ Token', 'error');
+    }
+  }
+
+  // ===== HELPERS =====
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+  }
+
+  function showToast(msg, type) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast show ' + (type || '');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && document.getElementById('loginScreen').style.display !== 'none') login();
+  });
+</script>
+</body>
+</html>

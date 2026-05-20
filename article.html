@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل التقرير — ميديكال زون</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .article-page {
+            padding: 40px 0 80px;
+            background: var(--off-white);
+        }
+        .article-layout {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 40px;
+            align-items: start;
+        }
+        .article-main {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
+        }
+        .article-header-img {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+        .article-header-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .article-header-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to top, rgba(10,22,40,0.8), transparent);
+        }
+        .article-header-content {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            padding: 32px;
+            z-index: 2;
+            color: white;
+        }
+        .article-cat-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 12px;
+            font-weight: 800;
+            padding: 5px 14px;
+            border-radius: var(--radius-full);
+            margin-bottom: 12px;
+        }
+        .article-header-content h1 {
+            font-size: 28px;
+            font-weight: 900;
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+        .article-meta-bar {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+        }
+        .article-meta-bar span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .article-body {
+            padding: 32px;
+        }
+        .article-body p {
+            font-size: 16px;
+            line-height: 2;
+            color: var(--gray-700);
+            margin-bottom: 20px;
+        }
+        .article-body h2 {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--navy);
+            margin: 32px 0 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--teal-pale);
+        }
+        .article-share {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 32px;
+            border-top: 1px solid var(--gray-100);
+            background: var(--gray-50);
+        }
+        .share-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+        .share-btn:hover { transform: translateY(-2px); }
+        .share-fb { background: #1877f2; }
+        .share-tw { background: #1da1f2; }
+        .share-wa { background: #25d366; }
+        .share-tg { background: #0088cc; }
+        .article-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .as-widget {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--gray-100);
+            overflow: hidden;
+        }
+        .as-widget-head {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--gray-100);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .as-widget-head h4 {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--navy);
+        }
+        .as-widget-head i { color: var(--teal); }
+        .as-widget-body { padding: 16px 20px; }
+        .author-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--teal), var(--navy));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+        .author-info h5 {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        .related-articles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .related-article-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-100);
+            align-items: flex-start;
+        }
+        .related-article-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .rai-img {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .rai-img img { width: 100%; height: 100%; object-fit: cover; }
+        .rai-text h6 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.5;
+            margin-bottom: 4px;
+        }
+        .article-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 80px 20px;
+            color: var(--gray-300);
+            min-height: 400px;
+        }
+        @media (max-width: 768px) {
+            .article-layout { grid-template-columns: 1fr; }
+            .article-header-content h1 { font-size: 20px; }
+            .article-header-img { height: 280px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="announcement-bar">
+        <p>🚚 شحن مجاني للطلبات فوق 2000 جنيه &nbsp;|&nbsp; ✅ ضمان سنة على جميع الأجهزة &nbsp;|&nbsp; 📞 دعم فني 24/7</p>
+    </div>
+
+    <header class="site-header" id="site-header">
+        <div class="header-inner container">
+            <a href="index.html" class="logo-link">
+                <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+                <div class="logo-text">
+                    <span class="logo-main">MEDICAL</span>
+                    <span class="logo-sub">ZONE</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="store.html">المتجر</a></li>
+                    <li><a href="maintenance.html">صيانة</a></li>
+                    <li><a href="reports.html">تقارير</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="admin.html" class="btn-outline-sm"><i class="fas fa-cog"></i> لوحة التحكم</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
+        <nav class="drawer-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="store.html"><i class="fas fa-store"></i> المتجر</a></li>
+                <li><a href="maintenance.html"><i class="fas fa-tools"></i> صيانة</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-medical"></i> تقارير</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> تواصل معنا</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main class="article-page">
+        <div class="container">
+            <div id="articleLoading" class="article-loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>جاري تحميل التقرير...</p>
+            </div>
+            <div id="articleContent" style="display:none">
+                <div class="article-layout">
+                    <article class="article-main">
+                        <div class="article-header-img">
+                            <img id="articleImage" src="" alt="">
+                            <div class="article-header-content">
+                                <span class="article-cat-tag" id="articleCat"><i class="fas fa-folder"></i> الفئة</span>
+                                <h1 id="articleTitle">عنوان التقرير</h1>
+                                <div class="article-meta-bar">
+                                    <span><i class="far fa-calendar"></i> <span id="articleDate">---</span></span>
+                                    <span><i class="far fa-clock"></i> <span id="articleReadTime">---</span></span>
+                                    <span><i class="far fa-user"></i> <span id="articleAuthor">---</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="article-body" id="articleBody"></div>
+                        <div class="article-share">
+                            <span>مشاركة:</span>
+                            <button class="share-btn share-fb" onclick="shareFB()"><i class="fab fa-facebook-f"></i></button>
+                            <button class="share-btn share-tw" onclick="shareTW()"><i class="fab fa-twitter"></i></button>
+                            <button class="share-btn share-wa" onclick="shareWA()"><i class="fab fa-whatsapp"></i></button>
+                            <button class="share-btn share-tg" onclick="shareTG()"><i class="fab fa-telegram-plane"></i></button>
+                        </div>
+                    </article>
+                    <aside class="article-sidebar">
+                        <div class="as-widget">
+                            <div class="as-widget-head">
+                                <i class="fas fa-user-edit"></i>
+                                <h4>المؤلف</h4>
+                            </div>
+                            <div class="as-widget-body">
+                                <div class="author-card">
+                                    <div class="author-avatar" id="authorAvatar">م</div>
+                                    <div class="author-info">
+                                        <h5 id="authorName">---</h5>
+                                        <p>فريق ميديكال زون</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="as-widget">
+                            <div class="as-widget-head">
+                                <i class="fas fa-newspaper"></i>
+                                <h4>تقارير ذات صلة</h4>
+                            </div>
+                            <div class="as-widget-body">
+                                <div class="related-articles-list" id="relatedArticles"></div>
+                            </div>
+                        </div>
+                        <div class="as-widget" style="background: linear-gradient(135deg, var(--teal-pale), #d0eaf7); border-color: rgba(13,110,170,0.15);">
+                            <div class="as-widget-body" style="text-align: center; padding: 24px 20px;">
+                                <i class="fas fa-store-alt" style="font-size: 32px; color: var(--teal); margin-bottom: 12px;"></i>
+                                <h4 style="font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 8px;">تسوق أجهزتنا الطبية</h4>
+                                <p style="font-size: 13px; color: var(--gray-600); line-height: 1.7; margin-bottom: 16px;">اكتشف أحدث الأجهزة المتوفرة لدينا بأفضل الأسعار</p>
+                                <a href="store.html" class="btn-primary" style="font-size: 13px; padding: 10px 20px;">تسوق الآن <i class="fas fa-arrow-left"></i></a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer كامل -->
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-col footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+                        <div class="logo-text">
+                            <span class="logo-main">MEDICAL</span>
+                            <span class="logo-sub">ZONE</span>
+                        </div>
+                    </div>
+                    <p>مؤسسة ميديكال زون للأجهزة الطبية — وجهتك الأولى لأحدث الأجهزة والمستلزمات الطبية عالية الجودة في مصر.</p>
+                    <div class="social-links">
+                        <a href="https://web.facebook.com/medical.zone.sohage" target="_blank" rel="noopener" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="إنستجرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="terms.html">الشروط والأحكام</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                        <li><a href="support.html">الدعم الفني</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                        <li><a href="https://web.facebook.com/medical.zone.sohage/photos" target="_blank" rel="noopener">صور المنتجات</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">تواصل معنا</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>سوهاج:</strong> 43 ش الجامعة أمام مسجد الشرطة</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>القاهرة: 01223962139 - 01223962138</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>سوهاج: 01126562854 - 01126562812</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@medicalzone.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 مؤسسة ميديكال زون للأجهزة الطبية. جميع الحقوق محفوظة.</p>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/site.js"></script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const articleId = urlParams.get('id');
+
+        async function loadArticle() {
+            try {
+                const res = await fetch('content/reports.json?v=' + Date.now());
+                const data = await res.json();
+                const reports = data.reports || [];
+                const article = reports.find(a => a.id === articleId);
+                if (!article) {
+                    document.getElementById('articleLoading').innerHTML = '<i class="fas fa-exclamation-triangle"></i><p>التقرير غير موجود</p><a href="reports.html" style="color:var(--teal);margin-top:10px">العودة للتقارير</a>';
+                    return;
+                }
+                document.getElementById('articleLoading').style.display = 'none';
+                document.getElementById('articleContent').style.display = 'block';
+                document.getElementById('articleTitle').textContent = article.title;
+                document.getElementById('articleCat').innerHTML = '<i class="fas fa-folder"></i> ' + article.category;
+                document.getElementById('articleDate').textContent = article.date;
+                document.getElementById('articleReadTime').textContent = '5 دقائق';
+                document.getElementById('articleAuthor').textContent = 'فريق ميديكال زون';
+                document.getElementById('articleImage').src = article.image || 'https://placehold.co/600x400?text=صورة+تقرير';
+                document.getElementById('articleImage').alt = article.title;
+                document.getElementById('authorName').textContent = 'فريق ميديكال زون';
+                document.getElementById('authorAvatar').textContent = 'م';
+                document.getElementById('articleBody').innerHTML = `
+                    <p>${article.summary || ''}</p>
+                    <h2>الخلاصة</h2>
+                    <p>هذا التقرير يقدم معلومات هامة حول ${article.category}. للمزيد من التفاصيل، تواصل مع فريق ميديكال زون.</p>
+                    <blockquote>"الجودة هي أساس ثقتنا.. ورضا العميل هو هدفنا الأول"<br><strong>— فريق ميديكال زون</strong></blockquote>
+                `;
+                const related = reports.filter(r => r.category === article.category && r.id !== article.id).slice(0, 4);
+                const relatedContainer = document.getElementById('relatedArticles');
+                if (related.length > 0) {
+                    relatedContainer.innerHTML = related.map(r => `
+                        <div class="related-article-item">
+                            <div class="rai-img"><img src="${r.image || 'https://placehold.co/600x400?text=صورة'}" alt="${r.title}"></div>
+                            <div class="rai-text">
+                                <h6><a href="article.html?id=${r.id}" style="color:inherit">${r.title}</a></h6>
+                                <span><i class="far fa-calendar"></i> ${r.date}</span>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    relatedContainer.innerHTML = '<p style="color:var(--gray-300);font-size:13px">لا توجد تقارير ذات صلة</p>';
+                }
+                document.title = article.title + ' — ميديكال زون';
+            } catch(e) {
+                document.getElementById('articleLoading').innerHTML = '<i class="fas fa-exclamation-triangle"></i><p>حدث خطأ في تحميل التقرير</p>';
+            }
+        }
+
+        function shareFB() { window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), '_blank'); }
+        function shareTW() { window.open('https://twitter.com/intent/tweet?url=' + encodeURIComponent(window.location.href), '_blank'); }
+        function shareWA() { window.open('https://wa.me/?text=' + encodeURIComponent(document.title + ' ' + window.location.href), '_blank'); }
+        function shareTG() { window.open('https://t.me/share/url?url=' + encodeURIComponent(window.location.href), '_blank'); }
+
+        loadArticle();
+    </script>
+</body>
+</html>
