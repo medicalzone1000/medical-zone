@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
+        /* تنسيق الهيرو مع فيديو أو صورة احتياطية */
         .hero {
             position: relative;
             overflow: hidden;
@@ -39,7 +40,9 @@
         .hero-content {
             max-width: 650px;
         }
+        /* إخفاء بطاقة التقرير القديمة نهائياً */
         .hero-report-card { display: none; }
+        /* تنسيق ممتاز للموبايل */
         @media (max-width: 768px) {
             .hero {
                 min-height: auto;
@@ -82,6 +85,7 @@
 </div>
 
 <main>
+    <!-- هيرو بفيديو أو صورة -->
     <section class="hero">
         <video autoplay muted loop playsinline id="heroVideo">
             <source src="videos/medical-bg.mp4" type="video/mp4">
@@ -97,21 +101,27 @@
         </div>
     </section>
 
-    <!-- باقي الأقسام كما هي (ثابتة) -->
+    <!-- Trust Bar -->
     <section class="trust-bar"><div class="container trust-bar-inner"><div class="trust-item"><div class="trust-icon"><i class="fas fa-shipping-fast"></i></div><div><h4>شحن سريع</h4><p>لجميع المحافظات</p></div></div><div class="trust-sep"></div><div class="trust-item"><div class="trust-icon"><i class="fas fa-award"></i></div><div><h4>ضمان حقيقي</h4><p>سنة ضد عيوب الصناعة</p></div></div><div class="trust-sep"></div><div class="trust-item"><div class="trust-icon"><i class="fas fa-user-md"></i></div><div><h4>دعم 24/7</h4><p>فريق طبي متخصص</p></div></div><div class="trust-sep"></div><div class="trust-item"><div class="trust-icon"><i class="fas fa-lock"></i></div><div><h4>دفع آمن</h4><p>تعدد وسائل الدفع</p></div></div></div></section>
 
+    <!-- Promo Banners -->
     <section class="promo-section"><div class="container promo-grid"><div class="promo-card promo-main"><img src="images/promo-main.jpg" alt="تجهيزات عيادات" style="background:#cbd5e1; min-height:420px;"><div class="promo-overlay"></div><div class="promo-content"><span class="promo-tag">عرض خاص</span><h3>تجهيزات عيادات متكاملة</h3><p>تقسيط مريح حتى 12 شهراً</p><a href="store.html" class="btn-white">اعرف أكثر</a></div></div><div class="promo-stack"><div class="promo-card promo-small"><img src="images/promo-small-1.jpg" alt="أجهزة ضغط دم" style="background:#cbd5e1; min-height:196px;"><div class="promo-overlay"></div><div class="promo-content"><span class="promo-tag">خصم 20%</span><h3>أجهزة ضغط الدم</h3><a href="store.html" class="btn-white-sm">تسوق</a></div></div><div class="promo-card promo-small"><img src="images/promo-small-2.jpg" alt="أجهزة تنفس منزلية" style="background:#cbd5e1; min-height:196px;"><div class="promo-overlay"></div><div class="promo-content"><span class="promo-tag">الأكثر طلباً</span><h3>أجهزة التنفس المنزلي</h3><a href="store.html" class="btn-white-sm">تسوق</a></div></div></div></div></section>
 
+    <!-- New Arrivals Products -->
     <section class="products-section"><div class="container"><div class="section-head"><div><span class="section-label">جديد لدينا</span><h2 class="section-title">وصل حديثاً</h2></div><a href="store.html" class="view-all-link">عرض الكل <i class="fas fa-arrow-left"></i></a></div><div class="products-grid" id="latestProductsGrid"><div class="loading-state" style="grid-column:1/-1"><i class="fas fa-spinner fa-spin"></i><p>جاري التحميل...</p></div></div></div></section>
 
+    <!-- Latest Reports -->
     <section class="blog-section"><div class="container"><div class="section-head"><div><span class="section-label">المدونة الطبية</span><h2 class="section-title">أحدث التقارير</h2></div><a href="reports.html" class="view-all-link">عرض الكل <i class="fas fa-arrow-left"></i></a></div><div class="blog-grid" id="latestReportsGrid"><div class="loading-state" style="grid-column:1/-1"><i class="fas fa-spinner fa-spin"></i><p>جاري تحميل التقارير...</p></div></div></div></section>
 
+    <!-- Categories -->
     <section class="categories-section"><div class="container"><div class="section-head centered"><span class="section-label">تصفح</span><h2 class="section-title">تسوق حسب الفئة</h2></div><div class="categories-grid"><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-procedures"></i></div><span>العمليات والعناية المركزة</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-microscope"></i></div><span>المناظير والآلات</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-x-ray"></i></div><span>الأشعة والسونار</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-hand-holding-medical"></i></div><span>العلاج الطبيعي</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-lungs"></i></div><span>أجهزة التنفس والأكسجين</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-ear-listen"></i></div><span>الأنف والأذن والسمعيات</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-brain"></i></div><span>رسم المخ والعضلات</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-handshake"></i></div><span>أجهزة تنفس للإيجار</span></a></div></div></section>
 </main>
 
+<!-- Footer -->
 <footer class="site-footer"><div class="footer-top"><div class="container footer-grid"><div class="footer-col footer-brand"><div class="footer-logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><div class="logo-text"><span class="logo-main">MEDICAL</span><span class="logo-sub">ZONE</span></div></div><p>مؤسسة ميديكال زون للأجهزة الطبية — وجهتك الأولى لأحدث الأجهزة والمستلزمات الطبية عالية الجودة في مصر.</p><div class="social-links"><a href="https://web.facebook.com/medical.zone.sohage" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div></div><div class="footer-col"><h4 class="footer-col-title">روابط سريعة</h4><ul class="footer-links"><li><a href="#">الشروط والأحكام</a></li><li><a href="#">سياسة الخصوصية</a></li><li><a href="#">الدعم الفني</a></li><li><a href="#">الأسئلة الشائعة</a></li><li><a href="https://web.facebook.com/medical.zone.sohage/photos" target="_blank">صور المنتجات</a></li></ul></div><div class="footer-col"><h4 class="footer-col-title">تواصل معنا</h4><ul class="footer-contact"><li><i class="fas fa-map-marker-alt"></i><span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span></li><li><i class="fas fa-map-marker-alt"></i><span><strong>سوهاج:</strong> 43 ش الجامعة أمام مسجد الشرطة</span></li><li><i class="fas fa-phone"></i><span>القاهرة: 01223962139 - 01223962138</span></li><li><i class="fas fa-phone"></i><span>سوهاج: 01126562854 - 01126562812</span></li><li><i class="fas fa-envelope"></i><span>info@medicalzone.com</span></li></ul></div></div></div><div class="footer-bottom"><div class="container footer-bottom-inner"><p>&copy; 2026 مؤسسة ميديكال زون للأجهزة الطبية. جميع الحقوق محفوظة.</p><div class="payment-icons"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-paypal"></i></div></div></div></footer>
 
 <script>
+    // Sticky Header & Mobile Drawer
     const header = document.getElementById('site-header');
     window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 60); });
     const menuBtn = document.getElementById('mobileMenuBtn');
@@ -123,9 +133,12 @@
     menuBtn.addEventListener('click', openDrawer);
     closeBtn.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
+    // Cart
     let cartCount = parseInt(localStorage.getItem('cartCount') || '0');
     document.getElementById('cartBadge').textContent = cartCount;
+    // Format Price
     function formatPrice(n) { return Number(n).toLocaleString('ar-EG') + ' ج.م'; }
+    // Load Latest Products
     async function loadLatestProducts() {
         const grid = document.getElementById('latestProductsGrid');
         try {
@@ -142,6 +155,7 @@
             }).join('');
         } catch(e) { grid.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1">تعذر تحميل المنتجات</p>'; }
     }
+    // Load Latest Reports
     async function loadLatestReports() {
         const grid = document.getElementById('latestReportsGrid');
         try {
@@ -157,7 +171,7 @@
     loadLatestProducts();
     loadLatestReports();
 
-    // محاولة تشغيل الفيديو مع التحقق من وجوده
+    // تشغيل الفيديو إذا كان موجوداً
     const video = document.getElementById('heroVideo');
     if (video) {
         const source = video.querySelector('source');
@@ -166,12 +180,12 @@
                 .then(response => {
                     if (response.ok) {
                         video.style.display = 'block';
-                        video.play().catch(e => console.log('تشغيل الفيديو تلقائياً غير مسموح'));
+                        video.play().catch(e => console.log('auto-play blocked'));
                     } else {
-                        console.log('الفيديو غير موجود');
+                        console.log('Video not found, using fallback image');
                     }
                 })
-                .catch(() => console.log('خطأ في التحقق من الفيديو'));
+                .catch(() => console.log('Error checking video'));
         }
     }
 </script>
