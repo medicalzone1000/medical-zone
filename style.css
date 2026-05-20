@@ -60,28 +60,23 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     padding: 0 24px;
 }
 
-/* ---- Announcement Bar ---- */
+/* ---- Announcement Bar (معطّل) ---- */
 .announcement-bar {
-    background: var(--navy);
-    color: rgba(255,255,255,0.85);
-    text-align: center;
-    padding: 9px 16px;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.01em;
+    display: none !important;
 }
 
-/* ---- Header ---- */
+/* ---- Header (نفس لون الفوتر) ---- */
 .site-header {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: var(--white);
-    border-bottom: 1px solid var(--gray-100);
-    transition: box-shadow var(--transition);
+    background: var(--navy);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: box-shadow var(--transition), background var(--transition);
 }
 .site-header.scrolled {
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.28);
+    background: var(--navy);
 }
 .header-inner {
     display: flex;
@@ -116,17 +111,20 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     line-height: 1.1;
   align-items: center;  
 }
-.logo-main {
+.site-header .logo-main {
     font-size: 16px;
     font-weight: 900;
-    color: var(--navy);
+    color: var(--white);
     letter-spacing: 2px;
 }
-.logo-sub {
+.site-header .logo-sub {
     font-size: 11px;
     font-weight: 600;
-    color: var(--teal);
+    color: var(--gold-light);
     letter-spacing: 3px;
+}
+.site-header .logo-icon {
+    background: linear-gradient(135deg, var(--teal-light), var(--teal));
 }
 
 /* Nav */
@@ -136,19 +134,22 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     gap: 4px;
     list-style: none;
 }
-.main-nav a {
+.site-header .main-nav a {
     display: block;
     padding: 8px 14px;
     font-size: 14px;
     font-weight: 600;
-    color: var(--gray-600);
+    color: rgba(255, 255, 255, 0.85);
     border-radius: var(--radius-sm);
     transition: color var(--transition), background var(--transition);
 }
-.main-nav a:hover,
-.main-nav a.active {
-    color: var(--teal);
-    background: var(--teal-pale);
+.site-header .main-nav a:hover {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.12);
+}
+.site-header .main-nav a.active {
+    color: var(--gold-light);
+    background: rgba(201, 165, 90, 0.2);
 }
 
 /* Header actions */
@@ -177,6 +178,15 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     color: var(--teal);
     background: var(--teal-pale);
 }
+.site-header .icon-btn {
+    border-color: rgba(255, 255, 255, 0.28);
+    color: rgba(255, 255, 255, 0.92);
+}
+.site-header .icon-btn:hover {
+    border-color: var(--gold-light);
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.1);
+}
 .cart-badge {
     position: absolute;
     top: -5px;
@@ -204,6 +214,15 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
 }
 .btn-outline-sm:hover {
     background: var(--navy);
+    color: var(--white);
+}
+.site-header .btn-outline-sm {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: var(--white);
+}
+.site-header .btn-outline-sm:hover {
+    background: var(--teal);
+    border-color: var(--teal-light);
     color: var(--white);
 }
 
@@ -1428,11 +1447,6 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
 }
 
 @media (max-width: 768px) {
-    /* إخفاء شريط الإعلان — موبايل فقط */
-    .announcement-bar {
-        display: none !important;
-    }
-
     /* Header */
     .main-nav { display: none; }
     .mobile-menu-btn { display: flex; }
@@ -1446,13 +1460,12 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
         top: 0;
         left: 0;
         right: 0;
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(8px);
-        border-bottom-color: transparent;
+        background: var(--navy);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
     .page-home .site-header.scrolled {
-        background: var(--white);
-        border-bottom-color: var(--gray-100);
+        background: var(--navy);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
     }
     .page-home .home-hero {
         min-height: 100svh;
@@ -1689,6 +1702,14 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     color: var(--gray-600);
     font-size: 16px;
     cursor: pointer;
+}
+.site-header .mobile-menu-btn {
+    border-color: rgba(255, 255, 255, 0.35);
+    color: var(--white);
+}
+.site-header .mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.55);
 }
 
 /* ---- Mobile Drawer ---- */
