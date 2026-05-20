@@ -251,9 +251,18 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
 .page-home .hero-container {
     position: relative;
     z-index: 1;
+    display: block;
+    grid-template-columns: 1fr;
+    width: 100%;
 }
 .page-home .hero-content {
-    max-width: 650px;
+    max-width: 640px;
+}
+/* منع أي واتساب في الهيدر */
+.header-actions a.header-wa-btn,
+.header-actions .header-wa-btn,
+.header-inner a[href*="wa.me"] {
+    display: none !important;
 }
 .hero-bg-grid {
     position: absolute;
@@ -1450,8 +1459,9 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
         min-height: 100dvh;
         padding: 0;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-end;
     }
     .page-home .hero-media,
     .page-home .hero-bg-img {
@@ -1461,11 +1471,13 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     .page-home .home-hero .hero-container {
         width: 100%;
         max-width: 100%;
-        min-height: calc(100dvh - 64px);
+        min-height: 0;
+        flex: 1;
         display: flex;
-        align-items: center;
+        align-items: flex-end;
         justify-content: center;
-        padding: 72px 20px 32px;
+        /* مسافة آمنة فوق زر واتساب العائم */
+        padding: 72px 20px 108px;
     }
     .page-home .hero-content {
         max-width: 100%;
@@ -1474,8 +1486,9 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
         gap: 4px;
+        margin-bottom: 0;
     }
     .page-home .hero-eyebrow {
         justify-content: center;
@@ -1654,11 +1667,8 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     .header-inner {
         justify-content: space-between;
     }
-    .header-actions {
-        margin-right: auto;
-        display: flex;
-        align-items: center;
-        gap: 8px;
+    .page-home .header-actions {
+        display: none !important;
     }
 }
 
@@ -1926,7 +1936,15 @@ img[src=""], img:not([src]) {
 .mz-whatsapp-float i { font-size: 22px; }
 @media (max-width: 480px) {
     .mz-whatsapp-float span { display: none; }
-    .mz-whatsapp-float { padding: 14px; border-radius: 50%; }
+    .mz-whatsapp-float {
+        padding: 14px;
+        border-radius: 50%;
+        bottom: 20px;
+        left: 16px;
+    }
+    .page-home .home-hero .hero-container {
+        padding-bottom: 96px;
+    }
 }
 
 /* واتساب الهيدر — معطّل (الزر العائم بالأسفل فقط) */
