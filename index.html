@@ -17,35 +17,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <style>
-        .hero {
-            background: linear-gradient(rgba(10,22,40,0.65), rgba(10,22,40,0.8)), url('images/medical-hero.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 80px 0;
-            display: flex;
-            align-items: center;
-        }
-        .hero-content {
-            max-width: 650px;
-        }
-        .hero-report-card { display: none; }
-        @media (max-width: 768px) {
-            .hero {
-                padding: 60px 0;
-            }
-            .hero-content {
-                text-align: center;
-                max-width: 100%;
-                padding: 0 16px;
-            }
-            .hero-title { font-size: 28px; }
-            .hero-title em { font-size: 22px; }
-            .hero-stats { justify-content: center; flex-wrap: wrap; gap: 16px; }
-        }
-    </style>
 </head>
-<body>
+<body class="page-home">
 
 <div class="announcement-bar">
     <p>🚚 شحن مجاني للطلبات فوق 2000 جنيه &nbsp;|&nbsp; ✅ ضمان سنة على جميع الأجهزة &nbsp;|&nbsp; 📞 دعم فني 24/7</p>
@@ -67,7 +40,7 @@
 </div>
 
 <main>
-    <section class="hero">
+    <section class="hero home-hero">
         <div class="container hero-container">
             <div class="hero-content">
                 <div class="hero-eyebrow"><span class="eyebrow-dot"></span><span>الوجهة الأولى للأجهزة الطبية في مصر</span></div>
@@ -84,11 +57,11 @@
 
     <section class="promo-section"><div class="container promo-grid"><div class="promo-card promo-main"><img src="images/promo-main.jpg" alt="تجهيزات عيادات" style="background:#cbd5e1; min-height:420px;"><div class="promo-overlay"></div><div class="promo-content"><span class="promo-tag">عرض خاص</span><h3>تجهيزات عيادات متكاملة</h3><p>تقسيط مريح حتى 12 شهراً</p><a href="store.html" class="btn-white">اعرف أكثر</a></div></div><div class="promo-stack"><div class="promo-card promo-small"><img src="images/promo-main.jpg" alt="أجهزة ضغط دم" style="background:#cbd5e1; min-height:196px; object-fit:cover;"><div class="promo-overlay"></div><div class="promo-content"><span class="promo-tag">خصم 20%</span><h3>أجهزة ضغط الدم</h3><a href="store.html" class="btn-white-sm">تسوق</a></div></div><div class="promo-card promo-small"><img src="images/promo-main.jpg" alt="أجهزة تنفس منزلية" style="background:#cbd5e1; min-height:196px; object-fit:cover;"><div class="promo-overlay"></div><div class="promo-content"><span class="promo-tag">الأكثر طلباً</span><h3>أجهزة التنفس المنزلي</h3><a href="store.html" class="btn-white-sm">تسوق</a></div></div></div></div></section>
 
+    <section class="categories-section"><div class="container"><div class="section-head centered"><span class="section-label">تصفح</span><h2 class="section-title">تسوق حسب الفئة</h2></div><div class="categories-grid"><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-procedures"></i></div><span>العمليات والعناية المركزة</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-microscope"></i></div><span>المناظير والآلات</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-x-ray"></i></div><span>الأشعة والسونار</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-hand-holding-medical"></i></div><span>العلاج الطبيعي</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-lungs"></i></div><span>أجهزة التنفس والأكسجين</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-ear-listen"></i></div><span>الأنف والأذن والسمعيات</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-brain"></i></div><span>رسم المخ والعضلات</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-handshake"></i></div><span>أجهزة تنفس للإيجار</span></a></div></div></section>
+
     <section class="products-section"><div class="container"><div class="section-head"><div><span class="section-label">جديد لدينا</span><h2 class="section-title">وصل حديثاً</h2></div><a href="store.html" class="view-all-link">عرض الكل <i class="fas fa-arrow-left"></i></a></div><div class="products-grid" id="latestProductsGrid"><div class="loading-state" style="grid-column:1/-1"><i class="fas fa-spinner fa-spin"></i><p>جاري التحميل...</p></div></div></div></section>
 
     <section class="blog-section"><div class="container"><div class="section-head"><div><span class="section-label">المدونة الطبية</span><h2 class="section-title">أحدث التقارير</h2></div><a href="reports.html" class="view-all-link">عرض الكل <i class="fas fa-arrow-left"></i></a></div><div class="blog-grid" id="latestReportsGrid"><div class="loading-state" style="grid-column:1/-1"><i class="fas fa-spinner fa-spin"></i><p>جاري تحميل التقارير...</p></div></div></div></section>
-
-    <section class="categories-section"><div class="container"><div class="section-head centered"><span class="section-label">تصفح</span><h2 class="section-title">تسوق حسب الفئة</h2></div><div class="categories-grid"><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-procedures"></i></div><span>العمليات والعناية المركزة</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-microscope"></i></div><span>المناظير والآلات</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-x-ray"></i></div><span>الأشعة والسونار</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-hand-holding-medical"></i></div><span>العلاج الطبيعي</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-lungs"></i></div><span>أجهزة التنفس والأكسجين</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-ear-listen"></i></div><span>الأنف والأذن والسمعيات</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-brain"></i></div><span>رسم المخ والعضلات</span></a><a href="store.html" class="cat-card"><div class="cat-icon-wrap"><i class="fas fa-handshake"></i></div><span>أجهزة تنفس للإيجار</span></a></div></div></section>
 </main>
 
 <footer class="site-footer"><div class="footer-top"><div class="container footer-grid"><div class="footer-col footer-brand"><div class="footer-logo"><div class="logo-icon"><i class="fas fa-heartbeat"></i></div><div class="logo-text"><span class="logo-main">MEDICAL</span><span class="logo-sub">ZONE</span></div></div><p>مؤسسة ميديكال زون للأجهزة الطبية — وجهتك الأولى لأحدث الأجهزة والمستلزمات الطبية عالية الجودة في مصر.</p><div class="social-links"><a href="https://web.facebook.com/medical.zone.sohage" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div></div><div class="footer-col"><h4 class="footer-col-title">روابط سريعة</h4><ul class="footer-links"><li><a href="terms.html">الشروط والأحكام</a></li><li><a href="privacy.html">سياسة الخصوصية</a></li><li><a href="support.html">الدعم الفني</a></li><li><a href="faq.html">الأسئلة الشائعة</a></li><li><a href="https://web.facebook.com/medical.zone.sohage/photos" target="_blank" rel="noopener">صور المنتجات</a></li></ul></div><div class="footer-col"><h4 class="footer-col-title">تواصل معنا</h4><ul class="footer-contact"><li><i class="fas fa-map-marker-alt"></i><span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span></li><li><i class="fas fa-map-marker-alt"></i><span><strong>سوهاج:</strong> 43 ش الجامعة أمام مسجد الشرطة</span></li><li><i class="fas fa-phone"></i><span>القاهرة: 01223962139 - 01223962138</span></li><li><i class="fas fa-phone"></i><span>سوهاج: 01126562854 - 01126562812</span></li><li><i class="fas fa-envelope"></i><span>info@medicalzone.com</span></li></ul></div></div></div><div class="footer-bottom"><div class="container footer-bottom-inner"><p>&copy; 2026 مؤسسة ميديكال زون للأجهزة الطبية. جميع الحقوق محفوظة.</p><div class="payment-icons"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-paypal"></i></div></div></div></footer>

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="page-store">
 
     <div class="announcement-bar">
         <p>🚚 شحن مجاني للطلبات فوق 2000 جنيه &nbsp;|&nbsp; ✅ ضمان سنة على جميع الأجهزة &nbsp;|&nbsp; 📞 دعم فني 24/7</p>
@@ -70,8 +70,14 @@
     <main class="store-main">
         <div class="container store-layout">
             <aside class="store-sidebar">
-                <div class="sidebar-widget">
-                    <h3 class="widget-title">الأقسام</h3>
+                <div class="sidebar-widget store-cats-widget">
+                    <button type="button" class="store-cats-toggle" id="storeCatsToggle" aria-expanded="false" aria-controls="storeCatsPanel">
+                        <i class="fas fa-th-large"></i>
+                        <span id="storeCatsToggleLabel">جميع الأقسام</span>
+                        <i class="fas fa-chevron-down store-cats-chevron"></i>
+                    </button>
+                    <div class="store-cats-panel" id="storeCatsPanel">
+                    <h3 class="widget-title widget-title-desktop">الأقسام</h3>
                     <ul class="sidebar-cats" id="categoryList">
                         <li class="active"><a href="#" data-cat="all"><i class="fas fa-th-large"></i> جميع الأقسام</a></li>
                         <li><a href="#" data-cat="العمليات والعناية المركزة"><i class="fas fa-procedures"></i> العمليات والعناية المركزة</a></li>
@@ -83,6 +89,7 @@
                         <li><a href="#" data-cat="رسم المخ والعضلات"><i class="fas fa-brain"></i> رسم المخ والعضلات</a></li>
                         <li><a href="#" data-cat="أجهزة تنفس للإيجار"><i class="fas fa-handshake"></i> أجهزة تنفس للإيجار</a></li>
                     </ul>
+                    </div>
                 </div>
                 <div class="sidebar-widget sidebar-fb-banner">
                     <div class="fb-banner-badge"><i class="fab fa-facebook-f"></i> تابعنا</div>
@@ -303,15 +310,34 @@
             document.body.style.overflow = '';
         }
 
+        function setActiveCategory(link) {
+            document.querySelectorAll('#categoryList li').forEach(li => li.classList.remove('active'));
+            link.parentElement.classList.add('active');
+            currentCat = link.dataset.cat;
+            const label = document.getElementById('storeCatsToggleLabel');
+            if (label) label.textContent = link.textContent.trim();
+            const panel = document.getElementById('storeCatsPanel');
+            const toggle = document.getElementById('storeCatsToggle');
+            if (panel) panel.classList.remove('open');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            renderProducts();
+        }
+
         document.querySelectorAll('#categoryList a').forEach(link => {
             link.addEventListener('click', e => {
                 e.preventDefault();
-                document.querySelectorAll('#categoryList li').forEach(li => li.classList.remove('active'));
-                link.parentElement.classList.add('active');
-                currentCat = link.dataset.cat;
-                renderProducts();
+                setActiveCategory(link);
             });
         });
+
+        const storeCatsToggle = document.getElementById('storeCatsToggle');
+        const storeCatsPanel = document.getElementById('storeCatsPanel');
+        if (storeCatsToggle && storeCatsPanel) {
+            storeCatsToggle.addEventListener('click', () => {
+                const open = storeCatsPanel.classList.toggle('open');
+                storeCatsToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+        }
         document.getElementById('searchInput').addEventListener('input', e => {
             currentSearch = e.target.value.trim();
             renderProducts();
