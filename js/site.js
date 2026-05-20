@@ -185,7 +185,6 @@
   document.addEventListener('DOMContentLoaded', function () {
     initHeader();
     initWhatsAppFloat();
-    initHeaderWhatsApp();
     patchFooterAndSocial();
     initContactForm();
     initMaintenanceForm();
