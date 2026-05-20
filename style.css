@@ -304,17 +304,18 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--gold);
+    color: #FFD700;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 1px;
     margin-bottom: 20px;
     text-transform: uppercase;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.5);
 }
 .eyebrow-dot {
     width: 8px;
     height: 8px;
-    background: var(--gold);
+    background: #FFD700;
     border-radius: 50%;
     flex-shrink: 0;
 }
@@ -328,12 +329,13 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
 .hero-title em {
     font-style: normal;
     font-family: var(--font-ar);
-    color: var(--gold-light);
-    font-weight: 400;
+    color: #FFD700;
+    font-weight: 700;
     font-size: 34px;
     white-space: nowrap;
     display: block;
     margin-top: 8px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
 .hero-desc {
@@ -398,6 +400,7 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     font-weight: 900;
     color: var(--white);
     line-height: 1.1;
+    margin-bottom: 8px;
 }
 .stat-item span {
     font-size: 14px;
@@ -840,8 +843,8 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
     transition: all var(--transition);
 }
 .cat-card:hover .cat-icon-wrap {
-    background: var(--teal);
-    color: var(--white);
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
 }
 .cat-card span {
     font-size: 12px;
@@ -1481,6 +1484,12 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
         width: 100%;
         height: 100%;
     }
+    /* ترتيب عناصر الهيرو على الموبايل: eyebrow → title → stats → cta */
+    .page-home .hero-eyebrow { order: 1; }
+    .page-home .hero-title   { order: 2; }
+    .page-home .hero-desc    { order: 3; }
+    .page-home .hero-stats   { order: 4; }
+    .page-home .hero-cta     { order: 5; }
     .page-home .home-hero .hero-container {
         width: 100%;
         max-width: 100%;
@@ -1489,8 +1498,7 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
         display: flex;
         align-items: flex-end;
         justify-content: center;
-        /* مسافة آمنة فوق زر واتساب العائم */
-        padding: 72px 20px 108px;
+        padding: 72px 20px 112px;
     }
     .page-home .hero-content {
         max-width: 100%;
@@ -1500,66 +1508,108 @@ button { cursor: pointer; font-family: var(--font-ar); border: none; }
         flex-direction: column;
         align-items: center;
         justify-content: flex-end;
-        gap: 4px;
+        gap: 0;
         margin-bottom: 0;
     }
+    /* شريط علوي: الوجهة الأولى */
     .page-home .hero-eyebrow {
         justify-content: center;
-        font-size: 14px;
-        margin-bottom: 14px;
-    }
-    .page-home .hero-title {
-        font-size: 34px;
-        line-height: 1.2;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
         margin-bottom: 10px;
-        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+        color: #FFD700;
+        background: rgba(0,0,0,0.28);
+        padding: 5px 14px;
+        border-radius: 20px;
+        backdrop-filter: blur(4px);
     }
+    .page-home .hero-eyebrow .eyebrow-dot {
+        width: 6px;
+        height: 6px;
+    }
+    /* العنوان الرئيسي */
+    .page-home .hero-title {
+        font-size: 30px;
+        line-height: 1.2;
+        margin-bottom: 6px;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+        color: #ffffff;
+    }
+    /* أعلى جودة */
     .page-home .hero-title em {
-        font-size: 26px;
+        font-size: 22px;
         display: block;
-        margin-top: 8px;
+        margin-top: 4px;
+        color: #FFD700;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        font-weight: 700;
     }
-    /* إخفاء الوصف على الموبايل فقط */
+    /* إخفاء الوصف على الموبايل */
     .page-home .hero-desc {
         display: none !important;
     }
-    .page-home .hero-cta {
-        margin: 20px 0 24px;
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-    .page-home .hero-cta .btn-primary {
-        width: 100%;
-        max-width: 300px;
-        justify-content: center;
-        padding: 16px 28px;
-        font-size: 17px;
-    }
+    /* الإحصائيات: +600 منتج */
     .page-home .hero-stats {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+        gap: 0;
         width: 100%;
-        max-width: 360px;
-        padding: 16px 12px;
-        background: rgba(10, 22, 40, 0.35);
-        border-radius: var(--radius-md);
-        backdrop-filter: blur(6px);
+        padding: 12px 10px;
+        background: rgba(10, 22, 40, 0.55);
+        border-radius: 12px;
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.1);
+        margin-top: 14px;
+        margin-bottom: 12px;
+        order: 4;
     }
     .page-home .stat-divider {
         display: none;
     }
     .page-home .stat-item {
         text-align: center;
+        padding: 4px 6px;
+        border-left: 1px solid rgba(255,255,255,0.12);
+    }
+    .page-home .stat-item:last-child {
+        border-left: none;
     }
     .page-home .stat-item strong {
-        font-size: 22px;
+        font-size: 20px;
         display: block;
+        color: #FFD700;
+        margin-bottom: 2px;
     }
     .page-home .stat-item span {
-        font-size: 11px;
-        line-height: 1.35;
+        font-size: 10px;
+        line-height: 1.3;
+        color: rgba(255,255,255,0.75);
+    }
+    /* زر تسوق الآن: يأتي بعد الإحصائيات */
+    .page-home .hero-cta {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        order: 5;
+    }
+    .page-home .hero-cta .btn-primary {
+        width: 100%;
+        justify-content: center;
+        padding: 15px 24px;
+        font-size: 16px;
+        border-radius: 12px;
+        background: #FFD700;
+        color: #0f2035;
+        font-weight: 900;
+        box-shadow: 0 4px 20px rgba(255,215,0,0.35);
+    }
+    .page-home .hero-cta .btn-primary:hover {
+        background: #f0c800;
+    }
+    .page-home .hero-cta .btn-primary i {
+        color: #0f2035;
     }
 
     /* Hero — باقي الصفحات */

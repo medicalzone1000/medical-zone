@@ -627,22 +627,30 @@
         </div>
       </div>
       <div class="section-divider" style="font-size:12px;font-weight:700;color:#9aa5b4;margin:20px 0 12px;padding-bottom:8px;border-bottom:1px solid #e8ecf0;">
-        <i class="fas fa-image"></i> صورة المنتج
+        <i class="fas fa-images"></i> صور المنتج (يمكن إضافة أكثر من صورة)
       </div>
+      <!-- معرض الصور المضافة -->
+      <div id="pImagesGallery" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;min-height:0;"></div>
+      <!-- رفع صورة جديدة -->
       <div class="form-group">
-        <label>رفع صورة من جهازك</label>
-        <div style="border:2px dashed #e8ecf0;border-radius:8px;padding:20px;text-align:center;cursor:pointer;position:relative;" id="pUploadBox">
-          <input type="file" id="pImageFile" accept="image/*" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;" onchange="uploadImage('p')">
-          <i class="fas fa-cloud-upload-alt" style="font-size:28px;color:#9aa5b4;display:block;margin-bottom:8px;"></i>
-          <p style="font-size:13px;color:#9aa5b4;margin:0;">اضغط لاختيار صورة من جهازك</p>
+        <label>رفع صورة جديدة</label>
+        <div style="border:2px dashed #e8ecf0;border-radius:8px;padding:16px;text-align:center;cursor:pointer;position:relative;" id="pUploadBox">
+          <input type="file" id="pImageFile" accept="image/*" multiple style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;" onchange="uploadMultipleImages('p')">
+          <i class="fas fa-cloud-upload-alt" style="font-size:24px;color:#9aa5b4;display:block;margin-bottom:6px;"></i>
+          <p style="font-size:13px;color:#9aa5b4;margin:0;">اضغط لاختيار صورة أو أكثر من جهازك</p>
         </div>
         <div id="pUploadStatus" style="font-size:12px;color:#0a7c6e;margin-top:6px;display:none;"></div>
-        <img id="pImagePreview" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:8px;display:none;">
       </div>
       <div class="form-group">
-        <label>أو أدخل رابط الصورة مباشرة</label>
-        <input type="text" id="pImage" placeholder="https://example.com/image.jpg أو /images/uploads/photo.jpg">
+        <label>أو أضف رابط صورة مباشرة</label>
+        <div style="display:flex;gap:8px;">
+          <input type="text" id="pImageUrlInput" placeholder="https://example.com/image.jpg" style="flex:1;">
+          <button type="button" class="btn btn-outline" onclick="addImageUrlToProduct()" style="white-space:nowrap;padding:10px 16px;"><i class="fas fa-plus"></i> إضافة</button>
+        </div>
       </div>
+      <!-- حقل مخفي للصورة الرئيسية (للتوافق مع الكود القديم) -->
+      <input type="hidden" id="pImage">
+      <input type="hidden" id="pImagesJson" value="[]">
       <div class="form-group">
         <label><i class="fab fa-youtube" style="color:#ff0000"></i> رابط فيديو يوتيوب (اختياري)</label>
         <input type="text" id="pVideo" placeholder="https://www.youtube.com/watch?v=...">
@@ -716,22 +724,30 @@
         </div>
       </div>
       <div class="section-divider" style="font-size:12px;font-weight:700;color:#9aa5b4;margin:20px 0 12px;padding-bottom:8px;border-bottom:1px solid #e8ecf0;">
-        <i class="fas fa-image"></i> صورة التقرير
+        <i class="fas fa-images"></i> صور التقرير (يمكن إضافة أكثر من صورة)
       </div>
+      <!-- معرض الصور المضافة -->
+      <div id="rImagesGallery" style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px;min-height:0;"></div>
+      <!-- رفع صورة جديدة -->
       <div class="form-group">
-        <label>رفع صورة من جهازك</label>
-        <div style="border:2px dashed #e8ecf0;border-radius:8px;padding:20px;text-align:center;cursor:pointer;position:relative;" id="rUploadBox">
-          <input type="file" id="rImageFile" accept="image/*" style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;" onchange="uploadImage('r')">
-          <i class="fas fa-cloud-upload-alt" style="font-size:28px;color:#9aa5b4;display:block;margin-bottom:8px;"></i>
-          <p style="font-size:13px;color:#9aa5b4;margin:0;">اضغط لاختيار صورة من جهازك</p>
+        <label>رفع صورة جديدة</label>
+        <div style="border:2px dashed #e8ecf0;border-radius:8px;padding:16px;text-align:center;cursor:pointer;position:relative;" id="rUploadBox">
+          <input type="file" id="rImageFile" accept="image/*" multiple style="position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;" onchange="uploadMultipleImages('r')">
+          <i class="fas fa-cloud-upload-alt" style="font-size:24px;color:#9aa5b4;display:block;margin-bottom:6px;"></i>
+          <p style="font-size:13px;color:#9aa5b4;margin:0;">اضغط لاختيار صورة أو أكثر من جهازك</p>
         </div>
         <div id="rUploadStatus" style="font-size:12px;color:#0a7c6e;margin-top:6px;display:none;"></div>
-        <img id="rImagePreview" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-top:8px;display:none;">
       </div>
       <div class="form-group">
-        <label>أو أدخل رابط الصورة مباشرة</label>
-        <input type="text" id="rImage" placeholder="https://example.com/image.jpg أو /images/uploads/photo.jpg">
+        <label>أو أضف رابط صورة مباشرة</label>
+        <div style="display:flex;gap:8px;">
+          <input type="text" id="rImageUrlInput" placeholder="https://example.com/image.jpg" style="flex:1;">
+          <button type="button" class="btn btn-outline" onclick="addImageUrlToReport()" style="white-space:nowrap;padding:10px 16px;"><i class="fas fa-plus"></i> إضافة</button>
+        </div>
       </div>
+      <!-- حقل مخفي للصورة الرئيسية -->
+      <input type="hidden" id="rImage">
+      <input type="hidden" id="rImagesJson" value="[]">
       <div class="form-group">
         <label><i class="fab fa-youtube" style="color:#ff0000"></i> رابط فيديو يوتيوب (اختياري)</label>
         <input type="text" id="rVideo" placeholder="https://www.youtube.com/watch?v=...">
@@ -768,43 +784,122 @@
   let productsData = [];
   let reportsData = [];
 
-  // ===== IMAGE UPLOAD =====
-  async function uploadImage(prefix) {
-    const file = document.getElementById(prefix + 'ImageFile').files[0];
-    if (!file) return;
-    const status = document.getElementById(prefix + 'UploadStatus');
-    const preview = document.getElementById(prefix + 'ImagePreview');
-    status.style.display = 'block';
-    status.textContent = 'جاري رفع الصورة...';
-    try {
-      const base64 = await new Promise((res, rej) => {
-        const r = new FileReader();
-        r.onload = () => res(r.result.split(',')[1]);
-        r.onerror = rej;
-        r.readAsDataURL(file);
-      });
-      const filename = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-      const path = 'images/uploads/' + filename;
-      const resp = await fetch('https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + path, {
-        method: 'PUT',
-        headers: { 'Authorization': 'token ' + TOKEN, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: 'رفع صورة', content: base64 })
-      });
-      if (resp.ok) {
-        const imagePath = '/images/uploads/' + filename;
-        document.getElementById(prefix + 'Image').value = imagePath;
-        preview.src = imagePath;
-        preview.style.display = 'block';
-        status.textContent = '✅ تم رفع الصورة بنجاح';
-        status.style.color = '#10b981';
-      } else {
-        status.textContent = '❌ فشل رفع الصورة';
-        status.style.color = '#e53935';
-      }
-    } catch(e) {
-      status.textContent = '❌ حدث خطأ';
-      status.style.color = '#e53935';
+  // ===== MULTI-IMAGE UPLOAD SYSTEM =====
+
+  // مصفوفة الصور المؤقتة (أثناء فتح المودال)
+  let pImages = []; // صور المنتج
+  let rImages = []; // صور التقرير
+
+  // رسم معرض الصور في المودال
+  function renderImagesGallery(prefix) {
+    const images = prefix === 'p' ? pImages : rImages;
+    const gallery = document.getElementById(prefix + 'ImagesGallery');
+    if (!gallery) return;
+    if (images.length === 0) {
+      gallery.innerHTML = '<p style="font-size:12px;color:#9aa5b4;margin:0 0 4px;">لا توجد صور مضافة بعد</p>';
+      return;
     }
+    gallery.innerHTML = images.map((src, i) => `
+      <div style="position:relative;width:100px;height:80px;border-radius:8px;overflow:hidden;border:2px solid ${i===0?'var(--primary)':'#e8ecf0'};">
+        <img src="${src}" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.opacity='0.3'">
+        ${i===0 ? '<span style="position:absolute;top:2px;right:2px;background:var(--primary);color:#fff;font-size:9px;padding:2px 5px;border-radius:4px;font-weight:700;">رئيسية</span>' : ''}
+        <div style="position:absolute;bottom:0;left:0;right:0;display:flex;gap:2px;background:rgba(0,0,0,0.55);padding:3px;">
+          ${i > 0 ? `<button type="button" onclick="setMainImage('${prefix}',${i})" title="جعلها رئيسية" style="flex:1;background:#FFD700;color:#000;border:none;border-radius:3px;font-size:10px;cursor:pointer;padding:2px;">★</button>` : ''}
+          <button type="button" onclick="removeImage('${prefix}',${i})" title="حذف" style="flex:1;background:#e53935;color:#fff;border:none;border-radius:3px;font-size:10px;cursor:pointer;padding:2px;">✕</button>
+        </div>
+      </div>
+    `).join('');
+    // تحديث الحقل الخفي
+    const mainSrc = images[0] || '';
+    document.getElementById(prefix + 'Image').value = mainSrc;
+    document.getElementById(prefix + 'ImagesJson').value = JSON.stringify(images);
+  }
+
+  function addImageToList(prefix, src) {
+    if (!src) return;
+    if (prefix === 'p') pImages.push(src);
+    else rImages.push(src);
+    renderImagesGallery(prefix);
+  }
+
+  function removeImage(prefix, idx) {
+    if (prefix === 'p') pImages.splice(idx, 1);
+    else rImages.splice(idx, 1);
+    renderImagesGallery(prefix);
+  }
+
+  function setMainImage(prefix, idx) {
+    const arr = prefix === 'p' ? pImages : rImages;
+    const [img] = arr.splice(idx, 1);
+    arr.unshift(img);
+    if (prefix === 'p') pImages = arr;
+    else rImages = arr;
+    renderImagesGallery(prefix);
+  }
+
+  function addImageUrlToProduct() {
+    const inp = document.getElementById('pImageUrlInput');
+    const url = inp.value.trim();
+    if (!url) return;
+    addImageToList('p', url);
+    inp.value = '';
+  }
+
+  function addImageUrlToReport() {
+    const inp = document.getElementById('rImageUrlInput');
+    const url = inp.value.trim();
+    if (!url) return;
+    addImageToList('r', url);
+    inp.value = '';
+  }
+
+  async function uploadMultipleImages(prefix) {
+    const fileInput = document.getElementById(prefix + 'ImageFile');
+    const files = Array.from(fileInput.files);
+    if (!files.length) return;
+    const status = document.getElementById(prefix + 'UploadStatus');
+    status.style.display = 'block';
+    status.style.color = '#0a7c6e';
+
+    let uploaded = 0;
+    for (const file of files) {
+      status.textContent = `جاري رفع ${uploaded + 1} من ${files.length}...`;
+      try {
+        const base64 = await new Promise((res, rej) => {
+          const r = new FileReader();
+          r.onload = () => res(r.result.split(',')[1]);
+          r.onerror = rej;
+          r.readAsDataURL(file);
+        });
+        const filename = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+        const path = 'images/uploads/' + filename;
+        const resp = await fetch('https://api.github.com/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/' + path, {
+          method: 'PUT',
+          headers: { 'Authorization': 'token ' + TOKEN, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: 'رفع صورة', content: base64 })
+        });
+        if (resp.ok) {
+          addImageToList(prefix, '/images/uploads/' + filename);
+          uploaded++;
+        } else {
+          status.style.color = '#e53935';
+          status.textContent = `❌ فشل رفع ${file.name}`;
+        }
+      } catch(e) {
+        status.style.color = '#e53935';
+        status.textContent = '❌ حدث خطأ أثناء الرفع';
+      }
+    }
+    if (uploaded === files.length) {
+      status.textContent = `✅ تم رفع ${uploaded} صورة بنجاح`;
+      status.style.color = '#10b981';
+    }
+    fileInput.value = '';
+  }
+
+  // دالة قديمة للتوافق
+  async function uploadImage(prefix) {
+    await uploadMultipleImages(prefix);
   }
 
   // ===== LOGIN =====
@@ -921,13 +1016,14 @@
 
   function openProductModal(idx = -1) {
     document.getElementById('productIndex').value = idx;
+    pImages = []; // مسح الصور المؤقتة
     if (idx === -1) {
       document.getElementById('productModalTitle').textContent = 'إضافة منتج جديد';
       document.getElementById('pTitle').value = '';
       document.getElementById('pCategory').value = 'العمليات والعناية المركزة';
       document.getElementById('pImage').value = '';
+      document.getElementById('pImagesJson').value = '[]';
       if(document.getElementById('pVideo')) document.getElementById('pVideo').value = '';
-      document.getElementById('pImagePreview') && (document.getElementById('pImagePreview').style.display='none');
       document.getElementById('pPrice').value = '';
       document.getElementById('pOldPrice').value = '0';
       document.getElementById('pStatus').value = 'جديد';
@@ -938,13 +1034,21 @@
       document.getElementById('productModalTitle').textContent = 'تعديل المنتج';
       document.getElementById('pTitle').value = p.title;
       document.getElementById('pCategory').value = p.category;
-      document.getElementById('pImage').value = p.image;
       document.getElementById('pPrice').value = p.price;
       document.getElementById('pOldPrice').value = p.oldPrice || 0;
       document.getElementById('pStatus').value = p.status;
       document.getElementById('pDiscount').value = p.discount || 0;
       document.getElementById('pDescription').value = p.description || '';
+      // تحميل الصور المتعددة
+      if (p.images && Array.isArray(p.images) && p.images.length > 0) {
+        pImages = [...p.images];
+      } else if (p.image) {
+        pImages = [p.image];
+      }
+      document.getElementById('pImage').value = pImages[0] || '';
+      document.getElementById('pImagesJson').value = JSON.stringify(pImages);
     }
+    renderImagesGallery('p');
     document.getElementById('productModal').classList.add('open');
   }
 
@@ -966,7 +1070,8 @@
       id: idx === -1 ? 'p' + Date.now() : productsData[idx].id,
       title,
       category: document.getElementById('pCategory').value,
-      image: document.getElementById('pImage').value.trim(),
+      image: pImages[0] || document.getElementById('pImage').value.trim(),
+      images: pImages.length > 0 ? pImages : (document.getElementById('pImage').value.trim() ? [document.getElementById('pImage').value.trim()] : []),
       price: Number(price),
       oldPrice: Number(document.getElementById('pOldPrice').value) || 0,
       status: document.getElementById('pStatus').value,
@@ -1046,25 +1151,34 @@
 
   function openReportModal(idx = -1) {
     document.getElementById('reportIndex').value = idx;
+    rImages = []; // مسح الصور المؤقتة
     if (idx === -1) {
       document.getElementById('reportModalTitle').textContent = 'إضافة تقرير جديد';
       document.getElementById('rTitle').value = '';
       document.getElementById('rCategory').value = '';
       document.getElementById('rDate').value = new Date().toISOString().split('T')[0];
       document.getElementById('rImage').value = '';
+      document.getElementById('rImagesJson').value = '[]';
       document.getElementById('rSummary').value = '';
       if(document.getElementById('rVideo')) document.getElementById('rVideo').value = '';
       if(document.getElementById('rPdf')) document.getElementById('rPdf').value = '';
-      document.getElementById('rImagePreview') && (document.getElementById('rImagePreview').style.display='none');
     } else {
       const r = reportsData[idx];
       document.getElementById('reportModalTitle').textContent = 'تعديل التقرير';
       document.getElementById('rTitle').value = r.title;
       document.getElementById('rCategory').value = r.category || '';
       document.getElementById('rDate').value = r.date || '';
-      document.getElementById('rImage').value = r.image || '';
       document.getElementById('rSummary').value = r.summary || '';
+      // تحميل الصور المتعددة
+      if (r.images && Array.isArray(r.images) && r.images.length > 0) {
+        rImages = [...r.images];
+      } else if (r.image) {
+        rImages = [r.image];
+      }
+      document.getElementById('rImage').value = rImages[0] || '';
+      document.getElementById('rImagesJson').value = JSON.stringify(rImages);
     }
+    renderImagesGallery('r');
     document.getElementById('reportModal').classList.add('open');
   }
 
@@ -1086,7 +1200,8 @@
       title,
       category: document.getElementById('rCategory').value,
       date: document.getElementById('rDate').value,
-      image: document.getElementById('rImage').value.trim(),
+      image: rImages[0] || document.getElementById('rImage').value.trim(),
+      images: rImages.length > 0 ? rImages : (document.getElementById('rImage').value.trim() ? [document.getElementById('rImage').value.trim()] : []),
       summary: document.getElementById('rSummary').value.trim(),
       video: document.getElementById('rVideo') ? document.getElementById('rVideo').value.trim() : '',
       pdf: document.getElementById('rPdf') ? document.getElementById('rPdf').value.trim() : ''
@@ -1137,6 +1252,8 @@
   // ===== HELPERS =====
   function closeModal(id) {
     document.getElementById(id).classList.remove('open');
+    if (id === 'productModal') pImages = [];
+    if (id === 'reportModal') rImages = [];
   }
 
   function showToast(msg, type) {
