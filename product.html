@@ -93,11 +93,12 @@
             height: 280px;
             border: none;
         }
-        .whatsapp-btn {
+        /* زر الشراء الجديد باللون الأزرق */
+        .buy-now-btn {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: #25D366;
+            background: #2563eb;
             color: white;
             padding: 14px 28px;
             border-radius: 50px;
@@ -105,9 +106,12 @@
             font-weight: 700;
             transition: all 0.2s;
             margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
         }
-        .whatsapp-btn:hover {
-            background: #128C7E;
+        .buy-now-btn:hover {
+            background: #1d4ed8;
             transform: scale(1.02);
         }
         .back-link {
@@ -251,7 +255,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/201223962139?text=مرحباً ميديكال زون، أرغب في الاستفسار" target="_blank" rel="noopener" class="mz-whatsapp-float" aria-label="تواصل عبر واتساب"><i class="fab fa-whatsapp"></i><span>تواصل عبر واتساب</span></a>
+    <!-- تم حذف زر الواتساب العائم اليدوي (سيبقى الذي يضيفه site.js) -->
 
     <script src="js/config.js"></script>
     <script src="js/site.js"></script>
@@ -275,7 +279,7 @@
                 const oldPriceHtml = product.oldPrice ? `<span class="old-price">${Number(product.oldPrice).toLocaleString('ar-EG')} ج.م</span>` : '';
                 const videoHtml = product.video ? `<div class="video-wrapper"><iframe src="${product.video.replace('watch?v=', 'embed/')}" frameborder="0" allowfullscreen></iframe></div>` : '';
                 const statusClass = product.status === 'جديد' ? 'badge-new' : (product.status === 'مستعمل' ? 'badge-used' : 'badge-rent');
-                const whatsappLink = MZ.buildWhatsAppUrl(`أرغب في الاستفسار عن:\n• ${product.title}\n• السعر: ${product.price} ج.م\n• ${window.location.href}`);
+                const whatsappLink = MZ.buildWhatsAppUrl(`الشراء الآن:\n• المنتج: ${product.title}\n• السعر: ${product.price} ج.م\n• الرابط: ${window.location.href}`);
                 container.innerHTML = `
                     <div class="product-detail-container">
                         <div class="product-gallery">
@@ -291,8 +295,8 @@
                             <div class="product-status ${statusClass}" style="display:inline-block; margin-bottom:10px;">الحالة: ${product.status}</div>
                             <p class="product-description">${product.description || 'لا يوجد وصف تفصيلي لهذا المنتج.'}</p>
                             ${videoHtml}
-                            <a href="${whatsappLink}" target="_blank" class="whatsapp-btn">
-                                <i class="fab fa-whatsapp fa-lg"></i> تواصل عبر واتساب للشراء
+                            <a href="${whatsappLink}" target="_blank" class="buy-now-btn">
+                                <i class="fas fa-shopping-cart"></i> الشراء الآن
                             </a>
                         </div>
                     </div>
