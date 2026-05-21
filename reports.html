@@ -57,7 +57,10 @@
             gap: 24px;
             padding: 40px 0;
         }
-        .report-card {
+        .report-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
             background: white;
             border-radius: var(--radius-md);
             overflow: hidden;
@@ -65,7 +68,7 @@
             border: 1px solid var(--gray-100);
             transition: transform 0.2s;
         }
-        .report-card:hover {
+        .report-card-link:hover {
             transform: translateY(-4px);
             box-shadow: var(--shadow-md);
         }
@@ -120,6 +123,7 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            text-decoration: none;
         }
         .empty-state {
             text-align: center;
@@ -259,7 +263,8 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/201223962139?text=مرحباً ميديكال زون، أرغب في الاستفسار" target="_blank" rel="noopener" id="mz-whatsapp-float" class="mz-whatsapp-float" aria-label="تواصل عبر واتساب"><i class="fab fa-whatsapp"></i><span>تواصل عبر واتساب</span></a>
+    <!-- زر واتساب عائم بنص "واتساب" فقط -->
+    <a href="https://wa.me/201223962139?text=مرحباً ميديكال زون، أرغب في الاستفسار" target="_blank" rel="noopener" id="mz-whatsapp-float" class="mz-whatsapp-float" aria-label="تواصل عبر واتساب"><i class="fab fa-whatsapp"></i><span>واتساب</span></a>
 
     <script src="js/config.js"></script>
     <script src="js/site.js"></script>
@@ -291,18 +296,20 @@
                 return;
             }
             grid.innerHTML = filtered.map(r => `
-                <div class="report-card">
-                    <div class="report-card-img">
-                        <img src="${r.image || 'https://placehold.co/600x400?text=صورة+تقرير'}" alt="${r.title}" onerror="this.src='https://placehold.co/600x400?text=صورة+تقرير'">
-                        <span class="report-cat-tag">${r.category || 'عام'}</span>
+                <a href="article.html?id=${r.id}" class="report-card-link">
+                    <div class="report-card">
+                        <div class="report-card-img">
+                            <img src="${r.image || 'https://placehold.co/600x400?text=صورة+تقرير'}" alt="${r.title}" onerror="this.src='https://placehold.co/600x400?text=صورة+تقرير'">
+                            <span class="report-cat-tag">${r.category || 'عام'}</span>
+                        </div>
+                        <div class="report-card-body">
+                            <div class="report-date"><i class="far fa-calendar"></i> ${r.date || ''}</div>
+                            <h3>${r.title}</h3>
+                            <p>${r.summary ? r.summary.substring(0, 100) + '...' : ''}</p>
+                            <span class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></span>
+                        </div>
                     </div>
-                    <div class="report-card-body">
-                        <div class="report-date"><i class="far fa-calendar"></i> ${r.date || ''}</div>
-                        <h3>${r.title}</h3>
-                        <p>${r.summary ? r.summary.substring(0, 100) + '...' : ''}</p>
-                        <a href="article.html?id=${r.id}" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
-                    </div>
-                </div>
+                </a>
             `).join('');
         }
 
