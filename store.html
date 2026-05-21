@@ -265,28 +265,31 @@
                     let badge = '';
                     if (p.badge === 'discount' && p.discount) badge = `<span class="badge-discount">-${p.discount}%</span>`;
                     else if (p.badge === 'new') badge = `<span class="badge-new">جديد</span>`;
+                    const productLink = `product.html?id=${encodeURIComponent(p.id)}`;
                     return `
                         <div class="product-card">
                             <div class="product-img-wrap">
-                                ${badge}
-                                <img src="${p.image || ''}" alt="${p.title}" style="background:#f0f4f8;" onerror="this.style.opacity='0.3'">
+                                <a href="${productLink}" style="display: block; text-decoration: none; color: inherit;">
+                                    ${badge}
+                                    <img src="${p.image || ''}" alt="${p.title}" style="background:#f0f4f8;" onerror="this.style.opacity='0.3'">
+                                </a>
                                 <div class="product-actions">
-                                    <button class="action-btn" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='product.html?id=${encodeURIComponent(p.id)}'" title="عرض سريع"><i class="far fa-eye"></i></button>
+                                    <button class="action-btn" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='${productLink}'" title="عرض سريع"><i class="far fa-eye"></i></button>
                                 </div>
                             </div>
                             <div class="product-body">
                                 <span class="product-cat">${p.category}</span>
-                                <a href="product.html?id=${encodeURIComponent(p.id)}" style="text-decoration: none; color: inherit;">
+                                <a href="${productLink}" style="text-decoration: none; color: inherit;">
                                     <h3 class="product-name">${p.title}</h3>
                                 </a>
                                 <div class="product-pricing">
-                                    <a href="product.html?id=${encodeURIComponent(p.id)}" style="text-decoration: none; color: inherit;">
+                                    <a href="${productLink}" style="text-decoration: none; color: inherit;">
                                         <span class="price-new">${formatPrice(p.price)}</span>
                                         ${p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : ''}
                                     </a>
                                 </div>
                                 <div class="product-card-actions">
-                                    <button class="btn-add-cart" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='product.html?id=${encodeURIComponent(p.id)}'">
+                                    <button class="btn-add-cart" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='${productLink}'">
                                         <i class="fas fa-eye"></i> التفاصيل
                                     </button>
                                 </div>
