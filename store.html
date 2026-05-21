@@ -222,14 +222,15 @@
         let currentSort = 'newest';
         let currentProductId = '';
 
-        // دالة لقراءة معامل category من الرابط
+        // دالة لقراءة category من الرابط
         function getCategoryFromURL() {
-            const urlParams = new URLSearchParams(window.location.search);
-            let catParam = urlParams.get('category');
-            if (!catParam) return null;
-            catParam = decodeURIComponent(catParam);
-            const validCategories = ['all', 'العمليات والعناية المركزة', 'المناظير والآلات', 'الأشعة والسونار', 'العلاج الطبيعي', 'أجهزة التنفس والأكسجين', 'الأنف والأذن والسمعيات', 'رسم المخ والعضلات', 'أجهزة تنفس للإيجار'];
-            return validCategories.includes(catParam) ? catParam : null;
+            const params = new URLSearchParams(window.location.search);
+            let cat = params.get('category');
+            if (!cat) return null;
+            cat = decodeURIComponent(cat);
+            // قائمة الفئات الصالحة
+            const valid = ['all', 'العمليات والعناية المركزة', 'المناظير والآلات', 'الأشعة والسونار', 'العلاج الطبيعي', 'أجهزة التنفس والأكسجين', 'الأنف والأذن والسمعيات', 'رسم المخ والعضلات', 'أجهزة تنفس للإيجار'];
+            return valid.includes(cat) ? cat : null;
         }
 
         async function loadProducts() {
@@ -240,11 +241,11 @@
                 allProducts = data.products || [];
                 document.getElementById('loadingState').style.display = 'none';
                 
-                // تطبيق الفئة من الرابط إن وجدت
+                // تطبيق الفئة من الرابط إذا وجدت
                 const urlCat = getCategoryFromURL();
                 if (urlCat && urlCat !== 'all') {
                     currentCat = urlCat;
-                    // تحديث واجهة القائمة الجانبية
+                    // تحديث القائمة الجانبية لتعكس الفئة المختارة
                     const links = document.querySelectorAll('#categoryList a');
                     links.forEach(link => {
                         if (link.dataset.cat === currentCat) {
@@ -254,6 +255,12 @@
                             if (toggleLabel) toggleLabel.textContent = link.textContent.trim();
                         }
                     });
+                } else {
+                    // التأكد من أن "جميع الأقسام" نشط
+                    document.querySelectorAll('#categoryList li').forEach(li => li.classList.remove('active'));
+                    const allLink = document.querySelector('#categoryList a[data-cat="all"]');
+                    if (allLink) allLink.parentElement.classList.add('active');
+                    document.getElementById('storeCatsToggleLabel').textContent = 'جميع الأقسام';
                 }
                 renderProducts();
             } catch(e) {
