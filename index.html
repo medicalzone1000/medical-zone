@@ -59,7 +59,6 @@
 
     <section class="promo-section">
         <div class="container promo-grid">
-            <!-- تجهيزات عيادات -->
             <a href="equipment-for-clinics.html" style="display: block; text-decoration: none; color: inherit;">
                 <div class="promo-card promo-main">
                     <img src="images/promo-main.jpg" alt="تجهيزات عيادات" style="background:#cbd5e1; min-height:420px;">
@@ -68,7 +67,6 @@
                 </div>
             </a>
             <div class="promo-stack">
-                <!-- مناظير طبية -->
                 <a href="store.html?category=%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B8%D9%8A%D8%B1%20%D9%88%D8%A7%D9%84%D8%A2%D9%84%D8%A7%D8%AA" style="display: block; text-decoration: none; color: inherit;">
                     <div class="promo-card promo-small">
                         <img src="images/promo-main.jpg" alt="مناظير طبية" style="background:#cbd5e1; min-height:196px; object-fit:cover;">
@@ -76,7 +74,6 @@
                         <div class="promo-content"><h3>مناظير طبية</h3><span class="btn-white-sm">تسوق</span></div>
                     </div>
                 </a>
-                <!-- أجهزة تنفس منزلي (للإيجار) -->
                 <a href="store.html?category=%D8%A3%D8%AC%D9%87%D8%B2%D8%A9%20%D8%AA%D9%86%D9%81%D8%B3%20%D9%84%D9%84%D8%A5%D9%8A%D8%AC%D8%A7%D8%B1" style="display: block; text-decoration: none; color: inherit;">
                     <div class="promo-card promo-small">
                         <img src="images/promo-main.jpg" alt="أجهزة تنفس منزلية" style="background:#cbd5e1; min-height:196px; object-fit:cover;">
@@ -198,19 +195,22 @@
             reports.sort((a,b) => new Date(b.date) - new Date(a.date));
             const latestReports = reports.slice(0,3);
             if (latestReports.length === 0) { grid.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1">لا توجد تقارير حالياً</p>'; return; }
-            grid.innerHTML = latestReports.map(r => `<a href="article.html?id=${r.id}" style="display: block; text-decoration: none; color: inherit;">
-                                                        <article class="blog-card">
-                                                            <div class="blog-img-wrap">
-                                                                <img src="${r.image || 'https://placehold.co/600x400?text=صورة+تقرير'}" alt="${r.title}" style="background:#f0f4f8;" onerror="this.src='https://placehold.co/600x400?text=صورة+تقرير'">
-                                                                <span class="blog-cat-tag">${r.category || 'عام'}</span>
-                                                            </div>
-                                                            <div class="blog-body">
-                                                                <span class="blog-date"><i class="far fa-calendar"></i> ${r.date || ''}</span>
-                                                                <h3>${r.title}</h3>
-                                                                <p>${r.summary ? r.summary.substring(0,100)+'...' : ''}</p>
-                                                            </div>
-                                                        </article>
-                                                    </a>`).join('');
+            grid.innerHTML = latestReports.map(r => `
+                <a href="article.html?id=${r.id}" style="display: block; text-decoration: none; color: inherit;">
+                    <article class="blog-card">
+                        <div class="blog-img-wrap">
+                            <img src="${r.image || 'https://placehold.co/600x400?text=صورة+تقرير'}" alt="${r.title}" style="background:#f0f4f8;" onerror="this.src='https://placehold.co/600x400?text=صورة+تقرير'">
+                            <span class="blog-cat-tag">${r.category || 'عام'}</span>
+                        </div>
+                        <div class="blog-body">
+                            <span class="blog-date"><i class="far fa-calendar"></i> ${r.date || ''}</span>
+                            <h3>${r.title}</h3>
+                            <p>${r.summary ? r.summary.substring(0,100)+'...' : ''}</p>
+                            <span class="blog-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></span>
+                        </div>
+                    </article>
+                </a>
+            `).join('');
         } catch(e) { grid.innerHTML = '<p style="text-align:center;color:#999;grid-column:1/-1">تعذر تحميل التقارير</p>'; }
     }
     loadLatestProducts();
