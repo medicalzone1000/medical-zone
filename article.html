@@ -29,7 +29,7 @@
         }
         .article-header-img {
             position: relative;
-            height: 400px;
+            height: 420px;
             overflow: hidden;
         }
         .article-header-img img {
@@ -43,8 +43,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 200px;
-            background: linear-gradient(to top, rgba(10,22,40,0.8), transparent);
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
         }
         .article-header-content {
             position: absolute;
@@ -55,6 +55,19 @@
             z-index: 2;
             color: white;
         }
+        .article-meta-bar {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 12px;
+        }
+        .article-meta-bar span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
         .article-cat-tag {
             display: inline-flex;
             align-items: center;
@@ -63,28 +76,16 @@
             color: var(--navy);
             font-size: 12px;
             font-weight: 800;
-            padding: 5px 14px;
-            border-radius: var(--radius-full);
-            margin-top: 12px;
-            margin-bottom: 12px;
+            padding: 6px 16px;
+            border-radius: 40px;
+            margin-bottom: 16px;
         }
         .article-header-content h1 {
             font-size: 28px;
             font-weight: 900;
             line-height: 1.4;
-            margin-bottom: 12px;
-        }
-        .article-meta-bar {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            font-size: 13px;
-            color: rgba(255,255,255,0.7);
-        }
-        .article-meta-bar span {
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            margin: 0;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
         .article-body {
             padding: 32px;
@@ -152,14 +153,14 @@
         }
         .as-widget-head i { color: var(--teal); }
         .as-widget-body { padding: 16px 20px; }
-        .author-card {
+        .team-message {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
         }
-        .author-avatar {
-            width: 56px;
-            height: 56px;
+        .team-avatar {
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--teal), var(--navy));
             display: flex;
@@ -167,14 +168,13 @@
             justify-content: center;
             color: white;
             font-size: 20px;
-            font-weight: 900;
-            flex-shrink: 0;
+            font-weight: bold;
         }
-        .author-info h5 {
-            font-size: 15px;
-            font-weight: 800;
-            color: var(--navy);
-            margin-bottom: 4px;
+        .team-text p {
+            font-size: 13px;
+            color: var(--gray-600);
+            line-height: 1.5;
+            margin: 0;
         }
         .related-articles-list {
             display: flex;
@@ -217,7 +217,8 @@
         @media (max-width: 768px) {
             .article-layout { grid-template-columns: 1fr; }
             .article-header-content h1 { font-size: 20px; }
-            .article-header-img { height: 280px; }
+            .article-header-img { height: 320px; }
+            .article-meta-bar { flex-wrap: wrap; gap: 12px; }
         }
     </style>
 </head>
@@ -246,9 +247,8 @@
                     <li><a href="contact.html">تواصل معنا</a></li>
                 </ul>
             </nav>
-            <div class="header-actions">
-                <a href="admin.html" class="btn-outline-sm"><i class="fas fa-cog"></i> لوحة التحكم</a>
-            </div>
+            <!-- تم إزالة أيقونة لوحة التحكم -->
+            <div class="header-actions"></div>
         </div>
     </header>
 
@@ -278,12 +278,12 @@
                         <div class="article-header-img">
                             <img id="articleImage" src="" alt="">
                             <div class="article-header-content">
-                                <h1 id="articleTitle">عنوان التقرير</h1>
                                 <div class="article-meta-bar">
                                     <span><i class="far fa-calendar"></i> <span id="articleDate">---</span></span>
-                                    <span><i class="far fa-clock"></i> <span id="articleReadTime">---</span></span>
+                                    <span><i class="far fa-clock"></i> <span id="articleReadTime">5 دقائق</span></span>
                                 </div>
                                 <div><span class="article-cat-tag" id="articleCat"><i class="fas fa-folder"></i> الفئة</span></div>
+                                <h1 id="articleTitle">عنوان التقرير</h1>
                             </div>
                         </div>
                         <div class="article-body" id="articleBody"></div>
@@ -296,18 +296,6 @@
                         </div>
                     </article>
                     <aside class="article-sidebar">
-                        <!-- قسم الكاتب (بدون عنوان "المؤلف") -->
-                        <div class="as-widget">
-                            <div class="as-widget-body">
-                                <div class="author-card">
-                                    <div class="author-avatar" id="authorAvatar">م</div>
-                                    <div class="author-info">
-                                        <h5 id="authorName">فريق ميديكال زون</h5>
-                                        <p style="font-size:12px; color:var(--gray-500);">نخبة من المتخصصين</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="as-widget">
                             <div class="as-widget-head">
                                 <i class="fas fa-newspaper"></i>
@@ -315,6 +303,18 @@
                             </div>
                             <div class="as-widget-body">
                                 <div class="related-articles-list" id="relatedArticles"></div>
+                            </div>
+                        </div>
+                        <!-- إضافة نص فريق ميديكال زون بدون كلمة "المؤلف" -->
+                        <div class="as-widget">
+                            <div class="as-widget-body">
+                                <div class="team-message">
+                                    <div class="team-avatar">م</div>
+                                    <div class="team-text">
+                                        <strong style="font-size:14px;">فريق ميديكال زون</strong>
+                                        <p>نخبة من المتخصصين في الأجهزة الطبية لخدمتكم.</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="as-widget" style="background: linear-gradient(135deg, var(--teal-pale), #d0eaf7); border-color: rgba(13,110,170,0.15);">
@@ -331,7 +331,6 @@
         </div>
     </main>
 
-    <!-- Footer كامل -->
     <footer class="site-footer">
         <div class="footer-top">
             <div class="container footer-grid">
@@ -363,26 +362,10 @@
                 <div class="footer-col">
                     <h4 class="footer-col-title">تواصل معنا</h4>
                     <ul class="footer-contact">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span><strong>سوهاج:</strong> 43 ش الجامعة أمام مسجد الشرطة</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <span>القاهرة: 01223962139 - 01223962138</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <span>سوهاج: 01126562854 - 01126562812</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>info@medicalzone.com</span>
-                        </li>
+                        <li><i class="fas fa-map-marker-alt"></i><span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span></li>
+                        <li><i class="fas fa-map-marker-alt"></i><span><strong>سوهاج:</strong> 43 ش الجامعة أمام مسجد الشرطة</span></li>
+                        <li><i class="fas fa-phone"></i><span>01223962139 - 01223962138</span></li>
+                        <li><i class="fas fa-phone"></i><span>01126562854 - 01126562812</span></li>
                     </ul>
                 </div>
             </div>
@@ -399,7 +382,7 @@
         </div>
     </footer>
 
-    <!-- تم حذف زر الواتساب العائم اليدوي -->
+    <!-- تم حذف زر الواتساب العائم اليدوي (سيظهر عبر site.js بشكل تلقائي) -->
 
     <script src="js/config.js"></script>
     <script src="js/site.js"></script>
@@ -425,8 +408,6 @@
                 document.getElementById('articleReadTime').textContent = '5 دقائق';
                 document.getElementById('articleImage').src = article.image || 'https://placehold.co/600x400?text=صورة+تقرير';
                 document.getElementById('articleImage').alt = article.title;
-                document.getElementById('authorName').textContent = 'فريق ميديكال زون';
-                document.getElementById('authorAvatar').textContent = 'م';
                 document.getElementById('articleBody').innerHTML = `
                     <p>${article.summary || ''}</p>
                     <h2>الخلاصة</h2>
