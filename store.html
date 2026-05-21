@@ -222,6 +222,16 @@
         let currentSort = 'newest';
         let currentProductId = '';
 
+        // دالة لقراءة معامل category من الرابط
+        function getCategoryFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let catParam = urlParams.get('category');
+            if (!catParam) return null;
+            catParam = decodeURIComponent(catParam);
+            const validCategories = ['all', 'العمليات والعناية المركزة', 'المناظير والآلات', 'الأشعة والسونار', 'العلاج الطبيعي', 'أجهزة التنفس والأكسجين', 'الأنف والأذن والسمعيات', 'رسم المخ والعضلات', 'أجهزة تنفس للإيجار'];
+            return validCategories.includes(catParam) ? catParam : null;
+        }
+
         async function loadProducts() {
             try {
                 const res = await fetch('./content/products.json?v=' + Date.now());
@@ -229,6 +239,22 @@
                 const data = await res.json();
                 allProducts = data.products || [];
                 document.getElementById('loadingState').style.display = 'none';
+                
+                // تطبيق الفئة من الرابط إن وجدت
+                const urlCat = getCategoryFromURL();
+                if (urlCat && urlCat !== 'all') {
+                    currentCat = urlCat;
+                    // تحديث واجهة القائمة الجانبية
+                    const links = document.querySelectorAll('#categoryList a');
+                    links.forEach(link => {
+                        if (link.dataset.cat === currentCat) {
+                            document.querySelectorAll('#categoryList li').forEach(li => li.classList.remove('active'));
+                            link.parentElement.classList.add('active');
+                            const toggleLabel = document.getElementById('storeCatsToggleLabel');
+                            if (toggleLabel) toggleLabel.textContent = link.textContent.trim();
+                        }
+                    });
+                }
                 renderProducts();
             } catch(e) {
                 document.getElementById('loadingState').innerHTML = '<i class="fas fa-exclamation-triangle"></i><p>حدث خطأ في تحميل المنتجات.</p>';
@@ -334,6 +360,9 @@
             if (panel) panel.classList.remove('open');
             if (toggle) toggle.setAttribute('aria-expanded', 'false');
             renderProducts();
+            // تحديث الرابط في شريط العناوين
+            const newUrl = currentCat === 'all' ? window.location.pathname : `?category=${encodeURIComponent(currentCat)}`;
+            window.history.pushState({}, '', newUrl);
         }
 
         document.querySelectorAll('#categoryList a').forEach(link => {
