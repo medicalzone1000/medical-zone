@@ -65,6 +65,7 @@
             font-weight: 800;
             padding: 5px 14px;
             border-radius: var(--radius-full);
+            margin-top: 12px;
             margin-bottom: 12px;
         }
         .article-header-content h1 {
@@ -151,30 +152,6 @@
         }
         .as-widget-head i { color: var(--teal); }
         .as-widget-body { padding: 16px 20px; }
-        .author-card {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .author-avatar {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--teal), var(--navy));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            font-weight: 900;
-            flex-shrink: 0;
-        }
-        .author-info h5 {
-            font-size: 15px;
-            font-weight: 800;
-            color: var(--navy);
-            margin-bottom: 4px;
-        }
         .related-articles-list {
             display: flex;
             flex-direction: column;
@@ -277,13 +254,12 @@
                         <div class="article-header-img">
                             <img id="articleImage" src="" alt="">
                             <div class="article-header-content">
-                                <span class="article-cat-tag" id="articleCat"><i class="fas fa-folder"></i> الفئة</span>
-                                <h1 id="articleTitle">عنوان التقرير</h1>
                                 <div class="article-meta-bar">
                                     <span><i class="far fa-calendar"></i> <span id="articleDate">---</span></span>
                                     <span><i class="far fa-clock"></i> <span id="articleReadTime">---</span></span>
-                                    <span><i class="far fa-user"></i> <span id="articleAuthor">---</span></span>
                                 </div>
+                                <div><span class="article-cat-tag" id="articleCat"><i class="fas fa-folder"></i> الفئة</span></div>
+                                <h1 id="articleTitle">عنوان التقرير</h1>
                             </div>
                         </div>
                         <div class="article-body" id="articleBody"></div>
@@ -296,21 +272,6 @@
                         </div>
                     </article>
                     <aside class="article-sidebar">
-                        <div class="as-widget">
-                            <div class="as-widget-head">
-                                <i class="fas fa-user-edit"></i>
-                                <h4>المؤلف</h4>
-                            </div>
-                            <div class="as-widget-body">
-                                <div class="author-card">
-                                    <div class="author-avatar" id="authorAvatar">م</div>
-                                    <div class="author-info">
-                                        <h5 id="authorName">---</h5>
-                                        <p>فريق ميديكال زون</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="as-widget">
                             <div class="as-widget-head">
                                 <i class="fas fa-newspaper"></i>
@@ -402,7 +363,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/201223962139?text=مرحباً ميديكال زون، أرغب في الاستفسار" target="_blank" rel="noopener" class="mz-whatsapp-float" aria-label="تواصل عبر واتساب"><i class="fab fa-whatsapp"></i><span>تواصل عبر واتساب</span></a>
+    <!-- تم حذف زر الواتساب العائم اليدوي -->
 
     <script src="js/config.js"></script>
     <script src="js/site.js"></script>
@@ -426,11 +387,8 @@
                 document.getElementById('articleCat').innerHTML = '<i class="fas fa-folder"></i> ' + article.category;
                 document.getElementById('articleDate').textContent = article.date;
                 document.getElementById('articleReadTime').textContent = '5 دقائق';
-                document.getElementById('articleAuthor').textContent = 'فريق ميديكال زون';
                 document.getElementById('articleImage').src = article.image || 'https://placehold.co/600x400?text=صورة+تقرير';
                 document.getElementById('articleImage').alt = article.title;
-                document.getElementById('authorName').textContent = 'فريق ميديكال زون';
-                document.getElementById('authorAvatar').textContent = 'م';
                 document.getElementById('articleBody').innerHTML = `
                     <p>${article.summary || ''}</p>
                     <h2>الخلاصة</h2>
