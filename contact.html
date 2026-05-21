@@ -20,8 +20,10 @@
             display: grid;
             grid-template-columns: 1fr 2fr;
             gap: 40px;
-            margin-top: -60px;
+            margin-top: 20px;  /* تغيير من -60px إلى 20px */
             margin-bottom: 80px;
+            position: relative;
+            z-index: 2;
         }
         .contact-info-cards {
             display: flex;
@@ -166,15 +168,10 @@
                 <div class="contact-form-wrapper">
                     <h2 style="margin-bottom: 20px; color: var(--navy);">أرسل لنا رسالة</h2>
                     <form id="contactForm" style="display: grid; gap: 20px;">
-                        <!-- الحقل الأول: الاسم بالكامل -->
                         <input type="text" name="name" placeholder="الاسم بالكامل" style="padding: 12px; border: 1px solid var(--gray-100); border-radius: 5px;" required>
-                        <!-- الحقل الثاني: البريد الإلكتروني (اختياري) -->
                         <input type="email" name="email" placeholder="البريد الإلكتروني (اختياري)" style="padding: 12px; border: 1px solid var(--gray-100); border-radius: 5px;">
-                        <!-- الحقل الثالث: الموضوع -->
                         <input type="text" name="subject" placeholder="الموضوع" style="padding: 12px; border: 1px solid var(--gray-100); border-radius: 5px;">
-                        <!-- الحقل الرابع: الرسالة -->
                         <textarea name="message" rows="5" placeholder="اكتب رسالتك هنا..." style="padding: 12px; border: 1px solid var(--gray-100); border-radius: 5px;" required></textarea>
-                        <!-- زر الإرسال (بدون أيقونة، حجم كبير، في المنتصف، لون نافي) -->
                         <button type="submit" style="background: var(--navy); color: white; padding: 14px 28px; font-size: 1.2rem; font-weight: 800; border: none; border-radius: var(--radius-sm); width: 100%; cursor: pointer; text-align: center; display: block; transition: 0.2s ease;">أرسل الأن</button>
                     </form>
                 </div>
