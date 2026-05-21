@@ -64,7 +64,7 @@
                 <span>المتجر</span>
             </div>
             <h1>المتجر</h1>
-            <p>مؤسسة ميديكال زون للأجهزة الطبية</p>
+            <p>كل ما تبحث عنه في مكان واحد</p>
         </div>
     </section>
 
@@ -211,7 +211,7 @@
         </div>
     </div>
 
-    <a href="https://wa.me/201223962139?text=مرحباً ميديكال زون، أرغب في الاستفسار" target="_blank" rel="noopener" id="mz-whatsapp-float" class="mz-whatsapp-float" aria-label="تواصل عبر واتساب"><i class="fab fa-whatsapp"></i><span>واتساب</span></a>
+    <a href="https://wa.me/201223962139?text=مرحباً ميديكال زون، أرغب في الاستفسار" target="_blank" rel="noopener" id="mz-whatsapp-float" class="mz-whatsapp-float" aria-label="تواصل عبر واتساب"><i class="fab fa-whatsapp"></i><span>تواصل عبر واتساب</span></a>
 
     <script src="js/config.js"></script>
     <script src="js/site.js"></script>
@@ -222,18 +222,6 @@
         let currentSort = 'newest';
         let currentProductId = '';
 
-        // دالة لقراءة معامل category من الرابط
-        function getCategoryFromURL() {
-            const urlParams = new URLSearchParams(window.location.search);
-            let catParam = urlParams.get('category');
-            if (!catParam) return null;
-            // فك الترميز (لأن الروابط قد تكون مشفرة)
-            catParam = decodeURIComponent(catParam);
-            // التحقق من أن الفئة موجودة في القائمة
-            const validCategories = ['all', 'العمليات والعناية المركزة', 'المناظير والآلات', 'الأشعة والسونار', 'العلاج الطبيعي', 'أجهزة التنفس والأكسجين', 'الأنف والأذن والسمعيات', 'رسم المخ والعضلات', 'أجهزة تنفس للإيجار'];
-            return validCategories.includes(catParam) ? catParam : null;
-        }
-
         async function loadProducts() {
             try {
                 const res = await fetch('./content/products.json?v=' + Date.now());
@@ -241,38 +229,6 @@
                 const data = await res.json();
                 allProducts = data.products || [];
                 document.getElementById('loadingState').style.display = 'none';
-                
-                // بعد تحميل المنتجات، نطبق الفئة من الرابط إن وجدت
-                const urlCat = getCategoryFromURL();
-                if (urlCat && urlCat !== 'all') {
-                    currentCat = urlCat;
-                    // تحديث واجهة القائمة الجانبية لتظهر الفئة المختارة
-                    const links = document.querySelectorAll('#categoryList a');
-                    let found = false;
-                    links.forEach(link => {
-                        if (link.dataset.cat === currentCat) {
-                            link.parentElement.classList.add('active');
-                            link.parentElement.classList.remove('active'); // reset others
-                            // set active correctly
-                            document.querySelectorAll('#categoryList li').forEach(li => li.classList.remove('active'));
-                            link.parentElement.classList.add('active');
-                            const toggleLabel = document.getElementById('storeCatsToggleLabel');
-                            if (toggleLabel) toggleLabel.textContent = link.textContent.trim();
-                            found = true;
-                        } else {
-                            if (link.dataset.cat !== 'all') {
-                                link.parentElement.classList.remove('active');
-                            }
-                        }
-                    });
-                    // إذا لم نجد الفئة (نادراً) نعيد كل شيء إلى all
-                    if (!found) currentCat = 'all';
-                } else {
-                    // التأكد من أن all نشط
-                    const allLink = document.querySelector('#categoryList a[data-cat="all"]');
-                    if (allLink) allLink.parentElement.classList.add('active');
-                }
-                
                 renderProducts();
             } catch(e) {
                 document.getElementById('loadingState').innerHTML = '<i class="fas fa-exclamation-triangle"></i><p>حدث خطأ في تحميل المنتجات.</p>';
@@ -292,10 +248,7 @@
 
             if (currentSort === 'price-asc') renderedProducts.sort((a, b) => a.price - b.price);
             else if (currentSort === 'price-desc') renderedProducts.sort((a, b) => b.price - a.price);
-            // newest: نستخدم التاريخ (الأحدث أولاً) -> نفترض أن المنتجات مرتبة حسب date تنازلياً
-            else if (currentSort === 'newest') {
-                renderedProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
-            }
+            else if (currentSort === 'newest') renderedProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
             const grid = document.getElementById('productsGrid');
             const empty = document.getElementById('emptyState');
@@ -308,33 +261,32 @@
             } else {
                 empty.style.display = 'none';
                 grid.style.display = 'grid';
-                grid.innerHTML = renderedProducts.map((p, i) => `
-                    <div class="product-card">
-                        <div class="product-img-wrap">
-                            ${p.badge === 'discount' && p.discount ? `<span class="badge-discount">-${p.discount}%</span>` : (p.badge === 'new' ? '<span class="badge-new">جديد</span>' : '')}
-                            <img src="${p.image || ''}" alt="${p.title}" style="background:#f0f4f8;" onerror="this.style.opacity='0.3'">
-                            <div class="product-actions">
-                                <button class="action-btn" title="عرض سريع" onclick="showQuickView('${p.id}')"><i class="far fa-eye"></i></button>
+                grid.innerHTML = renderedProducts.map((p, i) => {
+                    let badge = '';
+                    if (p.badge === 'discount' && p.discount) badge = `<span class="badge-discount">-${p.discount}%</span>`;
+                    else if (p.badge === 'new') badge = `<span class="badge-new">جديد</span>`;
+                    return `
+                        <a href="product.html?id=${encodeURIComponent(p.id)}" style="display: block; text-decoration: none; color: inherit;">
+                            <div class="product-card">
+                                <div class="product-img-wrap">
+                                    ${badge}
+                                    <img src="${p.image || ''}" alt="${p.title}" style="background:#f0f4f8;" onerror="this.style.opacity='0.3'">
+                                    <div class="product-actions">
+                                        <button class="action-btn" onclick="event.preventDefault(); window.location.href='product.html?id=${encodeURIComponent(p.id)}'" title="عرض سريع"><i class="far fa-eye"></i></button>
+                                    </div>
+                                </div>
+                                <div class="product-body">
+                                    <span class="product-cat">${p.category}</span>
+                                    <h3 class="product-name">${p.title}</h3>
+                                    <div class="product-pricing">
+                                        <span class="price-new">${formatPrice(p.price)}</span>
+                                        ${p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : ''}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="product-body">
-                            <span class="product-cat">${p.category}</span>
-                            <h3 class="product-name">${p.title}</h3>
-                            <div class="product-pricing">
-                                <span class="price-new">${formatPrice(p.price)}</span>
-                                ${p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : ''}
-                            </div>
-                            <div class="product-card-actions">
-                                <button class="btn-add-cart" onclick="window.location.href='product.html?id=${encodeURIComponent(p.id)}'">
-                                    <i class="fas fa-eye"></i> التفاصيل
-                                </button>
-                                <button type="button" class="btn-whatsapp-outline" onclick="MZ.orderProductWhatsApp(renderedProducts[${i}])">
-                                    <i class="fab fa-whatsapp"></i> واتساب
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
+                        </a>
+                    `;
+                }).join('');
                 info.textContent = `عرض ${renderedProducts.length} منتج`;
             }
         }
@@ -372,9 +324,6 @@
             if (panel) panel.classList.remove('open');
             if (toggle) toggle.setAttribute('aria-expanded', 'false');
             renderProducts();
-            // تحديث الرابط في شريط العنوان بدون إعادة تحميل (اختياري)
-            const newUrl = currentCat === 'all' ? window.location.pathname : `?category=${encodeURIComponent(currentCat)}`;
-            window.history.pushState({}, '', newUrl);
         }
 
         document.querySelectorAll('#categoryList a').forEach(link => {
