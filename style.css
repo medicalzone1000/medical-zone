@@ -1,5 +1,5 @@
 /* =============================================
-   MEDICAL ZONE — ULTIMATE STYLESHEET (CLEAN + MOBILE FIXES)
+   MEDICAL ZONE — FINAL MOBILE STYLESHEET
    ============================================= */
 
 :root {
@@ -789,7 +789,7 @@ a {
 }
 
 /* =====================
-   STORE PAGE (filter sidebar, toolbar, grid)
+   STORE PAGE
    ===================== */
 .page-hero {
     background: linear-gradient(135deg, var(--navy), var(--navy-mid));
@@ -916,7 +916,7 @@ a {
     grid-template-columns: repeat(3, 1fr) !important;
 }
 
-/* Quick View Modal (from original) */
+/* Quick View Modal */
 .quickview-modal {
     display: none;
     position: fixed;
@@ -1409,7 +1409,7 @@ a {
 }
 
 /* =====================
-   FOOTER (shared)
+   FOOTER
    ===================== */
 .site-footer {
     background: var(--navy);
@@ -1559,7 +1559,7 @@ a {
 }
 
 /* =====================
-   RESPONSIVE BREAKPOINTS (MOBILE + TABLET)
+   RESPONSIVE BREAKPOINTS (MOBILE ONLY)
    ===================== */
 
 @media (max-width: 1024px) {
@@ -1573,13 +1573,13 @@ a {
 }
 
 @media (max-width: 768px) {
-    /* ---- General header & drawer fixes (including reports page) ---- */
+    /* ---- General ---- */
     .main-nav { display: none; }
     .mobile-menu-btn { display: flex; }
     .header-actions { display: none; }
     .trust-bar { display: none; }
 
-    /* ---- STRONG FIX for drawer on all pages (especially reports) ---- */
+    /* ---- Drawer fix for all pages ---- */
     .drawer-overlay {
         display: block !important;
         visibility: hidden;
@@ -1605,58 +1605,96 @@ a {
 
     /* ---- Reduce top spacing on all pages ---- */
     .page-hero, .contact-hero, .maintenance-hero, .service-hero, .reports-hero {
-        padding: 24px 0 !important;
+        padding: 20px 0 !important;
     }
     .page-hero h1, .contact-hero h1, .maintenance-hero h1, .service-hero h1, .reports-hero h1 {
-        font-size: 1.5rem !important;
+        font-size: 1.4rem !important;
     }
 
-    /* ---- HOME PAGE: move content down, enhance typography, button color ---- */
+    /* ===== HOME PAGE - MATCH IMAGE EXACTLY ===== */
+    .page-home .hero {
+        min-height: 100vh !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
     .page-home .hero-container {
         display: flex !important;
         flex-direction: column !important;
-        justify-content: flex-end !important;
-        min-height: 100vh !important;
-        padding-bottom: 4rem !important;
+        justify-content: center !important;
+        align-items: center !important;
+        min-height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
     }
     .page-home .hero-content {
-        margin-top: auto !important;
-        padding-bottom: 2rem !important;
+        margin: 0 !important;
+        padding: 0 1rem !important;
+        max-width: 100% !important;
     }
-    .page-home .hero-stats {
+    /* Hide all extra elements */
+    .page-home .hero-eyebrow,
+    .page-home .hero-desc,
+    .page-home .hero-stats,
+    .page-home .stat-divider,
+    .page-home .stat-item {
         display: none !important;
     }
+    /* Title styling: MEDICAL ZONE large */
     .page-home .hero-title {
-        font-size: 2.5rem !important;
+        font-size: 3rem !important;
         font-family: var(--font-display) !important;
-        letter-spacing: -0.5px;
-        margin-bottom: 0.5rem !important;
+        font-weight: 900 !important;
+        margin-bottom: 1rem !important;
+        line-height: 1.2 !important;
+        color: white !important;
     }
+    /* Hide the "أعلى جودة" line (em) */
     .page-home .hero-title em {
-        font-size: 1.2rem !important;
-        font-family: var(--font-ar) !important;
+        display: none !important;
+    }
+    /* Add new subtitle exactly as in image */
+    .page-home .hero-content {
+        position: relative;
+    }
+    .page-home .hero-content::after {
+        content: "الوجهة الأولى للأجهزة الطبية في مصر";
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.85);
+        margin-bottom: 2rem;
+        font-family: var(--font-ar);
         letter-spacing: 0;
     }
-    .page-home .hero-desc {
-        display: none;
-    }
+    /* Button styling: moof color, white text, centered */
     .page-home .hero-cta {
-        order: 5;
-        margin-top: 8px;
+        margin: 0 !important;
+        display: flex !important;
+        justify-content: center !important;
     }
-    .page-home .hero-media-overlay {
-        background: linear-gradient(135deg, rgba(10,43,62,0.4), rgba(10,43,62,0.2));
-    }
-    /* Change button color to "موف" (copper/brownish) */
     .page-home .btn-primary {
         background: #a67c52 !important;
+        color: white !important;
+        padding: 0.85rem 2rem !important;
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        border-radius: 50px !important;
         box-shadow: none !important;
+        border: none !important;
     }
     .page-home .btn-primary:hover {
         background: #8b6340 !important;
+        transform: scale(1.02);
+    }
+    /* Hero image overlay - very light */
+    .page-home .hero-media-overlay {
+        background: linear-gradient(135deg, rgba(10,43,62,0.3), rgba(10,43,62,0.15)) !important;
     }
 
-    /* ---- Promo & grids ---- */
+    /* ---- Promo & grids (unchanged for other pages) ---- */
     .promo-grid { grid-template-columns: 1fr; }
     .promo-stack { flex-direction: row; gap: 1rem; }
     .products-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1665,7 +1703,7 @@ a {
     .categories-section { padding: 36px 0; }
     .section-head { flex-direction: column; align-items: flex-start; gap: 12px; }
 
-    /* ---- STORE PAGE: align sort select next to search ---- */
+    /* ---- Store page ---- */
     .store-layout { grid-template-columns: 1fr; }
     .store-sidebar { position: static; }
     .store-cats-widget { padding: 0; border: none; background: transparent; margin-bottom: 12px; }
@@ -1713,18 +1751,18 @@ a {
         border: 1px solid var(--navy) !important;
     }
 
-    /* ---- MAINTENANCE: lift form slightly ---- */
+    /* ---- Maintenance ---- */
     .maintenance-container {
         margin-top: -10px !important;
         margin-bottom: 4rem;
     }
 
-    /* ---- CONTACT: center "أرسل لنا رسالة" ---- */
+    /* ---- Contact ---- */
     .contact-form-wrapper h2 {
         text-align: center !important;
     }
 
-    /* ---- FOOTER ---- */
+    /* ---- Footer ---- */
     .footer-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
     .social-links { justify-content: center; }
     .footer-contact li { justify-content: center; }
@@ -1736,8 +1774,6 @@ a {
     .products-grid, .store-grid { grid-template-columns: 1fr !important; }
     .categories-grid { grid-template-columns: repeat(2, 1fr); }
     .blog-grid { grid-template-columns: 1fr; }
-    .hero-title { font-size: 1.8rem; }
-    .btn-primary { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
     .page-hero, .contact-hero, .maintenance-hero, .service-hero, .reports-hero {
         padding: 16px 0 !important;
     }
@@ -1758,12 +1794,13 @@ a {
         bottom: 16px;
         left: 16px;
     }
+    /* Adjust home title for very small screens */
     .page-home .hero-title {
-        font-size: 2rem !important;
+        font-size: 2.5rem !important;
     }
 }
 
-/* ---- Utility (original fallbacks) ---- */
+/* ---- Utility ---- */
 img[src=""], img:not([src]) {
     background: var(--gray-100);
     min-height: 100px;
