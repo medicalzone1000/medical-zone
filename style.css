@@ -1573,11 +1573,33 @@ a {
 }
 
 @media (max-width: 768px) {
-    /* ---- General header & drawer fixes ---- */
+    /* ---- General header & drawer fixes (including reports page) ---- */
     .main-nav { display: none; }
     .mobile-menu-btn { display: flex; }
     .header-actions { display: none; }
     .trust-bar { display: none; }
+
+    /* Fix drawer on all pages (especially reports) */
+    .drawer-overlay {
+        display: block !important;
+        visibility: hidden;
+        opacity: 0;
+        transition: var(--transition);
+        z-index: 1100;
+    }
+    .drawer-overlay.open {
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    .mobile-drawer {
+        display: block !important;
+        right: -280px !important;
+        transition: right 0.3s ease !important;
+        z-index: 1200 !important;
+    }
+    .mobile-drawer.open {
+        right: 0 !important;
+    }
 
     /* ---- Reduce top spacing on all pages (hero & page-hero) ---- */
     .page-hero, .contact-hero, .maintenance-hero, .service-hero, .reports-hero {
@@ -1587,7 +1609,16 @@ a {
         font-size: 1.5rem !important;
     }
 
-    /* ---- Home page specific ---- */
+    /* ---- Home page specific: hide extra stats, enhance hero title ---- */
+    .page-home .hero-stats {
+        display: none !important; /* إخفاء الإحصائيات السفلية (600 منتج، 15 سنة، 3 فروع) */
+    }
+    .page-home .hero-title {
+        font-size: 2.2rem !important; /* تكبير اسم "ميديكال زون" */
+    }
+    .page-home .hero-title em {
+        font-size: 1.3rem !important; /* تصغير "أعلى جودة .. بأفضل سعر" */
+    }
     .page-home .hero-desc {
         display: none;
     }
@@ -1635,6 +1666,7 @@ a {
     .widget-title-desktop { display: none; }
     .sidebar-fb-banner { display: none; }
 
+    /* Align sort-select next to search bar */
     .store-toolbar {
         flex-direction: row !important;
         flex-wrap: wrap !important;
@@ -1657,14 +1689,10 @@ a {
         border: 1px solid var(--navy) !important;
     }
 
-    /* ---- Maintenance page (center text) ---- */
-    .maintenance-container,
-    .maintenance-form .form-group,
-    .maintenance-form label,
-    .maintenance-form input,
-    .maintenance-form select,
-    .maintenance-form textarea {
-        text-align: center;
+    /* ---- Maintenance page: push form down (margin-top) ---- */
+    .maintenance-container {
+        margin-top: 0 !important; /* override negative margin */
+        margin-bottom: 4rem;
     }
 
     /* ---- Contact page: center "أرسل لنا رسالة" ---- */
@@ -1677,26 +1705,6 @@ a {
     .social-links { justify-content: center; }
     .footer-contact li { justify-content: center; }
     .footer-bottom-inner { flex-direction: column; gap: 10px; text-align: center; }
-
-    /* ---- Drawer (ensure it works on all pages) ---- */
-    .drawer-overlay {
-        display: block;
-        visibility: hidden;
-        opacity: 0;
-        transition: var(--transition);
-    }
-    .drawer-overlay.open {
-        visibility: visible;
-        opacity: 1;
-    }
-    .mobile-drawer {
-        display: block;
-        right: -280px;
-        transition: right 0.3s ease;
-    }
-    .mobile-drawer.open {
-        right: 0;
-    }
 }
 
 @media (max-width: 480px) {
@@ -1704,7 +1712,7 @@ a {
     .products-grid, .store-grid { grid-template-columns: 1fr !important; }
     .categories-grid { grid-template-columns: repeat(2, 1fr); }
     .blog-grid { grid-template-columns: 1fr; }
-    .hero-title { font-size: 1.6rem; }
+    .hero-title { font-size: 1.8rem; }
     .btn-primary { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
     /* Further reduce spacing on very small screens */
     .page-hero, .contact-hero, .maintenance-hero, .service-hero, .reports-hero {
@@ -1727,6 +1735,10 @@ a {
         border-radius: 50%;
         bottom: 16px;
         left: 16px;
+    }
+    /* Home title further adjustment */
+    .page-home .hero-title {
+        font-size: 1.8rem !important;
     }
 }
 
