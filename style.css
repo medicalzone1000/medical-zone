@@ -1579,13 +1579,14 @@ a {
     .header-actions { display: none; }
     .trust-bar { display: none; }
 
-    /* Fix drawer on all pages (especially reports) */
+    /* ---- STRONG FIX for drawer on all pages (especially reports) ---- */
     .drawer-overlay {
         display: block !important;
         visibility: hidden;
         opacity: 0;
         transition: var(--transition);
-        z-index: 1100;
+        z-index: 1100 !important;
+        position: fixed !important;
     }
     .drawer-overlay.open {
         visibility: visible !important;
@@ -1596,6 +1597,7 @@ a {
         right: -280px !important;
         transition: right 0.3s ease !important;
         z-index: 1200 !important;
+        position: fixed !important;
     }
     .mobile-drawer.open {
         right: 0 !important;
@@ -1609,15 +1611,30 @@ a {
         font-size: 1.5rem !important;
     }
 
-    /* ---- Home page specific: hide extra stats, enhance hero title ---- */
+    /* ---- Home page specific: move content down, enhance typography ---- */
+    .page-home .hero-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-height: 100vh;
+        padding-bottom: 4rem;
+    }
+    .page-home .hero-content {
+        margin-top: auto;
+        padding-bottom: 2rem;
+    }
     .page-home .hero-stats {
-        display: none !important; /* إخفاء الإحصائيات السفلية (600 منتج، 15 سنة، 3 فروع) */
+        display: none !important;
     }
     .page-home .hero-title {
-        font-size: 2.2rem !important; /* تكبير اسم "ميديكال زون" */
+        font-size: 2.5rem !important;
+        font-family: var(--font-display) !important;
+        letter-spacing: -0.5px;
     }
     .page-home .hero-title em {
-        font-size: 1.3rem !important; /* تصغير "أعلى جودة .. بأفضل سعر" */
+        font-size: 1.2rem !important;
+        font-family: var(--font-ar) !important;
+        letter-spacing: 0;
     }
     .page-home .hero-desc {
         display: none;
@@ -1628,6 +1645,14 @@ a {
     }
     .page-home .hero-media-overlay {
         background: linear-gradient(135deg, rgba(10,43,62,0.4), rgba(10,43,62,0.2));
+    }
+    /* Change button color to "موف" (copper/brownish) */
+    .page-home .btn-primary {
+        background: #a67c52 !important;
+        box-shadow: none !important;
+    }
+    .page-home .btn-primary:hover {
+        background: #8b6340 !important;
     }
 
     /* ---- Promo & grids ---- */
@@ -1666,7 +1691,7 @@ a {
     .widget-title-desktop { display: none; }
     .sidebar-fb-banner { display: none; }
 
-    /* Align sort-select next to search bar */
+    /* Align sort-select exactly next to search bar */
     .store-toolbar {
         flex-direction: row !important;
         flex-wrap: wrap !important;
@@ -1678,7 +1703,7 @@ a {
         width: 100% !important;
     }
     .search-inline { flex: 2 !important; }
-    .sort-wrap { flex: 1 !important; }
+    .sort-wrap { flex: 1 !important; margin: 0 !important; }
     .sort-select { width: 100% !important; }
 
     .store-grid {
@@ -1689,9 +1714,9 @@ a {
         border: 1px solid var(--navy) !important;
     }
 
-    /* ---- Maintenance page: push form down (margin-top) ---- */
+    /* ---- Maintenance page: lift form slightly to overlap blue area ---- */
     .maintenance-container {
-        margin-top: 0 !important; /* override negative margin */
+        margin-top: -10px !important; /* تداخل بسيط مع المساحة الزرقاء */
         margin-bottom: 4rem;
     }
 
@@ -1738,7 +1763,7 @@ a {
     }
     /* Home title further adjustment */
     .page-home .hero-title {
-        font-size: 1.8rem !important;
+        font-size: 2rem !important;
     }
 }
 
