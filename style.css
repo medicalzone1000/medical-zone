@@ -1603,7 +1603,7 @@ a {
         right: 0 !important;
     }
 
-    /* ---- Reduce top spacing on all pages (hero & page-hero) ---- */
+    /* ---- Reduce top spacing on all pages ---- */
     .page-hero, .contact-hero, .maintenance-hero, .service-hero, .reports-hero {
         padding: 24px 0 !important;
     }
@@ -1611,17 +1611,17 @@ a {
         font-size: 1.5rem !important;
     }
 
-    /* ---- Home page specific: move content down, enhance typography ---- */
+    /* ---- HOME PAGE: move content down, enhance typography, button color ---- */
     .page-home .hero-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        min-height: 100vh;
-        padding-bottom: 4rem;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-end !important;
+        min-height: 100vh !important;
+        padding-bottom: 4rem !important;
     }
     .page-home .hero-content {
-        margin-top: auto;
-        padding-bottom: 2rem;
+        margin-top: auto !important;
+        padding-bottom: 2rem !important;
     }
     .page-home .hero-stats {
         display: none !important;
@@ -1630,6 +1630,7 @@ a {
         font-size: 2.5rem !important;
         font-family: var(--font-display) !important;
         letter-spacing: -0.5px;
+        margin-bottom: 0.5rem !important;
     }
     .page-home .hero-title em {
         font-size: 1.2rem !important;
@@ -1664,7 +1665,7 @@ a {
     .categories-section { padding: 36px 0; }
     .section-head { flex-direction: column; align-items: flex-start; gap: 12px; }
 
-    /* ---- Store page (toolbar, sidebar, product border) ---- */
+    /* ---- STORE PAGE: align sort select next to search ---- */
     .store-layout { grid-template-columns: 1fr; }
     .store-sidebar { position: static; }
     .store-cats-widget { padding: 0; border: none; background: transparent; margin-bottom: 12px; }
@@ -1691,7 +1692,6 @@ a {
     .widget-title-desktop { display: none; }
     .sidebar-fb-banner { display: none; }
 
-    /* Align sort-select exactly next to search bar */
     .store-toolbar {
         flex-direction: row !important;
         flex-wrap: wrap !important;
@@ -1709,23 +1709,22 @@ a {
     .store-grid {
         grid-template-columns: repeat(2, 1fr) !important;
     }
-    /* إطار رفيع حول المنتجات في الموبايل */
     .product-card {
         border: 1px solid var(--navy) !important;
     }
 
-    /* ---- Maintenance page: lift form slightly to overlap blue area ---- */
+    /* ---- MAINTENANCE: lift form slightly ---- */
     .maintenance-container {
-        margin-top: -10px !important; /* تداخل بسيط مع المساحة الزرقاء */
+        margin-top: -10px !important;
         margin-bottom: 4rem;
     }
 
-    /* ---- Contact page: center "أرسل لنا رسالة" ---- */
+    /* ---- CONTACT: center "أرسل لنا رسالة" ---- */
     .contact-form-wrapper h2 {
         text-align: center !important;
     }
 
-    /* ---- Footer ---- */
+    /* ---- FOOTER ---- */
     .footer-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
     .social-links { justify-content: center; }
     .footer-contact li { justify-content: center; }
@@ -1739,7 +1738,6 @@ a {
     .blog-grid { grid-template-columns: 1fr; }
     .hero-title { font-size: 1.8rem; }
     .btn-primary { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
-    /* Further reduce spacing on very small screens */
     .page-hero, .contact-hero, .maintenance-hero, .service-hero, .reports-hero {
         padding: 16px 0 !important;
     }
@@ -1753,7 +1751,6 @@ a {
         font-size: 0.8rem !important;
         padding: 0.3rem !important;
     }
-    /* Whatsapp float hide text */
     .mz-whatsapp-float span { display: none; }
     .mz-whatsapp-float {
         padding: 12px;
@@ -1761,7 +1758,6 @@ a {
         bottom: 16px;
         left: 16px;
     }
-    /* Home title further adjustment */
     .page-home .hero-title {
         font-size: 2rem !important;
     }
