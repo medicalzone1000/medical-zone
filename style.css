@@ -1,6 +1,5 @@
 /* =============================================
-   MEDICAL ZONE — ULTIMATE STYLESHEET
-   CLEAN, RESPONSIVE, FULL PAGE SUPPORT
+   MEDICAL ZONE — ULTIMATE STYLESHEET (CLEAN + MOBILE FIXES)
    ============================================= */
 
 :root {
@@ -1166,10 +1165,8 @@ a {
    PAGE: CONTACT
    ===================== */
 .contact-hero {
-    background: linear-gradient(rgba(10,43,62,0.9), rgba(10,43,62,0.9)), url('https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&q=80&w=2070');
-    background-size: cover;
-    background-position: center;
-    padding: 4rem 0;
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    padding: 3rem 0;
     text-align: center;
     color: white;
 }
@@ -1178,7 +1175,7 @@ a {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 2rem;
-    margin-top: -2rem;
+    margin-top: 2rem;
     margin-bottom: 4rem;
 }
 
@@ -1562,8 +1559,9 @@ a {
 }
 
 /* =====================
-   RESPONSIVE BREAKPOINTS
+   RESPONSIVE BREAKPOINTS (MOBILE + TABLET)
    ===================== */
+
 @media (max-width: 1024px) {
     .hero-content { max-width: 100%; text-align: center; }
     .hero-stats { justify-content: center; }
@@ -1575,49 +1573,161 @@ a {
 }
 
 @media (max-width: 768px) {
+    /* ---- General header & drawer fixes ---- */
     .main-nav { display: none; }
     .mobile-menu-btn { display: flex; }
     .header-actions { display: none; }
     .trust-bar { display: none; }
+
+    /* ---- Reduce top spacing on all pages (hero & page-hero) ---- */
+    .page-hero, .contact-hero, .maintenance-hero, .service-hero, .reports-hero {
+        padding: 24px 0 !important;
+    }
+    .page-hero h1, .contact-hero h1, .maintenance-hero h1, .service-hero h1, .reports-hero h1 {
+        font-size: 1.5rem !important;
+    }
+
+    /* ---- Home page specific ---- */
+    .page-home .hero-desc {
+        display: none;
+    }
+    .page-home .hero-cta {
+        order: 5;
+        margin-top: 8px;
+    }
+    .page-home .hero-media-overlay {
+        background: linear-gradient(135deg, rgba(10,43,62,0.4), rgba(10,43,62,0.2));
+    }
+
+    /* ---- Promo & grids ---- */
     .promo-grid { grid-template-columns: 1fr; }
     .promo-stack { flex-direction: row; gap: 1rem; }
     .products-grid { grid-template-columns: repeat(2, 1fr); }
     .blog-grid { grid-template-columns: 1fr; }
-    .categories-grid { grid-template-columns: repeat(4, 1fr); }
-    .footer-grid { grid-template-columns: 1fr; text-align: center; }
-    .social-links { justify-content: center; }
-    .footer-contact li { justify-content: center; }
+    .categories-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .categories-section { padding: 36px 0; }
+    .section-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+    /* ---- Store page (toolbar, sidebar, product border) ---- */
     .store-layout { grid-template-columns: 1fr; }
     .store-sidebar { position: static; }
-    .store-cats-toggle { display: flex; justify-content: space-between; width: 100%; padding: 0.8rem; background: white; border: 1px solid var(--gray-100); border-radius: var(--radius-md); font-weight: 700; cursor: pointer; }
-    .store-cats-panel { display: none; margin-top: 0.5rem; background: white; border: 1px solid var(--gray-100); border-radius: var(--radius-md); padding: 1rem; }
+    .store-cats-widget { padding: 0; border: none; background: transparent; margin-bottom: 12px; }
+    .store-cats-toggle {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0.8rem;
+        background: white;
+        border: 1.5px solid var(--gray-100);
+        border-radius: var(--radius-md);
+        font-weight: 700;
+        cursor: pointer;
+    }
+    .store-cats-panel {
+        display: none;
+        margin-top: 0.5rem;
+        background: white;
+        border: 1px solid var(--gray-100);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+    }
     .store-cats-panel.open { display: block; }
     .widget-title-desktop { display: none; }
     .sidebar-fb-banner { display: none; }
-    .store-grid { grid-template-columns: repeat(2, 1fr) !important; }
-    .store-toolbar { flex-direction: column; align-items: stretch; }
-    .toolbar-controls { flex-direction: column; }
-    .article-layout { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .maintenance-form { grid-template-columns: 1fr; }
-    .form-group.full-width { grid-column: span 1; }
-    .submit-btn { grid-column: span 1; }
-    .quickview-grid { grid-template-columns: 1fr; }
-    .page-home .home-hero { min-height: 100dvh; }
-    .page-home .hero-title { font-size: 1.8rem; }
-    .page-home .hero-title em { font-size: 1.2rem; }
-    .page-home .hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; background: rgba(0,0,0,0.4); border-radius: 0.5rem; padding: 0.5rem; }
-    .page-home .stat-item strong { font-size: 1rem; }
-    .page-home .stat-item span { font-size: 0.6rem; }
-    .page-home .stat-divider { display: none; }
+
+    .store-toolbar {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        align-items: center !important;
+    }
+    .toolbar-controls {
+        flex-direction: row !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
+    }
+    .search-inline { flex: 2 !important; }
+    .sort-wrap { flex: 1 !important; }
+    .sort-select { width: 100% !important; }
+
+    .store-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    /* إطار رفيع حول المنتجات في الموبايل */
+    .product-card {
+        border: 1px solid var(--navy) !important;
+    }
+
+    /* ---- Maintenance page (center text) ---- */
+    .maintenance-container,
+    .maintenance-form .form-group,
+    .maintenance-form label,
+    .maintenance-form input,
+    .maintenance-form select,
+    .maintenance-form textarea {
+        text-align: center;
+    }
+
+    /* ---- Contact page: center "أرسل لنا رسالة" ---- */
+    .contact-form-wrapper h2 {
+        text-align: center !important;
+    }
+
+    /* ---- Footer ---- */
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+    .social-links { justify-content: center; }
+    .footer-contact li { justify-content: center; }
+    .footer-bottom-inner { flex-direction: column; gap: 10px; text-align: center; }
+
+    /* ---- Drawer (ensure it works on all pages) ---- */
+    .drawer-overlay {
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        transition: var(--transition);
+    }
+    .drawer-overlay.open {
+        visibility: visible;
+        opacity: 1;
+    }
+    .mobile-drawer {
+        display: block;
+        right: -280px;
+        transition: right 0.3s ease;
+    }
+    .mobile-drawer.open {
+        right: 0;
+    }
 }
 
 @media (max-width: 480px) {
+    .container { padding: 0 1rem; }
     .products-grid, .store-grid { grid-template-columns: 1fr !important; }
     .categories-grid { grid-template-columns: repeat(2, 1fr); }
+    .blog-grid { grid-template-columns: 1fr; }
     .hero-title { font-size: 1.6rem; }
+    .btn-primary { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+    /* Further reduce spacing on very small screens */
+    .page-hero, .contact-hero, .maintenance-hero, .service-hero, .reports-hero {
+        padding: 16px 0 !important;
+    }
+    .toolbar-controls {
+        gap: 0.3rem !important;
+    }
+    .search-inline input {
+        font-size: 0.8rem !important;
+    }
+    .sort-select {
+        font-size: 0.8rem !important;
+        padding: 0.3rem !important;
+    }
+    /* Whatsapp float hide text */
     .mz-whatsapp-float span { display: none; }
-    .mz-whatsapp-float { padding: 12px; border-radius: 50%; }
+    .mz-whatsapp-float {
+        padding: 12px;
+        border-radius: 50%;
+        bottom: 16px;
+        left: 16px;
+    }
 }
 
 /* ---- Utility (original fallbacks) ---- */
