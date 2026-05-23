@@ -39,8 +39,8 @@
 </div>
 
 <main>
-    <!-- HERO CAROUSEL (سلايدر) 4 صور -->
-    <section class="hero home-hero hero-carousel">
+    <!-- HERO CAROUSEL (سلايدر) 4 صور - بارتفاع كامل الشاشة -->
+    <section class="hero home-hero hero-carousel fullscreen-hero">
         <div class="carousel-container">
             <div class="carousel-slides" id="heroSlides">
                 <!-- Slide 1 -->
@@ -274,7 +274,7 @@
     loadLatestProducts();
     loadLatestReports();
 
-    // ========== CAROUSEL SCRIPT (تشغيل تلقائي وتحكم يدوي) ==========
+    // ========== CAROUSEL SCRIPT (تشغيل تلقائي وتحكم يدوي - 3 ثوانٍ, يعمل إلى الأبد) ==========
     (function() {
         const slides = document.querySelectorAll('#heroSlides .carousel-slide');
         const prevBtn = document.querySelector('.carousel-prev');
@@ -282,6 +282,7 @@
         const dotsContainer = document.getElementById('heroDots');
         let currentIndex = 0;
         let autoInterval;
+        let isPaused = false;
 
         function updateCarousel(index) {
             if (index < 0) index = slides.length - 1;
@@ -291,7 +292,7 @@
                 slide.classList.toggle('active', i === currentIndex);
             });
             updateDots();
-            resetAutoPlay();
+            if (!isPaused) resetAutoPlay();
         }
 
         function updateDots() {
@@ -322,11 +323,26 @@
 
         function startAutoPlay() {
             if (autoInterval) clearInterval(autoInterval);
-            autoInterval = setInterval(() => { nextSlide(); }, 5000);
+            if (!isPaused) {
+                autoInterval = setInterval(() => { nextSlide(); }, 3000);
+            }
         }
         function resetAutoPlay() {
             if (autoInterval) clearInterval(autoInterval);
             startAutoPlay();
+        }
+        function pauseAutoPlay() {
+            if (autoInterval) {
+                clearInterval(autoInterval);
+                autoInterval = null;
+                isPaused = true;
+            }
+        }
+        function resumeAutoPlay() {
+            if (isPaused) {
+                isPaused = false;
+                startAutoPlay();
+            }
         }
 
         if (slides.length) {
@@ -336,10 +352,8 @@
             if (nextBtn) nextBtn.addEventListener('click', nextSlide);
             const container = document.querySelector('.carousel-container');
             if (container) {
-                container.addEventListener('mouseenter', () => {
-                    if (autoInterval) clearInterval(autoInterval);
-                });
-                container.addEventListener('mouseleave', startAutoPlay);
+                container.addEventListener('mouseenter', pauseAutoPlay);
+                container.addEventListener('mouseleave', resumeAutoPlay);
             }
         }
     })();
