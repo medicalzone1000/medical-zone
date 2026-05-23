@@ -283,19 +283,8 @@ a {
     z-index: 2;
 }
 
-/* === تعديل لنسخة الكمبيوتر: دفع محتوى الهيرو إلى أقصى اليمين === */
-@media (min-width: 769px) {
-    .hero-container {
-        display: flex;
-        justify-content: flex-end;
-    }
-    .hero-content {
-        max-width: 650px;
-        margin-left: auto;     /* يدفع المحتوى لأقصى اليمين */
-        margin-right: 0;       /* إلغاء أي هامش يمين */
-        text-align: right;
-        padding-right: 0;      /* ضمان عدم وجود مسافة إضافية */
-    }
+.hero-content {
+    max-width: 650px;
 }
 
 .hero-eyebrow {
@@ -1570,6 +1559,146 @@ a {
 }
 
 /* =====================
+   CAROUSEL (SLIDER) STYLES - NEW
+   ===================== */
+.hero-carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 85vh;
+}
+
+.carousel-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease-in-out, visibility 0.6s;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+}
+
+.carousel-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.carousel-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-slide .hero-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s;
+    font-size: 1.2rem;
+}
+
+.carousel-btn:hover {
+    background: var(--teal);
+}
+
+.carousel-prev {
+    right: 20px;
+}
+
+.carousel-next {
+    left: 20px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dot.active {
+    background: var(--gold);
+    width: 28px;
+    border-radius: 10px;
+}
+
+/* Responsive for carousel */
+@media (max-width: 768px) {
+    .carousel-container {
+        min-height: 100vh;
+    }
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    .carousel-prev {
+        right: 12px;
+    }
+    .carousel-next {
+        left: 12px;
+    }
+    .carousel-dots {
+        bottom: 15px;
+    }
+}
+
+/* =====================
    RESPONSIVE BREAKPOINTS (MOBILE ONLY)
    ===================== */
 
@@ -1622,11 +1751,11 @@ a {
         font-size: 1.4rem !important;
     }
 
-    /* ===== HOME PAGE — رفع الكتلة للأعلى بشكل معتدل ===== */
+    /* ===== HOME PAGE — PROFESSIONAL MOBILE HERO ===== */
     .page-home .hero {
-        min-height: 85vh !important;   /* ارتفاع مناسب */
+        min-height: 100vh !important;
         display: flex !important;
-        align-items: center !important;
+        align-items: flex-end !important;
         justify-content: center !important;
         text-align: center !important;
         padding-bottom: 0 !important;
@@ -1634,13 +1763,13 @@ a {
     .page-home .hero-container {
         display: flex !important;
         flex-direction: column !important;
-        justify-content: center !important;
+        justify-content: flex-end !important;
         align-items: center !important;
         min-height: auto !important;
         padding: 0 !important;
         margin: 0 !important;
         width: 100% !important;
-        padding-bottom: 0 !important;
+        padding-bottom: 4.5rem !important;
     }
     .page-home .hero-content {
         position: relative !important;
@@ -1648,8 +1777,6 @@ a {
         padding: 0 1.5rem !important;
         max-width: 100% !important;
         width: 100% !important;
-        /* نزول بسيط للكتلة عن طريق margin-top */
-        margin-top: 2rem !important;
     }
     /* Hide extra elements */
     .page-home .hero-eyebrow,
@@ -1670,14 +1797,22 @@ a {
         color: white !important;
         text-shadow: 0 2px 20px rgba(0,0,0,0.35) !important;
     }
-    /* إخفاء سطر أعلى جودة */
+    /* Hide the em (أعلى جودة) line */
     .page-home .hero-title em {
         display: none !important;
     }
-    /* إزالة سطر "أعلى جودة .. بأفضل سعر" بالكامل */
+    /* Premium quality subtitle via ::after */
     .page-home .hero-content::after {
-        display: none !important;
-        content: none !important;
+        content: "أعلى جودة .. بأفضل سعر";
+        display: block !important;
+        font-size: 1.05rem !important;
+        font-weight: 400 !important;
+        font-style: italic !important;
+        color: rgba(255,255,255,0.92) !important;
+        margin-bottom: 1.8rem !important;
+        font-family: 'Playfair Display', serif !important;
+        letter-spacing: 0.5px !important;
+        text-shadow: 0 1px 8px rgba(0,0,0,0.3) !important;
     }
     /* Button: mauve/purple matching 35.6 color theme, white text */
     .page-home .hero-cta {
@@ -1838,10 +1973,11 @@ a {
         letter-spacing: 1.5px !important;
     }
     .page-home .hero-container {
-        padding-bottom: 0 !important;
+        padding-bottom: 3.5rem !important;
     }
-    .page-home .hero-content {
-        margin-top: 1.5rem !important;  /* نزول أقل للشاشات الصغيرة جداً */
+    .page-home .hero-content::after {
+        font-size: 0.92rem !important;
+        margin-bottom: 1.5rem !important;
     }
 }
 
