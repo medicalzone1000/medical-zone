@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المتجر — ميديكال زون للأجهزة الطبية</title>
+    <meta name="description" content="تسوق أجهزة ومستلزمات طبية عالية الجودة: أجهزة تنفس، ضغط، أكسجين، علاج طبيعي، مناظير وأكثر من 600 منتج — ميديكال زون.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://medzon.store/store.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-store">
+
+    <div class="announcement-bar">
+        <p>🚚 شحن مجاني للطلبات فوق 2000 جنيه &nbsp;|&nbsp; ✅ ضمان سنة على جميع الأجهزة &nbsp;|&nbsp; 📞 دعم فني 24/7 &nbsp;|&nbsp; 🚛 الدفع عند الاستلام</p>
+    </div>
+
+    <header class="site-header" id="site-header">
+        <div class="header-inner container">
+            <a href="index.html" class="logo-link">
+                <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+                <div class="logo-text">
+                    <span class="logo-main">MEDICAL</span>
+                    <span class="logo-sub">ZONE</span>
+                </div>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="store.html" class="active">المتجر</a></li>
+                    <li><a href="maintenance.html">صيانة</a></li>
+                    <li><a href="reports.html">تقارير</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions"></div>
+        </div>
+    </header>
+
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
+        <nav class="drawer-nav">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="store.html" class="active"><i class="fas fa-store"></i> المتجر</a></li>
+                <li><a href="maintenance.html"><i class="fas fa-tools"></i> صيانة</a></li>
+                <li><a href="reports.html"><i class="fas fa-file-medical"></i> تقارير</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> تواصل معنا</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <section class="page-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">الرئيسية</a>
+                <i class="fas fa-chevron-left"></i>
+                <span>المتجر</span>
+            </div>
+            <h1>المتجر</h1>
+            <p>كل ما تبحث عنه في مكان واحد</p>
+        </div>
+    </section>
+
+    <main class="store-main">
+        <div class="container store-layout">
+            <aside class="store-sidebar">
+                <div class="sidebar-widget store-cats-widget">
+                    <button type="button" class="store-cats-toggle" id="storeCatsToggle" aria-expanded="false" aria-controls="storeCatsPanel">
+                        <i class="fas fa-th-large"></i>
+                        <span id="storeCatsToggleLabel">جميع الأقسام</span>
+                        <i class="fas fa-chevron-down store-cats-chevron"></i>
+                    </button>
+                    <div class="store-cats-panel" id="storeCatsPanel">
+                    <h3 class="widget-title widget-title-desktop">الأقسام</h3>
+                    <ul class="sidebar-cats" id="categoryList">
+                        <li class="active"><a href="#" data-cat="all"><i class="fas fa-th-large"></i> جميع الأقسام</a></li>
+                        <li><a href="#" data-cat="العمليات والعناية المركزة"><i class="fas fa-procedures"></i> العمليات والعناية المركزة</a></li>
+                        <li><a href="#" data-cat="المناظير والآلات"><i class="fas fa-microscope"></i> المناظير والآلات</a></li>
+                        <li><a href="#" data-cat="الأشعة والسونار"><i class="fas fa-x-ray"></i> الأشعة والسونار</a></li>
+                        <li><a href="#" data-cat="العلاج الطبيعي"><i class="fas fa-hand-holding-medical"></i> العلاج الطبيعي</a></li>
+                        <li><a href="#" data-cat="أجهزة التنفس والأكسجين"><i class="fas fa-lungs"></i> أجهزة التنفس والأكسجين</a></li>
+                        <li><a href="#" data-cat="الأنف والأذن والسمعيات"><i class="fas fa-ear-listen"></i> الأنف والأذن والسمعيات</a></li>
+                        <li><a href="#" data-cat="رسم المخ والعضلات"><i class="fas fa-brain"></i> رسم المخ والعضلات</a></li>
+                        <li><a href="#" data-cat="أجهزة تنفس للإيجار"><i class="fas fa-handshake"></i> أجهزة تنفس للإيجار</a></li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="sidebar-widget sidebar-fb-banner">
+                    <div class="fb-banner-badge"><i class="fab fa-facebook-f"></i> تابعنا</div>
+                    <p>شاهد صور المنتجات أولاً بأول عبر صفحتنا الرسمية</p>
+                    <a href="https://web.facebook.com/medical.zone.sohage/photos" target="_blank" rel="noopener" class="btn-secondary-sm">
+                        <i class="fab fa-facebook-f"></i> عرض الصور
+                    </a>
+                </div>
+            </aside>
+
+            <section class="store-products-area">
+                <div class="store-toolbar">
+                    <span class="results-info" id="resultsInfo">جاري التحميل...</span>
+                    <div class="toolbar-controls">
+                        <div class="search-inline">
+                            <i class="fas fa-search"></i>
+                            <input type="search" id="searchInput" placeholder="ابحث عن منتج...">
+                        </div>
+                        <label class="sort-wrap">
+                            <span>ترتيب:</span>
+                            <select id="sortSelect" class="sort-select">
+                                <option value="newest">الأحدث</option>
+                                <option value="price-asc">الأقل سعرًا</option>
+                                <option value="price-desc">الأعلى سعرًا</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="loadingState" class="loading-state">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>جاري تحميل المنتجات...</p>
+                </div>
+                <div id="emptyState" class="empty-state" style="display:none">
+                    <i class="fas fa-box-open"></i>
+                    <p>لا توجد منتجات في هذا القسم حالياً</p>
+                </div>
+                <div class="products-grid store-grid" id="productsGrid" style="display:none"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-col footer-brand">
+                    <div class="footer-logo">
+                        <div class="logo-icon"><i class="fas fa-heartbeat"></i></div>
+                        <div class="logo-text">
+                            <span class="logo-main">MEDICAL</span>
+                            <span class="logo-sub">ZONE</span>
+                        </div>
+                    </div>
+                    <p>مؤسسة ميديكال زون للأجهزة الطبية — وجهتك الأولى لأحدث الأجهزة والمستلزمات الطبية عالية الجودة في مصر.</p>
+                    <div class="social-links">
+                        <a href="https://web.facebook.com/medical.zone.sohage" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="terms.html">الشروط والأحكام</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                        <li><a href="support.html">الدعم الفني</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-col-title">تواصل معنا</h4>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i><span><strong>القاهرة:</strong> ش الهرم الرئيسي، برج جراند هاوس</span></li>
+                        <li><i class="fas fa-map-marker-alt"></i><span><strong>سوهاج:</strong> 43 ش الجامعة أمام مسجد الشرطة</span></li>
+                        <li><i class="fas fa-phone"></i><span>01223962139 - 01223962138</span></li>
+                        <li><i class="fas fa-phone"></i><span>01126562854 - 01126562812</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 مؤسسة ميديكال زون للأجهزة الطبية. جميع الحقوق محفوظة.</p>
+                <div class="payment-icons">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quick View Modal -->
+    <div class="quickview-modal" id="quickViewModal">
+        <div class="quickview-backdrop" onclick="closeQuickView()"></div>
+        <div class="quickview-content">
+            <button class="quickview-close" onclick="closeQuickView()"><i class="fas fa-times"></i></button>
+            <div class="quickview-grid">
+                <div class="quickview-img-wrap">
+                    <img id="qvImg" src="" alt="">
+                </div>
+                <div class="quickview-info">
+                    <span class="product-cat" id="qvCat"></span>
+                    <h2 id="qvTitle"></h2>
+                    <div class="product-pricing">
+                        <span class="price-new" id="qvPrice"></span>
+                        <span class="price-old" id="qvOldPrice"></span>
+                    </div>
+                    <p class="qv-desc" id="qvDesc"></p>
+                    <p class="qv-status">الحالة: <strong id="qvStatus"></strong></p>
+                    <button class="btn-add-cart" onclick="window.location.href='product.html?id=' + currentProductId">
+                        <i class="fas fa-eye"></i> عرض التفاصيل
+                    </button>
+                    <button type="button" class="btn-whatsapp-outline" style="margin-top:12px" id="qvWhatsAppBtn">
+                        <i class="fab fa-whatsapp"></i> اطلب عبر واتساب
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/201223962139?text=مرحباً ميديكال زون، أرغب في الاستفسار" target="_blank" rel="noopener" id="mz-whatsapp-float" class="mz-whatsapp-float" aria-label="تواصل عبر واتساب"><i class="fab fa-whatsapp"></i><span>واتساب</span></a>
+
+    <script src="js/config.js"></script>
+    <script src="js/site.js"></script>
+    <script>
+        let allProducts = [];
+        let currentCat = 'all';
+        let currentSearch = '';
+        let currentSort = 'newest';
+        let currentProductId = '';
+
+        // دالة لقراءة category من الرابط
+        function getCategoryFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            let cat = params.get('category');
+            if (!cat) return null;
+            cat = decodeURIComponent(cat);
+            // قائمة الفئات الصالحة
+            const valid = ['all', 'العمليات والعناية المركزة', 'المناظير والآلات', 'الأشعة والسونار', 'العلاج الطبيعي', 'أجهزة التنفس والأكسجين', 'الأنف والأذن والسمعيات', 'رسم المخ والعضلات', 'أجهزة تنفس للإيجار'];
+            return valid.includes(cat) ? cat : null;
+        }
+
+        async function loadProducts() {
+            try {
+                const res = await fetch('./content/products.json?v=' + Date.now());
+                if (!res.ok) throw new Error();
+                const data = await res.json();
+                allProducts = data.products || [];
+                document.getElementById('loadingState').style.display = 'none';
+                
+                // تطبيق الفئة من الرابط إذا وجدت
+                const urlCat = getCategoryFromURL();
+                if (urlCat && urlCat !== 'all') {
+                    currentCat = urlCat;
+                    // تحديث القائمة الجانبية لتعكس الفئة المختارة
+                    const links = document.querySelectorAll('#categoryList a');
+                    links.forEach(link => {
+                        if (link.dataset.cat === currentCat) {
+                            document.querySelectorAll('#categoryList li').forEach(li => li.classList.remove('active'));
+                            link.parentElement.classList.add('active');
+                            const toggleLabel = document.getElementById('storeCatsToggleLabel');
+                            if (toggleLabel) toggleLabel.textContent = link.textContent.trim();
+                        }
+                    });
+                } else {
+                    // التأكد من أن "جميع الأقسام" نشط
+                    document.querySelectorAll('#categoryList li').forEach(li => li.classList.remove('active'));
+                    const allLink = document.querySelector('#categoryList a[data-cat="all"]');
+                    if (allLink) allLink.parentElement.classList.add('active');
+                    document.getElementById('storeCatsToggleLabel').textContent = 'جميع الأقسام';
+                }
+                renderProducts();
+            } catch(e) {
+                document.getElementById('loadingState').innerHTML = '<i class="fas fa-exclamation-triangle"></i><p>حدث خطأ في تحميل المنتجات.</p>';
+            }
+        }
+
+        function formatPrice(n) { return MZ.formatPrice(n); }
+
+        let renderedProducts = [];
+        function renderProducts() {
+            renderedProducts = allProducts.filter(p => {
+                const matchCat = currentCat === 'all' || p.category === currentCat;
+                const q = currentSearch.toLowerCase();
+                const matchSearch = !q || p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q);
+                return matchCat && matchSearch;
+            });
+
+            if (currentSort === 'price-asc') renderedProducts.sort((a, b) => a.price - b.price);
+            else if (currentSort === 'price-desc') renderedProducts.sort((a, b) => b.price - a.price);
+            else if (currentSort === 'newest') renderedProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            const grid = document.getElementById('productsGrid');
+            const empty = document.getElementById('emptyState');
+            const info = document.getElementById('resultsInfo');
+
+            if (renderedProducts.length === 0) {
+                grid.style.display = 'none';
+                empty.style.display = 'flex';
+                info.textContent = 'لا توجد نتائج';
+            } else {
+                empty.style.display = 'none';
+                grid.style.display = 'grid';
+                grid.innerHTML = renderedProducts.map((p, i) => {
+                    let badge = '';
+                    if (p.badge === 'discount' && p.discount) badge = `<span class="badge-discount">-${p.discount}%</span>`;
+                    else if (p.badge === 'new') badge = `<span class="badge-new">جديد</span>`;
+                    const productLink = `product.html?id=${encodeURIComponent(p.id)}`;
+                    return `
+                        <div class="product-card">
+                            <div class="product-img-wrap">
+                                <a href="${productLink}" style="display: block; text-decoration: none; color: inherit;">
+                                    ${badge}
+                                    <img src="${p.image || ''}" alt="${p.title}" style="background:#f0f4f8;" onerror="this.style.opacity='0.3'">
+                                </a>
+                                <div class="product-actions">
+                                    <button class="action-btn" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='${productLink}'" title="عرض سريع"><i class="far fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="product-body">
+                                <span class="product-cat">${p.category}</span>
+                                <a href="${productLink}" style="text-decoration: none; color: inherit;">
+                                    <h3 class="product-name">${p.title}</h3>
+                                </a>
+                                <div class="product-pricing">
+                                    <a href="${productLink}" style="text-decoration: none; color: inherit;">
+                                        <span class="price-new">${formatPrice(p.price)}</span>
+                                        ${p.oldPrice ? `<span class="price-old">${formatPrice(p.oldPrice)}</span>` : ''}
+                                    </a>
+                                </div>
+                                <div class="product-card-actions">
+                                    <button class="btn-add-cart" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='${productLink}'">
+                                        <i class="fas fa-eye"></i> التفاصيل
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                info.textContent = `عرض ${renderedProducts.length} منتج`;
+            }
+        }
+
+        function showQuickView(productId) {
+            const p = allProducts.find(prod => prod.id === productId);
+            if (!p) return;
+            currentProductId = p.id;
+            document.getElementById('qvTitle').textContent = p.title;
+            document.getElementById('qvCat').textContent = p.category;
+            document.getElementById('qvPrice').textContent = formatPrice(p.price);
+            document.getElementById('qvOldPrice').textContent = p.oldPrice ? formatPrice(p.oldPrice) : '';
+            document.getElementById('qvDesc').textContent = p.description || '';
+            document.getElementById('qvStatus').textContent = p.status;
+            document.getElementById('qvImg').src = p.image || '';
+            const qvWa = document.getElementById('qvWhatsAppBtn');
+            if (qvWa) qvWa.onclick = () => MZ.orderProductWhatsApp(p);
+            document.getElementById('quickViewModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeQuickView() {
+            document.getElementById('quickViewModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function setActiveCategory(link) {
+            document.querySelectorAll('#categoryList li').forEach(li => li.classList.remove('active'));
+            link.parentElement.classList.add('active');
+            currentCat = link.dataset.cat;
+            const label = document.getElementById('storeCatsToggleLabel');
+            if (label) label.textContent = link.textContent.trim();
+            const panel = document.getElementById('storeCatsPanel');
+            const toggle = document.getElementById('storeCatsToggle');
+            if (panel) panel.classList.remove('open');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            renderProducts();
+            // تحديث الرابط في شريط العناوين
+            const newUrl = currentCat === 'all' ? window.location.pathname : `?category=${encodeURIComponent(currentCat)}`;
+            window.history.pushState({}, '', newUrl);
+        }
+
+        document.querySelectorAll('#categoryList a').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                setActiveCategory(link);
+            });
+        });
+
+        const storeCatsToggle = document.getElementById('storeCatsToggle');
+        const storeCatsPanel = document.getElementById('storeCatsPanel');
+        if (storeCatsToggle && storeCatsPanel) {
+            storeCatsToggle.addEventListener('click', () => {
+                const open = storeCatsPanel.classList.toggle('open');
+                storeCatsToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+        }
+        document.getElementById('searchInput').addEventListener('input', e => {
+            currentSearch = e.target.value.trim();
+            renderProducts();
+        });
+        document.getElementById('sortSelect').addEventListener('change', e => {
+            currentSort = e.target.value;
+            renderProducts();
+        });
+
+        loadProducts();
+    </script>
+</body>
+</html>
