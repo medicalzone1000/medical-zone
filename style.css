@@ -283,8 +283,18 @@ a {
     z-index: 2;
 }
 
-.hero-content {
-    max-width: 650px;
+/* === تعديل لنسخة الكمبيوتر: دفع محتوى الهيرو إلى اليمين مع هامش مناسب === */
+@media (min-width: 769px) {
+    .hero-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .hero-content {
+        max-width: 650px;
+        margin-left: auto;     /* يدفع المحتوى لليمين في RTL */
+        margin-right: 2rem;    /* هامش مناسب من الحافة اليمنى */
+        text-align: right;
+    }
 }
 
 .hero-eyebrow {
@@ -1629,7 +1639,7 @@ a {
         padding: 0 !important;
         margin: 0 !important;
         width: 100% !important;
-        padding-bottom: 4.5rem !important;
+        padding-bottom: 2rem !important; /* تم رفع الكتلة للأعلى (كانت 4.5rem) */
     }
     .page-home .hero-content {
         position: relative !important;
@@ -1661,18 +1671,10 @@ a {
     .page-home .hero-title em {
         display: none !important;
     }
-    /* Premium quality subtitle via ::after */
+    /* إزالة سطر "أعلى جودة .. بأفضل سعر" بالكامل */
     .page-home .hero-content::after {
-        content: "أعلى جودة .. بأفضل سعر";
-        display: block !important;
-        font-size: 1.05rem !important;
-        font-weight: 400 !important;
-        font-style: italic !important;
-        color: rgba(255,255,255,0.92) !important;
-        margin-bottom: 1.8rem !important;
-        font-family: 'Playfair Display', serif !important;
-        letter-spacing: 0.5px !important;
-        text-shadow: 0 1px 8px rgba(0,0,0,0.3) !important;
+        display: none !important;
+        content: none !important;
     }
     /* Button: mauve/purple matching 35.6 color theme, white text */
     .page-home .hero-cta {
@@ -1833,11 +1835,7 @@ a {
         letter-spacing: 1.5px !important;
     }
     .page-home .hero-container {
-        padding-bottom: 3.5rem !important;
-    }
-    .page-home .hero-content::after {
-        font-size: 0.92rem !important;
-        margin-bottom: 1.5rem !important;
+        padding-bottom: 2rem !important;
     }
 }
 
