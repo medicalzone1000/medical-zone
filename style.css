@@ -283,7 +283,7 @@ a {
     z-index: 2;
 }
 
-/* === تعديل لنسخة الكمبيوتر: دفع محتوى الهيرو إلى اليمين مع هامش مناسب === */
+/* === تعديل لنسخة الكمبيوتر: دفع محتوى الهيرو إلى أقصى اليمين === */
 @media (min-width: 769px) {
     .hero-container {
         display: flex;
@@ -291,8 +291,8 @@ a {
     }
     .hero-content {
         max-width: 650px;
-        margin-left: auto;     /* يدفع المحتوى لليمين في RTL */
-        margin-right: 2rem;    /* هامش مناسب من الحافة اليمنى */
+        margin-right: 1rem;   /* هامش بسيط من الحافة اليمنى */
+        margin-left: auto;     /* يدفع المحتوى لأقصى اليمين */
         text-align: right;
     }
 }
@@ -1621,11 +1621,11 @@ a {
         font-size: 1.4rem !important;
     }
 
-    /* ===== HOME PAGE — PROFESSIONAL MOBILE HERO ===== */
+    /* ===== HOME PAGE — رفع كتلة الكتابة لأعلى بحيث تظهر بدون سكرول ===== */
     .page-home .hero {
-        min-height: 100vh !important;
+        min-height: 80vh !important;   /* تقليل الارتفاع لتقليل التمرير */
         display: flex !important;
-        align-items: flex-end !important;
+        align-items: center !important; /* توسيط رأسي بدلاً من الأسفل، مع رفع الكتلة */
         justify-content: center !important;
         text-align: center !important;
         padding-bottom: 0 !important;
@@ -1633,13 +1633,13 @@ a {
     .page-home .hero-container {
         display: flex !important;
         flex-direction: column !important;
-        justify-content: flex-end !important;
+        justify-content: center !important; /* رفع الكتلة للأعلى */
         align-items: center !important;
         min-height: auto !important;
         padding: 0 !important;
         margin: 0 !important;
         width: 100% !important;
-        padding-bottom: 2rem !important; /* تم رفع الكتلة للأعلى (كانت 4.5rem) */
+        padding-bottom: 0 !important; /* إزالة المسافة السفلية */
     }
     .page-home .hero-content {
         position: relative !important;
@@ -1667,7 +1667,7 @@ a {
         color: white !important;
         text-shadow: 0 2px 20px rgba(0,0,0,0.35) !important;
     }
-    /* Hide the em (أعلى جودة) line */
+    /* إخفاء سطر أعلى جودة */
     .page-home .hero-title em {
         display: none !important;
     }
@@ -1835,7 +1835,7 @@ a {
         letter-spacing: 1.5px !important;
     }
     .page-home .hero-container {
-        padding-bottom: 2rem !important;
+        padding-bottom: 0 !important;
     }
 }
 
