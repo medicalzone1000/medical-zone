@@ -39,19 +39,77 @@
 </div>
 
 <main>
-    <section class="hero home-hero">
-        <div class="hero-media" aria-hidden="true">
-            <img src="images/medical-hero.jpg" alt="" class="hero-bg-img" loading="eager" decoding="async">
-            <div class="hero-media-overlay"></div>
-        </div>
-        <div class="container hero-container">
-            <div class="hero-content">
-                <div class="hero-eyebrow"><span class="eyebrow-dot"></span><span>الوجهة الأولى للأجهزة الطبية في مصر</span></div>
-                <h1 class="hero-title">ميديكال زون<br><em>أعلى جودة .. بأفضل سعر</em></h1>
-                <p class="hero-desc">أحدث الأجهزة والمستلزمات الطبية للمستشفيات والعيادات والاستخدام المنزلي</p>
-                <div class="hero-cta"><a href="store.html" class="btn-primary">تسوق الآن <i class="fas fa-arrow-left"></i></a></div>
-                <div class="hero-stats"><div class="stat-item"><strong>+600</strong><span>منتج طبي</span></div><div class="stat-divider"></div><div class="stat-item"><strong>+15</strong><span>سنة خبرة</span></div><div class="stat-divider"></div><div class="stat-item"><strong>3 فروع</strong><span>القاهرة وأسيوط وسوهاج</span></div></div>
+    <!-- HERO CAROUSEL (سلايدر) 4 صور -->
+    <section class="hero home-hero hero-carousel">
+        <div class="carousel-container">
+            <div class="carousel-slides" id="heroSlides">
+                <!-- Slide 1 -->
+                <div class="carousel-slide active">
+                    <div class="carousel-bg">
+                        <img src="https://picsum.photos/id/20/1920/1080" alt="تجهيزات طبية" loading="eager">
+                        <div class="hero-media-overlay"></div>
+                    </div>
+                    <div class="container hero-container">
+                        <div class="hero-content">
+                            <div class="hero-eyebrow"><span class="eyebrow-dot"></span><span>الوجهة الأولى للأجهزة الطبية في مصر</span></div>
+                            <h1 class="hero-title">ميديكال زون<br><em>أعلى جودة .. بأفضل سعر</em></h1>
+                            <p class="hero-desc">أحدث الأجهزة والمستلزمات الطبية للمستشفيات والعيادات والاستخدام المنزلي</p>
+                            <div class="hero-cta"><a href="store.html" class="btn-primary">تسوق الآن <i class="fas fa-arrow-left"></i></a></div>
+                            <div class="hero-stats"><div class="stat-item"><strong>+600</strong><span>منتج طبي</span></div><div class="stat-divider"></div><div class="stat-item"><strong>+15</strong><span>سنة خبرة</span></div><div class="stat-divider"></div><div class="stat-item"><strong>3 فروع</strong><span>القاهرة وأسيوط وسوهاج</span></div></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-slide">
+                    <div class="carousel-bg">
+                        <img src="https://picsum.photos/id/38/1920/1080" alt="أجهزة تنفس" loading="lazy">
+                        <div class="hero-media-overlay"></div>
+                    </div>
+                    <div class="container hero-container">
+                        <div class="hero-content">
+                            <div class="hero-eyebrow"><span class="eyebrow-dot"></span><span>أجهزة تنفس منزلية</span></div>
+                            <h1 class="hero-title">تنفس بسهولة<br><em>أجهزة أكسجين متطورة</em></h1>
+                            <p class="hero-desc">إيجار أو شراء أجهزة التنفس المنزلي – خدمة 24 ساعة مع ضمان شامل</p>
+                            <div class="hero-cta"><a href="store.html?category=%D8%A3%D8%AC%D9%87%D8%B2%D8%A9%20%D8%AA%D9%86%D9%81%D8%B3%20%D9%84%D9%84%D8%A5%D9%8A%D8%AC%D8%A7%D8%B1" class="btn-primary">طلب إيجار <i class="fas fa-arrow-left"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-slide">
+                    <div class="carousel-bg">
+                        <img src="https://picsum.photos/id/42/1920/1080" alt="مناظير طبية" loading="lazy">
+                        <div class="hero-media-overlay"></div>
+                    </div>
+                    <div class="container hero-container">
+                        <div class="hero-content">
+                            <div class="hero-eyebrow"><span class="eyebrow-dot"></span><span>المناظير والجراحة الدقيقة</span></div>
+                            <h1 class="hero-title">أحدث المناظير<br><em>دقة عالية ونتائج مضمونة</em></h1>
+                            <p class="hero-desc">تجهيز غرف العمليات بأحدث أنظمة المناظير الجراحية والتشخيصية</p>
+                            <div class="hero-cta"><a href="store.html?category=%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B8%D9%8A%D8%B1%20%D9%88%D8%A7%D9%84%D8%A2%D9%84%D8%A7%D8%AA" class="btn-primary">استشارة فنية <i class="fas fa-arrow-left"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 4 -->
+                <div class="carousel-slide">
+                    <div class="carousel-bg">
+                        <img src="https://picsum.photos/id/0/1920/1080" alt="تجهيزات عيادات" loading="lazy">
+                        <div class="hero-media-overlay"></div>
+                    </div>
+                    <div class="container hero-container">
+                        <div class="hero-content">
+                            <div class="hero-eyebrow"><span class="eyebrow-dot"></span><span>حلول متكاملة للمستشفيات</span></div>
+                            <h1 class="hero-title">تجهيزات عيادات<br><em>بأعلى المواصفات العالمية</em></h1>
+                            <p class="hero-desc">نقدم حلولًا شاملة لتجهيز العيادات والمستشفيات بأفضل الأجهزة الطبية</p>
+                            <div class="hero-cta"><a href="equipment-for-clinics.html" class="btn-primary">طلب عرض سعر <i class="fas fa-arrow-left"></i></a></div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- أزرار التنقل -->
+            <button class="carousel-btn carousel-prev" aria-label="السابق"><i class="fas fa-chevron-right"></i></button>
+            <button class="carousel-btn carousel-next" aria-label="التالي"><i class="fas fa-chevron-left"></i></button>
+            <!-- نقاط المؤشر -->
+            <div class="carousel-dots" id="heroDots"></div>
         </div>
     </section>
 
@@ -59,7 +117,6 @@
 
     <section class="promo-section">
         <div class="container promo-grid">
-            <!-- تجهيزات عيادات -->
             <a href="equipment-for-clinics.html" style="display: block; text-decoration: none; color: inherit;">
                 <div class="promo-card promo-main">
                     <img src="images/promo-main.jpg" alt="تجهيزات عيادات" style="background:#cbd5e1; min-height:420px;">
@@ -68,7 +125,6 @@
                 </div>
             </a>
             <div class="promo-stack">
-                <!-- مناظير طبية -->
                 <a href="store.html?category=%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B8%D9%8A%D8%B1%20%D9%88%D8%A7%D9%84%D8%A2%D9%84%D8%A7%D8%AA" style="display: block; text-decoration: none; color: inherit;">
                     <div class="promo-card promo-small">
                         <img src="images/promo-main.jpg" alt="مناظير طبية" style="background:#cbd5e1; min-height:196px; object-fit:cover;">
@@ -76,7 +132,6 @@
                         <div class="promo-content"><h3>مناظير طبية</h3><span class="btn-white-sm">تسوق</span></div>
                     </div>
                 </a>
-                <!-- أجهزة تنفس منزلي (للإيجار) -->
                 <a href="store.html?category=%D8%A3%D8%AC%D9%87%D8%B2%D8%A9%20%D8%AA%D9%86%D9%81%D8%B3%20%D9%84%D9%84%D8%A5%D9%8A%D8%AC%D8%A7%D8%B1" style="display: block; text-decoration: none; color: inherit;">
                     <div class="promo-card promo-small">
                         <img src="images/promo-main.jpg" alt="أجهزة تنفس منزلية" style="background:#cbd5e1; min-height:196px; object-fit:cover;">
@@ -218,6 +273,76 @@
     }
     loadLatestProducts();
     loadLatestReports();
+
+    // ========== CAROUSEL SCRIPT (تشغيل تلقائي وتحكم يدوي) ==========
+    (function() {
+        const slides = document.querySelectorAll('#heroSlides .carousel-slide');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        const dotsContainer = document.getElementById('heroDots');
+        let currentIndex = 0;
+        let autoInterval;
+
+        function updateCarousel(index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            currentIndex = index;
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentIndex);
+            });
+            updateDots();
+            resetAutoPlay();
+        }
+
+        function updateDots() {
+            if (!dotsContainer) return;
+            const dots = dotsContainer.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function createDots() {
+            if (!dotsContainer) return;
+            dotsContainer.innerHTML = '';
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.classList.add('dot');
+                if (i === currentIndex) dot.classList.add('active');
+                dot.setAttribute('data-index', i);
+                dot.addEventListener('click', () => {
+                    updateCarousel(i);
+                });
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function nextSlide() { updateCarousel(currentIndex + 1); }
+        function prevSlide() { updateCarousel(currentIndex - 1); }
+
+        function startAutoPlay() {
+            if (autoInterval) clearInterval(autoInterval);
+            autoInterval = setInterval(() => { nextSlide(); }, 5000);
+        }
+        function resetAutoPlay() {
+            if (autoInterval) clearInterval(autoInterval);
+            startAutoPlay();
+        }
+
+        if (slides.length) {
+            createDots();
+            startAutoPlay();
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+            const container = document.querySelector('.carousel-container');
+            if (container) {
+                container.addEventListener('mouseenter', () => {
+                    if (autoInterval) clearInterval(autoInterval);
+                });
+                container.addEventListener('mouseleave', startAutoPlay);
+            }
+        }
+    })();
 </script>
 </body>
 </html>
