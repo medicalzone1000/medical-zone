@@ -39,37 +39,32 @@
 </div>
 
 <main>
-    <!-- HERO CAROUSEL (سلايدر) 4 صور - بارتفاع كامل الشاشة -->
+    <!-- HERO CAROUSEL - 4 صور معدلة بالكامل -->
     <section class="hero home-hero hero-carousel fullscreen-hero">
         <div class="carousel-container">
             <div class="carousel-slides" id="heroSlides">
                 <!-- Slide 1 -->
                 <div class="carousel-slide active">
                     <div class="carousel-bg">
-                        <img src="images/slider/slide1.jpg" alt="تجهيزات طبية" loading="eager">
-                        <div class="hero-media-overlay"></div>
+                        <img src="images/slider/slid1.jpg" alt="تجهيزات طبية" loading="eager">
                     </div>
-                    <!-- تم إزالة النصوص والأزرار بناءً على طلب المستخدم -->
                 </div>
                 <!-- Slide 2 -->
                 <div class="carousel-slide">
                     <div class="carousel-bg">
-                        <img src="images/slider/slide2.jpg" alt="أجهزة تنفس" loading="lazy">
-                        <div class="hero-media-overlay"></div>
+                        <img src="images/slider/slid2.jpg" alt="أجهزة تنفس" loading="lazy">
                     </div>
                 </div>
                 <!-- Slide 3 -->
                 <div class="carousel-slide">
                     <div class="carousel-bg">
-                        <img src="images/slider/slide3.jpg" alt="مناظير طبية" loading="lazy">
-                        <div class="hero-media-overlay"></div>
+                        <img src="images/slider/slid3.jpg" alt="مناظير طبية" loading="lazy">
                     </div>
                 </div>
                 <!-- Slide 4 -->
                 <div class="carousel-slide">
                     <div class="carousel-bg">
-                        <img src="images/slider/slide4.png" alt="تجهيزات عيادات" loading="lazy">
-                        <div class="hero-media-overlay"></div>
+                        <img src="images/slider/slid4.png" alt="تجهيزات عيادات" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -242,7 +237,7 @@
     loadLatestProducts();
     loadLatestReports();
 
-    // ========== CAROUSEL SCRIPT (تشغيل تلقائي وتحكم يدوي - 3 ثوانٍ, يعمل إلى الأبد) ==========
+    // ========== CAROUSEL SCRIPT (تشغيل تلقائي وتحكم يدوي - 3 ثوانٍ) ==========
     (function() {
         const slides = document.querySelectorAll('#heroSlides .carousel-slide');
         const prevBtn = document.querySelector('.carousel-prev');
