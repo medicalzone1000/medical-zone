@@ -39,8 +39,8 @@
 </div>
 
 <main>
-    <!-- HERO CAROUSEL - 4 صور - الأسماء معدلة -->
-    <section class="hero home-hero hero-carousel fullscreen-hero">
+    <!-- HERO CAROUSEL - 4 صور -->
+    <section class="hero home-hero hero-carousel">
         <div class="carousel-container">
             <div class="carousel-slides" id="heroSlides">
                 <!-- Slide 1 -->
@@ -238,7 +238,7 @@
     loadLatestProducts();
     loadLatestReports();
 
-    // CAROUSEL SCRIPT
+    // CAROUSEL SCRIPT - 4 ثوانٍ
     (function() {
         const slides = document.querySelectorAll('#heroSlides .carousel-slide');
         const prevBtn = document.querySelector('.carousel-prev');
@@ -288,7 +288,7 @@
         function startAutoPlay() {
             if (autoInterval) clearInterval(autoInterval);
             if (!isPaused) {
-                autoInterval = setInterval(() => { nextSlide(); }, 3000);
+                autoInterval = setInterval(() => { nextSlide(); }, 4000);
             }
         }
         function resetAutoPlay() {
