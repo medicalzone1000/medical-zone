@@ -1559,18 +1559,14 @@ a {
 }
 
 /* =====================
-   CAROUSEL (SLIDER) STYLES - الحل النهائي
+   CAROUSEL (SLIDER) STYLES - حل نهائي للموبايل وسطح المكتب
    ===================== */
 .hero-carousel {
     position: relative;
     overflow: hidden;
     padding: 0;
     background-color: #000;
-}
-
-.fullscreen-hero {
-    height: auto !important;
-    min-height: auto !important;
+    width: 100%;
 }
 
 .carousel-container {
@@ -1608,11 +1604,8 @@ a {
     margin: 0 auto;
 }
 
-/* إخفاء أي overlay أو نصوص زائدة قد تظهر */
-.hero-carousel .hero-media-overlay {
-    display: none !important;
-}
-
+/* إخفاء أي محتوى نصي قديم */
+.hero-carousel .hero-media-overlay,
 .hero-carousel .hero-content,
 .hero-carousel .hero-eyebrow,
 .hero-carousel .hero-title,
@@ -1622,7 +1615,7 @@ a {
     display: none !important;
 }
 
-/* تثبيت أزرار التنقل والنقاط */
+/* أزرار التنقل */
 .carousel-btn {
     position: absolute;
     top: 50%;
@@ -1680,7 +1673,7 @@ a {
     border-radius: 10px;
 }
 
-/* Responsive adjustments */
+/* تحسينات خاصة للشاشات الصغيرة (الموبايل) */
 @media (max-width: 768px) {
     .carousel-btn {
         width: 36px;
@@ -1696,10 +1689,15 @@ a {
     .carousel-dots {
         bottom: 15px;
     }
+    .carousel-bg img {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+    }
 }
 
 /* =====================
-   RESPONSIVE BREAKPOINTS (MOBILE ONLY)
+   RESPONSIVE BREAKPOINTS (MOBILE ONLY) - باقي أقسام الموقع كما هي
    ===================== */
 
 @media (max-width: 1024px) {
