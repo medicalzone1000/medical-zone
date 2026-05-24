@@ -1779,17 +1779,13 @@ a {
         width: 100% !important;
         padding-bottom: 4.5rem !important;
     }
-    .page-home .hero-content {
-    position: relative !important;
-    margin: 0 auto !important;
-    padding: 0 3.5rem !important; /* الـ 3.5rem دي بتلم الكلام للداخل عشان يبعد عن الأسهم تماماً */
-    max-width: 100% !important;
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
-}
+     .page-home .hero-content {
+        position: relative !important;
+        margin: 0 !important;
+        padding: 0 1.5rem !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
     /* Hide extra elements */
     .page-home .hero-eyebrow,
     .page-home .hero-desc,
