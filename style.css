@@ -1559,7 +1559,7 @@ a {
 }
 
 /* =====================
-   CAROUSEL (SLIDER) STYLES - حل نهائي للموبايل وسطح المكتب
+   CAROUSEL (SLIDER) STYLES - الحل النهائي للموبايل وسطح المكتب
    ===================== */
 .hero-carousel {
     position: relative;
@@ -1569,6 +1569,7 @@ a {
     width: 100%;
 }
 
+/* سطح المكتب: الارتفاع تلقائي حسب الصورة */
 .carousel-container {
     position: relative;
     width: 100%;
@@ -1673,8 +1674,49 @@ a {
     border-radius: 10px;
 }
 
-/* تحسينات خاصة للشاشات الصغيرة (الموبايل) */
+/* ========== تحسينات خاصة بالشاشات الصغيرة (الموبايل) ========== */
 @media (max-width: 768px) {
+    /* جعل السلايدر يملأ الشاشة بالكامل */
+    .hero-carousel {
+        height: 100vh !important;
+        min-height: 100vh !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .carousel-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .carousel-slides {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .carousel-slide {
+        height: 100%;
+        display: none !important;
+        align-items: center;
+        justify-content: center;
+    }
+    .carousel-slide.active {
+        display: flex !important;
+    }
+    .carousel-bg {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .carousel-bg img {
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+    }
+    /* تصغير الأزرار قليلاً */
     .carousel-btn {
         width: 36px;
         height: 36px;
@@ -1689,15 +1731,10 @@ a {
     .carousel-dots {
         bottom: 15px;
     }
-    .carousel-bg img {
-        width: 100%;
-        height: auto;
-        min-height: auto;
-    }
 }
 
 /* =====================
-   RESPONSIVE BREAKPOINTS (MOBILE ONLY) - باقي أقسام الموقع كما هي
+   RESPONSIVE BREAKPOINTS (MOBILE ONLY) - باقي أقسام الموقع
    ===================== */
 
 @media (max-width: 1024px) {
