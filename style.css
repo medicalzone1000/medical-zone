@@ -1,5 +1,5 @@
 /* =============================================
-   MEDICAL ZONE — FINAL STYLESHEET
+   MEDICAL ZONE — FINAL MOBILE STYLESHEET
    ============================================= */
 
 :root {
@@ -1559,7 +1559,7 @@ a {
 }
 
 /* =====================
-   CAROUSEL (SLIDER) STYLES - الحل النهائي
+   CAROUSEL (SLIDER) STYLES - النهائي الذي يعرض الصورة كاملة على الموبايل
    ===================== */
 .hero-carousel {
     position: relative;
@@ -1577,7 +1577,6 @@ a {
 .carousel-container {
     position: relative;
     width: 100%;
-    height: auto;
     background: #000;
 }
 
@@ -1679,8 +1678,29 @@ a {
     border-radius: 10px;
 }
 
-/* تحسين الموبايل */
+/* ========== الحل النهائي للشاشات الصغيرة (الموبايل) ========== */
 @media (max-width: 768px) {
+    .hero-carousel {
+        height: auto !important;
+        min-height: auto !important;
+    }
+    .carousel-container {
+        height: auto !important;
+        min-height: auto !important;
+    }
+    .carousel-slide {
+        height: auto !important;
+        min-height: auto !important;
+    }
+    .carousel-bg {
+        height: auto !important;
+    }
+    .carousel-bg img {
+        width: 100% !important;
+        height: auto !important;
+        max-width: 100% !important;
+        object-fit: contain !important;
+    }
     .carousel-btn {
         width: 36px;
         height: 36px;
@@ -1695,15 +1715,10 @@ a {
     .carousel-dots {
         bottom: 15px;
     }
-    .carousel-bg img {
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-    }
 }
 
 /* =====================
-   RESPONSIVE BREAKPOINTS (MOBILE ONLY) - باقي الأقسام كما هي
+   RESPONSIVE BREAKPOINTS (MOBILE ONLY) - باقي الأقسام
    ===================== */
 
 @media (max-width: 1024px) {
@@ -1755,7 +1770,7 @@ a {
         font-size: 1.4rem !important;
     }
 
-    /* ===== HOME PAGE — PROFESSIONAL MOBILE HERO ===== */
+    /* ===== HOME PAGE — PROFESSIONAL MOBILE HERO (fullscreen) ===== */
     .page-home .hero {
         min-height: 100vh !important;
         display: flex !important;
@@ -1844,7 +1859,7 @@ a {
         background: linear-gradient(to top, rgba(10,15,35,0.78) 0%, rgba(10,15,35,0.12) 55%, transparent 100%) !important;
     }
 
-    /* ---- Promo & grids ---- */
+    /* ---- Promo & grids (unchanged for other pages) ---- */
     .promo-grid { grid-template-columns: 1fr; }
     .promo-stack { flex-direction: row; gap: 1rem; }
     .products-grid { grid-template-columns: repeat(2, 1fr); }
