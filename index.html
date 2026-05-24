@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>ميديكال زون — الأجهزة الطبية</title>
     <meta name="description" content="ميديكال زون — أجهزة ومستلزمات طبية للمستشفيات والعيادات والمنزل. شحن لجميع المحافظات، ضمان سنة، دعم فني 24/7. اطلب عبر واتساب.">
     <meta name="robots" content="index, follow">
@@ -39,45 +39,37 @@
 </div>
 
 <main>
-    <!-- HERO CAROUSEL (سلايدر) 4 صور -->
+    <!-- HERO CAROUSEL - معدل نهائياً ليعرض الصور كاملة بدون تقطيع على الموبايل -->
     <section class="hero home-hero hero-carousel fullscreen-hero">
         <div class="carousel-container">
             <div class="carousel-slides" id="heroSlides">
-                <!-- Slide 1 -->
                 <div class="carousel-slide active">
                     <div class="carousel-bg">
                         <img src="images/slider/slid1.png" alt="تجهيزات طبية" loading="eager">
                     </div>
                 </div>
-                <!-- Slide 2 -->
                 <div class="carousel-slide">
                     <div class="carousel-bg">
                         <img src="images/slider/slid2.jpg" alt="أجهزة تنفس" loading="lazy">
                     </div>
                 </div>
-                <!-- Slide 3 -->
                 <div class="carousel-slide">
                     <div class="carousel-bg">
                         <img src="images/slider/slid3.jpg" alt="مناظير طبية" loading="lazy">
                     </div>
                 </div>
-                <!-- Slide 4 -->
                 <div class="carousel-slide">
                     <div class="carousel-bg">
                         <img src="images/slider/slid4.png" alt="تجهيزات عيادات" loading="lazy">
                     </div>
                 </div>
             </div>
-            <!-- أزرار التنقل -->
             <button class="carousel-btn carousel-prev" aria-label="السابق"><i class="fas fa-chevron-right"></i></button>
             <button class="carousel-btn carousel-next" aria-label="التالي"><i class="fas fa-chevron-left"></i></button>
-            <!-- نقاط المؤشر -->
             <div class="carousel-dots" id="heroDots"></div>
         </div>
     </section>
 
-    <!-- باقي أقسام الموقع (trust bar, promo, categories, products, why-us, blog, footer) كما هي في ملفك الأصلي -->
-    <!-- نظرًا للمساحة، سيتم وضع بقية الكود كما كان في ملفك الأصلي. هذا القسم لم يتغير. -->
     <section class="trust-bar"><div class="container trust-bar-inner"><div class="trust-item"><div class="trust-icon"><i class="fas fa-shipping-fast"></i></div><div><h4>شحن سريع</h4><p>لجميع المحافظات</p></div></div><div class="trust-sep"></div><div class="trust-item"><div class="trust-icon"><i class="fas fa-award"></i></div><div><h4>ضمان حقيقي</h4><p>سنة ضد عيوب الصناعة</p></div></div><div class="trust-sep"></div><div class="trust-item"><div class="trust-icon"><i class="fas fa-user-md"></i></div><div><h4>دعم 24/7</h4><p>فريق طبي متخصص</p></div></div><div class="trust-sep"></div><div class="trust-item"><div class="trust-icon"><i class="fab fa-whatsapp"></i></div><div><h4>اطلب عبر واتساب</h4><p>رد سريع وتأكيد الطلب</p></div></div></div></section>
 
     <section class="promo-section">
@@ -115,7 +107,6 @@
                 <h2 class="section-title">تسوق حسب الفئة</h2>
             </div>
             <div class="categories-grid">
-                <!-- روابط الفئات كما هي في ملفك الأصلي -->
                 <a href="store.html?category=%D8%A7%D9%84%D8%B9%D9%85%D9%84%D9%8A%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D8%B9%D9%86%D8%A7%D9%8A%D8%A9%20%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2%D8%A9" class="cat-card"><div class="cat-icon-wrap" style="background:#fff0f0;"><i class="fas fa-procedures" style="color:#e74c3c;"></i></div><span>العمليات والعناية المركزة</span></a>
                 <a href="store.html?category=%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B8%D9%8A%D8%B1%20%D9%88%D8%A7%D9%84%D8%A2%D9%84%D8%A7%D8%AA" class="cat-card"><div class="cat-icon-wrap" style="background:#f0f8ff;"><i class="fas fa-microscope" style="color:#2980b9;"></i></div><span>المناظير والآلات</span></a>
                 <a href="store.html?category=%D8%A7%D9%84%D8%A3%D8%B4%D8%B9%D8%A9%20%D9%88%D8%A7%D9%84%D8%B3%D9%88%D9%86%D8%A7%D8%B1" class="cat-card"><div class="cat-icon-wrap" style="background:#f5f0ff;"><i class="fas fa-x-ray" style="color:#8e44ad;"></i></div><span>الأشعة والسونار</span></a>
@@ -170,7 +161,6 @@
 <script src="js/config.js"></script>
 <script src="js/site.js"></script>
 <script>
-    // دوال loadLatestProducts و loadLatestReports وسكربت السلايدر كما هي مع تعديل المدة إلى 4000 فقط
     function formatPrice(n) { return MZ.formatPrice(n); }
     async function loadLatestProducts() {
         const grid = document.getElementById('latestProductsGrid');
@@ -241,6 +231,7 @@
     loadLatestProducts();
     loadLatestReports();
 
+    // CAROUSEL SCRIPT (4 ثوانٍ)
     (function() {
         const slides = document.querySelectorAll('#heroSlides .carousel-slide');
         const prevBtn = document.querySelector('.carousel-prev');
@@ -277,9 +268,7 @@
                 dot.classList.add('dot');
                 if (i === currentIndex) dot.classList.add('active');
                 dot.setAttribute('data-index', i);
-                dot.addEventListener('click', () => {
-                    updateCarousel(i);
-                });
+                dot.addEventListener('click', () => { updateCarousel(i); });
                 dotsContainer.appendChild(dot);
             });
         }
@@ -289,27 +278,11 @@
 
         function startAutoPlay() {
             if (autoInterval) clearInterval(autoInterval);
-            if (!isPaused) {
-                autoInterval = setInterval(() => { nextSlide(); }, 4000);
-            }
+            if (!isPaused) autoInterval = setInterval(nextSlide, 4000);
         }
-        function resetAutoPlay() {
-            if (autoInterval) clearInterval(autoInterval);
-            startAutoPlay();
-        }
-        function pauseAutoPlay() {
-            if (autoInterval) {
-                clearInterval(autoInterval);
-                autoInterval = null;
-                isPaused = true;
-            }
-        }
-        function resumeAutoPlay() {
-            if (isPaused) {
-                isPaused = false;
-                startAutoPlay();
-            }
-        }
+        function resetAutoPlay() { clearInterval(autoInterval); startAutoPlay(); }
+        function pauseAutoPlay() { if (autoInterval) { clearInterval(autoInterval); autoInterval = null; isPaused = true; } }
+        function resumeAutoPlay() { if (isPaused) { isPaused = false; startAutoPlay(); } }
 
         if (slides.length) {
             createDots();
