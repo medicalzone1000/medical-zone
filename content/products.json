@@ -74,6 +74,23 @@
       "description": "serag",
       "video": "",
       "date": "2026-05-23"
+    },
+    {
+      "id": "p1779637888121",
+      "title": "Respironic philips EverFlo",
+      "category": "أجهزة التنفس والأكسجين",
+      "image": "/images/uploads/1779637663637_aa6d2fa525014242b356a77c015e3a6f.webp",
+      "images": [
+        "/images/uploads/1779637663637_aa6d2fa525014242b356a77c015e3a6f.webp"
+      ],
+      "price": 43000,
+      "oldPrice": 0,
+      "status": "جديد",
+      "badge": "",
+      "discount": 0,
+      "description": "EverFlo\nUntil now, oxygen concentrators have been very similar - heavy, bulky, noisy, or requiring frequent maintenance. EverFlo from Respironics is a unique stationary concentrator that delivers what homecare providers want and patients deserve.",
+      "video": "",
+      "date": "2026-05-24"
     }
   ]
 }
