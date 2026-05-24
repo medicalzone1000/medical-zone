@@ -1559,7 +1559,7 @@ a {
 }
 
 /* =====================
-   CAROUSEL (SLIDER) STYLES - الحل النهائي للموبايل وسطح المكتب
+   CAROUSEL (SLIDER) STYLES
    ===================== */
 .hero-carousel {
     position: relative;
@@ -1569,7 +1569,6 @@ a {
     width: 100%;
 }
 
-/* سطح المكتب: الارتفاع تلقائي حسب الصورة */
 .carousel-container {
     position: relative;
     width: 100%;
@@ -1605,7 +1604,7 @@ a {
     margin: 0 auto;
 }
 
-/* إخفاء أي محتوى نصي قديم */
+/* إخفاء أي محتوى نصي قديم داخل السلايدر */
 .hero-carousel .hero-media-overlay,
 .hero-carousel .hero-content,
 .hero-carousel .hero-eyebrow,
@@ -1674,48 +1673,50 @@ a {
     border-radius: 10px;
 }
 
-/* ========== تحسينات خاصة بالشاشات الصغيرة (الموبايل) ========== */
+/* ========== الحل النهائي للسلايدر على الموبايل ========== */
 @media (max-width: 768px) {
-    /* جعل السلايدر يملأ الشاشة بالكامل */
-    .hero-carousel {
+    .hero-carousel,
+    .hero-carousel .carousel-container,
+    .hero-carousel .carousel-slides,
+    .hero-carousel .carousel-slide.active {
         height: 100vh !important;
         min-height: 100vh !important;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        max-height: 100vh !important;
     }
-    .carousel-container {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .carousel-slides {
-        height: 100%;
-        display: flex;
-        align-items: center;
-    }
-    .carousel-slide {
-        height: 100%;
-        display: none !important;
-        align-items: center;
-        justify-content: center;
-    }
-    .carousel-slide.active {
+    
+    .hero-carousel {
         display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background-color: #000 !important;
     }
-    .carousel-bg {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    
+    .hero-carousel .carousel-container {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
     }
-    .carousel-bg img {
-        width: auto;
-        height: 100%;
-        max-width: 100%;
-        object-fit: contain;
+    
+    .hero-carousel .carousel-slide.active {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
+    
+    .hero-carousel .carousel-bg {
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .hero-carousel .carousel-bg img {
+        width: auto !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        object-fit: contain !important;
+    }
+    
     /* تصغير الأزرار قليلاً */
     .carousel-btn {
         width: 36px;
@@ -1734,7 +1735,7 @@ a {
 }
 
 /* =====================
-   RESPONSIVE BREAKPOINTS (MOBILE ONLY) - باقي أقسام الموقع
+   RESPONSIVE BREAKPOINTS (MOBILE ONLY)
    ===================== */
 
 @media (max-width: 1024px) {
