@@ -39,15 +39,17 @@
 </div>
 
 <main>
-    <!-- HERO CAROUSEL - 4 صور (تم إزالة class fullscreen-hero) -->
-    <section class="hero home-hero hero-carousel">
+    <!-- HERO CAROUSEL (سلايدر) 4 صور - بارتفاع كامل الشاشة -->
+    <section class="hero home-hero hero-carousel fullscreen-hero">
         <div class="carousel-container">
             <div class="carousel-slides" id="heroSlides">
                 <!-- Slide 1 -->
                 <div class="carousel-slide active">
                     <div class="carousel-bg">
                         <img src="images/slider/slid1.png" alt="تجهيزات طبية" loading="eager">
+                        <!-- تم إزالة الطبقة الزرقاء hero-media-overlay -->
                     </div>
+                    <!-- تم إزالة كل محتوى hero-content (نصوص وأزرار وإحصائيات) -->
                 </div>
                 <!-- Slide 2 -->
                 <div class="carousel-slide">
@@ -76,7 +78,6 @@
         </div>
     </section>
 
-    <!-- باقي الموقع (بدون تغيير) -->
     <section class="trust-bar"><div class="container trust-bar-inner"><div class="trust-item"><div class="trust-icon"><i class="fas fa-shipping-fast"></i></div><div><h4>شحن سريع</h4><p>لجميع المحافظات</p></div></div><div class="trust-sep"></div><div class="trust-item"><div class="trust-icon"><i class="fas fa-award"></i></div><div><h4>ضمان حقيقي</h4><p>سنة ضد عيوب الصناعة</p></div></div><div class="trust-sep"></div><div class="trust-item"><div class="trust-icon"><i class="fas fa-user-md"></i></div><div><h4>دعم 24/7</h4><p>فريق طبي متخصص</p></div></div><div class="trust-sep"></div><div class="trust-item"><div class="trust-icon"><i class="fab fa-whatsapp"></i></div><div><h4>اطلب عبر واتساب</h4><p>رد سريع وتأكيد الطلب</p></div></div></div></section>
 
     <section class="promo-section">
@@ -238,7 +239,7 @@
     loadLatestProducts();
     loadLatestReports();
 
-    // CAROUSEL SCRIPT - 4 ثوانٍ
+    // ========== CAROUSEL SCRIPT (تشغيل تلقائي وتحكم يدوي - 4 ثوانٍ, يعمل إلى الأبد) ==========
     (function() {
         const slides = document.querySelectorAll('#heroSlides .carousel-slide');
         const prevBtn = document.querySelector('.carousel-prev');
