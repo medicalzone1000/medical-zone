@@ -2038,7 +2038,6 @@ a {
 @media (max-width: 768px) {
     .txt-mobile { display: inline; }
     .txt-desktop { display: none; }
-
     .slide-brand-label {
         display: block;
         font-family: 'Cairo', sans-serif;
@@ -2049,6 +2048,7 @@ a {
         color: rgba(255, 255, 255, 0.75);
         margin-bottom: 0.75rem;
     }
+    .slide2-title { font-size: 2.4rem !important; }
 }
 
 img[src=""], img:not([src]) {
