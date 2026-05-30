@@ -91,6 +91,23 @@
       "description": "EverFlo\nUntil now, oxygen concentrators have been very similar - heavy, bulky, noisy, or requiring frequent maintenance. EverFlo from Respironics is a unique stationary concentrator that delivers what homecare providers want and patients deserve.",
       "video": "",
       "date": "2026-05-24"
+    },
+    {
+      "id": "p1780159142875",
+      "title": "Respironic philips Millennium M10",
+      "category": "أجهزة التنفس والأكسجين",
+      "image": "/images/uploads/1780159084347_b8ff8d78a5784029bf16a77c01443783.avif",
+      "images": [
+        "/images/uploads/1780159084347_b8ff8d78a5784029bf16a77c01443783.avif"
+      ],
+      "price": 130000,
+      "oldPrice": 0,
+      "status": "جديد",
+      "badge": "",
+      "discount": 0,
+      "description": "The Millennium M10 is designed to be the highest performing and most reliable 10 liter oxygen machine available. It's engineered to reduce the cost of providing oxygen for patients who need high levels of oxygen.",
+      "video": "",
+      "date": "2026-05-30"
     }
   ]
 }
