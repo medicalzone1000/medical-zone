@@ -183,6 +183,23 @@
       "description": "BiLevel-ST therapy with maximum flexibility.\nThe prisma25ST Medical is the therapy device of choice at obstructive, mixed or complex sleep apnea with comorbidities. It offers its users maximum flexibility in BiLevel settings. Various automatic functions and comfort-enhancing features enable safe, effective and whisper-quiet BiLevel-ST therapy",
       "video": "",
       "date": "2026-05-30"
+    },
+    {
+      "id": "p1780169775770",
+      "title": "BIBAP prisma 30 ST",
+      "category": "أجهزة التنفس والأكسجين",
+      "image": "/images/uploads/1780169708732_csm_prisma-25-st-sleep-apnea-therapy-device-right_f9f5a63fc4.webp",
+      "images": [
+        "/images/uploads/1780169708732_csm_prisma-25-st-sleep-apnea-therapy-device-right_f9f5a63fc4.webp"
+      ],
+      "price": 120000,
+      "oldPrice": 0,
+      "status": "جديد",
+      "badge": "",
+      "discount": 0,
+      "description": "BiLevel-ST therapy with adjustable target volume.\nThe prisma30ST is the device of choice for patients suffering from respiratory insufficiency, such as position-dependent hypoventilation and/or COPD, and simultaneously exhibiting sleep-related breathing disorders. A wide pressure range, various automatic functions as well as process and comfort-supporting features enable a safe, effective, and whisper-quiet BiLevel ST therapy",
+      "video": "",
+      "date": "2026-05-30"
     }
   ]
 }
