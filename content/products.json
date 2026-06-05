@@ -1,20 +1,6 @@
 {
   "products": [
     {
-      "id": "p1779302393345",
-      "title": "جهاز علاج بالموجات الفوق صوتية Sonora",
-      "category": "العلاج الطبيعي",
-      "image": "/images/uploads/1779302354627_pexels-o3-media-production-900294148-21391399.jpg",
-      "price": 81500,
-      "oldPrice": 0,
-      "status": "جديد",
-      "badge": "",
-      "discount": 0,
-      "description": "Sonora هي وحدة تشغيل قابلة للبرمجة لمحولات الطاقة الأمريكية بترددات عمل من 1 إلى 3 ميجا هرتز",
-      "video": "",
-      "date": "2026-05-20"
-    },
-    {
       "id": "p1779302570894",
       "title": "جهاز التنفس الصناعي SynoVent E3",
       "category": "أجهزة التنفس والأكسجين",
