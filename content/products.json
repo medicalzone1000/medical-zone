@@ -1,23 +1,6 @@
 {
   "products": [
     {
-      "id": "p1779302570894",
-      "title": "جهاز التنفس الصناعي SynoVent E3",
-      "category": "أجهزة التنفس والأكسجين",
-      "image": "/images/uploads/1779302646170_69464411_1244512529043465_7539433914075447296_n.jpg",
-      "images": [
-        "/images/uploads/1779302646170_69464411_1244512529043465_7539433914075447296_n.jpg"
-      ],
-      "price": 220000,
-      "oldPrice": 0,
-      "status": "مستعمل",
-      "badge": "",
-      "discount": 0,
-      "description": "مواصفات عالمية",
-      "video": "",
-      "date": "2026-06-04"
-    },
-    {
       "id": "p1779637888121",
       "title": "Respironic philips EverFlo",
       "category": "أجهزة التنفس والأكسجين",
