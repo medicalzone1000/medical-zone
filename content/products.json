@@ -1,20 +1,6 @@
 {
   "products": [
     {
-      "id": "p1779302104245",
-      "title": "جهاز رسم قلب 12 قناة Ecg1200G",
-      "category": "العمليات والعناية المركزة",
-      "image": "/images/uploads/1779301886570_pexels-pixabay-263194.jpg",
-      "price": 52000,
-      "oldPrice": 0,
-      "status": "جديد",
-      "badge": "",
-      "discount": 0,
-      "description": "ECG1200G هو مخطط كهربائي للقلب يمكنه جمع إشارة ECG المكونة من 12 رأسًا في وقت واحد وطباعة شكل موجة ECG باستخدام نظام الطباعة الحرارية.",
-      "video": "https://youtu.be/8iC6VMpdnT4?si=cVnnl62vq4ZL8VZV",
-      "date": "2026-05-20"
-    },
-    {
       "id": "p1779302393345",
       "title": "جهاز علاج بالموجات الفوق صوتية Sonora",
       "category": "العلاج الطبيعي",
