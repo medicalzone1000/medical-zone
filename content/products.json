@@ -388,6 +388,25 @@
       "description": "معمل دراسات النوم انتاج شركة natus الامريكية\nTrex HD Monitoring\nLab-quality EEG recordings\nfrom home testing",
       "video": "",
       "date": "2026-06-06"
+    },
+    {
+      "id": "p1780774834612",
+      "title": "جهاز معمل دراسات النوم Embla sleep study lab",
+      "category": "رسم المخ والعضلات",
+      "image": "/images/uploads/1780774813065_Untitleddd.jpg",
+      "images": [
+        "/images/uploads/1780774813065_Untitleddd.jpg",
+        "/images/uploads/1780774820756_Untitled_ff.jpg",
+        "/images/uploads/1780774822726_Untitled.jpg"
+      ],
+      "price": 11,
+      "oldPrice": 0,
+      "status": "جديد",
+      "badge": "",
+      "discount": 0,
+      "description": "جهاز معمل دراسات النوم Embla sleep study lab\n\nNatus® SleepWorks™ Software \nembla sleep study Lab \nNatus SleepWorks is a comprehensive, flexible and cyber-secure sleep diagnostic\nsolution that simplifies the setup, collection, review, analysis and reporting of\ncomprehensive sleep studies. With advanced HIS/EMR integration and unmatched\nreliability, SleepWorks is a complete diagnostic package designed to meet the needs of\nprivate practice clinics, sleep clinics, hospitals and academic medical centers.\nEnhanced workflow for sleep studies\n• Ongoing study parameters at the forefront of view in a configurable Heads Up Display\n• Configurable observation notes – automate tech notes with custom form fields and\nflexible reporting\n• Analyze and review an ongoing studies, including video\n• Capture PAP treatment and supplemental O2 levels easily using customizable therapy\ntypes that simplify titration and reporting\nIntuitive Clinical Experience\n• Powerful event detection, trending and analysis options with fully synchronized\nHD video\n• Record data directly to a server and access studies from any networked station\n• Reduce size of archived files using advanced clipping and pruning features\n• Use the Natus Database to quickly locate patient studies based on a variety of\ncustom parameters",
+      "video": "",
+      "date": "2026-06-06"
     }
   ]
 }
