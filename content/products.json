@@ -645,6 +645,23 @@
       "description": "Vallylab force 2 diathermy\n350 wat",
       "video": "",
       "date": "2026-06-08"
+    },
+    {
+      "id": "p1780936986130",
+      "title": "Conmed saber 2400 Daithrmy 350 wat",
+      "category": "العمليات والعناية المركزة",
+      "image": "/images/uploads/1780936966410_658066591_27333384629581618_2597767915989746309_n.jpg",
+      "images": [
+        "/images/uploads/1780936966410_658066591_27333384629581618_2597767915989746309_n.jpg"
+      ],
+      "price": 70000,
+      "oldPrice": 0,
+      "status": "مستعمل",
+      "badge": "",
+      "discount": 0,
+      "description": "Conmed saber 2400\nDaithrmy 350 wat",
+      "video": "",
+      "date": "2026-06-08"
     }
   ]
 }
