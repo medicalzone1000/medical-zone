@@ -852,6 +852,23 @@
       "description": "جهاز تنفس صناعي محمول Philips triology 100  Portable ventilator",
       "video": "",
       "date": "2026-06-08"
+    },
+    {
+      "id": "p1780939906734",
+      "title": "جهاز تنفس صناعي محمول Philips triology 200",
+      "category": "أجهزة تنفس للإيجار",
+      "image": "/images/uploads/1780939857599_654814267_27269397435980338_6771323145299852993_n.jpg",
+      "images": [
+        "/images/uploads/1780939857599_654814267_27269397435980338_6771323145299852993_n.jpg"
+      ],
+      "price": 4000,
+      "oldPrice": 0,
+      "status": "إيجار",
+      "badge": "",
+      "discount": 0,
+      "description": "جهاز تنفس صناعي محمول Philips triology 200",
+      "video": "",
+      "date": "2026-06-08"
     }
   ]
 }
