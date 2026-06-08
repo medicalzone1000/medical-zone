@@ -679,6 +679,23 @@
       "description": "Erbe icc 300 diathermy 200 wat",
       "video": "",
       "date": "2026-06-08"
+    },
+    {
+      "id": "p1780937124195",
+      "title": "Berchold 300 wat diathermy",
+      "category": "العمليات والعناية المركزة",
+      "image": "/images/uploads/1780937103861_657818144_27333373042916110_6873987947813430610_n.jpg",
+      "images": [
+        "/images/uploads/1780937103861_657818144_27333373042916110_6873987947813430610_n.jpg"
+      ],
+      "price": 75000,
+      "oldPrice": 0,
+      "status": "مستعمل",
+      "badge": "",
+      "discount": 0,
+      "description": "Berchold 300 wat diathermy",
+      "video": "",
+      "date": "2026-06-08"
     }
   ]
 }
