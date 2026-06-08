@@ -611,6 +611,23 @@
       "description": "karl storz autcon 400 diathermy",
       "video": "",
       "date": "2026-06-08"
+    },
+    {
+      "id": "p1780936850799",
+      "title": "اجهزة صدمات نيهون كوهدن Nihon kohden defibrator",
+      "category": "العمليات والعناية المركزة",
+      "image": "/images/uploads/1780936825967_658811380_27333422349577846_2394164480003392758_n.jpg",
+      "images": [
+        "/images/uploads/1780936825967_658811380_27333422349577846_2394164480003392758_n.jpg"
+      ],
+      "price": 65000,
+      "oldPrice": 0,
+      "status": "جديد",
+      "badge": "",
+      "discount": 0,
+      "description": "Nihon kohden defibrator",
+      "video": "",
+      "date": "2026-06-08"
     }
   ]
 }
