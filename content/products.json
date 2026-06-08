@@ -713,6 +713,23 @@
       "description": "Erbe icc 300 diathermy 300 wat",
       "video": "",
       "date": "2026-06-08"
+    },
+    {
+      "id": "p1780937230651",
+      "title": "Erbe diathermy 400 watt",
+      "category": "العمليات والعناية المركزة",
+      "image": "/images/uploads/1780937214081_659063100_27333347979585283_321774846479649660_n.jpg",
+      "images": [
+        "/images/uploads/1780937214081_659063100_27333347979585283_321774846479649660_n.jpg"
+      ],
+      "price": 50000,
+      "oldPrice": 0,
+      "status": "مستعمل",
+      "badge": "",
+      "discount": 0,
+      "description": "Erbe diathermy 400 watt",
+      "video": "",
+      "date": "2026-06-08"
     }
   ]
 }
