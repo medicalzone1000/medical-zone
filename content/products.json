@@ -904,6 +904,23 @@
       "description": "philips cough assist T70",
       "video": "",
       "date": "2026-06-08"
+    },
+    {
+      "id": "p1780940628725",
+      "title": "Bennet 840 ICU Ventilator",
+      "category": "العمليات والعناية المركزة",
+      "image": "/images/uploads/1780940604065_655930583_27269397645980317_1287045683941379282_n.jpg",
+      "images": [
+        "/images/uploads/1780940604065_655930583_27269397645980317_1287045683941379282_n.jpg"
+      ],
+      "price": 240000,
+      "oldPrice": 0,
+      "status": "مستعمل",
+      "badge": "",
+      "discount": 0,
+      "description": "Bennet 840 ICU Ventilator\nadult , pediatric & nionate",
+      "video": "",
+      "date": "2026-06-08"
     }
   ]
 }
