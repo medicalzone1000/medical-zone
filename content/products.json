@@ -594,6 +594,23 @@
       "description": "Emed es 350\nDiathermy with argon",
       "video": "",
       "date": "2026-06-08"
+    },
+    {
+      "id": "p1780936754029",
+      "title": "karl storz autcon 400 diathermy",
+      "category": "العمليات والعناية المركزة",
+      "image": "/images/uploads/1780936734573_657881927_27333429916243756_7019723944822183147_n.jpg",
+      "images": [
+        "/images/uploads/1780936734573_657881927_27333429916243756_7019723944822183147_n.jpg"
+      ],
+      "price": 240000,
+      "oldPrice": 0,
+      "status": "مستعمل",
+      "badge": "",
+      "discount": 0,
+      "description": "karl storz autcon 400 diathermy",
+      "video": "",
+      "date": "2026-06-08"
     }
   ]
 }
