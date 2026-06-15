@@ -1043,6 +1043,23 @@
       "description": "مونتور 7 وظيفة بالكبلات \nGE patient monitor dash 3000 عرض أقل",
       "video": "",
       "date": "2026-06-15"
+    },
+    {
+      "id": "p1781552132026",
+      "title": "Philips C3 Patient Monitor",
+      "category": "العمليات والعناية المركزة",
+      "image": "/images/uploads/1781552088630_2386-1-philips-c3-monitor.jpg",
+      "images": [
+        "/images/uploads/1781552088630_2386-1-philips-c3-monitor.jpg"
+      ],
+      "price": 45000,
+      "oldPrice": 0,
+      "status": "مستعمل",
+      "badge": "",
+      "discount": 0,
+      "description": "مونتور فلبس امريكي استيراد بالكبلات 5 وظيفة Philips C3 Patient Monitor",
+      "video": "",
+      "date": "2026-06-15"
     }
   ]
 }
